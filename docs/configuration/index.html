@@ -1,0 +1,127 @@
+---
+layout: default
+title: Configuration - TDK CLI
+---
+
+<section class="section" style="padding-top: 120px;">
+  <div class="container">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-3 mb-4">
+        <div class="sticky-top" style="top: 100px;">
+          <h5 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gray-500); margin-bottom: 1rem;">Documentation</h5>
+          <nav class="nav flex-column">
+            <a class="nav-link px-0 py-2 text-muted" href="{{ '/docs/' | relative_url }}">Overview</a>
+            <a class="nav-link px-0 py-2 text-muted" href="{{ '/docs/quickstart/' | relative_url }}">Quick Start</a>
+            <a class="nav-link px-0 py-2 active text-purple" href="{{ '/docs/configuration/' | relative_url }}">Configuration</a>
+            <a class="nav-link px-0 py-2 text-muted" href="{{ '/docs/examples/' | relative_url }}">Examples</a>
+            <a class="nav-link px-0 py-2 text-muted" href="{{ '/docs/api/' | relative_url }}">API Reference</a>
+            <a class="nav-link px-0 py-2 text-muted" href="{{ '/docs/contributing/' | relative_url }}">Contributing</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="col-lg-9">
+        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Configuration</h1>
+        <p class="lead" style="color: var(--color-gray-600); font-size: 1.25rem; margin-bottom: 2rem;">
+          Learn about service.json and all available options.
+        </p>
+
+        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">service.json Schema</h2>
+        <p style="font-size: 1.125rem; color: var(--color-gray-700); margin-bottom: 1.5rem;">
+          The <code>service.json</code> file is the single source of truth for each service. Here's the complete schema:
+        </p>
+
+        <pre style="margin-bottom: 2rem;"><code>{
+  "appName": "my-service",           // Required: Unique name
+  "appType": "backend",            // Required: backend | frontend | library | worker
+  "port": 3000,                    // Required: Service port
+  "stack": "api",                  // Optional: Stack grouping
+  "features": [                     // Optional: Features to enable
+    "typescript",
+    "vite",
+    "bun"
+  ],
+  "replicas": 1,                   // Optional: Number of replicas
+  "backendName": "api-backend",    // Optional: Backend for frontend
+  "basePath": "/api",              // Optional: URL base path
+  "internalDependencies": [        // Optional: Other services
+    "database",
+    "cache"
+  ],
+  "envVars": {                     // Optional: Environment variables
+    "NODE_ENV": "development",
+    "API_URL": "http://localhost:3001"
+  }
+}</code></pre>
+
+        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">Required Fields</h2>
+        
+        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">appName</h3>
+        <p style="margin-bottom: 1rem;">The unique identifier for your service. Must be lowercase with hyphens.</p>
+        <pre style="margin-bottom: 1.5rem;"><code>"appName": "order-service"</code></pre>
+
+        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">appType</h3>
+        <p style="margin-bottom: 1rem;">The type of service. Affects which generators run.</p>
+        <ul style="margin-bottom: 1.5rem;">
+          <li><code>backend</code> - API service</li>
+          <li><code>frontend</code> - Web application</li>
+          <li><code>library</code> - Shared code package</li>
+          <li><code>worker</code> - Background job processor</li>
+          <li><code>migrator</code> - Database migration service</li>
+        </ul>
+
+        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">port</h3>
+        <p style="margin-bottom: 1rem;">The port your service listens on.</p>
+        <pre style="margin-bottom: 1.5rem;"><code>"port": 3000</code></pre>
+
+        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">Optional Fields</h2>
+        
+        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">features</h3>
+        <p style="margin-bottom: 1rem;">List of features to enable. Triggers corresponding generators.</p>
+        <ul style="margin-bottom: 1.5rem;">
+          <li><code>typescript</code> - TypeScript support</li>
+          <li><code>vite</code> - Vite bundler</li>
+          <li><code>bun</code> - Bun runtime</li>
+          <li><code>node</code> - Node.js runtime</li>
+          <li><code>nginx</code> - Nginx reverse proxy</li>
+          <li><code>playwright</code> - E2E testing</li>
+          <li><code>prisma</code> - Database ORM</li>
+        </ul>
+
+        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">stack</h3>
+        <p style="margin-bottom: 1rem;">Groups related services together for Tilt orchestration.</p>
+        <pre style="margin-bottom: 1.5rem;"><code>"stack": "order-management"</code></pre>
+
+        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">internalDependencies</h3>
+        <p style="margin-bottom: 1rem;">Other services this service depends on.</p>
+        <pre style="margin-bottom: 1.5rem;"><code>"internalDependencies": ["database", "redis", "auth-service"]</code></pre>
+
+        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">Examples by Type</h2>
+
+        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">Backend Service</h3>
+        <pre style="margin-bottom: 1.5rem;"><code>{
+  "appName": "api-gateway",
+  "appType": "backend",
+  "port": 3000,
+  "features": ["typescript", "bun"],
+  "internalDependencies": ["database", "redis"],
+  "envVars": {
+    "NODE_ENV": "development"
+  }
+}</code></pre>
+
+        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">Frontend Service</h3>
+        <pre style="margin-bottom: 1.5rem;"><code>{
+  "appName": "web-app",
+  "appType": "frontend",
+  "port": 5173,
+  "features": ["typescript", "vite"],
+  "backendName": "api-gateway",
+  "basePath": "/app"
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</section>

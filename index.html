@@ -1,0 +1,460 @@
+---
+layout: default
+title: TDK CLI — Kubernetes-Free Microservice Development
+---
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <span class="hero-label">Now with 120+ services support</span>
+    <h1>
+      Run microservices locally.<br>
+      <span class="highlight">No Kubernetes required.</span>
+    </h1>
+    <p class="lead">
+      TDK CLI lets you run <strong>5-120+ microservices locally</strong> with Docker only.
+      One <code>service.json</code> file generates 10+ configurations automatically.
+    </p>
+    <div class="hero-actions">
+      <a href="#get-started" class="btn btn-primary btn-lg">
+        Get Started →
+      </a>
+      <a href="#how-it-works" class="btn btn-outline-dark btn-lg">
+        See how it works
+      </a>
+    </div>
+
+    <!-- Tool Badges -->
+    <div class="mt-5">
+      <span class="label d-block mb-3" style="font-size: 0.875rem; color: var(--color-gray-500);">Built on:</span>
+      <div class="d-flex flex-wrap justify-content-center gap-2">
+        <span class="badge" style="border-color: var(--color-purple); color: var(--color-purple);">
+          <i class="bi bi-layers me-1"></i>Tilt (9.4k ★)
+        </span>
+        <span class="badge">Docker</span>
+        <span class="badge">Bun/Node</span>
+        <span class="badge">Vite</span>
+        <span class="badge">TypeScript</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Problem Section -->
+<section class="section" style="background: var(--color-gray-100);" id="problem">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">The Problem</span>
+      <h2>The Kubernetes Learning Curve</h2>
+      <p>Every microservice tool forces you to learn infrastructure you don't need for local development.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <div class="card-body text-center p-4">
+            <div class="mb-3">
+              <span style="font-size: 3rem; font-weight: 700; color: var(--color-purple);">70%</span>
+            </div>
+            <h4 style="font-size: 1.125rem;">Don't know Kubernetes</h4>
+            <p class="text-muted">Yet every tool forces them to learn it</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <div class="card-body text-center p-4">
+            <div class="mb-3">
+              <span style="font-size: 3rem; font-weight: 700; color: var(--color-warning);">$500+</span>
+            </div>
+            <h4 style="font-size: 1.125rem;">Cloud dev environments</h4>
+            <p class="text-muted">What teams pay when they give up</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <div class="card-body text-center p-4">
+            <div class="mb-3">
+              <span style="font-size: 3rem; font-weight: 700; color: var(--color-danger);">30s</span>
+            </div>
+            <h4 style="font-size: 1.125rem;">Garden startup</h4>
+            <p class="text-muted">vs 5s with TDK</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <div class="card-body text-center p-4">
+            <div class="mb-3">
+              <span style="font-size: 3rem; font-weight: 700; color: var(--color-success);">120+</span>
+            </div>
+            <h4 style="font-size: 1.125rem;">Services proven</h4>
+            <p class="text-muted">Running locally at scale</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">How It Works</span>
+      <h2>From one manifest to 10+ configs</h2>
+      <p>Write the source of truth. TDK handles the rest.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <div class="mb-3">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: var(--color-purple); color: white; border-radius: var(--radius); font-weight: 700; font-size: 1.25rem;">1</span>
+            </div>
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">Write service.json</h4>
+            <p class="text-muted" style="font-size: 0.9375rem;">Simple JSON with app name, type, port, and features</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <div class="mb-3">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: var(--color-purple); color: white; border-radius: var(--radius); font-weight: 700; font-size: 1.25rem;">2</span>
+            </div>
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">TDK generates</h4>
+            <p class="text-muted" style="font-size: 0.9375rem;">Docker, Vite, TSConfig, nginx, env files, and more</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <div class="mb-3">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: var(--color-purple); color: white; border-radius: var(--radius); font-weight: 700; font-size: 1.25rem;">3</span>
+            </div>
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">Tilt orchestrates</h4>
+            <p class="text-muted" style="font-size: 0.9375rem;">Built on Tilt. Hot reload. Docker containers.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <div class="mb-3">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: var(--color-purple); color: white; border-radius: var(--radius); font-weight: 700; font-size: 1.25rem;">4</span>
+            </div>
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">You write code</h4>
+            <p class="text-muted" style="font-size: 0.9375rem;">No K8s knowledge needed. Focus on your product.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Code Example -->
+<section class="section" style="background: var(--color-gray-900); color: var(--color-white);">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-label" style="background: rgba(124, 77, 255, 0.2);">Code Example</span>
+      <h2 style="color: var(--color-white); margin-top: 1rem;">One manifest. Multiple configs.</h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div style="background: var(--color-gray-800); border-radius: var(--radius-lg); overflow: hidden;">
+          <div style="background: var(--color-gray-700); padding: 0.75rem 1rem; font-size: 0.875rem; color: var(--color-gray-400); display: flex; align-items: center; gap: 0.5rem;">
+            <span style="width: 12px; height: 12px; background: #ff5f56; border-radius: 50%;"></span>
+            <span style="width: 12px; height: 12px; background: #ffbd2e; border-radius: 50%;"></span>
+            <span style="width: 12px; height: 12px; background: #27c93f; border-radius: 50%;"></span>
+            <span style="margin-left: 0.5rem;">service.json</span>
+          </div>
+          <div style="padding: 1.5rem; overflow-x: auto;">
+            <pre style="background: transparent; padding: 0; margin: 0;"><code style="font-size: 0.875rem; line-height: 1.7;"><span style="color: #6a737d;">// The single source of truth</span>
+{
+  <span style="color: #7ee787;">"appName"</span>: <span style="color: #a5d6ff;">"order-frontend"</span>,
+  <span style="color: #7ee787;">"appType"</span>: <span style="color: #a5d6ff;">"frontend"</span>,
+  <span style="color: #7ee787;">"port"</span>: <span style="color: #79c0ff;">3001</span>,
+  <span style="color: #7ee787;">"features"</span>: [<span style="color: #a5d6ff;">"vite"</span>, <span style="color: #a5d6ff;">"typescript"</span>],
+  <span style="color: #7ee787;">"backendName"</span>: <span style="color: #a5d6ff;">"order-backend"</span>
+}</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div style="background: var(--color-gray-800); border-radius: var(--radius-lg); overflow: hidden;">
+          <div style="background: var(--color-gray-700); padding: 0.75rem 1rem; font-size: 0.875rem; color: var(--color-gray-400); display: flex; align-items: center; gap: 0.5rem;">
+            <span style="width: 12px; height: 12px; background: #ff5f56; border-radius: 50%;"></span>
+            <span style="width: 12px; height: 12px; background: #ffbd2e; border-radius: 50%;"></span>
+            <span style="width: 12px; height: 12px; background: #27c93f; border-radius: 50%;"></span>
+            <span style="margin-left: 0.5rem;">Generated files</span>
+          </div>
+          <div style="padding: 1.5rem; overflow-x: auto;">
+            <pre style="background: transparent; padding: 0; margin: 0;"><code style="font-size: 0.875rem; line-height: 1.7;"><span style="color: var(--color-purple);">→</span> <span style="color: #a5d6ff;">Dockerfile.frontend.autogenerated</span>
+<span style="color: var(--color-purple);">→</span> <span style="color: #a5d6ff;">vite.config.frontend.autogenerated.ts</span>
+<span style="color: var(--color-purple);">→</span> <span style="color: #a5d6ff;">tsconfig.frontend.autogenerated.json</span>
+<span style="color: var(--color-purple);">→</span> <span style="color: #a5d6ff;">nginx.frontend.autogenerated.conf</span>
+<span style="color: var(--color-purple);">→</span> <span style="color: #a5d6ff;">.env.frontend.autogenerated</span>
+<span style="color: var(--color-purple);">→</span> <span style="color: #a5d6ff;">Tiltfile.config.autogenerated</span>
+<span style="color: var(--color-purple);">→</span> ... <span style="color: #6a737d;">and 4 more files</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison Table -->
+<section class="section" id="compare">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Comparison</span>
+      <h2>Head-to-head with alternatives</h2>
+      <p>TDK is the only tool that's manifest-driven AND Kubernetes-free.</p>
+    </div>
+
+    <div class="feature-matrix">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="text-center" style="background: rgba(124, 77, 255, 0.1); color: var(--color-purple);">TDK CLI</th>
+            <th class="text-center">Garden</th>
+            <th class="text-center">Skaffold</th>
+            <th class="text-center">DevSpace</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="fw-bold">Kubernetes required</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span class="status-yes">✓</span> No
+            </td>
+            <td class="text-center">
+              <span class="status-no">⚠</span> Optional
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> Yes
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> Yes
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Manifest format</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">Simple JSON</td>
+            <td class="text-center">Complex YAML</td>
+            <td class="text-center">Complex YAML</td>
+            <td class="text-center">YAML</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Auto-generated files</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span class="status-yes">✓</span> 10+ files
+            </td>
+            <td class="text-center">3-5 files</td>
+            <td class="text-center">
+              <span class="status-no">✗</span> Manual
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> Manual
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Golden Docker images</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span class="status-yes">✓</span> L1-L4
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> DIY
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> DIY
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> DIY
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Auto-discovery</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span class="status-yes">✓</span> Scans dirs
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> Manual
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> Manual
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> Manual
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Local-only mode</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span class="status-yes">✓</span> Docker only
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> Needs cluster
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> Needs cluster
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> Needs cluster
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Open source</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span class="status-yes">✓</span> MIT
+            </td>
+            <td class="text-center">
+              <span class="status-yes">✓</span> Apache
+            </td>
+            <td class="text-center">
+              <span class="status-yes">✓</span> Apache
+            </td>
+            <td class="text-center">
+              <span class="status-no">✗</span> Commercial
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text-center mt-4">
+      <p class="text-muted">Winner: <strong style="color: var(--color-purple);">TDK</strong> — only tool that's manifest-driven AND Kubernetes-free</p>
+    </div>
+  </div>
+</section>
+
+<!-- Who Should Use -->
+<section class="section" style="background: var(--color-gray-100);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Audience</span>
+      <h2>Who should use what</h2>
+      <p>Choose the right tool for your team's expertise.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">Platform Engineers</h4>
+            <p class="text-muted mb-3">Use <strong>Garden</strong> or <strong>DevSpace</strong></p>
+            <p class="text-muted" style="font-size: 0.9375rem;">They WANT Kubernetes and have the expertise to manage it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">Senior Backend Devs</h4>
+            <p class="text-muted mb-3">Use <strong>Tilt</strong> or <strong>Skaffold</strong></p>
+            <p class="text-muted" style="font-size: 0.9375rem;">They tolerate K8s complexity and can handle the learning curve.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100" style="border-color: var(--color-purple); box-shadow: 0 0 0 1px var(--color-purple);">
+          <div class="card-body p-4">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">Full-Stack Developers ✓</h4>
+            <p class="text-muted mb-3">Use <strong>TDK</strong></p>
+            <p class="text-muted" style="font-size: 0.9375rem;">Don't know K8s, don't want to learn it. Just want to write code.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100" style="border-color: var(--color-purple); box-shadow: 0 0 0 1px var(--color-purple);">
+          <div class="card-body p-4">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">Product Teams ✓</h4>
+            <p class="text-muted mb-3">Use <strong>TDK</strong></p>
+            <p class="text-muted" style="font-size: 0.9375rem;">Need to test features across 10+ services without waiting for DevOps.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100" style="border-color: var(--color-purple); box-shadow: 0 0 0 1px var(--color-purple);">
+          <div class="card-body p-4">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">Startups ✓</h4>
+            <p class="text-muted mb-3">Use <strong>TDK</strong></p>
+            <p class="text-muted" style="font-size: 0.9375rem;">Outgrew "works on my machine" but not ready for platform team overhead.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">FAQ</span>
+      <h2>Common questions</h2>
+      <p>Quick answers to frequent concerns.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">But we need Kubernetes for production</h4>
+            <p class="text-muted">Local dev doesn't need to match production. Use TDK for fast local iteration (5s startup), K8s for prod when ready. Decoupled.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">What about CI/CD?</h4>
+            <p class="text-muted">TDK is completely decoupled from your CI. Use it for local development, whatever you want for CI/CD. No lock-in.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">We already use Garden</h4>
+            <p class="text-muted">TDK complements Garden. Use TDK for local speed (5s vs 30s startup), Garden for prod-like integration tests. Best of both.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">Is 120+ services realistic locally?</h4>
+            <p class="text-muted">Yes, with selective startup. You don't run all 120 at once—just what you need. Proven at scale with proper resource management.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-purple) 100%); color: white;" id="get-started">
+  <div class="container">
+    <div class="text-center">
+      <h2 style="color: white; margin-bottom: 1rem;">Ready to ditch Kubernetes for local dev?</h2>
+      <p style="font-size: 1.125rem; opacity: 0.9; margin-bottom: 2rem;">
+        Built on Tilt • Manifest-driven • Auto-discovery • Golden Images
+      </p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="{{ '/docs/quickstart/' | relative_url }}" class="btn btn-lg" style="background: white; color: var(--color-purple);">
+          Get Started →
+        </a>
+        <a href="https://github.com/tdk-cli/tdk" class="btn btn-outline-light btn-lg" target="_blank" rel="noopener">
+          <i class="bi bi-github me-2"></i>View on GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

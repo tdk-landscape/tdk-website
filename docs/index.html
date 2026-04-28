@@ -1,0 +1,123 @@
+---
+layout: default
+title: Documentation - TDK CLI
+---
+
+<section class="section" style="padding-top: 120px;">
+  <div class="container">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-3 mb-4">
+        <div class="sticky-top" style="top: 100px;">
+          <h5 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gray-500); margin-bottom: 1rem;">Documentation</h5>
+          <nav class="nav flex-column">
+            <a class="nav-link px-0 py-2{% if page.url == '/docs/' %} active text-purple{% else %} text-muted{% endif %}" href="{{ '/docs/' | relative_url }}">Overview</a>
+            <a class="nav-link px-0 py-2{% if page.url contains '/docs/quickstart/' %} active text-purple{% else %} text-muted{% endif %}" href="{{ '/docs/quickstart/' | relative_url }}">Quick Start</a>
+            <a class="nav-link px-0 py-2{% if page.url contains '/docs/configuration/' %} active text-purple{% else %} text-muted{% endif %}" href="{{ '/docs/configuration/' | relative_url }}">Configuration</a>
+            <a class="nav-link px-0 py-2{% if page.url contains '/docs/examples/' %} active text-purple{% else %} text-muted{% endif %}" href="{{ '/docs/examples/' | relative_url }}">Examples</a>
+            <a class="nav-link px-0 py-2{% if page.url contains '/docs/api/' %} active text-purple{% else %} text-muted{% endif %}" href="{{ '/docs/api/' | relative_url }}">API Reference</a>
+            <a class="nav-link px-0 py-2{% if page.url contains '/docs/contributing/' %} active text-purple{% else %} text-muted{% endif %}" href="{{ '/docs/contributing/' | relative_url }}">Contributing</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="col-lg-9">
+        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Documentation</h1>
+        <p class="lead" style="color: var(--color-gray-600); font-size: 1.25rem; margin-bottom: 2rem;">
+          Learn how to run your microservices locally without Kubernetes.
+        </p>
+
+        <div class="row g-4 mb-5">
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-body p-4">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">
+                  <i class="bi bi-rocket me-2" style="color: var(--color-purple);"></i>Quick Start
+                </h3>
+                <p class="text-muted mb-3">Get up and running with TDK in under 5 minutes.</p>
+                <a href="{{ '/docs/quickstart/' | relative_url }}" class="btn btn-outline-dark btn-sm">Get Started →</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-body p-4">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">
+                  <i class="bi bi-file-earmark-text me-2" style="color: var(--color-purple);"></i>Configuration
+                </h3>
+                <p class="text-muted mb-3">Learn about service.json and all available options.</p>
+                <a href="{{ '/docs/configuration/' | relative_url }}" class="btn btn-outline-dark btn-sm">Read More →</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-body p-4">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">
+                  <i class="bi bi-code-square me-2" style="color: var(--color-purple);"></i>Examples
+                </h3>
+                <p class="text-muted mb-3">See real-world examples of TDK in action.</p>
+                <a href="{{ '/docs/examples/' | relative_url }}" class="btn btn-outline-dark btn-sm">View Examples →</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-body p-4">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">
+                  <i class="bi bi-book me-2" style="color: var(--color-purple);"></i>API Reference
+                </h3>
+                <p class="text-muted mb-3">Complete API documentation for power users.</p>
+                <a href="{{ '/docs/api/' | relative_url }}" class="btn btn-outline-dark btn-sm">Read API Docs →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="font-size: 1.75rem; margin-bottom: 1rem;">What is TDK CLI?</h2>
+        <p style="font-size: 1.125rem; color: var(--color-gray-700); margin-bottom: 1.5rem;">
+          TDK CLI is a <strong>Kubernetes-free</strong> microservice development tool. It lets you run 5-120+ services locally using only Docker and Tilt—no K8s knowledge required.
+        </p>
+        <p style="font-size: 1.125rem; color: var(--color-gray-700); margin-bottom: 1.5rem;">
+          Write one <code>service.json</code> file per service, and TDK automatically generates:
+        </p>
+        <ul style="font-size: 1.125rem; color: var(--color-gray-700); margin-bottom: 1.5rem;">
+          <li>Dockerfile with optimized L1-L4 layering</li>
+          <li>Vite/TypeScript configuration</li>
+          <li>Nginx reverse proxy rules</li>
+          <li>Environment variable files</li>
+          <li>Tiltfile for local orchestration</li>
+        </ul>
+
+        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">Key Features</h2>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.5rem;">🚀 Manifest-Driven</h4>
+            <p class="text-muted">Single source of truth with simple JSON configuration.</p>
+          </div>
+          <div class="col-md-6">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.5rem;">🐳 Docker Only</h4>
+            <p class="text-muted">No Kubernetes required for local development.</p>
+          </div>
+          <div class="col-md-6">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.5rem;">⚡ Auto-Generation</h4>
+            <p class="text-muted">10+ config files generated automatically from one manifest.</p>
+          </div>
+          <div class="col-md-6">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.5rem;">📦 Golden Images</h4>
+            <p class="text-muted">Production-ready Docker layering (L1-L4).</p>
+          </div>
+          <div class="col-md-6">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.5rem;">🔍 Auto-Discovery</h4>
+            <p class="text-muted">Automatically finds services in your directory structure.</p>
+          </div>
+          <div class="col-md-6">
+            <h4 style="font-size: 1.125rem; margin-bottom: 0.5rem;">🏗️ Built on Tilt</h4>
+            <p class="text-muted">9.4k GitHub stars. Battle-tested stability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

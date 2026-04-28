@@ -1,0 +1,246 @@
+---
+layout: default
+title: Compare - TDK CLI
+---
+
+<section class="section" style="padding-top: 120px;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Compare</span>
+      <h2>How TDK stacks up against alternatives</h2>
+      <p>TDK is the only tool that's manifest-driven AND Kubernetes-free.</p>
+    </div>
+
+    <div class="feature-matrix mb-5">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th style="min-width: 200px;">Feature</th>
+            <th class="text-center" style="background: rgba(124, 77, 255, 0.1); color: var(--color-purple); min-width: 140px;">
+              <strong>TDK CLI</strong>
+            </th>
+            <th class="text-center" style="min-width: 140px;">Garden</th>
+            <th class="text-center" style="min-width: 140px;">Skaffold</th>
+            <th class="text-center" style="min-width: 140px;">DevSpace</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="fw-bold">Kubernetes required</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> No
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-warning);">⚠</span> Optional
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> Yes
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> Yes
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Learning curve</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">Low</span>
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-warning);">High</span>
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-warning);">High</span>
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-warning);">High</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Setup time</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">Minutes</span>
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-warning);">Days</span>
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-warning);">Days</span>
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-warning);">Days</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Manifest format</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">Simple JSON</span>
+            </td>
+            <td class="text-center">Complex YAML</td>
+            <td class="text-center">Complex YAML</td>
+            <td class="text-center">YAML</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Auto-generated files</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">10+ files</span>
+            </td>
+            <td class="text-center">3-5 files</td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">Manual</span>
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">Manual</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Golden Docker images</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> L1-L4
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> DIY
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> DIY
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> DIY
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Auto-discovery</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> Scans dirs
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> Manual
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> Manual
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> Manual
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Selective startup</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> Yes
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> Limited
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> No
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> Yes
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Local-only mode</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> Docker only
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> Needs cluster
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> Needs cluster
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> Needs cluster
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Hot reload</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> Yes (Tilt)
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> Yes
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> Yes
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> Yes
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Scale proven</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">120+ services</span>
+            </td>
+            <td class="text-center">Enterprise</td>
+            <td class="text-center">Medium</td>
+            <td class="text-center">Medium</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Built on</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">Tilt (9.4k ★)</span>
+            </td>
+            <td class="text-center">Custom</td>
+            <td class="text-center">Custom</td>
+            <td class="text-center">Custom</td>
+          </tr>
+          <tr>
+            <td class="fw-bold">Open source</td>
+            <td class="text-center" style="background: rgba(124, 77, 255, 0.05);">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> MIT
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> Apache
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-success); font-weight: 600;">✓</span> Apache
+            </td>
+            <td class="text-center">
+              <span style="color: var(--color-danger);">✗</span> Commercial
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text-center mb-5">
+      <p style="font-size: 1.125rem; color: var(--color-gray-600);">
+        Winner: <strong style="color: var(--color-purple);">TDK</strong> — the only tool that's manifest-driven AND Kubernetes-free
+      </p>
+    </div>
+
+    <h2 style="font-size: 1.75rem; margin: 3rem 0 1.5rem; text-align: center;">Which tool is right for you?</h2>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card h-100" style="border-color: var(--color-purple);">
+          <div class="card-body p-4">
+            <h4 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--color-purple);">Choose TDK if you...</h4>
+            <ul class="text-muted" style="margin-bottom: 0;">
+              <li>Don't know Kubernetes and don't want to learn it</li>
+              <li>Need to run services locally quickly</li>
+              <li>Want manifest-driven simplicity</li>
+              <li>Are a full-stack or product developer</li>
+              <li>Work at a startup without platform team</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <h4 style="font-size: 1.25rem; margin-bottom: 0.75rem;">Choose Garden if you...</h4>
+            <ul class="text-muted" style="margin-bottom: 0;">
+              <li>Have Kubernetes expertise</li>
+              <li>Need production-like environments</li>
+              <li>Have a dedicated platform team</li>
+              <li>Want enterprise-grade features</li>
+              <li>Are building complex distributed systems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

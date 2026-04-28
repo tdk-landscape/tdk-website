@@ -1,0 +1,56 @@
+title: TDK CLI
+email: hello@tdk.dev
+description: >-
+  Kubernetes-free microservice development. Run 5-120+ services locally 
+  without learning Kubernetes. One service.json generates 10+ configs.
+
+baseurl: ""
+url: "https://tdk.dev"
+
+twitter_username: tdkcli
+github_username: tdk-cli
+
+markdown: kramdown
+highlighter: rouge
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path/
+  features:
+    output: true
+    permalink: /:collection/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "doc"
+  - scope:
+      path: "assets/images"
+    values:
+      sitemap: false
+
+sass:
+  style: compressed
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - docker-compose.yml
+  - Dockerfile
