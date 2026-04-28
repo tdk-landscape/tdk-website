@@ -4,8 +4,8 @@ description: >-
   Kubernetes-free microservice development. Run 5-120+ services locally 
   without learning Kubernetes. One service.json generates 10+ configs.
 
-baseurl: ""
-url: "https://tdk.dev"
+baseurl: "/tdk-website"
+url: "https://tdk-landscape.github.io"
 
 twitter_username: tdkcli
 github_username: tdk-cli
