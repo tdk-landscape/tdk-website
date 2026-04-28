@@ -26,15 +26,154 @@ title: TDK CLI — Kubernetes-Free Microservice Development
       One <code>service.json</code> file generates 10+ configurations automatically.
     </p>
     
-    <!-- Email Waitlist - Simple Mailto -->
-    <div style="max-width: 500px; margin: 0 auto 2rem;">
-      <a href="mailto:vntu0412179+tdk-waitlist@gmail.com?subject=Join TDK CLI Waitlist&body=Hi! I'd like to join the TDK CLI waitlist for early access.%0A%0AMy email: (your email here)%0A%0AI'm interested in TDK CLI because: (tell us what problem you're trying to solve)%0A%0A---%0ASent from tdk-website" class="btn btn-primary" style="padding: 14px 28px; font-size: 1.125rem;">
-        <i class="bi bi-envelope me-2"></i>Join via Email
-      </a>
-      <p style="font-size: 0.875rem; color: var(--color-gray-500); margin-top: 0.75rem;">
-        <i class="bi bi-shield-check me-1"></i>Clicking opens your email app. Just hit send! We'll notify you when TDK CLI launches.
+    <!-- Interactive Waitlist Form -->
+    <div style="max-width: 700px; margin: 0 auto 2rem; background: white; border: 2px solid var(--color-gray-200); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow);">
+      <h3 style="font-size: 1.25rem; margin-bottom: 1.5rem; text-align: center;">
+        <i class="bi bi-bell-fill me-2" style="color: var(--color-purple);"></i>Join the Waitlist
+      </h3>
+      
+      <!-- Email Input -->
+      <div style="margin-bottom: 1.5rem;">
+        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9375rem;">Your Email</label>
+        <input 
+          type="email" 
+          id="waitlist-email" 
+          placeholder="you@example.com" 
+          style="width: 100%; padding: 12px 16px; border: 2px solid var(--color-gray-300); border-radius: var(--radius); font-size: 1rem; outline: none; transition: border-color 0.2s;"
+          onfocus="this.style.borderColor='var(--color-purple)'" 
+          onblur="this.style.borderColor='var(--color-gray-300)'"
+        />
+      </div>
+      
+      <!-- Features Table -->
+      <div style="margin-bottom: 1.5rem;">
+        <label style="display: block; font-weight: 600; margin-bottom: 0.75rem; font-size: 0.9375rem;">
+          Which features interest you? <span style="font-weight: 400; color: var(--color-gray-500);">(check all that apply)</span>
+        </label>
+        <table style="width: 100%; font-size: 0.9375rem; border-collapse: separate; border-spacing: 0;">
+          <tbody>
+            <tr>
+              <td style="padding: 8px 0; border-bottom: 1px solid var(--color-gray-100);">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" class="feature-checkbox" value="No Kubernetes needed" style="width: 18px; height: 18px; margin-right: 10px; accent-color: var(--color-purple);">
+                  <span>No Kubernetes needed</span>
+                </label>
+              </td>
+              <td style="padding: 8px 0; border-bottom: 1px solid var(--color-gray-100);">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" class="feature-checkbox" value="Auto-generate 10+ configs" style="width: 18px; height: 18px; margin-right: 10px; accent-color: var(--color-purple);">
+                  <span>Auto-generate 10+ configs</span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; border-bottom: 1px solid var(--color-gray-100);">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" class="feature-checkbox" value="Hot reload (Tilt)" style="width: 18px; height: 18px; margin-right: 10px; accent-color: var(--color-purple);">
+                  <span>Hot reload (Tilt)</span>
+                </label>
+              </td>
+              <td style="padding: 8px 0; border-bottom: 1px solid var(--color-gray-100);">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" class="feature-checkbox" value="Selective startup" style="width: 18px; height: 18px; margin-right: 10px; accent-color: var(--color-purple);">
+                  <span>Selective startup</span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; border-bottom: 1px solid var(--color-gray-100);">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" class="feature-checkbox" value="120+ services scale" style="width: 18px; height: 18px; margin-right: 10px; accent-color: var(--color-purple);">
+                  <span>120+ services scale</span>
+                </label>
+              </td>
+              <td style="padding: 8px 0; border-bottom: 1px solid var(--color-gray-100);">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" class="feature-checkbox" value="Golden Docker images" style="width: 18px; height: 18px; margin-right: 10px; accent-color: var(--color-purple);">
+                  <span>Golden Docker images</span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; border-bottom: 1px solid var(--color-gray-100);">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" class="feature-checkbox" value="Auto-discovery" style="width: 18px; height: 18px; margin-right: 10px; accent-color: var(--color-purple);">
+                  <span>Auto-discovery</span>
+                </label>
+              </td>
+              <td style="padding: 8px 0; border-bottom: 1px solid var(--color-gray-100);">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" class="feature-checkbox" value="Database provisioning" style="width: 18px; height: 18px; margin-right: 10px; accent-color: var(--color-purple);">
+                  <span>Database provisioning</span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0;">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" class="feature-checkbox" value="Secrets management" style="width: 18px; height: 18px; margin-right: 10px; accent-color: var(--color-purple);">
+                  <span>Secrets management</span>
+                </label>
+              </td>
+              <td style="padding: 8px 0;">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" class="feature-checkbox" value="Prisma/TypeScript" style="width: 18px; height: 18px; margin-right: 10px; accent-color: var(--color-purple);">
+                  <span>Prisma/TypeScript</span>
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Send Button -->
+      <button onclick="sendWaitlistEmail()" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1.125rem; font-weight: 600;">
+        <i class="bi bi-send me-2"></i>Send Request
+      </button>
+      
+      <p style="font-size: 0.875rem; color: var(--color-gray-500); margin-top: 1rem; text-align: center; margin-bottom: 0;">
+        <i class="bi bi-info-circle me-1"></i>This opens your email app with a pre-filled message. Just hit send!
       </p>
     </div>
+    
+    <!-- JavaScript for dynamic mailto -->
+    <script>
+    function sendWaitlistEmail() {
+      const email = document.getElementById('waitlist-email').value;
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email address');
+        document.getElementById('waitlist-email').focus();
+        return;
+      }
+      
+      const checkboxes = document.querySelectorAll('.feature-checkbox:checked');
+      let features = [];
+      checkboxes.forEach(cb => features.push(cb.value));
+      
+      const featuresList = features.length > 0 
+        ? features.map(f => '☑ ' + f).join('%0A')
+        : '(no features selected)';
+      
+      const subject = 'Join TDK CLI Waitlist - Early Access';
+      const body = `Hi TDK team!
+
+I'd like to join the waitlist for early access to TDK CLI.
+
+My email: ${email}
+
+I'm interested in these features:
+${featuresList}
+
+What I'm building: (tell us about your project)
+
+Thanks!
+---
+Sent from tdk-website`;
+      
+      const mailtoLink = `mailto:vntu0412179+tdk-waitlist@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoLink;
+    }
+    </script>
 
     <div class="hero-actions" style="margin-top: 1rem;">
       <a href="#features" class="btn btn-outline-dark btn-lg">
@@ -474,14 +613,104 @@ title: TDK CLI — Kubernetes-Free Microservice Development
         Join <strong>500+ developers</strong> on the waitlist. Get early access, exclusive updates, and help shape the future of local microservice development.
       </p>
       
-      <!-- Waitlist - Email Button -->
-      <a href="mailto:vntu0412179+tdk-waitlist@gmail.com?subject=Join TDK CLI Waitlist - Early Access&body=Hi TDK team!%0A%0AI'd like to join the waitlist for early access to TDK CLI.%0A%0AMy email: (your email here)%0A%0AWhat I'm building: (briefly describe your project/use case)%0A%0AWhat excites me about TDK:%0A- (feature you're most interested in)%0A%0AThanks!%0A%0A---%0ASent from tdk-website" class="btn btn-lg" style="background: white; color: var(--color-purple); padding: 16px 32px; font-weight: 700;">
-        <i class="bi bi-envelope-fill me-2"></i>Join via Email
-      </a>
+      <!-- Interactive Waitlist Form -->
+      <div style="background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); border-radius: var(--radius-xl); padding: 2rem; margin-bottom: 2rem;">
+        <!-- Email Input -->
+        <div style="margin-bottom: 1.5rem;">
+          <input 
+            type="email" 
+            id="waitlist-email-cta" 
+            placeholder="Enter your email" 
+            style="width: 100%; padding: 14px 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: var(--radius); font-size: 1rem; outline: none; background: rgba(255,255,255,0.1); color: white;"
+            onfocus="this.style.borderColor='white'; this.style.background='rgba(255,255,255,0.2)';" 
+            onblur="this.style.borderColor='rgba(255,255,255,0.3)'; this.style.background='rgba(255,255,255,0.1)';"
+          />
+        </div>
+        
+        <!-- Features Checkboxes -->
+        <div style="margin-bottom: 1.5rem; text-align: left;">
+          <p style="font-size: 0.9375rem; margin-bottom: 0.75rem; opacity: 0.9;">Which features interest you?</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.875rem;">
+            <label style="display: flex; align-items: center; cursor: pointer; opacity: 0.9;">
+              <input type="checkbox" class="feature-cta" value="No Kubernetes" style="margin-right: 8px;"> No Kubernetes
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer; opacity: 0.9;">
+              <input type="checkbox" class="feature-cta" value="Auto-configs" style="margin-right: 8px;"> Auto-configs
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer; opacity: 0.9;">
+              <input type="checkbox" class="feature-cta" value="Hot reload" style="margin-right: 8px;"> Hot reload
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer; opacity: 0.9;">
+              <input type="checkbox" class="feature-cta" value="120+ services" style="margin-right: 8px;"> 120+ services
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer; opacity: 0.9;">
+              <input type="checkbox" class="feature-cta" value="Golden images" style="margin-right: 8px;"> Golden images
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer; opacity: 0.9;">
+              <input type="checkbox" class="feature-cta" value="Auto-discovery" style="margin-right: 8px;"> Auto-discovery
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer; opacity: 0.9;">
+              <input type="checkbox" class="feature-cta" value="Database" style="margin-right: 8px;"> Database
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer; opacity: 0.9;">
+              <input type="checkbox" class="feature-cta" value="Secrets" style="margin-right: 8px;"> Secrets
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer; opacity: 0.9;">
+              <input type="checkbox" class="feature-cta" value="Prisma" style="margin-right: 8px;"> Prisma
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer; opacity: 0.9;">
+              <input type="checkbox" class="feature-cta" value="TypeScript" style="margin-right: 8px;"> TypeScript
+            </label>
+          </div>
+        </div>
+        
+        <!-- Send Button -->
+        <button onclick="sendWaitlistEmailCTA()" class="btn btn-lg" style="background: white; color: var(--color-purple); width: 100%; font-weight: 700;">
+          <i class="bi bi-send-fill me-2"></i>Join Waitlist
+        </button>
+      </div>
       
       <p style="font-size: 0.9375rem; opacity: 0.8; margin-bottom: 2rem;">
         <i class="bi bi-check-circle me-2"></i>No spam • Early access invites • Unsubscribe anytime
       </p>
+      
+      <script>
+      function sendWaitlistEmailCTA() {
+        const email = document.getElementById('waitlist-email-cta').value;
+        if (!email || !email.includes('@')) {
+          alert('Please enter a valid email address');
+          document.getElementById('waitlist-email-cta').focus();
+          return;
+        }
+        
+        const checkboxes = document.querySelectorAll('.feature-cta:checked');
+        let features = [];
+        checkboxes.forEach(cb => features.push(cb.value));
+        
+        const featuresList = features.length > 0 
+          ? features.map(f => '☑ ' + f).join('%0A')
+          : '(no features selected)';
+        
+        const subject = 'Join TDK CLI Waitlist - Early Access';
+        const body = `Hi TDK team!
+
+I'd like to join the waitlist for early access to TDK CLI.
+
+My email: ${email}
+
+I'm interested in these features:
+${featuresList}
+
+What I'm building: (tell us about your project)
+
+Thanks!
+---
+Sent from tdk-website`;
+        
+        const mailtoLink = `mailto:vntu0412179+tdk-waitlist@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoLink;
+      }
+      </script>
       
 
       
