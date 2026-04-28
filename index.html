@@ -34,11 +34,13 @@ title: TDK CLI — Kubernetes-Free Microservice Development
       
       <!-- Email Input -->
       <div style="margin-bottom: 1.5rem;">
-        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9375rem;">Your Email</label>
+        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9375rem;">
+          Your Email <span style="font-weight: 400; color: var(--color-gray-500);">(optional)</span>
+        </label>
         <input 
           type="email" 
           id="waitlist-email" 
-          placeholder="you@example.com" 
+          placeholder="you@example.com (optional - we'll see your email in the mail app)" 
           style="width: 100%; padding: 12px 16px; border: 2px solid var(--color-gray-300); border-radius: var(--radius); font-size: 1rem; outline: none; transition: border-color 0.2s;"
           onfocus="this.style.borderColor='var(--color-purple)'" 
           onblur="this.style.borderColor='var(--color-gray-300)'"
@@ -167,12 +169,8 @@ title: TDK CLI — Kubernetes-Free Microservice Development
     <!-- JavaScript for dynamic mailto -->
     <script>
     function sendWaitlistEmail() {
-      const email = document.getElementById('waitlist-email').value;
-      if (!email || !email.includes('@')) {
-        alert('Please enter a valid email address');
-        document.getElementById('waitlist-email').focus();
-        return;
-      }
+      const emailInput = document.getElementById('waitlist-email').value.trim();
+      const email = emailInput || '(see From: in your email app)';
       
       const checkboxes = document.querySelectorAll('.feature-checkbox:checked');
       let features = [];
@@ -765,12 +763,12 @@ Sent from tdk-website`;
       
       <!-- Interactive Waitlist Form -->
       <div style="background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); border-radius: var(--radius-xl); padding: 2rem; margin-bottom: 2rem;">
-        <!-- Email Input -->
+        <!-- Email Input (Optional) -->
         <div style="margin-bottom: 1.5rem;">
           <input 
             type="email" 
             id="waitlist-email-cta" 
-            placeholder="Enter your email" 
+            placeholder="Your email (optional - we'll see it in your email app)" 
             style="width: 100%; padding: 14px 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: var(--radius); font-size: 1rem; outline: none; background: rgba(255,255,255,0.1); color: white;"
             onfocus="this.style.borderColor='white'; this.style.background='rgba(255,255,255,0.2)';" 
             onblur="this.style.borderColor='rgba(255,255,255,0.3)'; this.style.background='rgba(255,255,255,0.1)';"
@@ -838,12 +836,8 @@ Sent from tdk-website`;
       
       <script>
       function sendWaitlistEmailCTA() {
-        const email = document.getElementById('waitlist-email-cta').value;
-        if (!email || !email.includes('@')) {
-          alert('Please enter a valid email address');
-          document.getElementById('waitlist-email-cta').focus();
-          return;
-        }
+        const emailInput = document.getElementById('waitlist-email-cta').value.trim();
+        const email = emailInput || '(see From: in your email app)';
         
         const checkboxes = document.querySelectorAll('.feature-cta:checked');
         let features = [];
