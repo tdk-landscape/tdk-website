@@ -6,156 +6,368 @@ title: Features - TDK CLI
 <section class="section" style="padding-top: 120px;">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Features</span>
-      <h2>Everything you need for local microservice development</h2>
-      <p>Without the Kubernetes complexity.</p>
+      <span class="section-label">35+ Features</span>
+      <h2>Everything you need for microservice development</h2>
+      <p>Without the Kubernetes complexity. Powered by Tilt + Starlark.</p>
     </div>
 
-    <div class="row g-4 mb-5">
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100">
-          <div class="card-body p-4">
-            <div class="mb-3" style="width: 48px; height: 48px; background: rgba(124, 77, 255, 0.1); border-radius: var(--radius); display: flex; align-items: center; justify-content: center;">
-              <i class="bi bi-file-earmark-code" style="font-size: 1.5rem; color: var(--color-purple);"></i>
+    <!-- Category 1: Configuration Generation -->
+    <div class="mb-5">
+      <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+        <span style="width: 40px; height: 40px; background: var(--color-purple); color: white; border-radius: var(--radius); display: flex; align-items: center; justify-content: center;">
+          <i class="bi bi-file-earmark-code"></i>
+        </span>
+        Configuration Generation
+      </h3>
+      <p style="color: var(--color-gray-600); margin-bottom: 1.5rem;">One service.json generates 10+ configuration files automatically.</p>
+      
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">01. TypeScript Config</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Auto-generates tsconfig.json with proper paths, includes, and compiler options for backend, frontend, and libraries.</p>
             </div>
-            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">Manifest-Driven</h4>
-            <p class="text-muted">One <code>service.json</code> is the single source of truth. All configs generated from it.</p>
           </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100">
-          <div class="card-body p-4">
-            <div class="mb-3" style="width: 48px; height: 48px; background: rgba(124, 77, 255, 0.1); border-radius: var(--radius); display: flex; align-items: center; justify-content: center;">
-              <i class="bi bi-box-seam" style="font-size: 1.5rem; color: var(--color-purple);"></i>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">02. Vite Configuration</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Generates vite.config.ts for local, Docker, and production builds with optimized settings.</p>
             </div>
-            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">Golden Images</h4>
-            <p class="text-muted">Production-ready Docker layering with L1 (OS) → L2 (Runtime) → L3 (Deps) → L4 (Code).</p>
           </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100">
-          <div class="card-body p-4">
-            <div class="mb-3" style="width: 48px; height: 48px; background: rgba(124, 77, 255, 0.1); border-radius: var(--radius); display: flex; align-items: center; justify-content: center;">
-              <i class="bi bi-search" style="font-size: 1.5rem; color: var(--color-purple);"></i>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">03. Docker & Compose</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Multi-stage Dockerfile with golden image layering. Docker Compose for service orchestration.</p>
             </div>
-            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">Auto-Discovery</h4>
-            <p class="text-muted">Automatically finds all <code>service.json</code> files in your directory structure.</p>
           </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100">
-          <div class="card-body p-4">
-            <div class="mb-3" style="width: 48px; height: 48px; background: rgba(124, 77, 255, 0.1); border-radius: var(--radius); display: flex; align-items: center; justify-content: center;">
-              <i class="bi bi-lightning-charge" style="font-size: 1.5rem; color: var(--color-purple);"></i>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">04. Nginx Proxy</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Auto-configures nginx reverse proxy rules with Traefik integration for local development.</p>
             </div>
-            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">Hot Reload</h4>
-            <p class="text-muted">Built on Tilt with automatic reloading. See changes instantly as you code.</p>
           </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100">
-          <div class="card-body p-4">
-            <div class="mb-3" style="width: 48px; height: 48px; background: rgba(124, 77, 255, 0.1); border-radius: var(--radius); display: flex; align-items: center; justify-content: center;">
-              <i class="bi bi-layers" style="font-size: 1.5rem; color: var(--color-purple);"></i>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">05. Environment Files</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Generates .env files with service-specific variables, database URLs, and internal dependencies.</p>
             </div>
-            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">10+ Config Generators</h4>
-            <p class="text-muted">Docker, Vite, TypeScript, Nginx, Environment files, and more—all automatic.</p>
           </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100">
-          <div class="card-body p-4">
-            <div class="mb-3" style="width: 48px; height: 48px; background: rgba(124, 77, 255, 0.1); border-radius: var(--radius); display: flex; align-items: center; justify-content: center;">
-              <i class="bi bi-graph-up" style="font-size: 1.5rem; color: var(--color-purple);"></i>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">06. Package Manager</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Auto-generates .npmrc and bunfig.toml with registry configuration for Verdaccio and npm.</p>
             </div>
-            <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem;">Proven Scale</h4>
-            <p class="text-muted">Tested with 120+ services running locally with selective startup.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">07. AGENTS.md Guard</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Generates AGENTS.md in .autogenerated/ folder to prevent AI agents from modifying generated files.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <h2 style="font-size: 1.75rem; margin: 3rem 0 1.5rem; text-align: center;">Generated Configurations</h2>
-    <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 2rem;">One service.json generates all of these automatically:</p>
+    <!-- Category 2: Development Experience -->
+    <div class="mb-5">
+      <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+        <span style="width: 40px; height: 40px; background: var(--color-purple); color: white; border-radius: var(--radius); display: flex; align-items: center; justify-content: center;">
+          <i class="bi bi-lightning-charge"></i>
+        </span>
+        Development Experience
+      </h3>
+      <p style="color: var(--color-gray-600); margin-bottom: 1.5rem;">Built on Tilt with 9.4k GitHub stars for maximum productivity.</p>
+      
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">08. Hot Reload</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Instant code sync with Tilt's live_update. Changes appear immediately without container rebuild.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">09. Selective Startup</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Start only the services you need. Run 5 services instead of 120. Perfect for large codebases.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">10. Auto-Discovery</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Automatically discovers all service.json files in your directory structure. Zero manual registration.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">11. Manifest Synthesis</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Services without manifests auto-configure from directory structure. Convention over configuration.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">12. Config-Gen Resources</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Each manifest gets a visible Tilt resource. See status, logs, and errors for every service individually.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">13. Dependency Graph</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Automatic dependency resolution with internalDependencies. Services start in correct order.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">14. Stack Grouping</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Group related services by stack. Start entire feature sets with one command: tdk up --stack api</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <code>Dockerfile.*.autogenerated</code>
-            <p class="text-muted mb-0" style="font-size: 0.875rem; margin-top: 0.5rem;">Multi-stage builds with L1-L4 layering</p>
+    <!-- Category 3: Infrastructure & Deployment -->
+    <div class="mb-5">
+      <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+        <span style="width: 40px; height: 40px; background: var(--color-purple); color: white; border-radius: var(--radius); display: flex; align-items: center; justify-content: center;">
+          <i class="bi bi-box-seam"></i>
+        </span>
+        Infrastructure & Deployment
+      </h3>
+      <p style="color: var(--color-gray-600); margin-bottom: 1.5rem;">Production-ready Docker images with smart layering.</p>
+      
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">15. Golden Images</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">4-layer Docker architecture: L1 (OS) → L2 (Runtime) → L3 (Builder) → L4 (App). Optimized caching.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">16. Docker Only</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Pure Docker + Tilt. No Kubernetes required for local development. Simple, fast, predictable.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">17. Traefik Integration</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Automatic Traefik reverse proxy configuration. Pretty URLs like user.backend.localhost.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">18. API Gateway</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Auto-generates API Gateway configuration for routing between services with path-based rules.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">19. Local Registry</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Verdaccio npm registry for local package publishing. Share libraries between services.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">20. Playwright Testing</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Auto-configures Playwright for E2E testing with service-specific test configurations.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">21. C4 Diagrams</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Auto-generates C4 architecture diagrams from your service topology. Visualize system design.</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <code>vite.config.*.autogenerated.ts</code>
-            <p class="text-muted mb-0" style="font-size: 0.875rem; margin-top: 0.5rem;">Vite bundler configuration</p>
+    </div>
+
+    <!-- Category 4: Database & State -->
+    <div class="mb-5">
+      <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+        <span style="width: 40px; height: 40px; background: var(--color-purple); color: white; border-radius: var(--radius); display: flex; align-items: center; justify-content: center;">
+          <i class="bi bi-database"></i>
+        </span>
+        Database & State Management
+      </h3>
+      <p style="color: var(--color-gray-600); margin-bottom: 1.5rem;">Per-service database provisioning with Prisma integration.</p>
+      
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">22. Database Provisioning</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Auto-creates PostgreSQL database per service. Each service gets isolated database with proper naming.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">23. Prisma Integration</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Auto-generates Prisma configuration with DATABASE_URL. Schema migration support built-in.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">24. DB Readiness Checks</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Waits for database to be ready before starting services. Prevents connection errors on startup.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">25. Migration Scripts</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Auto-generates database migration scripts. Run prisma migrate on service startup.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">26. Persistent Volumes</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Docker volumes for database persistence. Data survives container restarts during development.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">27. NATS Integration</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Built-in NATS JetStream configuration for event-driven microservices with pub/sub messaging.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">28. Redis Support</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Auto-configures Redis for caching and sessions. Shared Redis instance for all services.</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <code>tsconfig.*.autogenerated.json</code>
-            <p class="text-muted mb-0" style="font-size: 0.875rem; margin-top: 0.5rem;">TypeScript compiler options</p>
+    </div>
+
+    <!-- Category 5: Security & Operations -->
+    <div class="mb-5">
+      <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+        <span style="width: 40px; height: 40px; background: var(--color-purple); color: white; border-radius: var(--radius); display: flex; align-items: center; justify-content: center;">
+          <i class="bi bi-shield-check"></i>
+        </span>
+        Security & Operations
+      </h3>
+      <p style="color: var(--color-gray-600); margin-bottom: 1.5rem;">Enterprise-grade security with pre-flight validations.</p>
+      
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">29. Infisical Secrets</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Complete Infisical integration for secret management. Machine identity, paths, and dynamic secrets.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">30. Pre-Flight Validators</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Validates manifests before build. Catches misconfigurations early with detailed error messages.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">31. Dependency Manifest</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Resolves internalDependencies automatically. Creates dependency graph for complex service trees.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">32. Path Safety</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Docker-safe path handling with fixed TSConfig paths. No more build failures in containers.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">33. Health Checks</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Built-in health check endpoints. Tilt monitors service health and restarts on failure.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">34. Library Autodiscovery</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Discovers @tdk/* dependencies from package.json. Auto-links local libraries for development.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body p-4">
+              <h4 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--color-purple);">35. Resource Aliases</h4>
+              <p class="text-muted" style="font-size: 0.9375rem;">Smart name-to-path mapping. Reference services by simple names in dependencies and commands.</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <code>nginx.*.autogenerated.conf</code>
-            <p class="text-muted mb-0" style="font-size: 0.875rem; margin-top: 0.5rem;">Reverse proxy configuration</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <code>.env.*.autogenerated</code>
-            <p class="text-muted mb-0" style="font-size: 0.875rem; margin-top: 0.5rem;">Environment variables</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <code>bunfig.*.autogenerated.toml</code>
-            <p class="text-muted mb-0" style="font-size: 0.875rem; margin-top: 0.5rem;">Package manager config</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <code>.npmrc.*.autogenerated</code>
-            <p class="text-muted mb-0" style="font-size: 0.875rem; margin-top: 0.5rem;">Registry configuration</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <code>docker-compose.*.autogenerated.yml</code>
-            <p class="text-muted mb-0" style="font-size: 0.875rem; margin-top: 0.5rem;">Container orchestration</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body p-3">
-            <code>playwright.config.autogenerated.ts</code>
-            <p class="text-muted mb-0" style="font-size: 0.875rem; margin-top: 0.5rem;">E2E testing configuration</p>
-          </div>
-        </div>
-      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-5">
+      <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">And there's more...</h3>
+      <p style="color: var(--color-gray-600); margin-bottom: 2rem;">TDK CLI is actively developed with new features added regularly.</p>
+      <a href="{{ '/docs/' | relative_url }}" class="btn btn-primary btn-lg">
+        Explore Documentation →
+      </a>
     </div>
   </div>
 </section>
