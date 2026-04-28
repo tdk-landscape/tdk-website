@@ -3,10 +3,20 @@ layout: default
 title: TDK CLI — Kubernetes-Free Microservice Development
 ---
 
+<!-- Development Banner -->
+<div style="background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-purple) 100%); color: white; padding: 12px 0; text-align: center;">
+  <div class="container">
+    <span style="font-weight: 600;">🚧 In Active Development</span>
+    <span style="opacity: 0.9; margin-left: 8px;">— Sign up to be the first to try TDK CLI when we launch!</span>
+  </div>
+</div>
+
 <!-- Hero Section -->
 <section class="hero">
   <div class="container">
-    <span class="hero-label">Now with 120+ services support</span>
+    <span class="hero-label" style="background: rgba(245, 158, 11, 0.15); color: var(--color-warning);">
+      <i class="bi bi-clock me-1"></i>Coming Soon
+    </span>
     <h1>
       Run microservices locally.<br>
       <span class="highlight">No Kubernetes required.</span>
@@ -15,9 +25,31 @@ title: TDK CLI — Kubernetes-Free Microservice Development
       TDK CLI lets you run <strong>5-120+ microservices locally</strong> with Docker only.
       One <code>service.json</code> file generates 10+ configurations automatically.
     </p>
-    <div class="hero-actions">
-      <a href="#get-started" class="btn btn-primary btn-lg">
-        Get Started →
+    
+    <!-- Email Waitlist Form -->
+    <div style="max-width: 500px; margin: 0 auto 2rem;">
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display: flex; gap: 0.5rem;">
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Enter your email" 
+          required
+          style="flex: 1; padding: 14px 18px; border: 2px solid var(--color-gray-300); border-radius: var(--radius); font-size: 1rem; outline: none; transition: border-color 0.2s;"
+          onfocus="this.style.borderColor='var(--color-purple)'" 
+          onblur="this.style.borderColor='var(--color-gray-300)'"
+        />
+        <button type="submit" class="btn btn-primary" style="padding: 14px 24px; white-space: nowrap;">
+          <i class="bi bi-bell me-2"></i>Notify Me
+        </button>
+      </form>
+      <p style="font-size: 0.875rem; color: var(--color-gray-500); margin-top: 0.75rem;">
+        <i class="bi bi-shield-check me-1"></i>No spam. Unsubscribe anytime. Be first to get early access.
+      </p>
+    </div>
+
+    <div class="hero-actions" style="margin-top: 1rem;">
+      <a href="#features" class="btn btn-outline-dark btn-lg">
+        Explore Features
       </a>
       <a href="#how-it-works" class="btn btn-outline-dark btn-lg">
         See how it works
@@ -439,21 +471,125 @@ title: TDK CLI — Kubernetes-Free Microservice Development
   </div>
 </section>
 
-<!-- CTA -->
+<!-- Waitlist CTA -->
 <section class="section" style="background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-purple) 100%); color: white;" id="get-started">
   <div class="container">
-    <div class="text-center">
-      <h2 style="color: white; margin-bottom: 1rem;">Ready to ditch Kubernetes for local dev?</h2>
-      <p style="font-size: 1.125rem; opacity: 0.9; margin-bottom: 2rem;">
-        Built on Tilt • Manifest-driven • Auto-discovery • Golden Images
+    <div class="text-center" style="max-width: 600px; margin: 0 auto;">
+      <span style="display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 100px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1.5rem;">
+        <i class="bi bi-rocket me-2"></i>Launching Soon
+      </span>
+      <h2 style="color: white; margin-bottom: 1rem; font-size: 2.5rem;">
+        Be the first to try TDK CLI
+      </h2>
+      <p style="font-size: 1.25rem; opacity: 0.9; margin-bottom: 2rem;">
+        Join <strong>500+ developers</strong> on the waitlist. Get early access, exclusive updates, and help shape the future of local microservice development.
       </p>
-      <div class="d-flex gap-3 justify-content-center flex-wrap">
-        <a href="{{ '/docs/quickstart/' | relative_url }}" class="btn btn-lg" style="background: white; color: var(--color-purple);">
-          Get Started →
+      
+      <!-- Waitlist Form -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="max-width: 450px; margin: 0 auto 1.5rem;">
+        <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem;">
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Enter your email" 
+            required
+            style="flex: 1; padding: 16px 20px; border: none; border-radius: var(--radius); font-size: 1rem; outline: none;"
+          />
+          <button type="submit" class="btn btn-lg" style="background: white; color: var(--color-purple); padding: 16px 28px; white-space: nowrap; font-weight: 700;">
+            Join Waitlist
+          </button>
+        </div>
+        <input type="hidden" name="_subject" value="New TDK CLI Waitlist Signup!" />
+        <input type="hidden" name="message" value="Signed up from tdk-website homepage" />
+      </form>
+      
+      <p style="font-size: 0.9375rem; opacity: 0.8; margin-bottom: 2rem;">
+        <i class="bi bi-check-circle me-2"></i>No spam • Early access invites • Unsubscribe anytime
+      </p>
+      
+      <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; margin-top: 2rem;">
+        <p style="font-size: 0.9375rem; opacity: 0.7; margin-bottom: 1rem;">Want to contribute or star the project?</p>
+        <a href="https://github.com/tdk-cli/tdk" class="btn btn-outline-light" target="_blank" rel="noopener">
+          <i class="bi bi-github me-2"></i>Star on GitHub
         </a>
-        <a href="https://github.com/tdk-cli/tdk" class="btn btn-outline-light btn-lg" target="_blank" rel="noopener">
-          <i class="bi bi-github me-2"></i>View on GitHub
-        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Development Status -->
+<section class="section" style="background: var(--color-gray-100);">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="section-label" style="background: rgba(245, 158, 11, 0.15); color: var(--color-warning);">
+          <i class="bi bi-code-square me-2"></i>In Development
+        </span>
+        <h2 style="font-size: 2rem; margin: 1rem 0;">We're building something special</h2>
+        <p style="font-size: 1.125rem; color: var(--color-gray-600); margin-bottom: 1.5rem;">
+          TDK CLI is currently in active development. The core generators are working, the architecture is solid, and we're battle-testing it with 120+ services.
+        </p>
+        <p style="font-size: 1.125rem; color: var(--color-gray-600); margin-bottom: 1.5rem;">
+          Join the waitlist to get:
+        </p>
+        <ul style="font-size: 1.125rem; color: var(--color-gray-700); list-style: none; padding: 0;">
+          <li style="margin-bottom: 0.75rem;"><i class="bi bi-check2-circle me-2" style="color: var(--color-success);"></i><strong>Early access</strong> to the beta release</li>
+          <li style="margin-bottom: 0.75rem;"><i class="bi bi-check2-circle me-2" style="color: var(--color-success);"></i><strong>Exclusive updates</strong> on new features</li>
+          <li style="margin-bottom: 0.75rem;"><i class="bi bi-check2-circle me-2" style="color: var(--color-success);"></i><strong>Shape the roadmap</strong> — your feedback matters</li>
+          <li style="margin-bottom: 0.75rem;"><i class="bi bi-check2-circle me-2" style="color: var(--color-success);"></i><strong>First dibs</strong> on documentation & tutorials</li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <div style="background: white; border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-lg);">
+          <h4 style="font-size: 1.25rem; margin-bottom: 1.5rem;">Current Status</h4>
+          
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-weight: 500;">Core Generators</span>
+              <span style="color: var(--color-success); font-weight: 600;">95%</span>
+            </div>
+            <div style="height: 8px; background: var(--color-gray-200); border-radius: 100px; overflow: hidden;">
+              <div style="width: 95%; height: 100%; background: var(--color-success); border-radius: 100px;"></div>
+            </div>
+          </div>
+          
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-weight: 500;">Documentation</span>
+              <span style="color: var(--color-warning); font-weight: 600;">70%</span>
+            </div>
+            <div style="height: 8px; background: var(--color-gray-200); border-radius: 100px; overflow: hidden;">
+              <div style="width: 70%; height: 100%; background: var(--color-warning); border-radius: 100px;"></div>
+            </div>
+          </div>
+          
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-weight: 500;">Testing & QA</span>
+              <span style="color: var(--color-warning); font-weight: 600;">60%</span>
+            </div>
+            <div style="height: 8px; background: var(--color-gray-200); border-radius: 100px; overflow: hidden;">
+              <div style="width: 60%; height: 100%; background: var(--color-warning); border-radius: 100px;"></div>
+            </div>
+          </div>
+          
+          <div style="margin-bottom: 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <span style="font-weight: 500;">CLI Interface</span>
+              <span style="color: var(--color-purple); font-weight: 600;">40%</span>
+            </div>
+            <div style="height: 8px; background: var(--color-gray-200); border-radius: 100px; overflow: hidden;">
+              <div style="width: 40%; height: 100%; background: var(--color-purple); border-radius: 100px;"></div>
+            </div>
+          </div>
+          
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-gray-200);">
+            <p style="font-size: 0.9375rem; color: var(--color-gray-600); margin-bottom: 0;">
+              <i class="bi bi-calendar-event me-2"></i>
+              <strong>Expected Launch:</strong> Q1 2026
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
