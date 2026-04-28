@@ -151,7 +151,7 @@ title: TDK CLI — Kubernetes-Free Microservice Development
       checkboxes.forEach(cb => features.push(cb.value));
       
       const featuresList = features.length > 0 
-        ? features.map(f => '☑ ' + f).join('%0A')
+        ? features.map(f => '☑ ' + f).join('\n')
         : '(no features selected)';
       
       const subject = 'Join TDK CLI Waitlist - Early Access';
@@ -688,7 +688,7 @@ Sent from tdk-website`;
         checkboxes.forEach(cb => features.push(cb.value));
         
         const featuresList = features.length > 0 
-          ? features.map(f => '☑ ' + f).join('%0A')
+          ? features.map(f => '☑ ' + f).join('\n')
           : '(no features selected)';
         
         const subject = 'Join TDK CLI Waitlist - Early Access';
