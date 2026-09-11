@@ -3,6 +3,8 @@ email: hello@tdk.dev
 description: >-
   Kubernetes-free microservice development. Run 5-30+ services locally
   without learning Kubernetes. One service.json generates 12-17 files per service.
+author:
+  name: TDK Team
 
 baseurl: "/tdk-website"
 url: "https://tdk-landscape.github.io"
@@ -26,6 +28,12 @@ collections:
     permalink: /:collection/:path/
 
 defaults:
+  - scope:
+      path: "blog/articles"
+    values:
+      date: 2026-09-11
+      last_modified_at: 2026-09-11
+      sitemap: true
   - scope:
       path: ""
       type: "docs"
