@@ -678,6 +678,51 @@ body { background: #0a0a0e; overflow-x: hidden; }
   -webkit-text-fill-color: transparent;
 }
 
+/* ---------------- Plain-words intro (for non-technical readers) ---------------- */
+.aw-plain {
+  text-align: center;
+  padding: clamp(5rem, 8vw, 7rem) 1.5rem 0;
+  scroll-margin-top: 5.5rem;
+}
+
+.aw-plain-kicker {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(236, 236, 241, 0.45);
+  margin: 0 0 2rem;
+}
+
+.aw-plain-big {
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+  line-height: 1.32;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+  max-width: 56rem;
+  margin: 0 auto 1.5rem;
+}
+
+.aw-plain-small {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.65;
+  font-weight: 300;
+  color: rgba(236, 236, 241, 0.6);
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.aw-plain-link {
+  color: #b79aff;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(183, 154, 255, 0.4);
+  transition: border-color 0.3s ease;
+}
+
+.aw-plain-link:hover { border-color: #b79aff; }
+
 /* ---------------- Card stacking (replaces) ---------------- */
 .aw-stack-card {
   position: sticky;
@@ -838,7 +883,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 }
 
 .aw-price-list li::before {
-  content: "—";
+  content: "-";
   color: #7c4dff;
   margin-right: 0.625rem;
 }
@@ -1058,6 +1103,15 @@ body { background: #0a0a0e; overflow-x: hidden; }
     </div>
   </section>
 
+  <!-- ================= PLAIN-WORDS INTRO ================= -->
+  <section class="aw-plain" id="plain">
+    <div class="aw-wrap">
+      <p class="aw-plain-kicker">In plain words</p>
+      <p class="aw-plain-big">Software companies lose weeks of salary every time they hire developers. The newcomers wait: computers are not set up, passwords are missing, instructions are outdated.</p>
+      <p class="aw-plain-small">TDK sets up the entire technical workspace automatically, in minutes. New hires write code on day one. We sell it as a subscription at ${{ site.data.tdk.team_price }} per developer per month. <a class="aw-plain-link" href="{{ '/waiting/' | relative_url }}">See what waiting costs</a>.</p>
+    </div>
+  </section>
+
   <!-- ================= MARQUEE ================= -->
   <div class="aw-marquee-section" aria-hidden="true">
     <div class="aw-marquee">
@@ -1087,8 +1141,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
       </div>
 
       <div class="aw-terminal">
-        <div class="aw-terminal-bar"><i></i><i></i><i></i><span>zsh — tdk up</span></div>
-        <div class="aw-terminal-body" id="aw-term-body" aria-label="Terminal showing tdk up boot sequence"></div>
+      <div class="aw-terminal-bar"><i></i><i></i><i></i><span>zsh: tdk up</span></div>
+      <div class="aw-terminal-body" id="aw-term-body" aria-label="Terminal showing tdk up boot sequence"></div>
       </div>
     </div>
   </section>
@@ -1752,6 +1806,15 @@ if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
   gsap.to('.aw-hero-bg', {
     scale: 1, ease: 'none',
     scrollTrigger: { trigger: '.aw-hero', start: 'top top', end: 'bottom top', scrub: true }
+  });
+
+  gsap.from('.aw-plain-big', {
+    y: 40, opacity: 0, duration: 1, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-plain', start: 'top 85%' }
+  });
+  gsap.from('.aw-plain-small', {
+    y: 30, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.15,
+    scrollTrigger: { trigger: '.aw-plain', start: 'top 85%' }
   });
 
   /* Paradigm 1: Scroll Pinning Split — terminal title pinned while the boot log plays */
