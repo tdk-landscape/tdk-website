@@ -978,9 +978,9 @@ body:has(.aw) .site-footer {
 }
 
 .aw-blog-hero h1 {
-  max-width: 12ch;
+  max-width: 16ch;
   margin: 0 auto;
-  font-size: clamp(3.4rem, 7.5vw, 7.8rem);
+  font-size: clamp(3.4rem, 7vw, 7.4rem);
   font-weight: 600;
   line-height: 0.94;
   letter-spacing: 0;
@@ -1548,8 +1548,8 @@ body:has(.aw) .site-footer {
   }
 
   .aw-blog-hero h1 {
-    max-width: 10ch;
-    font-size: clamp(3rem, 15vw, 5rem);
+    max-width: 12ch;
+    font-size: clamp(2.8rem, 13vw, 4.6rem);
     line-height: 0.97;
   }
 
