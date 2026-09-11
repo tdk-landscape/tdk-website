@@ -36,8 +36,8 @@ title: Documentation — TDK CLI
         </div>
 
         <h2>What is TDK CLI?</h2>
-        <p>TDK CLI is a <strong>Kubernetes-free</strong> microservice development tool. It runs 5–120+ services locally using only Docker and Tilt — no cluster, no K8s knowledge required. Onboarding a new developer becomes: clone, <code>tdk up</code>, code.</p>
-        <p>Write one <code>service.json</code> file per service, and TDK automatically generates 10 files per service and 40+ stack-wide artifacts:</p>
+        <p>TDK CLI is a <strong>Kubernetes-free</strong> microservice development tool. It runs 5–{{ site.data.tdk.scale_services }} services locally using only Docker and Tilt — no cluster, no K8s knowledge required. Onboarding a new developer becomes: clone, <code>tdk up</code>, code.</p>
+        <p>Write one <code>service.json</code> file per service, and TDK automatically generates {{ site.data.tdk.files_per_service }} files per service and {{ site.data.tdk.stack_artifacts }} stack-wide artifacts:</p>
         <ul>
           <li>Dockerfile with optimized L1–L4 golden layering</li>
           <li>Vite and TypeScript configuration per app type</li>
@@ -54,10 +54,10 @@ title: Documentation — TDK CLI
         <div class="aw-feature-grid">
           <div class="aw-card"><h4>Manifest-driven</h4><p>Single source of truth with simple JSON configuration.</p></div>
           <div class="aw-card"><h4>Docker only</h4><p>No Kubernetes required for local development.</p></div>
-          <div class="aw-card"><h4>Auto-generation</h4><p>10 files per service generated from one manifest.</p></div>
+          <div class="aw-card"><h4>Auto-generation</h4><p>{{ site.data.tdk.files_per_service }} files per service generated from one manifest.</p></div>
           <div class="aw-card"><h4>Golden images</h4><p>Production-ready Docker layering, L1 through L4.</p></div>
           <div class="aw-card"><h4>Auto-discovery</h4><p>Finds services in your directory structure automatically.</p></div>
-          <div class="aw-card"><h4>Built on Tilt</h4><p>9.4k GitHub stars. Battle-tested stability.</p></div>
+          <div class="aw-card"><h4>Built on Tilt</h4><p>{{ site.data.tdk.tilt_stars }} GitHub stars. Battle-tested stability.</p></div>
         </div>
       </div>
     </div>

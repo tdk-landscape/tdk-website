@@ -58,6 +58,7 @@
       <a class="aw-nav-link is-active" href="/">Home</a>
       <a class="aw-nav-link" href="/features/">Features</a>
       <a class="aw-nav-link" href="/compare/">Compare</a>
+      <a class="aw-nav-link" href="/waiting/">Waiting for MVP?</a>
       <a class="aw-nav-link" href="/#roi">ROI</a>
       <a class="aw-nav-link" href="/#pricing">Pricing</a>
       <a class="aw-nav-link" href="/docs/">Docs</a>
@@ -109,6 +110,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 .aw-hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,6 +222,16 @@ body { background: #0a0a0e; overflow-x: hidden; }
   transform: translateY(-2px);
 }
 
+.aw-btn:active, .aw-carousel-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aw-marquee { animation: none; }
+  .aw-cursor { animation: none; }
+  .aw-card, .aw-price-card, .aw-btn, .aw-carousel-btn { transition: none; }
+}
+
 .aw-hero-scrollhint {
   position: absolute;
   bottom: 2.5rem;
@@ -267,8 +279,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
 .aw-marquee-track {
   display: flex;
   align-items: center;
-  gap: 3.5rem;
-  padding-right: 3.5rem;
+  gap: 4.5rem;
+  padding-right: 4.5rem;
 }
 
 .aw-marquee-item {
@@ -488,6 +500,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   grid-template-columns: 1fr 1.35fr;
   gap: clamp(3rem, 6vw, 7rem);
   align-items: start;
+  padding-bottom: clamp(3rem, 6vw, 6rem); /* breathing room so the pinned title never collides with the next heading */
 }
 
 .aw-term-left h2 {
@@ -683,7 +696,29 @@ body { background: #0a0a0e; overflow-x: hidden; }
   color: rgba(236, 236, 241, 0.45);
 }
 
-.aw-carousel-count b { color: #fff; font-weight: 700; }
+.aw-carousel-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.aw-carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.aw-carousel-dot.is-active {
+  background: #b79aff;
+  border-color: #b79aff;
+  transform: scale(1.25);
+}
 
 /* ---------------- Scrub statement ---------------- */
 .aw-statement { text-align: center; }
@@ -986,9 +1021,12 @@ body { background: #0a0a0e; overflow-x: hidden; }
   margin-bottom: 1.5rem;
 }
 
-.aw-form input[type="email"]:focus { border-color: #7c4dff; }
+.aw-form input[type="email"]:focus {
+  border-color: #7c4dff;
+  box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.35);
+}
 
-.aw-form input[type="email"]::placeholder { color: rgba(236, 236, 241, 0.3); }
+.aw-form input[type="email"]::placeholder { color: rgba(236, 236, 241, 0.55); }
 
 .aw-features {
   display: grid;
@@ -1021,7 +1059,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 }
 
 /* ---------------- Section headers ---------------- */
-.aw-head { margin-bottom: clamp(3.5rem, 6vw, 5.5rem); }
+.aw-head { margin-bottom: clamp(3.5rem, 6vw, 5.5rem); scroll-margin-top: 6rem; }
 
 .aw-head h2 {
   font-size: clamp(2.25rem, 4vw, 3.75rem);
@@ -1086,60 +1124,89 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-hero-grain"></div>
 
     <div class="aw-hero-inner">
-      <h1>One JSON file. 120+ microservices. <span class="aw-accent">Running locally.</span></h1>
+      <h1>One JSON file. 30+ microservices. <span class="aw-accent">Running locally.</span></h1>
       <p class="aw-hero-sub">
-        TDK turns a single <span class="aw-mono">service.json</span> into 10 production-grade files per service
-        and boots your entire stack in under 5 seconds on plain Docker.
-        <strong>No Kubernetes. No YAML maze. No dedicated DevOps hire.</strong>
-        Battle-tested daily on a 16 GB MacBook.
+        One <span class="aw-mono">service.json</span> becomes 10 production-grade files. The stack boots in under 5 seconds on Docker. No Kubernetes, no DevOps hire.
       </p>
       <div class="aw-hero-ctas">
-        <a href="#waitlist" class="aw-btn aw-btn-solid">Join the waitlist</a>
+        <a href="#waitlist" class="aw-btn aw-btn-solid">Join waitlist</a>
         <a href="#demo" class="aw-btn aw-btn-ghost">Watch it boot</a>
       </div>
     </div>
-
-    <div class="aw-hero-scrollhint" aria-hidden="true"></div>
   </section>
 
   <!-- ================= MARQUEE ================= -->
   <div class="aw-marquee-section" aria-hidden="true">
     <div class="aw-marquee">
       <div class="aw-marquee-track">
-        <span class="aw-marquee-item">Gitpod</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Codespaces</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Coder</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Daytona</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Okteto</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Garden</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Skaffold</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">DevSpace</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Telepresence</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">mirrord</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">DevPod</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Nocalhost</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">vCluster</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Codeanywhere</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Replit</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Hocus</span><span class="aw-marquee-dot">·</span>
+        
+        <span class="aw-marquee-item">Gitpod</span>
+        
+        <span class="aw-marquee-item">Codespaces</span>
+        
+        <span class="aw-marquee-item">Coder</span>
+        
+        <span class="aw-marquee-item">Daytona</span>
+        
+        <span class="aw-marquee-item">Okteto</span>
+        
+        <span class="aw-marquee-item">Garden</span>
+        
+        <span class="aw-marquee-item">Skaffold</span>
+        
+        <span class="aw-marquee-item">DevSpace</span>
+        
+        <span class="aw-marquee-item">Telepresence</span>
+        
+        <span class="aw-marquee-item">mirrord</span>
+        
+        <span class="aw-marquee-item">DevPod</span>
+        
+        <span class="aw-marquee-item">Nocalhost</span>
+        
+        <span class="aw-marquee-item">vCluster</span>
+        
+        <span class="aw-marquee-item">Codeanywhere</span>
+        
+        <span class="aw-marquee-item">Replit</span>
+        
+        <span class="aw-marquee-item">Hocus</span>
+        
       </div>
-      <div class="aw-marquee-track">
-        <span class="aw-marquee-item">Gitpod</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Codespaces</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Coder</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Daytona</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Okteto</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Garden</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Skaffold</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">DevSpace</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Telepresence</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">mirrord</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">DevPod</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Nocalhost</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">vCluster</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Codeanywhere</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Replit</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Hocus</span><span class="aw-marquee-dot">·</span>
+      <div class="aw-marquee-track" aria-hidden="true">
+        
+        <span class="aw-marquee-item">Gitpod</span>
+        
+        <span class="aw-marquee-item">Codespaces</span>
+        
+        <span class="aw-marquee-item">Coder</span>
+        
+        <span class="aw-marquee-item">Daytona</span>
+        
+        <span class="aw-marquee-item">Okteto</span>
+        
+        <span class="aw-marquee-item">Garden</span>
+        
+        <span class="aw-marquee-item">Skaffold</span>
+        
+        <span class="aw-marquee-item">DevSpace</span>
+        
+        <span class="aw-marquee-item">Telepresence</span>
+        
+        <span class="aw-marquee-item">mirrord</span>
+        
+        <span class="aw-marquee-item">DevPod</span>
+        
+        <span class="aw-marquee-item">Nocalhost</span>
+        
+        <span class="aw-marquee-item">vCluster</span>
+        
+        <span class="aw-marquee-item">Codeanywhere</span>
+        
+        <span class="aw-marquee-item">Replit</span>
+        
+        <span class="aw-marquee-item">Hocus</span>
+        
       </div>
     </div>
   </div>
@@ -1149,10 +1216,10 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-wrap aw-term-split">
       <div class="aw-term-left" id="aw-term-pin">
         <h2>Watch a cold boot</h2>
-        <p>This is the real boot sequence, captured on a 16 GB MacBook. Discovery, generation, golden-layer caching, health checks — then you just write code.</p>
+        <p>This is the real boot sequence, captured on a 16 GB M1 MacBook. Discovery, generation, golden-layer caching, health checks — then you just write code.</p>
         <div class="aw-term-badge">
           <strong>4.6s</strong>
-          <span>from zero to a healthy 14-service demo stack — the same engine scales to 120+ services with selective startup</span>
+          <span>from zero to a healthy 14-service demo stack — selective startup means new services add features, not boot time</span>
         </div>
       </div>
 
@@ -1243,9 +1310,9 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
         <!-- D: scale image (1x1) -->
         <div class="aw-card aw-card-d">
-          <img class="aw-scroll-img" src="https://picsum.photos/seed/containerfield/600/600" alt="Shipping containers representing 120+ microservices" loading="lazy" />
+          <img class="aw-scroll-img" src="https://picsum.photos/seed/containerfield/600/600" alt="Shipping containers representing 30+ microservices" loading="lazy" />
           <div class="aw-card-d-caption">
-            <strong>120+</strong>
+            <strong>30+</strong>
             <span>services proven running locally</span>
           </div>
         </div>
@@ -1255,24 +1322,43 @@ body { background: #0a0a0e; overflow-x: hidden; }
           <h3>A real toolchain, wired together — not a template dump</h3>
           <p>Every artifact below is produced by an actual generator module in the TDK source tree.</p>
           <div class="aw-chips">
+            
             <span class="aw-chip">Docker L1–L4 golden layers</span>
+            
             <span class="aw-chip">Docker Compose ×8 variants</span>
+            
             <span class="aw-chip">Tilt + Starlark engine</span>
+            
             <span class="aw-chip">Vite (frontend / backend / SDK / library)</span>
+            
             <span class="aw-chip">TypeScript ×5 tsconfig variants</span>
+            
             <span class="aw-chip">nginx</span>
+            
             <span class="aw-chip">Traefik</span>
+            
             <span class="aw-chip">Verdaccio local registry</span>
+            
             <span class="aw-chip">Infisical machine identities</span>
+            
             <span class="aw-chip">Prisma + DB migrator</span>
+            
             <span class="aw-chip">Playwright E2E</span>
+            
             <span class="aw-chip">PostgreSQL</span>
+            
             <span class="aw-chip">NATS JetStream</span>
+            
             <span class="aw-chip">Bun</span>
+            
             <span class="aw-chip">.npmrc + .env per service</span>
+            
             <span class="aw-chip">C4 architecture diagrams</span>
+            
             <span class="aw-chip">AGENTS.md for AI assistants</span>
+            
             <span class="aw-chip">Discovery daemon + tdk doctor</span>
+            
           </div>
         </div>
       </div>
@@ -1388,7 +1474,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
         <div class="aw-carousel-nav">
           <button class="aw-carousel-btn" type="button" onclick="awSlide(-1)" aria-label="Previous artifact">←</button>
           <button class="aw-carousel-btn" type="button" onclick="awSlide(1)" aria-label="Next artifact">→</button>
-          <span class="aw-carousel-count"><b id="aw-slide-cur">1</b> / <span id="aw-slide-total">5</span></span>
+          <span class="aw-carousel-dots" id="aw-dots" role="tablist" aria-label="Choose artifact"></span>
         </div>
       </div>
     </div>
@@ -1416,7 +1502,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
             <p class="aw-stack-tools">Gitpod / Ona, GitHub Codespaces, Coder, Daytona, Codeanywhere, Replit</p>
           </div>
           <div class="aw-stack-meta">
-            <span class="aw-stack-cost">$20–150 /dev/mo</span>
+            <span class="aw-stack-cost">$20–$150 /dev/mo</span>
             <span class="aw-stack-instead">$0 — your laptop's Docker</span>
           </div>
         </div>
@@ -1530,8 +1616,8 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
         </div>
         <div class="aw-acc-item">
           <div class="aw-acc-head">
-            <div class="aw-acc-title">Is 120+ services locally realistic?</div>
-            <div class="aw-acc-body">Yes — selective startup runs only what you're working on, and golden L1–L4 layers keep rebuilds near-instant. The discovery daemon regenerates only what changed. Our daily driver is a 14-service stack on a 16 GB MacBook, and it performs superbly; the same engine has proven 120+ services at scale.</div>
+            <div class="aw-acc-title">Is 30+ services locally realistic?</div>
+            <div class="aw-acc-body">Yes — selective startup runs only what you're working on, and golden L1–L4 layers keep rebuilds near-instant. The discovery daemon regenerates only what changed. Our daily driver is a 14-service stack on a 16 GB M1 MacBook, and it performs superbly; the same engine runs a 27-service monorepo every day.</div>
           </div>
         </div>
         <div class="aw-acc-item">
@@ -1558,7 +1644,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
           <div class="aw-price-value">$0 <small>/ forever</small></div>
           <p class="aw-price-desc">The full CLI, MIT-licensed. Our adoption engine — the same model as Tilt and Skaffold.</p>
           <ul class="aw-price-list">
-            <li>Unlimited services, 120+ proven</li>
+            <li>Unlimited services, 30+ proven</li>
             <li>All generators — 10 files per service</li>
             <li>L1–L4 golden Docker images</li>
             <li>Community support</li>
@@ -1627,21 +1713,32 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
 
         <label>Which features interest you?</label>
         <div class="aw-features">
-          <label><input type="checkbox" class="feature-checkbox" value="No Kubernetes" /> No Kubernetes</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Under-5s startup" /> Under-5s startup</label>
           <label><input type="checkbox" class="feature-checkbox" value="10 files per service" /> 10 files / service</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Golden Docker L1-L4" /> Golden Docker</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Secrets/Infisical identities" /> Infisical identities</label>
-          <label><input type="checkbox" class="feature-checkbox" value="C4 diagrams + AGENTS.md" /> C4 + AGENTS.md</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Terminal UI + doctor" /> tdk ui / doctor</label>
-          <label><input type="checkbox" class="feature-checkbox" value="120+ services scale" /> 120+ services</label>
+          <label><input type="checkbox" class="feature-checkbox" value="30+ services scale" /> 30+ services</label>
+          
+          <label><input type="checkbox" class="feature-checkbox" value="No Kubernetes" /> No Kubernetes</label>
+          
+          <label><input type="checkbox" class="feature-checkbox" value="Under-5s startup" /> Under-5s startup</label>
+          
+          <label><input type="checkbox" class="feature-checkbox" value="Golden Docker L1-L4" /> Golden Docker L1-L4</label>
+          
+          <label><input type="checkbox" class="feature-checkbox" value="Infisical identities" /> Infisical identities</label>
+          
+          <label><input type="checkbox" class="feature-checkbox" value="C4 diagrams + AGENTS.md" /> C4 diagrams + AGENTS.md</label>
+          
+          <label><input type="checkbox" class="feature-checkbox" value="Terminal UI + doctor" /> Terminal UI + doctor</label>
+          
           <label><input type="checkbox" class="feature-checkbox" value="Selective startup" /> Selective startup</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Vite + Hot Reload" /> Vite hot reload</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Prisma + PostgreSQL" /> Prisma/Postgres</label>
-          <label><input type="checkbox" class="feature-checkbox" value="E2E Playwright tests" /> Playwright E2E</label>
+          
+          <label><input type="checkbox" class="feature-checkbox" value="Vite + Hot Reload" /> Vite + Hot Reload</label>
+          
+          <label><input type="checkbox" class="feature-checkbox" value="Prisma + PostgreSQL" /> Prisma + PostgreSQL</label>
+          
+          <label><input type="checkbox" class="feature-checkbox" value="E2E Playwright tests" /> E2E Playwright tests</label>
+          
         </div>
 
-        <button type="submit" class="aw-btn aw-btn-solid">Send request</button>
+        <button type="submit" class="aw-btn aw-btn-solid">Join waitlist</button>
         <p class="aw-form-note">Opens your email app with a pre-filled message — just hit send. No spam, unsubscribe anytime.</p>
       </form>
     </div>
@@ -1689,13 +1786,25 @@ function sendWaitlistEmail() {
 
 /* Source artifact carousel */
 var awCur = 0;
-function awSlide(dir) {
-  var slides = document.querySelectorAll('.aw-slide');
-  awCur = (awCur + dir + slides.length) % slides.length;
-  slides.forEach(function (s, i) { s.classList.toggle('is-active', i === awCur); });
-  document.getElementById('aw-slide-cur').textContent = awCur + 1;
+var awSlides = document.querySelectorAll('.aw-slide');
+var awDotsBox = document.getElementById('aw-dots');
+awSlides.forEach(function (s, i) {
+  var d = document.createElement('button');
+  d.type = 'button';
+  d.className = 'aw-carousel-dot' + (i === 0 ? ' is-active' : '');
+  d.setAttribute('role', 'tab');
+  d.setAttribute('aria-label', 'Show artifact ' + (i + 1));
+  d.addEventListener('click', function () { awGo(i); });
+  awDotsBox.appendChild(d);
+});
+function awGo(i) {
+  awCur = (i + awSlides.length) % awSlides.length;
+  awSlides.forEach(function (s, j) { s.classList.toggle('is-active', j === awCur); });
+  awDotsBox.querySelectorAll('.aw-carousel-dot').forEach(function (d, j) {
+    d.classList.toggle('is-active', j === awCur);
+  });
 }
-document.getElementById('aw-slide-total').textContent = document.querySelectorAll('.aw-slide').length;
+function awSlide(dir) { awGo(awCur + dir); }
 
 /* FAQ accordion — tap support for touch devices */
 document.querySelectorAll('.aw-acc-item').forEach(function (item) {
@@ -1705,10 +1814,12 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
   });
 });
 
-/* Terminal typing — real boot sequence, fires once when scrolled into view */
+/* Terminal typing — real boot sequence, fires once when scrolled into view.
+   Respects prefers-reduced-motion: renders the full log instantly. */
 (function () {
   var body = document.getElementById('aw-term-body');
   if (!body) return;
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var script = [
     { t: 'cmd', text: 'tdk up' },
@@ -1719,7 +1830,27 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
     { t: 'out', html: '<span class="dim">[docker]</span> golden L1 <span class="ok">cached</span> · L2 <span class="ok">cached</span> · L3 <span class="ok">cached</span> · building L4… <span class="hot">1.8s</span>' },
     { t: 'out', html: '<span class="dim">[tilt]</span> orchestrating · selective startup · hot reload armed' },
     { t: 'out', html: '<span class="dim">[health]</span> 14/14 resources <span class="ok">healthy</span>' },
-    { t: 'out', html: '<span class="ok">ready</span> — stack booted in <span class="ok">4.6s</span> <span class="dim">on a 16 GB MacBook</span>' }
+    { t: 'out', html: '<span class="ok">ready</span> — stack booted in <span class="ok">4.6s</span> <span class="dim">on a 16 GB M1 MacBook</span>' },
+    { t: 'gap' },
+    { t: 'cmd', text: 'cat services/api-gateway/service.json' },
+    { t: 'out', html: '{' },
+    { t: 'out', html: '  <span class="k">"appName"</span>: <span class="s">"api-gateway"</span>,' },
+    { t: 'out', html: '  <span class="k">"appType"</span>: <span class="s">"backend"</span>,' },
+    { t: 'out', html: '  <span class="k">"port"</span>: <span class="n">3000</span>,' },
+    { t: 'out', html: '  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],' },
+    { t: 'out', html: '  <span class="k">"stack"</span>: <span class="s">"ecommerce"</span>,' },
+    { t: 'out', html: '  <span class="k">"internalDependencies"</span>: [<span class="s">"order-service"</span>, <span class="s">"inventory-service"</span>, <span class="s">"user-service"</span>]' },
+    { t: 'out', html: '}' },
+    { t: 'gap' },
+    { t: 'cmd', text: 'tdk up --stack ecommerce' },
+    { t: 'out', html: '<span class="dim">[ecommerce]</span> api-gateway → :3000 <span class="ok">healthy</span>' },
+    { t: 'out', html: '<span class="dim">[ecommerce]</span> order-service → :3001 <span class="ok">healthy</span> · prisma migrated' },
+    { t: 'out', html: '<span class="dim">[ecommerce]</span> frontend-store → :5173 <span class="ok">healthy</span> · hot reload armed' },
+    { t: 'out', html: '<span class="ok">ready</span> — ecommerce stack live · <span class="ok">3/3 services</span> · rest of the monorepo untouched' },
+    { t: 'gap' },
+    { t: 'cmd', text: 'tdk doctor' },
+    { t: 'out', html: '<span class="dim">[doctor]</span> ports conflict-free · secrets verified · images cached' },
+    { t: 'out', html: '<span class="dim">[doctor]</span> manifests valid · <span class="ok">all checks passed</span>' }
   ];
 
   var started = false;
@@ -1754,6 +1885,12 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
     var step = script[i];
     if (step.t === 'cmd') {
       typeCmd(step.text, function () { play(i + 1); });
+    } else if (step.t === 'gap') {
+      var blank = document.createElement('span');
+      blank.className = 'aw-tline';
+      blank.innerHTML = '&nbsp;';
+      body.appendChild(blank);
+      setTimeout(function () { play(i + 1); }, 500);
     } else {
       var line = document.createElement('span');
       line.className = 'aw-tline';
@@ -1775,11 +1912,26 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
       io.disconnect();
     }
   }, { threshold: 0.4 });
-  io.observe(body);
+
+  if (REDUCED) {
+    /* Instant static render, no typing, no observer */
+    script.forEach(function (step) {
+      if (step.t === 'gap') return;
+      var line = document.createElement('span');
+      line.className = 'aw-tline';
+      line.innerHTML = step.t === 'cmd'
+        ? '<span class="p">$ </span>' + step.text
+        : step.html;
+      body.appendChild(line);
+    });
+  } else {
+    io.observe(body);
+  }
 })();
 
-/* GSAP motion */
-if (window.gsap && window.ScrollTrigger) {
+/* GSAP motion (skipped under prefers-reduced-motion) */
+var REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
 
   /* Hero entrance */
@@ -1796,7 +1948,7 @@ if (window.gsap && window.ScrollTrigger) {
     ScrollTrigger.create({
       trigger: '#demo',
       start: 'top 12%',
-      end: 'bottom 60%',
+      end: 'bottom 90%',
       pin: '#aw-term-pin',
       pinSpacing: false
     });
@@ -1879,7 +2031,7 @@ if (window.gsap && window.ScrollTrigger) {
         </h5>
         <p class="footer-text">
           Kubernetes-free microservice development by TDK Landscape.
-          Run 5-120+ services locally without the complexity.
+          Run 5-30+ services locally without the complexity.
         </p>
         <p class="footer-text" style="margin-top: 0.75rem;">
           <a href="mailto:hello@tdk.dev">hello@tdk.dev</a>
@@ -1896,6 +2048,7 @@ if (window.gsap && window.ScrollTrigger) {
         <ul class="list-unstyled footer-links">
           <li><a href="/features/">Features</a></li>
           <li><a href="/compare/">Compare</a></li>
+          <li><a href="/waiting/">Waiting for MVP?</a></li>
           <li><a href="/#pricing">Pricing</a></li>
           <li><a href="/docs/">Documentation</a></li>
         </ul>

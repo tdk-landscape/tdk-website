@@ -51,11 +51,9 @@ title: Configuration — TDK CLI
         <h3>appType</h3>
         <p>The type of service. Determines which generators run.</p>
         <ul>
-          <li><code>backend</code> — API service</li>
-          <li><code>frontend</code> — web application</li>
-          <li><code>library</code> — shared code package</li>
-          <li><code>worker</code> — background job processor</li>
-          <li><code>migrator</code> — database migration service</li>
+          {% for t in site.data.tdk.app_types %}
+          <li><code>{{ t.name }}</code> — {{ t.desc }}</li>
+          {% endfor %}
         </ul>
 
         <h3>port</h3>
@@ -68,15 +66,11 @@ title: Configuration — TDK CLI
         <h2>Optional fields</h2>
 
         <h3>features</h3>
-        <p>Features to enable. Each one triggers the corresponding generators.</p>
+        <p>List of features to enable. Triggers corresponding generators.</p>
         <ul>
-          <li><code>typescript</code> — TypeScript support</li>
-          <li><code>vite</code> — Vite bundler</li>
-          <li><code>bun</code> — Bun runtime</li>
-          <li><code>node</code> — Node.js runtime</li>
-          <li><code>nginx</code> — nginx reverse proxy</li>
-          <li><code>playwright</code> — E2E testing</li>
-          <li><code>prisma</code> — database ORM</li>
+          {% for f in site.data.tdk.manifest_features %}
+          <li><code>{{ f.name }}</code> — {{ f.desc }}</li>
+          {% endfor %}
         </ul>
 
         <h3>stack</h3>

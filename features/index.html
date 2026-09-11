@@ -9,7 +9,7 @@ title: Features — TDK CLI
   <section class="aw-subhero">
     <div class="aw-subhero-grid">
       <h1>Every config your stack needs. <span class="aw-accent">Already written.</span></h1>
-      <p class="aw-subhero-sub">35+ product capabilities, all driven by one <span class="aw-mono">service.json</span> — which also generates 10 files per service and 40+ stack-wide artifacts. Powered by Tilt and Starlark, running on plain Docker. <strong>Zero Kubernetes knowledge required.</strong></p>
+      <p class="aw-subhero-sub">{{ site.data.tdk.product_features }} product capabilities, all driven by one <span class="aw-mono">service.json</span> — which also generates {{ site.data.tdk.files_per_service }} files per service and {{ site.data.tdk.stack_artifacts }} stack-wide artifacts. Powered by Tilt and Starlark, running on plain Docker. <strong>Zero Kubernetes knowledge required.</strong></p>
     </div>
   </section>
 
@@ -26,24 +26,24 @@ title: Features — TDK CLI
 
       <div class="aw-story-right">
         <div class="aw-story-step">
-          <h4>Day one — five offers signed at once</h4>
-          <p>Hiring one developer per week is the smart advice. In reality, projects hire the whole starting team together — five developers, one Monday, full payroll running.</p>
-          <span class="aw-story-cost">5 salaries · day 1</span>
+          <h4>Day one — {{ site.data.tdk.story_devs }} offers signed at once</h4>
+          <p>Hiring one developer per week is the smart advice. In reality, projects hire the whole starting team together — {{ site.data.tdk.story_devs }} developers, one Monday, full payroll running.</p>
+          <span class="aw-story-cost">{{ site.data.tdk.story_devs }} salaries · day 1</span>
         </div>
         <div class="aw-story-step">
           <h4>Day two — "how do I run this?"</h4>
           <p>Nobody can start. The business analyst hasn't finished the specs. The .env files live in someone's inbox. The setup wiki was last edited eight months ago and describes a stack that no longer exists.</p>
-          <span class="aw-story-cost">5 salaries · waiting</span>
+          <span class="aw-story-cost">{{ site.data.tdk.story_devs }} salaries · waiting</span>
         </div>
         <div class="aw-story-step">
           <h4>Week one — the environment lottery</h4>
           <p>One developer gets the backend running but not the database. Another has the database but not the events queue. Two are still installing tooling. None of them can see the whole system.</p>
-          <span class="aw-story-cost">5 salaries · still waiting</span>
+          <span class="aw-story-cost">{{ site.data.tdk.story_devs }} salaries · still waiting</span>
         </div>
         <div class="aw-story-step">
           <h4>Week two — first commit, maybe</h4>
-          <p>By the time everyone can run the project, two weeks of five salaries are gone — burned on waiting, not on building. This is the most expensive line item nobody put in the budget.</p>
-          <span class="aw-story-cost">~2 weeks × 5 salaries · burned</span>
+          <p>By the time everyone can run the project, {{ site.data.tdk.story_weeks }} of {{ site.data.tdk.story_devs }} salaries are gone — burned on waiting, not on building. This is the most expensive line item nobody put in the budget.</p>
+          <span class="aw-story-cost">{{ site.data.tdk.story_devs }} salaries × {{ site.data.tdk.story_weeks }} · burned</span>
         </div>
         <div class="aw-story-step aw-story-win">
           <h4>With TDK — day one looks different</h4>
@@ -77,11 +77,11 @@ title: Features — TDK CLI
       <div class="aw-cat">
         <div class="aw-cat-head">
           <h3>Development experience</h3>
-          <p>Built on Tilt — 9.4k GitHub stars — for a feedback loop measured in seconds.</p>
+          <p>Built on Tilt — {{ site.data.tdk.tilt_stars }} GitHub stars — for a feedback loop measured in seconds.</p>
         </div>
         <div class="aw-feature-grid">
           <div class="aw-card"><span class="aw-idx">08</span><h4>Hot reload</h4><p>Instant code sync with Tilt live_update. No container rebuilds while you type.</p></div>
-          <div class="aw-card"><span class="aw-idx">09</span><h4>Selective startup</h4><p>Run 5 services instead of 120. Start only what your task touches.</p></div>
+          <div class="aw-card"><span class="aw-idx">09</span><h4>Selective startup</h4><p>Run 5 services instead of {{ site.data.tdk.scale_plain }}. Start only what your task touches.</p></div>
           <div class="aw-card"><span class="aw-idx">10</span><h4>Auto-discovery</h4><p>Finds every service.json in your directory tree. Zero manual registration.</p></div>
           <div class="aw-card"><span class="aw-idx">11</span><h4>Manifest synthesis</h4><p>Services without manifests auto-configure from directory structure.</p></div>
           <div class="aw-card"><span class="aw-idx">12</span><h4>Config-gen resources</h4><p>Every manifest gets a visible Tilt resource with its own status, logs and errors.</p></div>
@@ -168,7 +168,7 @@ if (window.gsap && window.ScrollTrigger) {
     ScrollTrigger.create({
       trigger: '#story',
       start: 'top 15%',
-      end: 'bottom 75%',
+      end: 'bottom 90%',
       pin: '#aw-story-pin',
       pinSpacing: false
     });

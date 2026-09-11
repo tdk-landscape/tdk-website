@@ -13,7 +13,7 @@ title: Examples — TDK CLI
         <p class="aw-lead">Real-world stacks, from a five-service shop to worker queues and multi-stack startups.</p>
 
         <h2>E-commerce platform</h2>
-        <p>A typical setup with five services, wired by manifests alone:</p>
+        <p>A typical setup with {{ site.data.tdk.story_devs }} services, wired by manifests alone:</p>
 
         <h3>1 — API gateway</h3>
         <div class="aw-codeblock">
@@ -210,14 +210,14 @@ tdk up --stack media</pre>
         </div>
 
         <h2>Brownfield rescue</h2>
-        <p>The most common real-world case: an existing monorepo with thirty directories and zero manifests. The discovery daemon finds every service, synthesizes missing manifests from directory structure, and the team that was blocked for two weeks boots on day one.</p>
+        <p>The most common real-world case: an existing monorepo with {{ site.data.tdk.brownfield_dirs }} directories and zero manifests. The discovery daemon finds every service, synthesizes missing manifests from directory structure, and the team that was blocked for {{ site.data.tdk.story_weeks }} boots on day one.</p>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
           <pre><span class="c">$ tdk up</span>
-<span class="c">[discovery] scanned 31 directories · 12 manifests found</span>
-<span class="c">[synthesis] 19 manifests synthesized from structure</span>
-<span class="c">[generate] 10 files × 31 services → 310 artifacts written</span>
-<span class="c">[health] 31/31 resources healthy</span></pre>
+<span class="c">[discovery] scanned {{ site.data.tdk.brownfield_dirs }} directories · {{ site.data.tdk.brownfield_found }} manifests found</span>
+<span class="c">[synthesis] {{ site.data.tdk.brownfield_synth }} manifests synthesized from structure</span>
+<span class="c">[generate] {{ site.data.tdk.files_per_service }} files × {{ site.data.tdk.brownfield_dirs }} services → {{ site.data.tdk.brownfield_artifacts }} artifacts written</span>
+<span class="c">[health] {{ site.data.tdk.brownfield_healthy }} resources healthy</span></pre>
         </div>
 
         <h2>AI-assisted stack</h2>

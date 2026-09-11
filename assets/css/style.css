@@ -459,6 +459,11 @@ pre code {
   padding-top: 7rem; /* clearance for the fixed glass-pill nav (homepage overrides to 0) */
 }
 
+/* Anchor targets always clear the fixed nav */
+html {
+  scroll-padding-top: 5.5rem;
+}
+
 /* Feature matrix */
 .feature-matrix {
   background: white;

@@ -1,7 +1,7 @@
 title: TDK CLI
 email: hello@tdk.dev
 description: >-
-  Kubernetes-free microservice development. Run 5-120+ services locally
+  Kubernetes-free microservice development. Run 5-30+ services locally
   without learning Kubernetes. One service.json generates 10 files per service.
 
 baseurl: "/tdk-website"

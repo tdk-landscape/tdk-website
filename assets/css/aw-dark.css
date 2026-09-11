@@ -119,7 +119,7 @@ body:has(.aw) .site-footer {
 }
 
 /* ---------------- Section headers ---------------- */
-.aw-head { margin-bottom: clamp(3rem, 5vw, 4.5rem); }
+.aw-head { margin-bottom: clamp(3rem, 5vw, 4.5rem); scroll-margin-top: 6rem; }
 
 .aw-head h2 {
   font-size: clamp(2rem, 3.6vw, 3.25rem);
@@ -220,6 +220,7 @@ body:has(.aw) .site-footer {
   grid-template-columns: 1fr 1.2fr;
   gap: clamp(3rem, 6vw, 7rem);
   align-items: start;
+  padding-bottom: clamp(3rem, 6vw, 6rem); /* breathing room so the pinned title never collides with the next heading */
 }
 
 .aw-story-left h2 {

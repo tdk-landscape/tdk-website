@@ -33,6 +33,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 .aw-hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,6 +145,16 @@ body { background: #0a0a0e; overflow-x: hidden; }
   transform: translateY(-2px);
 }
 
+.aw-btn:active, .aw-carousel-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aw-marquee { animation: none; }
+  .aw-cursor { animation: none; }
+  .aw-card, .aw-price-card, .aw-btn, .aw-carousel-btn { transition: none; }
+}
+
 .aw-hero-scrollhint {
   position: absolute;
   bottom: 2.5rem;
@@ -191,8 +202,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
 .aw-marquee-track {
   display: flex;
   align-items: center;
-  gap: 3.5rem;
-  padding-right: 3.5rem;
+  gap: 4.5rem;
+  padding-right: 4.5rem;
 }
 
 .aw-marquee-item {
@@ -412,6 +423,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   grid-template-columns: 1fr 1.35fr;
   gap: clamp(3rem, 6vw, 7rem);
   align-items: start;
+  padding-bottom: clamp(3rem, 6vw, 6rem); /* breathing room so the pinned title never collides with the next heading */
 }
 
 .aw-term-left h2 {
@@ -607,7 +619,29 @@ body { background: #0a0a0e; overflow-x: hidden; }
   color: rgba(236, 236, 241, 0.45);
 }
 
-.aw-carousel-count b { color: #fff; font-weight: 700; }
+.aw-carousel-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.aw-carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.aw-carousel-dot.is-active {
+  background: #b79aff;
+  border-color: #b79aff;
+  transform: scale(1.25);
+}
 
 /* ---------------- Scrub statement ---------------- */
 .aw-statement { text-align: center; }
@@ -910,9 +944,12 @@ body { background: #0a0a0e; overflow-x: hidden; }
   margin-bottom: 1.5rem;
 }
 
-.aw-form input[type="email"]:focus { border-color: #7c4dff; }
+.aw-form input[type="email"]:focus {
+  border-color: #7c4dff;
+  box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.35);
+}
 
-.aw-form input[type="email"]::placeholder { color: rgba(236, 236, 241, 0.3); }
+.aw-form input[type="email"]::placeholder { color: rgba(236, 236, 241, 0.55); }
 
 .aw-features {
   display: grid;
@@ -945,7 +982,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 }
 
 /* ---------------- Section headers ---------------- */
-.aw-head { margin-bottom: clamp(3.5rem, 6vw, 5.5rem); }
+.aw-head { margin-bottom: clamp(3.5rem, 6vw, 5.5rem); scroll-margin-top: 6rem; }
 
 .aw-head h2 {
   font-size: clamp(2.25rem, 4vw, 3.75rem);
@@ -1010,60 +1047,29 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-hero-grain"></div>
 
     <div class="aw-hero-inner">
-      <h1>One JSON file. 120+ microservices. <span class="aw-accent">Running locally.</span></h1>
+      <h1>One JSON file. {{ site.data.tdk.scale_services }} microservices. <span class="aw-accent">Running locally.</span></h1>
       <p class="aw-hero-sub">
-        TDK turns a single <span class="aw-mono">service.json</span> into 10 production-grade files per service
-        and boots your entire stack in under 5 seconds on plain Docker.
-        <strong>No Kubernetes. No YAML maze. No dedicated DevOps hire.</strong>
-        Battle-tested daily on a 16 GB MacBook.
+        One <span class="aw-mono">service.json</span> becomes {{ site.data.tdk.files_per_service }} production-grade files. The stack boots in {{ site.data.tdk.boot_claim }} on Docker. No Kubernetes, no DevOps hire.
       </p>
       <div class="aw-hero-ctas">
-        <a href="#waitlist" class="aw-btn aw-btn-solid">Join the waitlist</a>
+        <a href="#waitlist" class="aw-btn aw-btn-solid">Join waitlist</a>
         <a href="#demo" class="aw-btn aw-btn-ghost">Watch it boot</a>
       </div>
     </div>
-
-    <div class="aw-hero-scrollhint" aria-hidden="true"></div>
   </section>
 
   <!-- ================= MARQUEE ================= -->
   <div class="aw-marquee-section" aria-hidden="true">
     <div class="aw-marquee">
       <div class="aw-marquee-track">
-        <span class="aw-marquee-item">Gitpod</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Codespaces</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Coder</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Daytona</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Okteto</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Garden</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Skaffold</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">DevSpace</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Telepresence</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">mirrord</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">DevPod</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Nocalhost</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">vCluster</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Codeanywhere</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Replit</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Hocus</span><span class="aw-marquee-dot">·</span>
+        {% for tool in site.data.tdk.marquee_tools %}
+        <span class="aw-marquee-item">{{ tool }}</span>
+        {% endfor %}
       </div>
-      <div class="aw-marquee-track">
-        <span class="aw-marquee-item">Gitpod</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Codespaces</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Coder</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Daytona</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Okteto</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Garden</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Skaffold</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">DevSpace</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Telepresence</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">mirrord</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">DevPod</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Nocalhost</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">vCluster</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Codeanywhere</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Replit</span><span class="aw-marquee-dot">·</span>
-        <span class="aw-marquee-item">Hocus</span><span class="aw-marquee-dot">·</span>
+      <div class="aw-marquee-track" aria-hidden="true">
+        {% for tool in site.data.tdk.marquee_tools %}
+        <span class="aw-marquee-item">{{ tool }}</span>
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -1073,10 +1079,10 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-wrap aw-term-split">
       <div class="aw-term-left" id="aw-term-pin">
         <h2>Watch a cold boot</h2>
-        <p>This is the real boot sequence, captured on a 16 GB MacBook. Discovery, generation, golden-layer caching, health checks — then you just write code.</p>
+        <p>This is the real boot sequence, captured on a {{ site.data.tdk.machine }}. Discovery, generation, golden-layer caching, health checks — then you just write code.</p>
         <div class="aw-term-badge">
-          <strong>4.6s</strong>
-          <span>from zero to a healthy 14-service demo stack — the same engine scales to 120+ services with selective startup</span>
+          <strong>{{ site.data.tdk.demo_boot }}</strong>
+          <span>from zero to a healthy {{ site.data.tdk.demo_services }}-service demo stack — selective startup means new services add features, not boot time</span>
         </div>
       </div>
 
@@ -1104,36 +1110,36 @@ body { background: #0a0a0e; overflow-x: hidden; }
           <div class="aw-roi-slider-row">
             <div class="aw-roi-slider-head">
               <span>Developers on the team</span>
-              <output id="roi-devs-value">10</output>
+              <output id="roi-devs-value">{{ site.data.tdk.calc_devs_default }}</output>
             </div>
-            <input type="range" class="aw-roi-slider" id="roi-devs" min="3" max="120" value="10" step="1" oninput="calcRoi()" />
+            <input type="range" class="aw-roi-slider" id="roi-devs" min="{{ site.data.tdk.calc_devs_min }}" max="{{ site.data.tdk.calc_devs_max }}" value="{{ site.data.tdk.calc_devs_default }}" step="1" oninput="calcRoi()" />
           </div>
 
           <div class="aw-roi-slider-row">
             <div class="aw-roi-slider-head">
               <span>Average fully-loaded salary</span>
-              <output id="roi-salary-value">$130,000</output>
+              <output id="roi-salary-value">{{ site.data.tdk.calc_salary_display }}</output>
             </div>
-            <input type="range" class="aw-roi-slider" id="roi-salary" min="60000" max="250000" value="130000" step="5000" oninput="calcRoi()" />
+            <input type="range" class="aw-roi-slider" id="roi-salary" min="{{ site.data.tdk.calc_salary_min }}" max="{{ site.data.tdk.calc_salary_max }}" value="{{ site.data.tdk.calc_salary_default }}" step="{{ site.data.tdk.calc_salary_step }}" oninput="calcRoi()" />
           </div>
 
           <div class="aw-roi-results">
             <div class="aw-roi-cell">
-              <strong id="roi-hours">2,400</strong>
+              <strong id="roi-hours">{{ site.data.tdk.roi_hours_default }}</strong>
               <span>engineering hours recovered / year</span>
             </div>
             <div class="aw-roi-cell">
-              <strong id="roi-productivity">$150,000</strong>
+              <strong id="roi-productivity">{{ site.data.tdk.roi_prod_default }}</strong>
               <span>productivity recovered / year</span>
             </div>
             <div class="aw-roi-cell aw-roi-hero">
-              <strong id="roi-total">$300,000</strong>
+              <strong id="roi-total">{{ site.data.tdk.roi_example_total }}</strong>
               <span>total yearly savings incl. avoided DevOps hire</span>
             </div>
           </div>
 
           <p style="margin-top: 1.75rem; font-size: 0.8125rem;">
-            Math: devs × 5 hrs × 48 weeks × hourly rate (salary ÷ 2,080) + one avoided platform-engineer hire ($150K). TDK itself costs $0 — open source, MIT.
+            Math: devs × {{ site.data.tdk.hours_per_week }} hrs × {{ site.data.tdk.weeks_per_year_num }} weeks × hourly rate (salary ÷ {{ site.data.tdk.work_hours }}) + one avoided platform-engineer hire ({{ site.data.tdk.devops_salary }}). TDK itself costs {{ site.data.tdk.community_price }} — open source, MIT.
           </p>
         </div>
 
@@ -1143,12 +1149,12 @@ body { background: #0a0a0e; overflow-x: hidden; }
           <p>Three numbers, three different axes — all from the same service.json.</p>
           <div class="aw-bignums">
             <div class="aw-bignum">
-              <strong>10</strong>
+              <strong>{{ site.data.tdk.files_per_service }}</strong>
               <span>files generated per service, every time</span>
             </div>
             <div class="aw-bignum-sep"></div>
             <div class="aw-bignum aw-bignum-accent">
-              <strong>40+</strong>
+              <strong>{{ site.data.tdk.stack_artifacts }}</strong>
               <span>stack-wide artifacts: diagrams, identities, registries</span>
             </div>
           </div>
@@ -1167,9 +1173,9 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
         <!-- D: scale image (1x1) -->
         <div class="aw-card aw-card-d">
-          <img class="aw-scroll-img" src="https://picsum.photos/seed/containerfield/600/600" alt="Shipping containers representing 120+ microservices" loading="lazy" />
+          <img class="aw-scroll-img" src="https://picsum.photos/seed/containerfield/600/600" alt="Shipping containers representing {{ site.data.tdk.scale_services }} microservices" loading="lazy" />
           <div class="aw-card-d-caption">
-            <strong>120+</strong>
+            <strong>{{ site.data.tdk.scale_services }}</strong>
             <span>services proven running locally</span>
           </div>
         </div>
@@ -1179,24 +1185,9 @@ body { background: #0a0a0e; overflow-x: hidden; }
           <h3>A real toolchain, wired together — not a template dump</h3>
           <p>Every artifact below is produced by an actual generator module in the TDK source tree.</p>
           <div class="aw-chips">
-            <span class="aw-chip">Docker L1–L4 golden layers</span>
-            <span class="aw-chip">Docker Compose ×8 variants</span>
-            <span class="aw-chip">Tilt + Starlark engine</span>
-            <span class="aw-chip">Vite (frontend / backend / SDK / library)</span>
-            <span class="aw-chip">TypeScript ×5 tsconfig variants</span>
-            <span class="aw-chip">nginx</span>
-            <span class="aw-chip">Traefik</span>
-            <span class="aw-chip">Verdaccio local registry</span>
-            <span class="aw-chip">Infisical machine identities</span>
-            <span class="aw-chip">Prisma + DB migrator</span>
-            <span class="aw-chip">Playwright E2E</span>
-            <span class="aw-chip">PostgreSQL</span>
-            <span class="aw-chip">NATS JetStream</span>
-            <span class="aw-chip">Bun</span>
-            <span class="aw-chip">.npmrc + .env per service</span>
-            <span class="aw-chip">C4 architecture diagrams</span>
-            <span class="aw-chip">AGENTS.md for AI assistants</span>
-            <span class="aw-chip">Discovery daemon + tdk doctor</span>
+            {% for chip in site.data.tdk.toolchain_chips %}
+            <span class="aw-chip">{{ chip }}</span>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -1312,7 +1303,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
         <div class="aw-carousel-nav">
           <button class="aw-carousel-btn" type="button" onclick="awSlide(-1)" aria-label="Previous artifact">←</button>
           <button class="aw-carousel-btn" type="button" onclick="awSlide(1)" aria-label="Next artifact">→</button>
-          <span class="aw-carousel-count"><b id="aw-slide-cur">1</b> / <span id="aw-slide-total">5</span></span>
+          <span class="aw-carousel-dots" id="aw-dots" role="tablist" aria-label="Choose artifact"></span>
         </div>
       </div>
     </div>
@@ -1321,7 +1312,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
   <!-- ================= SCRUB STATEMENT ================= -->
   <section class="aw-section aw-statement" id="statement" style="padding-top: 0;">
     <div class="aw-wrap">
-      <h2 id="aw-scrub-text">One manifest replaces <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/cloudbill/400/200')"></span> cloud sandboxes at $150 per developer, <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/yamlfile/400/200')"></span> weeks of YAML plumbing, and a <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/devopsdesk/400/200')"></span> $150K platform hire.</h2>
+      <h2 id="aw-scrub-text">One manifest replaces <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/cloudbill/400/200')"></span> cloud sandboxes at {{ site.data.tdk.cloud_cde_max }} per developer, <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/yamlfile/400/200')"></span> weeks of YAML plumbing, and a <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/devopsdesk/400/200')"></span> {{ site.data.tdk.devops_salary }} platform hire.</h2>
     </div>
   </section>
 
@@ -1340,8 +1331,8 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
             <p class="aw-stack-tools">Gitpod / Ona, GitHub Codespaces, Coder, Daytona, Codeanywhere, Replit</p>
           </div>
           <div class="aw-stack-meta">
-            <span class="aw-stack-cost">$20–150 /dev/mo</span>
-            <span class="aw-stack-instead">$0 — your laptop's Docker</span>
+            <span class="aw-stack-cost">{{ site.data.tdk.gitpod_entry }}–{{ site.data.tdk.cloud_cde_max }} /dev/mo</span>
+            <span class="aw-stack-instead">{{ site.data.tdk.community_price }} — your laptop's Docker</span>
           </div>
         </div>
 
@@ -1351,7 +1342,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
             <p class="aw-stack-tools">Garden, Skaffold, DevSpace, Telepresence, mirrord, Nocalhost — plus weeks of YAML</p>
           </div>
           <div class="aw-stack-meta">
-            <span class="aw-stack-cost">2–6 weeks DevOps</span>
+            <span class="aw-stack-cost">{{ site.data.tdk.setup_weeks }} DevOps</span>
             <span class="aw-stack-instead">one service.json</span>
           </div>
         </div>
@@ -1374,7 +1365,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
           </div>
           <div class="aw-stack-meta">
             <span class="aw-stack-cost">repeated per service</span>
-            <span class="aw-stack-instead">10 files auto-generated</span>
+            <span class="aw-stack-instead">{{ site.data.tdk.files_per_service }} files auto-generated</span>
           </div>
         </div>
 
@@ -1417,7 +1408,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
             <p class="aw-stack-tools">Wiki pages that rot within a month — replaced by tdk doctor and a live terminal UI</p>
           </div>
           <div class="aw-stack-meta">
-            <span class="aw-stack-cost">1–3 days per hire</span>
+            <span class="aw-stack-cost">{{ site.data.tdk.onboard_days }} per hire</span>
             <span class="aw-stack-instead">tdk up — minutes</span>
           </div>
         </div>
@@ -1454,14 +1445,14 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
         </div>
         <div class="aw-acc-item">
           <div class="aw-acc-head">
-            <div class="aw-acc-title">Is 120+ services locally realistic?</div>
-            <div class="aw-acc-body">Yes — selective startup runs only what you're working on, and golden L1–L4 layers keep rebuilds near-instant. The discovery daemon regenerates only what changed. Our daily driver is a 14-service stack on a 16 GB MacBook, and it performs superbly; the same engine has proven 120+ services at scale.</div>
+            <div class="aw-acc-title">Is {{ site.data.tdk.scale_services }} services locally realistic?</div>
+            <div class="aw-acc-body">Yes — selective startup runs only what you're working on, and golden L1–L4 layers keep rebuilds near-instant. The discovery daemon regenerates only what changed. Our daily driver is a {{ site.data.tdk.demo_services }}-service stack on a {{ site.data.tdk.machine }}, and it performs superbly; the same engine runs a {{ site.data.tdk.monorepo_services }}-service monorepo every day.</div>
           </div>
         </div>
         <div class="aw-acc-item">
           <div class="aw-acc-head">
             <div class="aw-acc-title">Where do the savings numbers come from?</div>
-            <div class="aw-acc-body">Transparent math: 5 hours per dev per week recovered, salary ÷ 2,080 working hours, plus one avoided platform-engineer role ($150K/yr) or $500/dev/month in cloud sandboxes. Try the calculator above with your own numbers.</div>
+            <div class="aw-acc-body">Transparent math: {{ site.data.tdk.hours_per_week }} hours per dev per week recovered, salary ÷ 2,080 working hours, plus one avoided platform-engineer role ({{ site.data.tdk.devops_salary }}/yr) or {{ site.data.tdk.cloud_sandbox }}/dev/month in cloud sandboxes. Try the calculator above with your own numbers.</div>
           </div>
         </div>
       </div>
@@ -1479,11 +1470,11 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
       <div class="aw-pricing-grid">
         <div class="aw-price-card">
           <div class="aw-price-name">Community</div>
-          <div class="aw-price-value">$0 <small>/ forever</small></div>
+          <div class="aw-price-value">{{ site.data.tdk.community_price }} <small>/ forever</small></div>
           <p class="aw-price-desc">The full CLI, MIT-licensed. Our adoption engine — the same model as Tilt and Skaffold.</p>
           <ul class="aw-price-list">
-            <li>Unlimited services, 120+ proven</li>
-            <li>All generators — 10 files per service</li>
+            <li>Unlimited services, {{ site.data.tdk.scale_services }} proven</li>
+            <li>All generators — {{ site.data.tdk.files_per_service }} files per service</li>
             <li>L1–L4 golden Docker images</li>
             <li>Community support</li>
           </ul>
@@ -1491,7 +1482,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
 
         <div class="aw-price-card aw-price-featured">
           <div class="aw-price-name">Team</div>
-          <div class="aw-price-value">$19 <small>/ dev / month</small></div>
+          <div class="aw-price-value">${{ site.data.tdk.team_price }} <small>/ dev / month</small></div>
           <p class="aw-price-desc">For teams that want guardrails and a human on the other end.</p>
           <ul class="aw-price-list">
             <li>Everything in Community</li>
@@ -1515,19 +1506,19 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
       </div>
 
       <div class="aw-why">
-        <h3>Why $19? Because the alternatives cost 5–500× more.</h3>
+        <h3>Why ${{ site.data.tdk.team_price }}? Because the alternatives cost {{ site.data.tdk.price_multiple_range }} more.</h3>
         <div class="aw-why-grid">
           <div class="aw-why-item">
             <strong>vs cloud dev envs</strong>
-            <p>Gitpod starts at $20/mo plus compute. Codespaces runs $60–150 per dev per month at full-time usage. TDK Team is $19 flat — compute is your laptop.</p>
+            <p>Gitpod starts at {{ site.data.tdk.gitpod_entry }}/mo plus compute. Codespaces runs {{ site.data.tdk.codespaces_range }} per dev per month at full-time usage. TDK Team is ${{ site.data.tdk.team_price }} flat — compute is your laptop.</p>
           </div>
           <div class="aw-why-item">
             <strong>vs a DevOps hire</strong>
-            <p>10 devs × $19 = $2,280/yr. One platform engineer costs $150K/yr. A 65× difference for the local-environment portion of the job.</p>
+            <p>{{ site.data.tdk.example_devs }} devs × ${{ site.data.tdk.team_price }} = {{ site.data.tdk.team_annual_10 }}/yr. One platform engineer costs {{ site.data.tdk.devops_salary }}/yr. A {{ site.data.tdk.devops_multiple }} difference for the local-environment portion of the job.</p>
           </div>
           <div class="aw-why-item">
             <strong>vs lost hours</strong>
-            <p>$19 is roughly 15 minutes of a fully-loaded developer's month. TDK returns about 20 hours. It typically pays for itself in the first week.</p>
+            <p>${{ site.data.tdk.team_price }} is roughly {{ site.data.tdk.minutes_equiv }} of a fully-loaded developer's month. TDK returns about {{ site.data.tdk.hours_returned }}. It typically pays for itself in the first week.</p>
           </div>
           <div class="aw-why-item">
             <strong>vs enterprise CDEs</strong>
@@ -1542,7 +1533,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
   <section class="aw-section aw-cta" id="waitlist">
     <div class="aw-cta-glow"></div>
     <div class="aw-wrap">
-      <h2>Be first.<br />Save $300K a year.</h2>
+      <h2>Be first.<br />Save {{ site.data.tdk.roi_example_short }} a year.</h2>
       <p class="aw-cta-sub">Join the waitlist for early access. Tell us which features matter — your input sets the roadmap.</p>
 
       <form class="aw-form" onsubmit="sendWaitlistEmail(); return false;">
@@ -1551,21 +1542,14 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
 
         <label>Which features interest you?</label>
         <div class="aw-features">
-          <label><input type="checkbox" class="feature-checkbox" value="No Kubernetes" /> No Kubernetes</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Under-5s startup" /> Under-5s startup</label>
-          <label><input type="checkbox" class="feature-checkbox" value="10 files per service" /> 10 files / service</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Golden Docker L1-L4" /> Golden Docker</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Secrets/Infisical identities" /> Infisical identities</label>
-          <label><input type="checkbox" class="feature-checkbox" value="C4 diagrams + AGENTS.md" /> C4 + AGENTS.md</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Terminal UI + doctor" /> tdk ui / doctor</label>
-          <label><input type="checkbox" class="feature-checkbox" value="120+ services scale" /> 120+ services</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Selective startup" /> Selective startup</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Vite + Hot Reload" /> Vite hot reload</label>
-          <label><input type="checkbox" class="feature-checkbox" value="Prisma + PostgreSQL" /> Prisma/Postgres</label>
-          <label><input type="checkbox" class="feature-checkbox" value="E2E Playwright tests" /> Playwright E2E</label>
+          <label><input type="checkbox" class="feature-checkbox" value="{{ site.data.tdk.files_per_service }} files per service" /> {{ site.data.tdk.files_per_service }} files / service</label>
+          <label><input type="checkbox" class="feature-checkbox" value="{{ site.data.tdk.scale_services }} services scale" /> {{ site.data.tdk.scale_services }} services</label>
+          {% for feature in site.data.tdk.waitlist_features %}
+          <label><input type="checkbox" class="feature-checkbox" value="{{ feature }}" /> {{ feature }}</label>
+          {% endfor %}
         </div>
 
-        <button type="submit" class="aw-btn aw-btn-solid">Send request</button>
+        <button type="submit" class="aw-btn aw-btn-solid">Join waitlist</button>
         <p class="aw-form-note">Opens your email app with a pre-filled message — just hit send. No spam, unsubscribe anytime.</p>
       </form>
     </div>
@@ -1580,9 +1564,9 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
 function calcRoi() {
   var devs = parseInt(document.getElementById('roi-devs').value, 10);
   var salary = parseInt(document.getElementById('roi-salary').value, 10);
-  var hours = devs * 5 * 48;
-  var productivity = Math.round(hours * (salary / 2080));
-  var total = productivity + 150000;
+  var hours = devs * {{ site.data.tdk.hours_per_week_num }} * {{ site.data.tdk.weeks_per_year_num }};
+  var productivity = Math.round(hours * (salary / {{ site.data.tdk.work_hours_num }}));
+  var total = productivity + {{ site.data.tdk.devops_salary_num }};
   document.getElementById('roi-devs-value').textContent = devs;
   document.getElementById('roi-salary-value').textContent = '$' + salary.toLocaleString('en-US');
   document.getElementById('roi-hours').textContent = hours.toLocaleString('en-US');
@@ -1613,13 +1597,25 @@ function sendWaitlistEmail() {
 
 /* Source artifact carousel */
 var awCur = 0;
-function awSlide(dir) {
-  var slides = document.querySelectorAll('.aw-slide');
-  awCur = (awCur + dir + slides.length) % slides.length;
-  slides.forEach(function (s, i) { s.classList.toggle('is-active', i === awCur); });
-  document.getElementById('aw-slide-cur').textContent = awCur + 1;
+var awSlides = document.querySelectorAll('.aw-slide');
+var awDotsBox = document.getElementById('aw-dots');
+awSlides.forEach(function (s, i) {
+  var d = document.createElement('button');
+  d.type = 'button';
+  d.className = 'aw-carousel-dot' + (i === 0 ? ' is-active' : '');
+  d.setAttribute('role', 'tab');
+  d.setAttribute('aria-label', 'Show artifact ' + (i + 1));
+  d.addEventListener('click', function () { awGo(i); });
+  awDotsBox.appendChild(d);
+});
+function awGo(i) {
+  awCur = (i + awSlides.length) % awSlides.length;
+  awSlides.forEach(function (s, j) { s.classList.toggle('is-active', j === awCur); });
+  awDotsBox.querySelectorAll('.aw-carousel-dot').forEach(function (d, j) {
+    d.classList.toggle('is-active', j === awCur);
+  });
 }
-document.getElementById('aw-slide-total').textContent = document.querySelectorAll('.aw-slide').length;
+function awSlide(dir) { awGo(awCur + dir); }
 
 /* FAQ accordion — tap support for touch devices */
 document.querySelectorAll('.aw-acc-item').forEach(function (item) {
@@ -1629,21 +1625,43 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
   });
 });
 
-/* Terminal typing — real boot sequence, fires once when scrolled into view */
+/* Terminal typing — real boot sequence, fires once when scrolled into view.
+   Respects prefers-reduced-motion: renders the full log instantly. */
 (function () {
   var body = document.getElementById('aw-term-body');
   if (!body) return;
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var script = [
     { t: 'cmd', text: 'tdk up' },
-    { t: 'out', html: '<span class="dim">[discovery]</span> scanned 14 repos · 14 manifests · <span class="hot">212ms</span>' },
-    { t: 'out', html: '<span class="dim">[generate]</span> 10 files × 14 services → <span class="hot">140 artifacts written</span>' },
+    { t: 'out', html: '<span class="dim">[discovery]</span> scanned {{ site.data.tdk.demo_services }} repos · {{ site.data.tdk.demo_services }} manifests · <span class="hot">{{ site.data.tdk.demo_discovery }}</span>' },
+    { t: 'out', html: '<span class="dim">[generate]</span> {{ site.data.tdk.files_per_service }} files × {{ site.data.tdk.demo_services }} services → <span class="hot">{{ site.data.tdk.demo_artifacts }} artifacts written</span>' },
     { t: 'out', html: '<span class="dim">[generate]</span> C4 diagram · AGENTS.md · dependency-manifest.json' },
-    { t: 'out', html: '<span class="dim">[secrets]</span> Infisical machine identities verified · 14/14' },
-    { t: 'out', html: '<span class="dim">[docker]</span> golden L1 <span class="ok">cached</span> · L2 <span class="ok">cached</span> · L3 <span class="ok">cached</span> · building L4… <span class="hot">1.8s</span>' },
+    { t: 'out', html: '<span class="dim">[secrets]</span> Infisical machine identities verified · {{ site.data.tdk.demo_services }}/{{ site.data.tdk.demo_services }}' },
+    { t: 'out', html: '<span class="dim">[docker]</span> golden L1 <span class="ok">cached</span> · L2 <span class="ok">cached</span> · L3 <span class="ok">cached</span> · building L4… <span class="hot">{{ site.data.tdk.demo_build }}</span>' },
     { t: 'out', html: '<span class="dim">[tilt]</span> orchestrating · selective startup · hot reload armed' },
-    { t: 'out', html: '<span class="dim">[health]</span> 14/14 resources <span class="ok">healthy</span>' },
-    { t: 'out', html: '<span class="ok">ready</span> — stack booted in <span class="ok">4.6s</span> <span class="dim">on a 16 GB MacBook</span>' }
+    { t: 'out', html: '<span class="dim">[health]</span> {{ site.data.tdk.demo_services }}/{{ site.data.tdk.demo_services }} resources <span class="ok">healthy</span>' },
+    { t: 'out', html: '<span class="ok">ready</span> — stack booted in <span class="ok">{{ site.data.tdk.demo_boot }}</span> <span class="dim">on a {{ site.data.tdk.machine }}</span>' },
+    { t: 'gap' },
+    { t: 'cmd', text: 'cat services/api-gateway/service.json' },
+    { t: 'out', html: '{' },
+    { t: 'out', html: '  <span class="k">"appName"</span>: <span class="s">"api-gateway"</span>,' },
+    { t: 'out', html: '  <span class="k">"appType"</span>: <span class="s">"backend"</span>,' },
+    { t: 'out', html: '  <span class="k">"port"</span>: <span class="n">3000</span>,' },
+    { t: 'out', html: '  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],' },
+    { t: 'out', html: '  <span class="k">"stack"</span>: <span class="s">"ecommerce"</span>,' },
+    { t: 'out', html: '  <span class="k">"internalDependencies"</span>: [<span class="s">"order-service"</span>, <span class="s">"inventory-service"</span>, <span class="s">"user-service"</span>]' },
+    { t: 'out', html: '}' },
+    { t: 'gap' },
+    { t: 'cmd', text: 'tdk up --stack ecommerce' },
+    { t: 'out', html: '<span class="dim">[ecommerce]</span> api-gateway → :3000 <span class="ok">healthy</span>' },
+    { t: 'out', html: '<span class="dim">[ecommerce]</span> order-service → :3001 <span class="ok">healthy</span> · prisma migrated' },
+    { t: 'out', html: '<span class="dim">[ecommerce]</span> frontend-store → :5173 <span class="ok">healthy</span> · hot reload armed' },
+    { t: 'out', html: '<span class="ok">ready</span> — ecommerce stack live · <span class="ok">3/3 services</span> · rest of the monorepo untouched' },
+    { t: 'gap' },
+    { t: 'cmd', text: 'tdk doctor' },
+    { t: 'out', html: '<span class="dim">[doctor]</span> ports conflict-free · secrets verified · images cached' },
+    { t: 'out', html: '<span class="dim">[doctor]</span> manifests valid · <span class="ok">all checks passed</span>' }
   ];
 
   var started = false;
@@ -1678,6 +1696,12 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
     var step = script[i];
     if (step.t === 'cmd') {
       typeCmd(step.text, function () { play(i + 1); });
+    } else if (step.t === 'gap') {
+      var blank = document.createElement('span');
+      blank.className = 'aw-tline';
+      blank.innerHTML = '&nbsp;';
+      body.appendChild(blank);
+      setTimeout(function () { play(i + 1); }, 500);
     } else {
       var line = document.createElement('span');
       line.className = 'aw-tline';
@@ -1699,11 +1723,26 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
       io.disconnect();
     }
   }, { threshold: 0.4 });
-  io.observe(body);
+
+  if (REDUCED) {
+    /* Instant static render, no typing, no observer */
+    script.forEach(function (step) {
+      if (step.t === 'gap') return;
+      var line = document.createElement('span');
+      line.className = 'aw-tline';
+      line.innerHTML = step.t === 'cmd'
+        ? '<span class="p">$ </span>' + step.text
+        : step.html;
+      body.appendChild(line);
+    });
+  } else {
+    io.observe(body);
+  }
 })();
 
-/* GSAP motion */
-if (window.gsap && window.ScrollTrigger) {
+/* GSAP motion (skipped under prefers-reduced-motion) */
+var REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
 
   /* Hero entrance */
@@ -1720,7 +1759,7 @@ if (window.gsap && window.ScrollTrigger) {
     ScrollTrigger.create({
       trigger: '#demo',
       start: 'top 12%',
-      end: 'bottom 60%',
+      end: 'bottom 90%',
       pin: '#aw-term-pin',
       pinSpacing: false
     });

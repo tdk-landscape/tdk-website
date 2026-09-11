@@ -16,6 +16,9 @@
 <loc>http://0.0.0.0:4000/docs/</loc>
 </url>
 <url>
+<loc>http://0.0.0.0:4000/waiting/</loc>
+</url>
+<url>
 <loc>http://0.0.0.0:4000/compare/</loc>
 </url>
 <url>

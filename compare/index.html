@@ -105,14 +105,14 @@ title: Compare — TDK CLI
             </tr>
             <tr>
               <td>Cost at 10 developers</td>
-              <td class="aw-tdk-col"><span class="aw-yes">$0 (MIT)</span></td>
+              <td class="aw-tdk-col"><span class="aw-yes">{{ site.data.tdk.community_price }} (MIT)</span></td>
               <td>Platform team time</td>
               <td>Platform team time</td>
               <td><span class="aw-no">Commercial</span></td>
             </tr>
             <tr>
               <td>Scale proven</td>
-              <td class="aw-tdk-col"><span class="aw-yes">120+ services</span></td>
+              <td class="aw-tdk-col"><span class="aw-yes">{{ site.data.tdk.scale_services }} in daily use</span></td>
               <td>Enterprise</td>
               <td>Medium</td>
               <td>Medium</td>
@@ -141,22 +141,22 @@ title: Compare — TDK CLI
   <section class="aw-section" style="padding-top: 0;">
     <div class="aw-wrap">
       <div class="aw-head aw-head-center">
-        <h2>One $19 seat. A full circle of replaced vendors.</h2>
+        <h2>One ${{ site.data.tdk.team_price }} seat. A full circle of replaced vendors.</h2>
         <p>Every name in orbit bills you separately — per developer, per month, forever.</p>
       </div>
 
       <div class="aw-orbit" aria-hidden="true">
         <div class="aw-orbit-center">
           <strong>TDK Team</strong>
-          <span>$19 / dev / mo</span>
+          <span>${{ site.data.tdk.team_price }} / dev / mo</span>
         </div>
-        <span class="aw-orbit-chip" style="--ox: 0%; --oy: -42%;">Gitpod · $20+</span>
-        <span class="aw-orbit-chip" style="--ox: 38%; --oy: -26%;">Codespaces · ~$58</span>
+        <span class="aw-orbit-chip" style="--ox: 0%; --oy: -42%;">Gitpod · {{ site.data.tdk.gitpod_entry }}+</span>
+        <span class="aw-orbit-chip" style="--ox: 38%; --oy: -26%;">Codespaces · {{ site.data.tdk.codespaces_monthly }}</span>
         <span class="aw-orbit-chip" style="--ox: 44%; --oy: 18%;">Coder · custom</span>
-        <span class="aw-orbit-chip" style="--ox: 16%; --oy: 42%;">Daytona · ~$140</span>
+        <span class="aw-orbit-chip" style="--ox: 16%; --oy: 42%;">Daytona · {{ site.data.tdk.daytona_monthly }}</span>
         <span class="aw-orbit-chip" style="--ox: -20%; --oy: 40%;">Okteto · custom</span>
         <span class="aw-orbit-chip" style="--ox: -44%; --oy: 12%;">Garden · ops time</span>
-        <span class="aw-orbit-chip" style="--ox: -36%; --oy: -30%;">DevOps hire · $12.5K/mo</span>
+        <span class="aw-orbit-chip" style="--ox: -36%; --oy: -30%;">DevOps hire · {{ site.data.tdk.devops_monthly }}/mo</span>
       </div>
     </div>
   </section>
@@ -185,29 +185,29 @@ title: Compare — TDK CLI
           <tbody>
             <tr>
               <td>Entry price</td>
-              <td class="aw-tdk-col"><span class="aw-yes">$19 / dev / mo</span></td>
-              <td>$20 / mo + compute credits</td>
-              <td>Pay-as-you-go, ~$0.36/hr</td>
+              <td class="aw-tdk-col"><span class="aw-yes">${{ site.data.tdk.team_price }} / dev / mo</span></td>
+              <td>{{ site.data.tdk.gitpod_entry }} / mo + compute credits</td>
+              <td>Pay-as-you-go, {{ site.data.tdk.codespaces_hourly }}</td>
               <td>Per-user annual</td>
-              <td>Pay-as-you-go, ~$0.05/vCPU/hr</td>
-              <td>Free 5 seats</td>
+              <td>Pay-as-you-go, {{ site.data.tdk.daytona_vcpu }}</td>
+              <td>{{ site.data.tdk.okteto_free }}</td>
             </tr>
             <tr>
               <td>Per dev / month, full-time</td>
-              <td class="aw-tdk-col"><span class="aw-yes">$19 flat</span></td>
-              <td><span class="aw-warn">$20+ compute</span></td>
-              <td><span class="aw-warn">~$58</span></td>
-              <td><span class="aw-warn">~$50, enterprise</span></td>
-              <td><span class="aw-no">~$140</span></td>
+              <td class="aw-tdk-col"><span class="aw-yes">${{ site.data.tdk.team_price }} flat</span></td>
+              <td><span class="aw-warn">{{ site.data.tdk.gitpod_entry }}+ compute</span></td>
+              <td><span class="aw-warn">{{ site.data.tdk.codespaces_monthly }}</span></td>
+              <td><span class="aw-warn">{{ site.data.tdk.coder_monthly }}, enterprise</span></td>
+              <td><span class="aw-no">{{ site.data.tdk.daytona_monthly }}</span></td>
               <td>Contact sales</td>
             </tr>
             <tr>
-              <td>10 developers / year</td>
-              <td class="aw-tdk-col"><span class="aw-yes">$2,280</span></td>
-              <td><span class="aw-warn">$2,400 + compute</span></td>
-              <td><span class="aw-warn">~$7,000</span></td>
-              <td><span class="aw-warn">~$6,000</span></td>
-              <td><span class="aw-no">~$16,800</span></td>
+              <td>{{ site.data.tdk.example_devs }} developers / year</td>
+              <td class="aw-tdk-col"><span class="aw-yes">{{ site.data.tdk.team_annual_10 }}</span></td>
+              <td><span class="aw-warn">{{ site.data.tdk.gitpod_annual_10 }}</span></td>
+              <td><span class="aw-warn">{{ site.data.tdk.codespaces_annual_10 }}</span></td>
+              <td><span class="aw-warn">{{ site.data.tdk.coder_annual_10 }}</span></td>
+              <td><span class="aw-no">{{ site.data.tdk.daytona_annual_10 }}</span></td>
               <td>Contact sales</td>
             </tr>
             <tr>
@@ -280,7 +280,7 @@ title: Compare — TDK CLI
     <div class="aw-wrap">
       <div class="aw-band">
         <h2>The comparison that matters is your invoice</h2>
-        <p>$0 and five seconds of startup — against $20–150 per developer per month and a YAML learning curve.</p>
+        <p>{{ site.data.tdk.community_price }} and {{ site.data.tdk.boot_claim }} of startup — against {{ site.data.tdk.gitpod_entry }}–{{ site.data.tdk.cloud_cde_max }} per developer per month and a YAML learning curve.</p>
         <a href="{{ '/#waitlist' | relative_url }}" class="aw-btn aw-btn-solid">Join the waitlist</a>
       </div>
     </div>
