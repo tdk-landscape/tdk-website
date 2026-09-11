@@ -753,6 +753,82 @@ body:has(.aw) .site-footer {
   flex-wrap: wrap;
 }
 
+.aw-blog-library-section .aw-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.aw-blog-library-section .aw-head p {
+  max-width: 28rem;
+}
+
+.aw-library-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.aw-library-card {
+  min-height: 15rem;
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 55%),
+    #121218;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.aw-library-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(183, 154, 255, 0.32);
+  background:
+    linear-gradient(180deg, rgba(124, 77, 255, 0.12), transparent 62%),
+    #121218;
+}
+
+.aw-library-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  color: rgba(236, 236, 241, 0.44);
+  font-size: 0.72rem;
+}
+
+.aw-library-meta span:last-child {
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 0.3rem 0.55rem;
+  white-space: nowrap;
+}
+
+.aw-library-card h3 {
+  margin: 0 0 0.75rem;
+  color: #fff;
+  font-size: 1.08rem;
+  line-height: 1.22;
+  letter-spacing: -0.018em;
+}
+
+.aw-library-card p {
+  margin: 0;
+  color: rgba(236, 236, 241, 0.56);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.aw-library-card:focus-visible {
+  outline: 2px solid #b79aff;
+  outline-offset: 4px;
+}
+
 /* ---------------- CTA band ---------------- */
 .aw-band {
   position: relative;
@@ -916,6 +992,8 @@ body:has(.aw) .site-footer {
   .aw-article-shell { grid-template-columns: 1fr; }
   .aw-blog-side { position: relative; top: 0; grid-template-columns: repeat(2, 1fr); }
   .aw-matters-grid { grid-template-columns: repeat(2, 1fr); }
+  .aw-blog-library-section .aw-head { display: block; }
+  .aw-library-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .aw-matter,
   .aw-matter:nth-child(1),
   .aw-matter:nth-child(4) { grid-column: span 1; }
@@ -928,6 +1006,7 @@ body:has(.aw) .site-footer {
   .aw-subhero { padding: 10rem 1.25rem 4rem; }
   .aw-blog-side,
   .aw-matters-grid { grid-template-columns: 1fr; }
+  .aw-library-grid { grid-template-columns: 1fr; }
   .aw-article-card { padding: 1.5rem; }
   .aw-article-meta span { width: 100%; justify-content: center; }
   .aw-blog-cta-actions .aw-btn { width: 100%; }

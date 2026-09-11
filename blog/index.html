@@ -132,6 +132,29 @@ title: Blog - TDK CLI
     </div>
   </section>
 
+  <section class="aw-section aw-blog-library-section" id="library" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-head">
+        <h2>Article library</h2>
+        <p>One featured essay plus 100 practical article pages for the TDK field guide.</p>
+      </div>
+
+      <div class="aw-library-grid">
+        {% for article in site.data.blog_articles %}
+          {% assign article_slug = article.title | slugify %}
+          <a class="aw-library-card" href="{{ '/blog/articles/' | append: article_slug | append: '/' | relative_url }}">
+            <div class="aw-library-meta">
+              <span class="aw-mono">{{ forloop.index | prepend: '00' | slice: -3, 3 }}</span>
+              <span>{{ article.category }}</span>
+            </div>
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.summary }}</p>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
   <section class="aw-section" style="padding-top: 0;">
     <div class="aw-wrap">
       <div class="aw-band">
@@ -170,6 +193,11 @@ if (!REDUCED_BLOG && window.gsap && window.ScrollTrigger) {
   gsap.from('.aw-matter', {
     y: 30, opacity: 0, stagger: 0.06, duration: 0.7, ease: 'power3.out',
     scrollTrigger: { trigger: '.aw-matters-grid', start: 'top 80%' }
+  });
+
+  gsap.from('.aw-library-card', {
+    y: 24, opacity: 0, stagger: 0.015, duration: 0.55, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-library-grid', start: 'top 82%' }
   });
 
   gsap.from('.aw-blog .aw-band', {
