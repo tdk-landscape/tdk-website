@@ -1,20 +1,42 @@
 <nav class="aw-nav" aria-label="Main navigation">
   <div class="aw-nav-pill">
     <a class="aw-brand" href="{{ '/' | relative_url }}">
-      TDK<span>CLI</span>
+      <span class="aw-brand-mark" aria-hidden="true"><span>&gt;</span>_</span>
+      <span class="aw-brand-wordmark">TDK<span>CLI</span></span>
     </a>
 
     <div class="aw-nav-links" id="aw-nav-links">
-      <a class="aw-nav-link{% if page.url == '/' %} is-active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
       <a class="aw-nav-link{% if page.url contains '/features/' %} is-active{% endif %}" href="{{ '/features/' | relative_url }}">Features</a>
       <a class="aw-nav-link{% if page.url contains '/compare/' %} is-active{% endif %}" href="{{ '/compare/' | relative_url }}">Compare</a>
       <a class="aw-nav-link{% if page.url contains '/why/' %} is-active{% endif %}" href="{{ '/why/' | relative_url }}">Why TDK</a>
-      <a class="aw-nav-link{% if page.url contains '/waiting/' %} is-active{% endif %}" href="{{ '/waiting/' | relative_url }}">Waiting for MVP?</a>
       <a class="aw-nav-link{% if page.url contains '/blog/' %} is-active{% endif %}" href="{{ '/blog/' | relative_url }}">Blog</a>
-      <a class="aw-nav-link" href="{{ '/#roi' | relative_url }}">ROI</a>
-      <a class="aw-nav-link" href="{{ '/#pricing' | relative_url }}">Pricing</a>
-      <a class="aw-nav-link{% if page.url contains '/docs/' %} is-active{% endif %}" href="{{ '/docs/' | relative_url }}">Docs</a>
-      <a class="aw-nav-link" href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">Example</a>
+
+      <details class="aw-nav-more{% if page.url contains '/waiting/' or page.url contains '/docs/' %} is-active{% endif %}">
+        <summary>Explore <i class="bi bi-chevron-down" aria-hidden="true"></i></summary>
+        <div class="aw-nav-menu">
+          <a href="{{ '/docs/' | relative_url }}">
+            <i class="bi bi-book" aria-hidden="true"></i>
+            <span><strong>Docs</strong><small>Install, configure, ship</small></span>
+          </a>
+          <a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">
+            <i class="bi bi-code-square" aria-hidden="true"></i>
+            <span><strong>Example stack</strong><small>See the generated system</small></span>
+          </a>
+          <a href="{{ '/waiting/' | relative_url }}">
+            <i class="bi bi-hourglass-split" aria-hidden="true"></i>
+            <span><strong>Waiting for MVP?</strong><small>Calculate the cost of delay</small></span>
+          </a>
+          <a href="{{ '/#roi' | relative_url }}">
+            <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+            <span><strong>ROI</strong><small>Model the engineering return</small></span>
+          </a>
+          <a href="{{ '/#pricing' | relative_url }}">
+            <i class="bi bi-receipt" aria-hidden="true"></i>
+            <span><strong>Pricing</strong><small>Simple plans, no cluster tax</small></span>
+          </a>
+        </div>
+      </details>
+
       <a class="aw-nav-cta aw-nav-cta-mobile" href="{{ '/#waitlist' | relative_url }}">Join waitlist</a>
     </div>
 
@@ -23,8 +45,7 @@
         <i class="bi bi-github"></i>
       </a>
       <a href="{{ '/#waitlist' | relative_url }}" class="aw-nav-cta">Join waitlist</a>
-      <button class="aw-nav-burger" type="button" aria-label="Toggle navigation menu" aria-expanded="false"
-              onclick="var n=document.querySelector('.aw-nav');n.classList.toggle('is-open');this.setAttribute('aria-expanded',n.classList.contains('is-open'))">
+      <button class="aw-nav-burger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="aw-nav-links">
         <span></span><span></span>
       </button>
     </div>

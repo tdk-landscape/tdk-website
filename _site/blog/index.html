@@ -51,20 +51,42 @@
   <nav class="aw-nav" aria-label="Main navigation">
   <div class="aw-nav-pill">
     <a class="aw-brand" href="/">
-      TDK<span>CLI</span>
+      <span class="aw-brand-mark" aria-hidden="true"><span>&gt;</span>_</span>
+      <span class="aw-brand-wordmark">TDK<span>CLI</span></span>
     </a>
 
     <div class="aw-nav-links" id="aw-nav-links">
-      <a class="aw-nav-link" href="/">Home</a>
       <a class="aw-nav-link" href="/features/">Features</a>
       <a class="aw-nav-link" href="/compare/">Compare</a>
       <a class="aw-nav-link" href="/why/">Why TDK</a>
-      <a class="aw-nav-link" href="/waiting/">Waiting for MVP?</a>
       <a class="aw-nav-link is-active" href="/blog/">Blog</a>
-      <a class="aw-nav-link" href="/#roi">ROI</a>
-      <a class="aw-nav-link" href="/#pricing">Pricing</a>
-      <a class="aw-nav-link" href="/docs/">Docs</a>
-      <a class="aw-nav-link" href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">Example</a>
+
+      <details class="aw-nav-more">
+        <summary>Explore <i class="bi bi-chevron-down" aria-hidden="true"></i></summary>
+        <div class="aw-nav-menu">
+          <a href="/docs/">
+            <i class="bi bi-book" aria-hidden="true"></i>
+            <span><strong>Docs</strong><small>Install, configure, ship</small></span>
+          </a>
+          <a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">
+            <i class="bi bi-code-square" aria-hidden="true"></i>
+            <span><strong>Example stack</strong><small>See the generated system</small></span>
+          </a>
+          <a href="/waiting/">
+            <i class="bi bi-hourglass-split" aria-hidden="true"></i>
+            <span><strong>Waiting for MVP?</strong><small>Calculate the cost of delay</small></span>
+          </a>
+          <a href="/#roi">
+            <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+            <span><strong>ROI</strong><small>Model the engineering return</small></span>
+          </a>
+          <a href="/#pricing">
+            <i class="bi bi-receipt" aria-hidden="true"></i>
+            <span><strong>Pricing</strong><small>Simple plans, no cluster tax</small></span>
+          </a>
+        </div>
+      </details>
+
       <a class="aw-nav-cta aw-nav-cta-mobile" href="/#waitlist">Join waitlist</a>
     </div>
 
@@ -73,8 +95,7 @@
         <i class="bi bi-github"></i>
       </a>
       <a href="/#waitlist" class="aw-nav-cta">Join waitlist</a>
-      <button class="aw-nav-burger" type="button" aria-label="Toggle navigation menu" aria-expanded="false"
-              onclick="var n=document.querySelector('.aw-nav');n.classList.toggle('is-open');this.setAttribute('aria-expanded',n.classList.contains('is-open'))">
+      <button class="aw-nav-burger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="aw-nav-links">
         <span></span><span></span>
       </button>
     </div>
