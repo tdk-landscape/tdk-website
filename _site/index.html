@@ -56,10 +56,11 @@
     </a>
 
     <div class="aw-nav-links" id="aw-nav-links">
-      <a class="aw-nav-link" href="/features/">Features</a>
+      <a class="aw-nav-link" href="/features/">Product</a>
+      <a class="aw-nav-link" href="/#demo">Demo</a>
       <a class="aw-nav-link" href="/compare/">Compare</a>
       <a class="aw-nav-link" href="/why/">Why TDK</a>
-      <a class="aw-nav-link" href="/blog/">Blog</a>
+      <a class="aw-nav-link" href="/blog/">Field notes</a>
 
       <details class="aw-nav-more">
         <summary>Explore <i class="bi bi-chevron-down" aria-hidden="true"></i></summary>
@@ -72,13 +73,17 @@
             <i class="bi bi-code-square" aria-hidden="true"></i>
             <span><strong>Example stack</strong><small>See the generated system</small></span>
           </a>
+          <a href="/fit/">
+            <i class="bi bi-sliders" aria-hidden="true"></i>
+            <span><strong>Does TDK fit?</strong><small>Check your stack in 30 seconds</small></span>
+          </a>
           <a href="/waiting/">
             <i class="bi bi-hourglass-split" aria-hidden="true"></i>
             <span><strong>Waiting for MVP?</strong><small>Calculate the cost of delay</small></span>
           </a>
           <a href="/#roi">
             <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
-            <span><strong>ROI</strong><small>Model the engineering return</small></span>
+            <span><strong>ROI calculator</strong><small>Model the engineering return</small></span>
           </a>
           <a href="/#pricing">
             <i class="bi bi-receipt" aria-hidden="true"></i>
@@ -1337,7 +1342,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
           <p>Three numbers, three different axes — all from the same service.json.</p>
           <div class="aw-bignums">
             <div class="aw-bignum">
-              <strong>10</strong>
+              <strong>12-17</strong>
               <span>files generated per service, every time</span>
             </div>
             <div class="aw-bignum-sep"></div>
@@ -1587,7 +1592,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
           </div>
           <div class="aw-stack-meta">
             <span class="aw-stack-cost">repeated per service</span>
-            <span class="aw-stack-instead">10 files auto-generated</span>
+            <span class="aw-stack-instead">12-17 files auto-generated</span>
           </div>
         </div>
 
@@ -1696,7 +1701,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
           <p class="aw-price-desc">The full CLI, MIT-licensed. Our adoption engine — the same model as Tilt and Skaffold.</p>
           <ul class="aw-price-list">
             <li>Unlimited services, 30+ proven</li>
-            <li>All generators — 10 files per service</li>
+            <li>All generators — 12-17 files per service</li>
             <li>L1–L4 golden Docker images</li>
             <li>Community support</li>
           </ul>
@@ -1764,7 +1769,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
 
         <label>Which features interest you?</label>
         <div class="aw-features">
-          <label><input type="checkbox" class="feature-checkbox" value="10 files per service" /> 10 files / service</label>
+          <label><input type="checkbox" class="feature-checkbox" value="12-17 files per service" /> 12-17 files / service</label>
           <label><input type="checkbox" class="feature-checkbox" value="30+ services scale" /> 30+ services</label>
           
           <label><input type="checkbox" class="feature-checkbox" value="No Kubernetes" /> No Kubernetes</label>
@@ -1875,7 +1880,7 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
   var script = [
     { t: 'cmd', text: 'tdk up' },
     { t: 'out', html: '<span class="dim">[discovery]</span> scanned 14 repos · 14 manifests · <span class="hot">212ms</span>' },
-    { t: 'out', html: '<span class="dim">[generate]</span> 10 files × 14 services → <span class="hot">140 artifacts written</span>' },
+    { t: 'out', html: '<span class="dim">[generate]</span> 12-17 files × 14 services → <span class="hot">168-238 artifacts written</span>' },
     { t: 'out', html: '<span class="dim">[generate]</span> C4 diagram · AGENTS.md · dependency-manifest.json' },
     { t: 'out', html: '<span class="dim">[secrets]</span> Infisical machine identities verified · 14/14' },
     { t: 'out', html: '<span class="dim">[docker]</span> golden L1 <span class="ok">cached</span> · L2 <span class="ok">cached</span> · L3 <span class="ok">cached</span> · building L4… <span class="hot">1.8s</span>' },
@@ -2109,6 +2114,7 @@ if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
           <li><a href="/features/">Features</a></li>
           <li><a href="/compare/">Compare</a></li>
           <li><a href="/why/">Why TDK</a></li>
+          <li><a href="/fit/">Does TDK fit?</a></li>
           <li><a href="/waiting/">Waiting for MVP?</a></li>
           <li><a href="/#pricing">Pricing</a></li>
           <li><a href="/docs/">Documentation</a></li>

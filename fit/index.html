@@ -1,0 +1,441 @@
+---
+layout: default
+title: Does TDK Fit Your Stack? - TDK CLI
+---
+
+<style>
+/* Fit checker (shared system in aw-dark.css) */
+.aw-fit {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.aw-fit-questions {
+  border-radius: 1.5rem;
+  background: #121218;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.aw-fit-field label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(236, 236, 241, 0.7);
+  margin-bottom: 0.75rem;
+}
+
+.aw-fit-field label span {
+  font-weight: 400;
+  color: rgba(236, 236, 241, 0.4);
+}
+
+.aw-fit-field output {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #b79aff;
+  margin-bottom: 0.5rem;
+}
+
+.aw-fit-field input[type="range"] {
+  width: 100%;
+  height: 4px;
+  accent-color: #b79aff;
+  cursor: pointer;
+}
+
+.aw-fit-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.aw-fit-pills button {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: transparent;
+  padding: 0.55rem 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8125rem;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.aw-fit-pills button:hover {
+  border-color: #9b77ff;
+}
+
+.aw-fit-pills button.is-active {
+  border-color: #9b77ff;
+  background: #9b77ff;
+  color: #09090c;
+  font-weight: 600;
+}
+
+.aw-fit-result {
+  position: sticky;
+  top: 6rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(160deg, rgba(155, 119, 255, 0.12) 0%, #121218 55%);
+  border: 1px solid rgba(155, 119, 255, 0.3);
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+.aw-fit-score strong {
+  display: block;
+  font-size: clamp(3rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.aw-fit-score span {
+  font-size: 0.75rem;
+  color: rgba(236, 236, 241, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.aw-fit-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 1rem 0 1.5rem;
+  overflow: hidden;
+}
+
+.aw-fit-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #9b77ff, #6ee7b7);
+  width: 0%;
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.aw-fit-result h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+
+.aw-fit-result>p {
+  font-size: 0.9375rem;
+  color: rgba(236, 236, 241, 0.6);
+  margin: 0 0 1.25rem;
+}
+
+.aw-fit-reasons {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.aw-fit-reasons li {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: rgba(236, 236, 241, 0.65);
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.aw-fit-reasons li::before {
+  content: attr(data-mark);
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+
+.aw-fit-reasons li[data-mark="✓"]::before { color: #6ee7b7; }
+.aw-fit-reasons li[data-mark="~"]::before { color: #f0abfc; }
+.aw-fit-reasons li[data-mark="✗"]::before { color: rgba(236, 236, 241, 0.4); }
+
+.aw-fit-result .aw-btn {
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .aw-fit { grid-template-columns: 1fr; }
+  .aw-fit-result { position: static; }
+}
+</style>
+
+<div class="aw">
+
+  <!-- Subhero -->
+  <section class="aw-subhero">
+    <div class="aw-subhero-grid">
+      <h1>Tell us your stack. <span class="aw-accent">We'll tell you if TDK fits.</span></h1>
+      <p class="aw-subhero-sub">Five questions about how your team runs services today. The verdict updates as you answer — <strong>no email, no sales call.</strong></p>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="aw-section" id="fit" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-head">
+        <h2>The stack fit checker</h2>
+        <p>Pick the pills that match your team and drag the sliders. We'll score the fit honestly — including telling you when TDK isn't the answer.</p>
+      </div>
+
+      <div class="aw-fit">
+        <div class="aw-fit-questions">
+
+          <div class="aw-fit-field">
+            <label>Primary runtime</label>
+            <div class="aw-fit-pills" data-group="runtime">
+              <button type="button" data-value="10" class="is-active">Node.js / TypeScript / Bun</button>
+              <button type="button" data-value="7">Python</button>
+              <button type="button" data-value="7">Go</button>
+              <button type="button" data-value="6">Java / JVM</button>
+              <button type="button" data-value="6">Ruby / PHP</button>
+              <button type="button" data-value="4">Other</button>
+            </div>
+          </div>
+
+          <div class="aw-fit-field">
+            <label>How do you run things locally today?</label>
+            <div class="aw-fit-pills" data-group="today">
+              <button type="button" data-value="10">Kubernetes (kind / minikube / k3d)</button>
+              <button type="button" data-value="9" class="is-active">Docker Compose</button>
+              <button type="button" data-value="6">Cloud IDE / devcontainers</button>
+              <button type="button" data-value="4">No containers yet</button>
+            </div>
+          </div>
+
+          <div class="aw-fit-field">
+            <label>What's slowing your team down? <span>(pick any that apply)</span></label>
+            <div class="aw-fit-pills" data-group="pain" data-multi="true">
+              <button type="button" data-value="6" class="is-active">Onboarding takes days</button>
+              <button type="button" data-value="6" class="is-active">Environment drift between machines</button>
+              <button type="button" data-value="6">Secrets / credentials setup</button>
+              <button type="button" data-value="6">Nobody can run the whole system locally</button>
+              <button type="button" data-value="0" data-exclusive="true">None — we're happy</button>
+            </div>
+          </div>
+
+          <div class="aw-fit-field">
+            <label>Services running at once</label>
+            <output id="fit-services-value">8</output>
+            <input type="range" id="fit-services" min="1" max="60" value="8" step="1" oninput="calcFit()" />
+          </div>
+
+          <div class="aw-fit-field">
+            <label>Developers on the team</label>
+            <output id="fit-devs-value">{{ site.data.tdk.calc_devs_default }}</output>
+            <input type="range" id="fit-devs" min="{{ site.data.tdk.calc_devs_min }}" max="{{ site.data.tdk.calc_devs_max }}" value="{{ site.data.tdk.calc_devs_default }}" step="1" oninput="calcFit()" />
+          </div>
+
+        </div>
+
+        <div class="aw-fit-result">
+          <div class="aw-fit-score">
+            <strong id="fit-score">0%</strong>
+            <span>fit score</span>
+          </div>
+          <div class="aw-fit-bar">
+            <div class="aw-fit-bar-fill" id="fit-bar"></div>
+          </div>
+          <h3 id="fit-verdict">Answer the questions</h3>
+          <p id="fit-verdict-sub">Your score updates live as you pick answers on the left.</p>
+          <ul class="aw-fit-reasons" id="fit-reasons"></ul>
+          <a href="{{ '/#waitlist' | relative_url }}" class="aw-btn aw-btn-solid" id="fit-cta">Join waitlist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="aw-section" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-band">
+        <h2>Still deciding?</h2>
+        <p>See the full head-to-head against Garden, Skaffold and DevSpace, or read what TDK actually generates.</p>
+        <a href="{{ '/compare/' | relative_url }}" class="aw-btn aw-btn-solid">Compare TDK</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* Stack-fit calculator: pill groups (single/multi select) + two sliders → 0-100 score */
+document.querySelectorAll('.aw-fit-pills').forEach(function (group) {
+  var isMulti = group.dataset.multi === 'true';
+
+  group.querySelectorAll('button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (!isMulti) {
+        group.querySelectorAll('button').forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+      } else if (btn.dataset.exclusive === 'true') {
+        group.querySelectorAll('button').forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+      } else {
+        group.querySelector('button[data-exclusive="true"]').classList.remove('is-active');
+        btn.classList.toggle('is-active');
+      }
+      calcFit();
+    });
+  });
+});
+
+function selectedValues(group) {
+  return Array.prototype.map.call(
+    document.querySelectorAll('.aw-fit-pills[data-group="' + group + '"] button.is-active'),
+    function (b) { return parseInt(b.dataset.value, 10); }
+  );
+}
+
+function selectedLabels(group) {
+  return Array.prototype.map.call(
+    document.querySelectorAll('.aw-fit-pills[data-group="' + group + '"] button.is-active'),
+    function (b) { return b.textContent.trim(); }
+  );
+}
+
+function serviceScore(n) {
+  if (n <= 1) return 4;
+  if (n < 5) return Math.round(4 + ((n - 1) / 4) * 16);
+  return 20;
+}
+
+function devsScore(n) {
+  if (n < 5) return 6;
+  if (n < 10) return 10;
+  if (n < 30) return 14;
+  return 16;
+}
+
+function calcFit() {
+  var services = parseInt(document.getElementById('fit-services').value, 10);
+  var devs = parseInt(document.getElementById('fit-devs').value, 10);
+
+  document.getElementById('fit-services-value').textContent = services + (services === 1 ? ' service' : ' services');
+  document.getElementById('fit-devs-value').textContent = devs + (devs === 1 ? ' developer' : ' developers');
+
+  var runtimeVals = selectedValues('runtime');
+  var todayVals = selectedValues('today');
+  var painVals = selectedValues('pain');
+
+  var runtimeScore = (runtimeVals[0] || 0) * 2;
+  var todayScore = (todayVals[0] || 0) * 2;
+  var painScore = painVals.reduce(function (sum, v) { return sum + v; }, 0);
+  var svcScore = serviceScore(services);
+  var devScore = devsScore(devs);
+
+  var total = Math.round(runtimeScore + todayScore + painScore + svcScore + devScore);
+  total = Math.max(0, Math.min(100, total));
+
+  document.getElementById('fit-score').textContent = total + '%';
+  document.getElementById('fit-bar').style.width = total + '%';
+
+  var verdictEl = document.getElementById('fit-verdict');
+  var subEl = document.getElementById('fit-verdict-sub');
+  var cta = document.getElementById('fit-cta');
+
+  if (total >= 75) {
+    verdictEl.textContent = 'Strong fit';
+    subEl.textContent = 'TDK was built for exactly this setup.';
+    cta.textContent = 'Join waitlist';
+    cta.href = '{{ "/#waitlist" | relative_url }}';
+  } else if (total >= 45) {
+    verdictEl.textContent = 'Partial fit';
+    subEl.textContent = 'TDK will help — read the caveats below first.';
+    cta.textContent = 'Join waitlist';
+    cta.href = '{{ "/#waitlist" | relative_url }}';
+  } else {
+    verdictEl.textContent = 'Not a fit yet';
+    subEl.textContent = 'Your setup doesn\'t have the pain TDK solves — yet.';
+    cta.textContent = 'See what TDK generates';
+    cta.href = '{{ "/features/" | relative_url }}';
+  }
+
+  var reasons = [];
+
+  var runtimeLabel = (selectedLabels('runtime')[0] || '');
+  if (runtimeVals[0] >= 10) {
+    reasons.push(['✓', 'Native support — Vite, TypeScript, Bun and Prisma golden images ship out of the box.']);
+  } else if (runtimeVals[0] >= 6) {
+    reasons.push(['~', 'Docker-based services work today; generators are tuned for Node/TS/Bun first.']);
+  } else {
+    reasons.push(['✗', runtimeLabel + ' stacks aren\'t the primary target for TDK\'s generators yet.']);
+  }
+
+  var todayLabel = (selectedLabels('today')[0] || '');
+  if (todayVals[0] === 10) {
+    reasons.push(['✓', 'You\'re paying the Kubernetes tax locally — TDK removes it entirely.']);
+  } else if (todayVals[0] === 9) {
+    reasons.push(['✓', 'You already think in containers — TDK is a drop-in upgrade from Compose.']);
+  } else if (todayVals[0] === 6) {
+    reasons.push(['~', 'Cloud IDEs solve a different problem — TDK runs the same stack on your laptop, no per-seat bill.']);
+  } else {
+    reasons.push(['~', 'You\'ll containerize as part of adopting TDK — worth it once you pass ~5 services.']);
+  }
+
+  var painLabels = selectedLabels('pain');
+  if (painLabels.length === 0 || (painLabels.length === 1 && painLabels[0].indexOf('happy') > -1)) {
+    reasons.push(['✗', 'Nothing\'s broken today — TDK mostly pays off once local dev has friction.']);
+  } else {
+    painLabels.forEach(function (label) {
+      if (label.indexOf('happy') === -1) {
+        reasons.push(['✓', label + ' — TDK\'s manifest and doctor exist for exactly this.']);
+      }
+    });
+  }
+
+  if (services <= 1) {
+    reasons.push(['✗', 'One service doesn\'t need a multi-service orchestrator — TDK shines at 5+.']);
+  } else if (services < 5) {
+    reasons.push(['~', 'A few services already benefit, but TDK\'s proven sweet spot is 5–{{ site.data.tdk.scale_services }} services.']);
+  } else {
+    reasons.push(['✓', services + ' services is exactly TDK\'s sweet spot ({{ site.data.tdk.scale_services }} in daily use).']);
+  }
+
+  if (devs < 5) {
+    reasons.push(['~', 'Small teams still benefit — the ROI compounds as you hire.']);
+  } else {
+    reasons.push(['✓', devs + ' developers burn real payroll on setup — TDK pays for itself fast.']);
+  }
+
+  var list = document.getElementById('fit-reasons');
+  list.innerHTML = '';
+  reasons.forEach(function (r) {
+    var li = document.createElement('li');
+    li.setAttribute('data-mark', r[0]);
+    li.textContent = r[1];
+    list.appendChild(li);
+  });
+}
+
+calcFit();
+
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.aw-subhero h1', { y: 50, opacity: 0, duration: 1.1, ease: 'power3.out', delay: 0.1 });
+  gsap.from('.aw-subhero-sub', { y: 30, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.35 });
+
+  gsap.from('.aw-fit', {
+    y: 60, opacity: 0, duration: 1, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-fit', start: 'top 80%' }
+  });
+
+  gsap.from('.aw-band', {
+    y: 60, opacity: 0, duration: 1, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-band', start: 'top 85%' }
+  });
+}
+</script>
