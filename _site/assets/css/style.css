@@ -662,7 +662,7 @@ html {
 .aw-nav.is-open .aw-nav-burger span:first-child { transform: translateY(3.5px) rotate(45deg); }
 .aw-nav.is-open .aw-nav-burger span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .aw-nav-pill { flex-wrap: wrap; padding: 0.625rem 1rem; }
   .aw-nav-links {
     display: none;
