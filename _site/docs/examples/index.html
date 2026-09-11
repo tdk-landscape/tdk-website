@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <title>Examples - TDK CLI</title>
+  <title>Examples — TDK CLI</title>
   
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
@@ -18,15 +18,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
   
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/aw-dark.css" />
   
   <!-- SEO -->
   <!-- Begin Jekyll SEO tag v2.9.0 -->
-<title>Examples - TDK CLI | TDK CLI</title>
+<title>Examples — TDK CLI | TDK CLI</title>
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Examples - TDK CLI" />
+<meta property="og:title" content="Examples — TDK CLI" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Kubernetes-free microservice development. Run 5-120+ services locally without learning Kubernetes. One service.json generates 10+ configs." />
 <meta name="twitter:description" property="og:description" content="Kubernetes-free microservice development. Run 5-120+ services locally without learning Kubernetes. One service.json generates 10+ configs." />
@@ -35,9 +37,9 @@
 <meta property="og:site_name" content="TDK CLI" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Examples - TDK CLI" />
+<meta name="twitter:title" content="Examples — TDK CLI" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Kubernetes-free microservice development. Run 5-120+ services locally without learning Kubernetes. One service.json generates 10+ configs.","headline":"Examples - TDK CLI","url":"http://0.0.0.0:4000/docs/examples/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Kubernetes-free microservice development. Run 5-120+ services locally without learning Kubernetes. One service.json generates 10+ configs.","headline":"Examples — TDK CLI","url":"http://0.0.0.0:4000/docs/examples/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -63,7 +65,7 @@
     </div>
 
     <div class="aw-nav-actions">
-      <a href="https://github.com/tdk-cli/tdk" class="aw-nav-icon" target="_blank" rel="noopener" aria-label="View on GitHub">
+      <a href="https://github.com/tdk-landscape" class="aw-nav-icon" target="_blank" rel="noopener" aria-label="TDK Landscape on GitHub">
         <i class="bi bi-github"></i>
       </a>
       <a href="/#waitlist" class="aw-nav-cta">Get Started</a>
@@ -77,168 +79,263 @@
 
 
   <main id="main-content" class="page-content" aria-label="Main content">
-    <section class="section" style="padding-top: 120px;">
-  <div class="container">
-    <div class="row">
-      <!-- Sidebar -->
-      <div class="col-lg-3 mb-4">
-        <div class="sticky-top" style="top: 100px;">
-          <h5 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gray-500); margin-bottom: 1rem;">Documentation</h5>
-          <nav class="nav flex-column">
-            <a class="nav-link px-0 py-2 text-muted" href="/docs/">Overview</a>
-            <a class="nav-link px-0 py-2 text-muted" href="/docs/quickstart/">Quick Start</a>
-            <a class="nav-link px-0 py-2 text-muted" href="/docs/configuration/">Configuration</a>
-            <a class="nav-link px-0 py-2 active text-purple" href="/docs/examples/">Examples</a>
-            <a class="nav-link px-0 py-2 text-muted" href="/docs/api/">API Reference</a>
-            <a class="nav-link px-0 py-2 text-muted" href="/docs/contributing/">Contributing</a>
-          </nav>
-        </div>
-      </div>
+    <div class="aw">
+  <section class="aw-section" style="padding-top: 10rem;">
+    <div class="aw-wrap aw-docs">
+      <aside class="aw-docs-side">
+  <nav aria-label="Documentation navigation">
+    <a href="/docs/" class="">Overview</a>
+    <a href="/docs/quickstart/" class="">Quick Start</a>
+    <a href="/docs/configuration/" class="">Configuration</a>
+    <a href="/docs/examples/" class="is-active">Examples</a>
+  </nav>
+</aside>
 
-      <!-- Content -->
-      <div class="col-lg-9">
-        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Examples</h1>
-        <p class="lead" style="color: var(--color-gray-600); font-size: 1.25rem; margin-bottom: 2rem;">
-          Real-world examples of TDK in action.
-        </p>
 
-        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">E-commerce Platform</h2>
-        <p style="font-size: 1.125rem; color: var(--color-gray-700); margin-bottom: 1.5rem;">
-          A typical e-commerce setup with 5 services:
-        </p>
+      <div class="aw-docs-body">
+        <h1>Examples</h1>
+        <p class="aw-lead">Real-world stacks, from a five-service shop to worker queues and multi-stack startups.</p>
 
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">1. API Gateway</h3>
-        <pre style="margin-bottom: 1.5rem;"><code># services/api-gateway/service.json
-{
-  "appName": "api-gateway",
-  "appType": "backend",
-  "port": 3000,
-  "features": ["typescript", "bun"],
-  "stack": "ecommerce",
-  "internalDependencies": [
-    "order-service",
-    "inventory-service",
-    "user-service"
+        <h2>E-commerce platform</h2>
+        <p>A typical setup with five services, wired by manifests alone:</p>
+
+        <h3>1 — API gateway</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/api-gateway/service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"api-gateway"</span>,
+  <span class="k">"appType"</span>: <span class="s">"backend"</span>,
+  <span class="k">"port"</span>: <span class="n">3000</span>,
+  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
+  <span class="k">"stack"</span>: <span class="s">"ecommerce"</span>,
+  <span class="k">"internalDependencies"</span>: [
+    <span class="s">"order-service"</span>,
+    <span class="s">"inventory-service"</span>,
+    <span class="s">"user-service"</span>
   ]
-}</code></pre>
+}</pre>
+        </div>
 
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">2. Order Service</h3>
-        <pre style="margin-bottom: 1.5rem;"><code># services/order-service/service.json
-{
-  "appName": "order-service",
-  "appType": "backend",
-  "port": 3001,
-  "features": ["typescript", "bun", "prisma"],
-  "stack": "ecommerce",
-  "internalDependencies": ["database"]
-}</code></pre>
+        <h3>2 — Order service</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/order-service/service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"order-service"</span>,
+  <span class="k">"appType"</span>: <span class="s">"backend"</span>,
+  <span class="k">"port"</span>: <span class="n">3001</span>,
+  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>, <span class="s">"prisma"</span>],
+  <span class="k">"stack"</span>: <span class="s">"ecommerce"</span>,
+  <span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>]
+}</pre>
+        </div>
 
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">3. Frontend Store</h3>
-        <pre style="margin-bottom: 1.5rem;"><code># services/frontend-store/service.json
-{
-  "appName": "frontend-store",
-  "appType": "frontend",
-  "port": 5173,
-  "features": ["typescript", "vite"],
-  "backendName": "api-gateway",
-  "basePath": "/store"
-}</code></pre>
+        <h3>3 — Frontend store</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/frontend-store/service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"frontend-store"</span>,
+  <span class="k">"appType"</span>: <span class="s">"frontend"</span>,
+  <span class="k">"port"</span>: <span class="n">5173</span>,
+  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"vite"</span>],
+  <span class="k">"backendName"</span>: <span class="s">"api-gateway"</span>,
+  <span class="k">"basePath"</span>: <span class="s">"/store"</span>
+}</pre>
+        </div>
 
-        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">Microservice Architecture</h2>
-        
-        <div class="card mb-4">
-          <div class="card-body">
-            <pre class="mb-0" style="background: transparent; padding: 0;"><code>my-project/
+        <h2>Microservice architecture</h2>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>project layout</span></div>
+          <pre>my-project/
 ├── services/
 │   ├── api-gateway/
-│   │   └── service.json      # Entry point
+│   │   └── service.json      <span class="c"># entry point</span>
 │   ├── auth-service/
-│   │   └── service.json      # Authentication
+│   │   └── service.json      <span class="c"># authentication</span>
 │   ├── user-service/
-│   │   └── service.json      # User management
+│   │   └── service.json      <span class="c"># user management</span>
 │   ├── order-service/
-│   │   └── service.json      # Order processing
+│   │   └── service.json      <span class="c"># order processing</span>
 │   └── frontend/
-│       └── service.json      # Web UI
-├── tdk.yml                   # TDK configuration
-└── Tiltfile                  # Generated by TDK</code></pre>
-          </div>
+│       └── service.json      <span class="c"># web UI</span>
+├── tdk.yml                   <span class="c"># TDK configuration</span>
+└── Tiltfile                  <span class="c"># generated by TDK</span></pre>
         </div>
 
-        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">Working with Multiple Stacks</h2>
-        <p style="font-size: 1.125rem; color: var(--color-gray-700); margin-bottom: 1.5rem;">
-          Organize services by stack for selective startup:
-        </p>
+        <h2>Working with multiple stacks</h2>
+        <p>Organize services by stack for selective startup:</p>
 
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">Start only the API stack</h3>
-        <pre style="margin-bottom: 1.5rem;"><code>tdk up --stack api</code></pre>
+        <h3>Start only the API stack</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+          <pre>tdk up --stack api</pre>
+        </div>
 
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">Start only specific services</h3>
-        <pre style="margin-bottom: 1.5rem;"><code>tdk up api-gateway order-service</code></pre>
+        <h3>Start only specific services</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+          <pre>tdk up api-gateway order-service</pre>
+        </div>
 
-        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">Environment Configuration</h2>
+        <h2>Environment configuration</h2>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>tdk.yml / tdk.production.yml</span></div>
+          <pre><span class="c"># development overrides — tdk.yml</span>
+<span class="k">env</span>: development
+<span class="k">services</span>:
+  - <span class="k">name</span>: api-gateway
+    <span class="k">port</span>: <span class="n">3000</span>
+    <span class="k">envVars</span>:
+      <span class="k">DEBUG</span>: <span class="s">"true"</span>
 
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">Development vs Production</h3>
-        <pre style="margin-bottom: 1.5rem;"><code># Development overrides
-tdk.yml:
-env: development
-services:
-  - name: api-gateway
-    port: 3000
-    envVars:
-      DEBUG: "true"
-      
-# Production overrides  
-tdk.production.yml:
-env: production
-services:
-  - name: api-gateway
-    port: 3000
-    envVars:
-      DEBUG: "false"</code></pre>
+<span class="c"># production overrides — tdk.production.yml</span>
+<span class="k">env</span>: production
+<span class="k">services</span>:
+  - <span class="k">name</span>: api-gateway
+    <span class="k">port</span>: <span class="n">3000</span>
+    <span class="k">envVars</span>:
+      <span class="k">DEBUG</span>: <span class="s">"false"</span></pre>
+        </div>
 
-        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">Common Patterns</h2>
+        <h2>Common patterns</h2>
 
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">Frontend + Backend</h3>
-        <pre style="margin-bottom: 1.5rem;"><code># Frontend service.json
+        <h3>Frontend + backend</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>two manifests, one system</span></div>
+          <pre><span class="c"># frontend service.json</span>
 {
-  "appName": "web-app",
-  "appType": "frontend",
-  "port": 5173,
-  "features": ["typescript", "vite"],
-  "backendName": "api-server",
-  "basePath": "/app"
+  <span class="k">"appName"</span>: <span class="s">"web-app"</span>,
+  <span class="k">"appType"</span>: <span class="s">"frontend"</span>,
+  <span class="k">"port"</span>: <span class="n">5173</span>,
+  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"vite"</span>],
+  <span class="k">"backendName"</span>: <span class="s">"api-server"</span>,
+  <span class="k">"basePath"</span>: <span class="s">"/app"</span>
 }
 
-# Backend service.json
+<span class="c"># backend service.json</span>
 {
-  "appName": "api-server",
-  "appType": "backend",
-  "port": 3000,
-  "features": ["typescript", "bun"],
-  "envVars": {
-    "FRONTEND_URL": "http://localhost:5173"
+  <span class="k">"appName"</span>: <span class="s">"api-server"</span>,
+  <span class="k">"appType"</span>: <span class="s">"backend"</span>,
+  <span class="k">"port"</span>: <span class="n">3000</span>,
+  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
+  <span class="k">"envVars"</span>: {
+    <span class="k">"FRONTEND_URL"</span>: <span class="s">"http://localhost:5173"</span>
   }
-}</code></pre>
+}</pre>
+        </div>
 
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">Worker Queue</h3>
-        <pre style="margin-bottom: 1.5rem;"><code># Background worker
-{
-  "appName": "email-worker",
-  "appType": "worker",
-  "features": ["typescript", "bun"],
-  "internalDependencies": ["redis"],
-  "replicas": 3
-}</code></pre>
+        <h3>Worker queue</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>email-worker / service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"email-worker"</span>,
+  <span class="k">"appType"</span>: <span class="s">"worker"</span>,
+  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
+  <span class="k">"internalDependencies"</span>: [<span class="s">"redis"</span>],
+  <span class="k">"replicas"</span>: <span class="n">3</span>
+}</pre>
+        </div>
 
-        <div style="background: var(--color-purple-light); color: white; padding: 1.5rem; border-radius: var(--radius-lg); margin-top: 3rem;">
-          <h4 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Want more examples?</h4>
-          <p class="mb-0">Check out our <a href="https://github.com/tdk-cli/examples" target="_blank" rel="noopener" style="color: white; text-decoration: underline;">examples repository</a> on GitHub for complete working projects.</p>
+        <h2>SaaS starter</h2>
+        <p>Auth, billing and product behind one gateway. A new hire clones the repo, runs <code>tdk up</code>, and has the entire business — login, subscriptions, dashboard — on their laptop in minutes.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/auth-service/service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"auth-service"</span>,
+  <span class="k">"appType"</span>: <span class="s">"backend"</span>,
+  <span class="k">"port"</span>: <span class="n">3101</span>,
+  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>, <span class="s">"prisma"</span>],
+  <span class="k">"stack"</span>: <span class="s">"saas"</span>,
+  <span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>, <span class="s">"redis"</span>]
+}</pre>
+        </div>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/billing-service/service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"billing-service"</span>,
+  <span class="k">"appType"</span>: <span class="s">"backend"</span>,
+  <span class="k">"port"</span>: <span class="n">3102</span>,
+  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>, <span class="s">"prisma"</span>],
+  <span class="k">"stack"</span>: <span class="s">"saas"</span>,
+  <span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>, <span class="s">"auth-service"</span>]
+}</pre>
+        </div>
+
+        <h2>Realtime collaboration</h2>
+        <p>A shared board with live cursors. The websocket gateway, the event bus and presence storage all boot together — no separate infra tickets.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/realtime-gateway/service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"realtime-gateway"</span>,
+  <span class="k">"appType"</span>: <span class="s">"backend"</span>,
+  <span class="k">"port"</span>: <span class="n">3201</span>,
+  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
+  <span class="k">"stack"</span>: <span class="s">"realtime"</span>,
+  <span class="k">"internalDependencies"</span>: [<span class="s">"nats"</span>, <span class="s">"redis"</span>]
+}</pre>
+        </div>
+
+        <h2>Background jobs at scale</h2>
+        <p>Video transcoding farm: a migrator prepares the queue tables, then three worker replicas drain them. Scale replicas per developer machine.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/transcode-worker/service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"transcode-worker"</span>,
+  <span class="k">"appType"</span>: <span class="s">"worker"</span>,
+  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
+  <span class="k">"stack"</span>: <span class="s">"media"</span>,
+  <span class="k">"internalDependencies"</span>: [<span class="s">"redis"</span>, <span class="s">"database"</span>],
+  <span class="k">"replicas"</span>: <span class="n">3</span>
+}</pre>
+        </div>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+          <pre><span class="c"># boot only the media stack, nothing else</span>
+tdk up --stack media</pre>
+        </div>
+
+        <h2>Brownfield rescue</h2>
+        <p>The most common real-world case: an existing monorepo with thirty directories and zero manifests. The discovery daemon finds every service, synthesizes missing manifests from directory structure, and the team that was blocked for two weeks boots on day one.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+          <pre><span class="c">$ tdk up</span>
+<span class="c">[discovery] scanned 31 directories · 12 manifests found</span>
+<span class="c">[synthesis] 19 manifests synthesized from structure</span>
+<span class="c">[generate] 10 files × 31 services → 310 artifacts written</span>
+<span class="c">[health] 31/31 resources healthy</span></pre>
+        </div>
+
+        <h2>AI-assisted stack</h2>
+        <p>Every boot also regenerates <code>AGENTS.md</code> and the C4 architecture diagram, so AI coding assistants understand the whole system on their first day — the same way your new hires do.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>generated stack artifacts</span></div>
+          <pre>AGENTS.md                   <span class="c"># assistant briefing, always current</span>
+docs/architecture.c4        <span class="c"># system diagram from live topology</span>
+dependency-manifest.json    <span class="c"># full service graph</span></pre>
+        </div>
+
+        <div class="aw-callout">
+          <h4>Want more?</h4>
+          <p>Check the <a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">reference example stack</a> on GitHub for a complete working project.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.aw-docs-body h1, .aw-docs-body .aw-lead', { y: 40, opacity: 0, stagger: 0.12, duration: 1, ease: 'power3.out', delay: 0.1 });
+  gsap.utils.toArray('.aw-codeblock').forEach(function (block) {
+    gsap.from(block, {
+      y: 30, opacity: 0, duration: 0.7, ease: 'power3.out',
+      scrollTrigger: { trigger: block, start: 'top 88%' }
+    });
+  });
+}
+</script>
 
   </main>
 
@@ -251,15 +348,15 @@ services:
           TDK<span style="color: var(--color-purple)">CLI</span>
         </h5>
         <p class="footer-text">
-          Kubernetes-free microservice development. Run 5-120+ services locally 
-          without the complexity.
+          Kubernetes-free microservice development by TDK Landscape.
+          Run 5-120+ services locally without the complexity.
+        </p>
+        <p class="footer-text" style="margin-top: 0.75rem;">
+          <a href="mailto:hello@tdk.dev">hello@tdk.dev</a>
         </p>
         <div class="d-flex gap-3 mb-3">
-          <a href="https://github.com/tdk-cli/tdk" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <a href="https://github.com/tdk-landscape" target="_blank" rel="noopener" aria-label="TDK Landscape on GitHub">
             <i class="bi bi-github fs-5"></i>
-          </a>
-          <a href="https://twitter.com/tdkcli" target="_blank" rel="noopener" aria-label="Twitter">
-            <i class="bi bi-twitter fs-5"></i>
           </a>
         </div>
       </div>
@@ -269,6 +366,7 @@ services:
         <ul class="list-unstyled footer-links">
           <li><a href="/features/">Features</a></li>
           <li><a href="/compare/">Compare</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
           <li><a href="/docs/">Documentation</a></li>
         </ul>
       </div>
@@ -278,23 +376,20 @@ services:
         <ul class="list-unstyled footer-links">
           <li><a href="/docs/quickstart/">Quick Start</a></li>
           <li><a href="/docs/examples/">Examples</a></li>
-          <li><a href="/docs/api/">API Reference</a></li>
         </ul>
       </div>
 
       <div class="col-lg-2 col-md-4 mb-4 mb-lg-0">
         <h6>Community</h6>
         <ul class="list-unstyled footer-links">
-          <li><a href="https://github.com/tdk-cli/tdk/discussions" target="_blank" rel="noopener">Discussions</a></li>
-          <li><a href="https://github.com/tdk-cli/tdk/issues" target="_blank" rel="noopener">Issues</a></li>
-          <li><a href="/docs/contributing/">Contributing</a></li>
+          <li><a href="https://github.com/tdk-landscape" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="/#waitlist">Waitlist</a></li>
         </ul>
       </div>
 
       <div class="col-lg-2 col-md-4">
         <h6>Legal</h6>
         <ul class="list-unstyled footer-links">
-          <li><a href="/license/">License</a></li>
           <li><a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></li>
         </ul>
       </div>

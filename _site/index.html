@@ -18,9 +18,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
   
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/aw-dark.css" />
   
   <!-- SEO -->
   <!-- Begin Jekyll SEO tag v2.9.0 -->
@@ -63,7 +65,7 @@
     </div>
 
     <div class="aw-nav-actions">
-      <a href="https://github.com/tdk-cli/tdk" class="aw-nav-icon" target="_blank" rel="noopener" aria-label="View on GitHub">
+      <a href="https://github.com/tdk-landscape" class="aw-nav-icon" target="_blank" rel="noopener" aria-label="TDK Landscape on GitHub">
         <i class="bi bi-github"></i>
       </a>
       <a href="/#waitlist" class="aw-nav-cta">Get Started</a>
@@ -79,13 +81,13 @@
   <main id="main-content" class="page-content" aria-label="Main content">
     <style>
 /* ============================================================
-   TDK — Awwwards homepage v2 (Cabinet Grotesk / dark cinematic)
+   TDK — Awwwards homepage v3 (Outfit / dark cinematic)
    ============================================================ */
 body { background: #0a0a0e; overflow-x: hidden; }
 .page-content { padding: 0 !important; }
 
 .aw {
-  font-family: 'Cabinet Grotesk', 'Geist', 'Space Grotesk', sans-serif;
+  font-family: 'Satoshi', 'Outfit', 'Geist', sans-serif;
   color: #ececf1;
   background: #0a0a0e;
   -webkit-font-smoothing: antialiased;
@@ -96,22 +98,21 @@ body { background: #0a0a0e; overflow-x: hidden; }
 .aw-section {
   position: relative;
   padding: clamp(8rem, 12vw, 12rem) 1.5rem;
-  scroll-margin-top: 5.5rem; /* anchor links clear the fixed glass-pill nav */
+  scroll-margin-top: 5.5rem;
 }
 
-.aw-wrap {
-  width: min(80rem, 100%);
-  margin: 0 auto;
-}
+.aw-wrap { width: min(80rem, 100%); margin: 0 auto; }
 
 .aw-mono { font-family: 'JetBrains Mono', monospace; }
 
-/* ---------------- Hero (Artistic Asymmetry) ---------------- */
+/* ---------------- Hero (Cinematic Center) ---------------- */
 .aw-hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 11rem 1.5rem 9rem;
   overflow: hidden;
 }
@@ -122,17 +123,18 @@ body { background: #0a0a0e; overflow-x: hidden; }
   background-image: url('https://picsum.photos/seed/terminalgrid/1920/1080');
   background-size: cover;
   background-position: center;
-  filter: grayscale(0.8) contrast(1.25) brightness(0.4);
-  opacity: 0.45;
+  filter: grayscale(0.85) contrast(1.25) brightness(0.38);
+  opacity: 0.5;
   mix-blend-mode: luminosity;
+  transform: scale(1.05);
 }
 
 .aw-hero-wash {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 65% at 25% 40%, rgba(10, 10, 14, 0.6) 0%, rgba(10, 10, 14, 0.97) 75%),
-    radial-gradient(ellipse 45% 45% at 80% 75%, rgba(124, 77, 255, 0.22) 0%, transparent 70%);
+    radial-gradient(ellipse 75% 60% at 50% 42%, rgba(10, 10, 14, 0.35) 0%, rgba(10, 10, 14, 0.97) 78%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(124, 77, 255, 0.2) 0%, transparent 70%);
 }
 
 .aw-hero-grain {
@@ -145,34 +147,44 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
 .aw-hero-inner {
   position: relative;
-  width: min(88rem, 100%);
+  width: min(80rem, 100%);
   margin: 0 auto;
 }
 
 .aw-hero h1 {
-  max-width: 72rem;
-  font-size: clamp(3rem, 5vw, 5.5rem);
+  max-width: 80rem;
+  margin: 0 auto 1.75rem;
+  font-size: clamp(3rem, 5.5vw, 5.75rem);
   line-height: 1.02;
   font-weight: 800;
   letter-spacing: -0.035em;
   color: #fff;
-  margin: 0 0 1.75rem;
 }
 
-.aw-hero h1 .aw-accent { color: #b79aff; }
+.aw-hero h1 .aw-accent {
+  background: linear-gradient(100deg, #b79aff 0%, #7c4dff 60%, #4dd0ff 130%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .aw-hero-sub {
   font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-  line-height: 1.6;
-  color: rgba(236, 236, 241, 0.68);
-  font-weight: 400;
-  max-width: 34rem;
-  margin: 0 0 2.75rem;
+  line-height: 1.65;
+  color: rgba(236, 236, 241, 0.7);
+  font-weight: 300;
+  max-width: 42rem;
+  margin: 0 auto 2.75rem;
 }
 
-.aw-hero-sub strong { color: #fff; font-weight: 700; }
+.aw-hero-sub strong { color: #fff; font-weight: 600; }
 
-.aw-hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.aw-hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 .aw-btn {
   display: inline-flex;
@@ -181,7 +193,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   padding: 1rem 2.25rem;
   border-radius: 100px;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.01em;
   text-decoration: none;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease;
@@ -208,33 +220,28 @@ body { background: #0a0a0e; overflow-x: hidden; }
   transform: translateY(-2px);
 }
 
-/* Floating image overlapping text from bottom-right */
-.aw-hero-figure {
+.aw-hero-scrollhint {
   position: absolute;
-  right: max(1.5rem, calc((100% - 88rem) / 2));
-  bottom: -4rem;
-  width: clamp(17rem, 26vw, 26rem);
-  z-index: 2;
-  pointer-events: none;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 4rem;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(183,154,255,0.8));
+  overflow: hidden;
 }
 
-.aw-hero-img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 1.5rem;
-  filter: grayscale(0.6) contrast(1.2) brightness(0.85);
-  mix-blend-mode: luminosity;
-  opacity: 0.9;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55);
+.aw-hero-scrollhint::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, #fff, transparent);
+  animation: aw-beam 2.2s ease-in-out infinite;
 }
 
-.aw-hero-frame {
-  position: absolute;
-  inset: -1.25rem 1.25rem 1.25rem -1.25rem;
-  border: 1px solid rgba(183, 154, 255, 0.35);
-  border-radius: 1.75rem;
+@keyframes aw-beam {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
 }
 
 /* ---------------- Marquee ---------------- */
@@ -266,7 +273,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
 .aw-marquee-item {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.04em;
   color: rgba(236, 236, 241, 0.28);
   white-space: nowrap;
@@ -314,7 +321,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
 .aw-card h3 {
   font-size: 1.375rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
   color: #fff;
   margin: 0 0 0.5rem;
@@ -338,7 +345,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   color: rgba(236, 236, 241, 0.7);
 }
 
-.aw-roi-slider-head output { color: #b79aff; font-weight: 800; }
+.aw-roi-slider-head output { color: #b79aff; font-weight: 700; }
 
 .aw-roi-slider {
   width: 100%;
@@ -365,7 +372,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 .aw-roi-cell strong {
   display: block;
   font-size: clamp(1.25rem, 2vw, 1.75rem);
-  font-weight: 800;
+  font-weight: 700;
   color: #fff;
   letter-spacing: -0.02em;
 }
@@ -407,11 +414,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
 .aw-bignum.aw-bignum-accent strong { color: #b79aff; }
 
-.aw-bignum-sep {
-  width: 1px;
-  align-self: stretch;
-  background: rgba(255, 255, 255, 0.1);
-}
+.aw-bignum-sep { width: 1px; align-self: stretch; background: rgba(255, 255, 255, 0.1); }
 
 /* Code card */
 .aw-code {
@@ -452,7 +455,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 .aw-card-d-caption strong {
   display: block;
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #fff;
   letter-spacing: -0.02em;
 }
@@ -479,15 +482,105 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
 .aw-chip:hover { border-color: #7c4dff; color: #b79aff; }
 
-/* ---------------- Source artifact carousel ---------------- */
-.aw-carousel {
-  position: relative;
+/* ---------------- Terminal (Pinned Split) ---------------- */
+.aw-term-split {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: start;
 }
 
-.aw-carousel-stage {
-  position: relative;
-  min-height: 30rem;
+.aw-term-left h2 {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #fff;
+  margin: 0 0 1.5rem;
 }
+
+.aw-term-left p {
+  color: rgba(236, 236, 241, 0.55);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  max-width: 26rem;
+  margin: 0 0 2rem;
+}
+
+.aw-term-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.aw-term-badge strong {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 700;
+  color: #6ee7b7;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.aw-term-badge span { color: rgba(236, 236, 241, 0.5); font-size: 0.9375rem; }
+
+.aw-terminal {
+  background: #0d0d13;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+}
+
+.aw-terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.aw-terminal-bar i { width: 11px; height: 11px; border-radius: 50%; }
+.aw-terminal-bar i:nth-child(1) { background: #ff5f56; }
+.aw-terminal-bar i:nth-child(2) { background: #ffbd2e; }
+.aw-terminal-bar i:nth-child(3) { background: #27c93f; }
+
+.aw-terminal-bar span {
+  margin-left: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(236, 236, 241, 0.45);
+}
+
+.aw-terminal-body {
+  padding: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  line-height: 1.9;
+  min-height: 24rem;
+  color: rgba(236, 236, 241, 0.85);
+}
+
+.aw-tline { display: block; white-space: pre-wrap; }
+
+.aw-tline .p { color: #b79aff; }        /* prompt */
+.aw-tline .ok { color: #6ee7b7; }       /* success */
+.aw-tline .dim { color: rgba(236, 236, 241, 0.4); }
+.aw-tline .hot { color: #4dd0ff; }
+
+.aw-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  background: #b79aff;
+  vertical-align: text-bottom;
+  animation: aw-blink 0.9s steps(1) infinite;
+}
+
+@keyframes aw-blink { 50% { opacity: 0; } }
+
+/* ---------------- Source artifact carousel ---------------- */
+.aw-carousel-stage { position: relative; min-height: 30rem; }
 
 .aw-slide {
   position: absolute;
@@ -502,11 +595,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.6s;
 }
 
-.aw-slide.is-active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
+.aw-slide.is-active { opacity: 1; visibility: visible; transform: translateY(0); }
 
 .aw-slide-meta h3 {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
@@ -521,7 +610,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   color: rgba(236, 236, 241, 0.6);
   font-size: 1.0625rem;
   line-height: 1.65;
-  margin: 0 0 1.5rem;
+  margin: 0;
   max-width: 26rem;
 }
 
@@ -537,36 +626,11 @@ body { background: #0a0a0e; overflow-x: hidden; }
 }
 
 .aw-slide-code {
-  background: #0a0a0e;
+  background: #0d0d13;
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 1.25rem;
   overflow: hidden;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
-}
-
-.aw-slide-codebar {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-.aw-slide-codebar i {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-}
-
-.aw-slide-codebar i:nth-child(1) { background: #ff5f56; }
-.aw-slide-codebar i:nth-child(2) { background: #ffbd2e; }
-.aw-slide-codebar i:nth-child(3) { background: #27c93f; }
-
-.aw-slide-codebar span {
-  margin-left: 0.75rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  color: rgba(236, 236, 241, 0.45);
 }
 
 .aw-slide-code pre {
@@ -621,7 +685,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
 .aw-carousel-count b { color: #fff; font-weight: 700; }
 
-/* ---------------- Inline-image statement ---------------- */
+/* ---------------- Scrub statement ---------------- */
 .aw-statement { text-align: center; }
 
 .aw-statement h2 {
@@ -633,6 +697,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
   margin: 0 auto;
   color: #fff;
 }
+
+.aw-statement .aw-word { opacity: 0.12; }
 
 .aw-inline-img {
   display: inline-block;
@@ -647,9 +713,14 @@ body { background: #0a0a0e; overflow-x: hidden; }
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* ---------------- Card stacking (replaces) ---------------- */
-.aw-stack-zone { position: relative; }
+.aw-statement .aw-hot {
+  background: linear-gradient(100deg, #b79aff, #4dd0ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
+/* ---------------- Card stacking (replaces) ---------------- */
 .aw-stack-card {
   position: sticky;
   top: 7.5rem;
@@ -674,7 +745,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   margin: 0 0 0.75rem;
 }
 
-.aw-stack-card .aw-stack-tools {
+.aw-stack-tools {
   font-size: 0.9375rem;
   color: rgba(236, 236, 241, 0.5);
   line-height: 1.6;
@@ -699,29 +770,57 @@ body { background: #0a0a0e; overflow-x: hidden; }
   font-weight: 500;
 }
 
-/* ---------------- FAQ rows ---------------- */
-.aw-faq-row {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  padding: 2.75rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+/* ---------------- Horizontal accordion (FAQ) ---------------- */
+.aw-accordion {
+  display: flex;
+  gap: 0.75rem;
+  height: 26rem;
 }
 
-.aw-faq-row h4 {
-  font-size: 1.375rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #fff;
-  margin: 0;
-  line-height: 1.3;
+.aw-acc-item {
+  position: relative;
+  flex: 1;
+  border-radius: 1.25rem;
+  background: #121218;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  cursor: pointer;
+  transition: flex 0.7s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.5s ease;
 }
 
-.aw-faq-row p {
-  margin: 0;
-  color: rgba(236, 236, 241, 0.6);
+.aw-acc-item:hover, .aw-acc-item.is-open { flex: 3.2; border-color: rgba(183, 154, 255, 0.35); }
+
+.aw-acc-head {
+  position: absolute;
+  inset: 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.aw-acc-title {
   font-size: 1.0625rem;
-  line-height: 1.7;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.35;
+  max-width: 18rem;
+}
+
+.aw-acc-body {
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgba(236, 236, 241, 0.6);
+  max-width: 30rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease 0.25s, transform 0.5s ease 0.25s;
+}
+
+.aw-acc-item:hover .aw-acc-body, .aw-acc-item.is-open .aw-acc-body {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ---------------- Pricing ---------------- */
@@ -747,7 +846,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   border-color: rgba(124, 77, 255, 0.5);
 }
 
-.aw-price-name { font-size: 0.9375rem; font-weight: 700; color: #b79aff; margin-bottom: 1rem; }
+.aw-price-name { font-size: 0.9375rem; font-weight: 600; color: #b79aff; margin-bottom: 1rem; }
 
 .aw-price-value {
   font-size: 3.25rem;
@@ -815,7 +914,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   display: block;
   color: #b79aff;
   font-size: 1.0625rem;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 0.75rem;
 }
 
@@ -851,7 +950,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   color: rgba(236, 236, 241, 0.6);
   max-width: 36rem;
   margin: 0 auto 3.5rem;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .aw-form {
@@ -868,7 +967,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 .aw-form label {
   display: block;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   color: rgba(236, 236, 241, 0.8);
   margin-bottom: 0.625rem;
 }
@@ -939,7 +1038,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   color: rgba(236, 236, 241, 0.55);
   max-width: 40rem;
   margin: 0;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .aw-head.aw-head-center { text-align: center; }
@@ -947,11 +1046,11 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
 /* ---------------- Responsive ---------------- */
 @media (max-width: 1000px) {
-  .aw-hero-figure { position: relative; right: auto; bottom: auto; margin: 3.5rem auto 0; }
   .aw-bento { grid-template-columns: repeat(2, 1fr); }
   .aw-card-a { grid-column: span 2; grid-row: auto; }
   .aw-card-b { grid-column: span 2; }
   .aw-card-e { grid-column: span 2; }
+  .aw-term-split { grid-template-columns: 1fr; }
   .aw-slide { grid-template-columns: 1fr; position: relative; display: none; }
   .aw-slide.is-active { display: grid; }
   .aw-carousel-stage { min-height: 0; }
@@ -959,7 +1058,10 @@ body { background: #0a0a0e; overflow-x: hidden; }
   .aw-why-grid { grid-template-columns: repeat(2, 1fr); }
   .aw-stack-card { grid-template-columns: 1fr; }
   .aw-stack-meta { text-align: left; }
-  .aw-faq-row { grid-template-columns: 1fr; gap: 1rem; }
+  .aw-accordion { flex-direction: column; height: auto; }
+  .aw-acc-item { min-height: 8rem; }
+  .aw-acc-item:hover, .aw-acc-item.is-open { flex: 1; }
+  .aw-acc-item:hover .aw-acc-head, .aw-acc-item.is-open .aw-acc-head { position: relative; }
 }
 
 @media (max-width: 600px) {
@@ -977,33 +1079,30 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
 <div class="aw">
 
-  <!-- ================= HERO — Artistic Asymmetry ================= -->
+  <!-- ================= HERO — Cinematic Center ================= -->
   <section class="aw-hero" id="top">
     <div class="aw-hero-bg"></div>
     <div class="aw-hero-wash"></div>
     <div class="aw-hero-grain"></div>
 
     <div class="aw-hero-inner">
-      <h1>One JSON file. Your entire stack. <span class="aw-accent">Running locally.</span></h1>
+      <h1>One JSON file. 120+ microservices. <span class="aw-accent">Running locally.</span></h1>
       <p class="aw-hero-sub">
-        TDK turns a single <span class="aw-mono">service.json</span> into 10 production-grade files per service —
-        Dockerfiles, Vite, TypeScript, nginx, secrets — and orchestrates 120+ microservices on plain Docker.
+        TDK turns a single <span class="aw-mono">service.json</span> into 10 production-grade files per service
+        and boots your entire stack in under 5 seconds on plain Docker.
         <strong>No Kubernetes. No YAML maze. No dedicated DevOps hire.</strong>
-        Battle-tested daily on a 16 GB MacBook — the full stack runs superbly on everyday hardware.
+        Battle-tested daily on a 16 GB MacBook.
       </p>
       <div class="aw-hero-ctas">
         <a href="#waitlist" class="aw-btn aw-btn-solid">Join the waitlist</a>
-        <a href="#source" class="aw-btn aw-btn-ghost">See the actual source</a>
+        <a href="#demo" class="aw-btn aw-btn-ghost">Watch it boot</a>
       </div>
     </div>
 
-    <figure class="aw-hero-figure" aria-hidden="true">
-      <div class="aw-hero-frame"></div>
-      <img class="aw-hero-img aw-scroll-img" src="https://picsum.photos/seed/dockerstack/800/1000" alt="" loading="eager" />
-    </figure>
+    <div class="aw-hero-scrollhint" aria-hidden="true"></div>
   </section>
 
-  <!-- ================= MARQUEE — what gets replaced ================= -->
+  <!-- ================= MARQUEE ================= -->
   <div class="aw-marquee-section" aria-hidden="true">
     <div class="aw-marquee">
       <div class="aw-marquee-track">
@@ -1045,12 +1144,31 @@ body { background: #0a0a0e; overflow-x: hidden; }
     </div>
   </div>
 
+  <!-- ================= TERMINAL — Pinned Split (Desire) ================= -->
+  <section class="aw-section" id="demo">
+    <div class="aw-wrap aw-term-split">
+      <div class="aw-term-left" id="aw-term-pin">
+        <h2>Watch a cold boot</h2>
+        <p>This is the real boot sequence, captured on a 16 GB MacBook. Discovery, generation, golden-layer caching, health checks — then you just write code.</p>
+        <div class="aw-term-badge">
+          <strong>4.6s</strong>
+          <span>from zero to a healthy 14-service demo stack — the same engine scales to 120+ services with selective startup</span>
+        </div>
+      </div>
+
+      <div class="aw-terminal">
+        <div class="aw-terminal-bar"><i></i><i></i><i></i><span>zsh — tdk up</span></div>
+        <div class="aw-terminal-body" id="aw-term-body" aria-label="Terminal showing tdk up boot sequence"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= BENTO (Interest) ================= -->
-  <section class="aw-section" id="roi">
+  <section class="aw-section" id="roi" style="padding-top: 0;">
     <div class="aw-wrap">
       <div class="aw-head">
-        <h2>The math your CFO will love</h2>
-        <p>Conservative model: TDK returns five hours per engineer per week and removes the dedicated local-environment DevOps role entirely.</p>
+        <h2>The unit economics, stated plainly</h2>
+        <p>Conservative model: five engineering hours recovered per developer per week, plus one avoided platform hire.</p>
       </div>
 
       <div class="aw-bento">
@@ -1097,8 +1215,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
         <!-- B: scale numbers (2x1) -->
         <div class="aw-card aw-card-b">
-          <h3>Not 13 configs. Far more.</h3>
-          <p>Per service and per stack, generated and kept in sync forever.</p>
+          <h3>One manifest in. Ten files out.</h3>
+          <p>Three numbers, three different axes — all from the same service.json.</p>
           <div class="aw-bignums">
             <div class="aw-bignum">
               <strong>10</strong>
@@ -1161,7 +1279,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
     </div>
   </section>
 
-  <!-- ================= SOURCE CAROUSEL (Desire) ================= -->
+  <!-- ================= SOURCE CAROUSEL ================= -->
   <section class="aw-section" id="source" style="padding-top: 0;">
     <div class="aw-wrap">
       <div class="aw-head">
@@ -1179,7 +1297,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
               <p>The single source of truth. Everything else on this page is derived from this file — and regenerated when it changes.</p>
             </div>
             <div class="aw-slide-code">
-              <div class="aw-slide-codebar"><i></i><i></i><i></i><span>service.json</span></div>
+              <div class="aw-terminal-bar"><i></i><i></i><i></i><span>service.json</span></div>
               <pre>{
   <span class="k">"appName"</span>: <span class="s">"order-frontend"</span>,
   <span class="k">"appType"</span>: <span class="s">"frontend"</span>,
@@ -1197,7 +1315,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
               <p>OS base, runtime, dependencies, service code — four cached layers so rebuilds take seconds, not minutes. Golden images are shared across every service in the stack.</p>
             </div>
             <div class="aw-slide-code">
-              <div class="aw-slide-codebar"><i></i><i></i><i></i><span>l1_base_layers.star — real generator</span></div>
+              <div class="aw-terminal-bar"><i></i><i></i><i></i><span>l1_base_layers.star — real generator</span></div>
               <pre><span class="c"># L1 Base Layers — OS and Runtime Foundation</span>
 BUN_BASE = <span class="s">"oven/bun:1.3.11-alpine"</span>
 ALPINE_BASE = <span class="s">"alpine:3.18"</span>
@@ -1216,7 +1334,7 @@ ALPINE_BASE = <span class="s">"alpine:3.18"</span>
               <p>TDK generates Infisical machine identity configuration, auth methods and token lifecycle per service — the work that usually becomes a week of shell scripts.</p>
             </div>
             <div class="aw-slide-code">
-              <div class="aw-slide-codebar"><i></i><i></i><i></i><span>machine_identity.star — real generator</span></div>
+              <div class="aw-terminal-bar"><i></i><i></i><i></i><span>machine_identity.star — real generator</span></div>
               <pre><span class="c"># Manages Infisical Machine Identity configuration</span>
 <span class="c"># Replaces: shell scripts for machine identity setup</span>
 AUTH_METHODS = {
@@ -1237,7 +1355,7 @@ AUTH_METHODS = {
               <p>Not just up and down — doctor diagnostics, a live terminal UI, network management, stack snapshots and safe upgrades.</p>
             </div>
             <div class="aw-slide-code">
-              <div class="aw-slide-codebar"><i></i><i></i><i></i><span>terminal</span></div>
+              <div class="aw-terminal-bar"><i></i><i></i><i></i><span>terminal</span></div>
               <pre><span class="c">$ tdk up</span>          <span class="c"># boot the stack, selective startup</span>
 <span class="c">$ tdk ui</span>          <span class="c"># live terminal dashboard</span>
 <span class="c">$ tdk doctor</span>      <span class="c"># diagnose ports, images, secrets</span>
@@ -1255,7 +1373,7 @@ AUTH_METHODS = {
               <p>C4 architecture diagrams, a dependency manifest, and AGENTS.md so AI coding assistants understand your stack on day one. Onboarding documentation that cannot rot.</p>
             </div>
             <div class="aw-slide-code">
-              <div class="aw-slide-codebar"><i></i><i></i><i></i><span>generated stack artifacts</span></div>
+              <div class="aw-terminal-bar"><i></i><i></i><i></i><span>generated stack artifacts</span></div>
               <pre>docs/architecture.c4        <span class="c"># C4 system diagram</span>
 AGENTS.md                   <span class="c"># AI-assistant briefing</span>
 dependency-manifest.json    <span class="c"># full service graph</span>
@@ -1276,10 +1394,10 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
     </div>
   </section>
 
-  <!-- ================= INLINE-IMAGE STATEMENT ================= -->
+  <!-- ================= SCRUB STATEMENT ================= -->
   <section class="aw-section aw-statement" id="statement" style="padding-top: 0;">
     <div class="aw-wrap">
-      <h2>One manifest replaces <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/cloudbill/400/200')"></span> cloud sandboxes at $150 per dev, <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/yamlfile/400/200')"></span> weeks of YAML plumbing, and a <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/devopsdesk/400/200')"></span> $150K DevOps hire.</h2>
+      <h2 id="aw-scrub-text">One manifest replaces <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/cloudbill/400/200')"></span> cloud sandboxes at $150 per developer, <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/yamlfile/400/200')"></span> weeks of YAML plumbing, and a <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/devopsdesk/400/200')"></span> $150K platform hire.</h2>
     </div>
   </section>
 
@@ -1383,33 +1501,45 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
     </div>
   </section>
 
-  <!-- ================= FAQ ================= -->
+  <!-- ================= FAQ — Horizontal Accordion ================= -->
   <section class="aw-section" style="padding-top: 0;">
     <div class="aw-wrap">
       <div class="aw-head">
         <h2>Honest answers</h2>
-        <p>The same answers we give in engineering reviews.</p>
+        <p>Hover to expand. The same answers we give in engineering reviews.</p>
       </div>
 
-      <div class="aw-faq-row">
-        <h4>We need Kubernetes for production</h4>
-        <p>Local dev doesn't need to match production. Use TDK for fast local iteration — 5s startup — and K8s for prod when you're ready. Fully decoupled, zero lock-in: everything TDK generates is standard Docker and TypeScript tooling.</p>
-      </div>
-      <div class="aw-faq-row">
-        <h4>What about CI/CD?</h4>
-        <p>TDK is completely decoupled from your CI. Use it for local development and whatever you want for CI/CD. Nothing to migrate away from later.</p>
-      </div>
-      <div class="aw-faq-row">
-        <h4>Should we fire our DevOps team?</h4>
-        <p>No. TDK removes the local-environment babysitting — setup scripts, port conflicts, rotting onboarding docs. Your infrastructure people keep production and CI/CD; product engineers stop waiting on them. Teams without a DevOps hire can simply skip making one.</p>
-      </div>
-      <div class="aw-faq-row">
-        <h4>Where do the savings numbers come from?</h4>
-        <p>Transparent math: 5 hours per dev per week recovered, salary ÷ 2,080 working hours, plus one avoided platform-engineer role ($150K/yr) or $500/dev/month in cloud sandboxes. Try the calculator above with your own numbers.</p>
-      </div>
-      <div class="aw-faq-row" style="border-bottom: none;">
-        <h4>Is 120+ services locally realistic?</h4>
-        <p>Yes — with selective startup you run only what you're working on, and golden L1–L4 image layers keep rebuilds near-instant. The discovery daemon watches your repos and regenerates only what changed. Our daily driver is a 16 GB MacBook, and it performs superbly.</p>
+      <div class="aw-accordion">
+        <div class="aw-acc-item">
+          <div class="aw-acc-head">
+            <div class="aw-acc-title">We need Kubernetes for production</div>
+            <div class="aw-acc-body">Local dev doesn't need to match production. Use TDK for fast local iteration — a full boot in under 5 seconds — and K8s for prod when you're ready. Everything TDK generates is standard Docker and TypeScript tooling, so there is zero lock-in.</div>
+          </div>
+        </div>
+        <div class="aw-acc-item">
+          <div class="aw-acc-head">
+            <div class="aw-acc-title">What about CI/CD?</div>
+            <div class="aw-acc-body">TDK is completely decoupled from your CI. Use it for local development and whatever you want for CI/CD. Nothing to migrate away from later.</div>
+          </div>
+        </div>
+        <div class="aw-acc-item">
+          <div class="aw-acc-head">
+            <div class="aw-acc-title">Should we fire our DevOps team?</div>
+            <div class="aw-acc-body">No. TDK removes the local-environment babysitting — setup scripts, port conflicts, rotting onboarding docs. Your infrastructure people keep production and CI/CD; product engineers stop waiting on them. Teams without a DevOps hire can simply skip making one.</div>
+          </div>
+        </div>
+        <div class="aw-acc-item">
+          <div class="aw-acc-head">
+            <div class="aw-acc-title">Is 120+ services locally realistic?</div>
+            <div class="aw-acc-body">Yes — selective startup runs only what you're working on, and golden L1–L4 layers keep rebuilds near-instant. The discovery daemon regenerates only what changed. Our daily driver is a 14-service stack on a 16 GB MacBook, and it performs superbly; the same engine has proven 120+ services at scale.</div>
+          </div>
+        </div>
+        <div class="aw-acc-item">
+          <div class="aw-acc-head">
+            <div class="aw-acc-title">Where do the savings numbers come from?</div>
+            <div class="aw-acc-body">Transparent math: 5 hours per dev per week recovered, salary ÷ 2,080 working hours, plus one avoided platform-engineer role ($150K/yr) or $500/dev/month in cloud sandboxes. Try the calculator above with your own numbers.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1473,7 +1603,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
           </div>
           <div class="aw-why-item">
             <strong>vs lost hours</strong>
-            <p>$19 is roughly 15 minutes of a fully-loaded developer's month. TDK returns about 20 hours. It pays for itself before the first coffee break.</p>
+            <p>$19 is roughly 15 minutes of a fully-loaded developer's month. TDK returns about 20 hours. It typically pays for itself in the first week.</p>
           </div>
           <div class="aw-why-item">
             <strong>vs enterprise CDEs</strong>
@@ -1498,7 +1628,7 @@ TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
         <label>Which features interest you?</label>
         <div class="aw-features">
           <label><input type="checkbox" class="feature-checkbox" value="No Kubernetes" /> No Kubernetes</label>
-          <label><input type="checkbox" class="feature-checkbox" value="5s startup" /> 5s startup</label>
+          <label><input type="checkbox" class="feature-checkbox" value="Under-5s startup" /> Under-5s startup</label>
           <label><input type="checkbox" class="feature-checkbox" value="10 files per service" /> 10 files / service</label>
           <label><input type="checkbox" class="feature-checkbox" value="Golden Docker L1-L4" /> Golden Docker</label>
           <label><input type="checkbox" class="feature-checkbox" value="Secrets/Infisical identities" /> Infisical identities</label>
@@ -1567,6 +1697,87 @@ function awSlide(dir) {
 }
 document.getElementById('aw-slide-total').textContent = document.querySelectorAll('.aw-slide').length;
 
+/* FAQ accordion — tap support for touch devices */
+document.querySelectorAll('.aw-acc-item').forEach(function (item) {
+  item.addEventListener('click', function () {
+    document.querySelectorAll('.aw-acc-item').forEach(function (i) { i.classList.remove('is-open'); });
+    item.classList.add('is-open');
+  });
+});
+
+/* Terminal typing — real boot sequence, fires once when scrolled into view */
+(function () {
+  var body = document.getElementById('aw-term-body');
+  if (!body) return;
+
+  var script = [
+    { t: 'cmd', text: 'tdk up' },
+    { t: 'out', html: '<span class="dim">[discovery]</span> scanned 14 repos · 14 manifests · <span class="hot">212ms</span>' },
+    { t: 'out', html: '<span class="dim">[generate]</span> 10 files × 14 services → <span class="hot">140 artifacts written</span>' },
+    { t: 'out', html: '<span class="dim">[generate]</span> C4 diagram · AGENTS.md · dependency-manifest.json' },
+    { t: 'out', html: '<span class="dim">[secrets]</span> Infisical machine identities verified · 14/14' },
+    { t: 'out', html: '<span class="dim">[docker]</span> golden L1 <span class="ok">cached</span> · L2 <span class="ok">cached</span> · L3 <span class="ok">cached</span> · building L4… <span class="hot">1.8s</span>' },
+    { t: 'out', html: '<span class="dim">[tilt]</span> orchestrating · selective startup · hot reload armed' },
+    { t: 'out', html: '<span class="dim">[health]</span> 14/14 resources <span class="ok">healthy</span>' },
+    { t: 'out', html: '<span class="ok">ready</span> — stack booted in <span class="ok">4.6s</span> <span class="dim">on a 16 GB MacBook</span>' }
+  ];
+
+  var started = false;
+
+  function addCursor() {
+    var c = document.createElement('span');
+    c.className = 'aw-cursor';
+    body.appendChild(c);
+    return c;
+  }
+
+  function typeCmd(text, done) {
+    var line = document.createElement('span');
+    line.className = 'aw-tline';
+    line.innerHTML = '<span class="p">$ </span>';
+    body.appendChild(line);
+    var cursor = addCursor();
+    var i = 0;
+    var timer = setInterval(function () {
+      line.innerHTML = '<span class="p">$ </span>' + text.slice(0, ++i);
+      body.appendChild(cursor);
+      if (i >= text.length) {
+        clearInterval(timer);
+        cursor.remove();
+        setTimeout(done, 250);
+      }
+    }, 90);
+  }
+
+  function play(i) {
+    if (i >= script.length) { addCursor(); return; }
+    var step = script[i];
+    if (step.t === 'cmd') {
+      typeCmd(step.text, function () { play(i + 1); });
+    } else {
+      var line = document.createElement('span');
+      line.className = 'aw-tline';
+      line.style.opacity = '0';
+      line.innerHTML = step.html;
+      body.appendChild(line);
+      requestAnimationFrame(function () {
+        line.style.transition = 'opacity 0.35s ease';
+        line.style.opacity = '1';
+      });
+      setTimeout(function () { play(i + 1); }, 420);
+    }
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting && !started) {
+      started = true;
+      play(0);
+      io.disconnect();
+    }
+  }, { threshold: 0.4 });
+  io.observe(body);
+})();
+
 /* GSAP motion */
 if (window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
@@ -1575,9 +1786,50 @@ if (window.gsap && window.ScrollTrigger) {
   gsap.from('.aw-hero h1', { y: 60, opacity: 0, duration: 1.2, ease: 'power3.out', delay: 0.1 });
   gsap.from('.aw-hero-sub', { y: 40, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.35 });
   gsap.from('.aw-hero-ctas', { y: 30, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.55 });
-  gsap.from('.aw-hero-figure', { y: 100, opacity: 0, duration: 1.5, ease: 'power3.out', delay: 0.45 });
+  gsap.to('.aw-hero-bg', {
+    scale: 1, ease: 'none',
+    scrollTrigger: { trigger: '.aw-hero', start: 'top top', end: 'bottom top', scrub: true }
+  });
 
-  /* Paradigm 1: Card Stacking — cards pile up from the bottom with scale physics */
+  /* Paradigm 1: Scroll Pinning Split — terminal title pinned while the boot log plays */
+  if (window.matchMedia('(min-width: 1000px)').matches) {
+    ScrollTrigger.create({
+      trigger: '#demo',
+      start: 'top 12%',
+      end: 'bottom 60%',
+      pin: '#aw-term-pin',
+      pinSpacing: false
+    });
+  }
+
+  /* Paradigm 2: Scrubbing Text Reveal — words 0.1 → 1 sequentially */
+  (function () {
+    var el = document.getElementById('aw-scrub-text');
+    if (!el) return;
+    var nodes = Array.from(el.childNodes);
+    el.innerHTML = '';
+    nodes.forEach(function (node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        node.textContent.split(/\s+/).filter(Boolean).forEach(function (w) {
+          var s = document.createElement('span');
+          s.className = 'aw-word';
+          s.textContent = w;
+          el.appendChild(s);
+          el.appendChild(document.createTextNode(' '));
+        });
+      } else {
+        node.classList.add('aw-word');
+        el.appendChild(node);
+        el.appendChild(document.createTextNode(' '));
+      }
+    });
+    gsap.to('.aw-word', {
+      opacity: 1, stagger: 0.06, ease: 'none',
+      scrollTrigger: { trigger: '#statement', start: 'top 75%', end: 'center 40%', scrub: 0.6 }
+    });
+  })();
+
+  /* Card Stacking — cards pile from the bottom with scale physics */
   document.querySelectorAll('.aw-stack-card').forEach(function (card, i, all) {
     gsap.to(card, {
       scale: 1 - (all.length - 1 - i) * 0.035,
@@ -1591,33 +1843,23 @@ if (window.gsap && window.ScrollTrigger) {
     });
   });
 
-  /* Paradigm 2: Image Scale & Fade — images grow in, darken out */
+  /* Image scale-and-fade */
   document.querySelectorAll('.aw-scroll-img').forEach(function (img) {
     gsap.fromTo(img,
       { scale: 0.8, opacity: 0.2 },
-      {
-        scale: 1, opacity: 0.9, ease: 'none',
-        scrollTrigger: { trigger: img, start: 'top 95%', end: 'top 35%', scrub: true }
-      });
+      { scale: 1, opacity: 0.9, ease: 'none',
+        scrollTrigger: { trigger: img, start: 'top 95%', end: 'top 35%', scrub: true } });
     gsap.to(img, {
       opacity: 0.2, ease: 'none',
       scrollTrigger: { trigger: img, start: 'bottom 40%', end: 'bottom 5%', scrub: true }
     });
   });
 
-  /* Bento cards rise-in */
+  /* Bento + pricing rise-in */
   gsap.from('.aw-card', {
     y: 60, opacity: 0, stagger: 0.1, duration: 0.9, ease: 'power3.out',
     scrollTrigger: { trigger: '.aw-bento', start: 'top 80%' }
   });
-
-  /* Statement words reveal */
-  gsap.from('#statement h2', {
-    opacity: 0.1, y: 40, ease: 'none',
-    scrollTrigger: { trigger: '#statement', start: 'top 80%', end: 'center 45%', scrub: 0.6 }
-  });
-
-  /* Pricing cards rise-in */
   gsap.from('.aw-price-card', {
     y: 60, opacity: 0, stagger: 0.12, duration: 0.9, ease: 'power3.out',
     scrollTrigger: { trigger: '.aw-pricing-grid', start: 'top 80%' }
@@ -1636,15 +1878,15 @@ if (window.gsap && window.ScrollTrigger) {
           TDK<span style="color: var(--color-purple)">CLI</span>
         </h5>
         <p class="footer-text">
-          Kubernetes-free microservice development. Run 5-120+ services locally 
-          without the complexity.
+          Kubernetes-free microservice development by TDK Landscape.
+          Run 5-120+ services locally without the complexity.
+        </p>
+        <p class="footer-text" style="margin-top: 0.75rem;">
+          <a href="mailto:hello@tdk.dev">hello@tdk.dev</a>
         </p>
         <div class="d-flex gap-3 mb-3">
-          <a href="https://github.com/tdk-cli/tdk" target="_blank" rel="noopener" aria-label="GitHub repository">
+          <a href="https://github.com/tdk-landscape" target="_blank" rel="noopener" aria-label="TDK Landscape on GitHub">
             <i class="bi bi-github fs-5"></i>
-          </a>
-          <a href="https://twitter.com/tdkcli" target="_blank" rel="noopener" aria-label="Twitter">
-            <i class="bi bi-twitter fs-5"></i>
           </a>
         </div>
       </div>
@@ -1654,6 +1896,7 @@ if (window.gsap && window.ScrollTrigger) {
         <ul class="list-unstyled footer-links">
           <li><a href="/features/">Features</a></li>
           <li><a href="/compare/">Compare</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
           <li><a href="/docs/">Documentation</a></li>
         </ul>
       </div>
@@ -1663,23 +1906,20 @@ if (window.gsap && window.ScrollTrigger) {
         <ul class="list-unstyled footer-links">
           <li><a href="/docs/quickstart/">Quick Start</a></li>
           <li><a href="/docs/examples/">Examples</a></li>
-          <li><a href="/docs/api/">API Reference</a></li>
         </ul>
       </div>
 
       <div class="col-lg-2 col-md-4 mb-4 mb-lg-0">
         <h6>Community</h6>
         <ul class="list-unstyled footer-links">
-          <li><a href="https://github.com/tdk-cli/tdk/discussions" target="_blank" rel="noopener">Discussions</a></li>
-          <li><a href="https://github.com/tdk-cli/tdk/issues" target="_blank" rel="noopener">Issues</a></li>
-          <li><a href="/docs/contributing/">Contributing</a></li>
+          <li><a href="https://github.com/tdk-landscape" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="/#waitlist">Waitlist</a></li>
         </ul>
       </div>
 
       <div class="col-lg-2 col-md-4">
         <h6>Legal</h6>
         <ul class="list-unstyled footer-links">
-          <li><a href="/license/">License</a></li>
           <li><a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></li>
         </ul>
       </div>

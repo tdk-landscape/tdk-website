@@ -1,127 +1,143 @@
 ---
 layout: default
-title: Configuration - TDK CLI
+title: Configuration — TDK CLI
 ---
 
-<section class="section" style="padding-top: 120px;">
-  <div class="container">
-    <div class="row">
-      <!-- Sidebar -->
-      <div class="col-lg-3 mb-4">
-        <div class="sticky-top" style="top: 100px;">
-          <h5 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gray-500); margin-bottom: 1rem;">Documentation</h5>
-          <nav class="nav flex-column">
-            <a class="nav-link px-0 py-2 text-muted" href="{{ '/docs/' | relative_url }}">Overview</a>
-            <a class="nav-link px-0 py-2 text-muted" href="{{ '/docs/quickstart/' | relative_url }}">Quick Start</a>
-            <a class="nav-link px-0 py-2 active text-purple" href="{{ '/docs/configuration/' | relative_url }}">Configuration</a>
-            <a class="nav-link px-0 py-2 text-muted" href="{{ '/docs/examples/' | relative_url }}">Examples</a>
-            <a class="nav-link px-0 py-2 text-muted" href="{{ '/docs/api/' | relative_url }}">API Reference</a>
-            <a class="nav-link px-0 py-2 text-muted" href="{{ '/docs/contributing/' | relative_url }}">Contributing</a>
-          </nav>
+<div class="aw">
+  <section class="aw-section" style="padding-top: 10rem;">
+    <div class="aw-wrap aw-docs">
+      {% include docs-sidebar.html %}
+
+      <div class="aw-docs-body">
+        <h1>Configuration</h1>
+        <p class="aw-lead">The <code>service.json</code> file is the single source of truth for each service. Here is the complete schema.</p>
+
+        <h2>service.json schema</h2>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>service.json — annotated</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"my-service"</span>,           <span class="c">// Required: unique name</span>
+  <span class="k">"appType"</span>: <span class="s">"backend"</span>,             <span class="c">// Required: backend | frontend | library | worker</span>
+  <span class="k">"port"</span>: <span class="n">3000</span>,                     <span class="c">// Required: service port</span>
+  <span class="k">"stack"</span>: <span class="s">"api"</span>,                   <span class="c">// Optional: stack grouping</span>
+  <span class="k">"features"</span>: [                      <span class="c">// Optional: features to enable</span>
+    <span class="s">"typescript"</span>,
+    <span class="s">"vite"</span>,
+    <span class="s">"bun"</span>
+  ],
+  <span class="k">"replicas"</span>: <span class="n">1</span>,                    <span class="c">// Optional: number of replicas</span>
+  <span class="k">"backendName"</span>: <span class="s">"api-backend"</span>,     <span class="c">// Optional: backend for frontend</span>
+  <span class="k">"basePath"</span>: <span class="s">"/api"</span>,               <span class="c">// Optional: URL base path</span>
+  <span class="k">"internalDependencies"</span>: [         <span class="c">// Optional: other services</span>
+    <span class="s">"database"</span>,
+    <span class="s">"cache"</span>
+  ],
+  <span class="k">"envVars"</span>: {                      <span class="c">// Optional: environment variables</span>
+    <span class="k">"NODE_ENV"</span>: <span class="s">"development"</span>,
+    <span class="k">"API_URL"</span>: <span class="s">"http://localhost:3001"</span>
+  }
+}</pre>
+        </div>
+
+        <h2>Required fields</h2>
+
+        <h3>appName</h3>
+        <p>The unique identifier for your service. Lowercase with hyphens.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>service.json</span></div>
+          <pre><span class="k">"appName"</span>: <span class="s">"order-service"</span></pre>
+        </div>
+
+        <h3>appType</h3>
+        <p>The type of service. Determines which generators run.</p>
+        <ul>
+          <li><code>backend</code> — API service</li>
+          <li><code>frontend</code> — web application</li>
+          <li><code>library</code> — shared code package</li>
+          <li><code>worker</code> — background job processor</li>
+          <li><code>migrator</code> — database migration service</li>
+        </ul>
+
+        <h3>port</h3>
+        <p>The port your service listens on.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>service.json</span></div>
+          <pre><span class="k">"port"</span>: <span class="n">3000</span></pre>
+        </div>
+
+        <h2>Optional fields</h2>
+
+        <h3>features</h3>
+        <p>Features to enable. Each one triggers the corresponding generators.</p>
+        <ul>
+          <li><code>typescript</code> — TypeScript support</li>
+          <li><code>vite</code> — Vite bundler</li>
+          <li><code>bun</code> — Bun runtime</li>
+          <li><code>node</code> — Node.js runtime</li>
+          <li><code>nginx</code> — nginx reverse proxy</li>
+          <li><code>playwright</code> — E2E testing</li>
+          <li><code>prisma</code> — database ORM</li>
+        </ul>
+
+        <h3>stack</h3>
+        <p>Groups related services for selective startup and Tilt orchestration.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>service.json</span></div>
+          <pre><span class="k">"stack"</span>: <span class="s">"order-management"</span></pre>
+        </div>
+
+        <h3>internalDependencies</h3>
+        <p>Other services this service depends on. TDK resolves boot order automatically.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>service.json</span></div>
+          <pre><span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>, <span class="s">"redis"</span>, <span class="s">"auth-service"</span>]</pre>
+        </div>
+
+        <h2>Examples by type</h2>
+
+        <h3>Backend service</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>api-gateway / service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"api-gateway"</span>,
+  <span class="k">"appType"</span>: <span class="s">"backend"</span>,
+  <span class="k">"port"</span>: <span class="n">3000</span>,
+  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
+  <span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>, <span class="s">"redis"</span>],
+  <span class="k">"envVars"</span>: {
+    <span class="k">"NODE_ENV"</span>: <span class="s">"development"</span>
+  }
+}</pre>
+        </div>
+
+        <h3>Frontend service</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>web-app / service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"web-app"</span>,
+  <span class="k">"appType"</span>: <span class="s">"frontend"</span>,
+  <span class="k">"port"</span>: <span class="n">5173</span>,
+  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"vite"</span>],
+  <span class="k">"backendName"</span>: <span class="s">"api-gateway"</span>,
+  <span class="k">"basePath"</span>: <span class="s">"/app"</span>
+}</pre>
         </div>
       </div>
-
-      <!-- Content -->
-      <div class="col-lg-9">
-        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Configuration</h1>
-        <p class="lead" style="color: var(--color-gray-600); font-size: 1.25rem; margin-bottom: 2rem;">
-          Learn about service.json and all available options.
-        </p>
-
-        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">service.json Schema</h2>
-        <p style="font-size: 1.125rem; color: var(--color-gray-700); margin-bottom: 1.5rem;">
-          The <code>service.json</code> file is the single source of truth for each service. Here's the complete schema:
-        </p>
-
-        <pre style="margin-bottom: 2rem;"><code>{
-  "appName": "my-service",           // Required: Unique name
-  "appType": "backend",            // Required: backend | frontend | library | worker
-  "port": 3000,                    // Required: Service port
-  "stack": "api",                  // Optional: Stack grouping
-  "features": [                     // Optional: Features to enable
-    "typescript",
-    "vite",
-    "bun"
-  ],
-  "replicas": 1,                   // Optional: Number of replicas
-  "backendName": "api-backend",    // Optional: Backend for frontend
-  "basePath": "/api",              // Optional: URL base path
-  "internalDependencies": [        // Optional: Other services
-    "database",
-    "cache"
-  ],
-  "envVars": {                     // Optional: Environment variables
-    "NODE_ENV": "development",
-    "API_URL": "http://localhost:3001"
-  }
-}</code></pre>
-
-        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">Required Fields</h2>
-        
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">appName</h3>
-        <p style="margin-bottom: 1rem;">The unique identifier for your service. Must be lowercase with hyphens.</p>
-        <pre style="margin-bottom: 1.5rem;"><code>"appName": "order-service"</code></pre>
-
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">appType</h3>
-        <p style="margin-bottom: 1rem;">The type of service. Affects which generators run.</p>
-        <ul style="margin-bottom: 1.5rem;">
-          <li><code>backend</code> - API service</li>
-          <li><code>frontend</code> - Web application</li>
-          <li><code>library</code> - Shared code package</li>
-          <li><code>worker</code> - Background job processor</li>
-          <li><code>migrator</code> - Database migration service</li>
-        </ul>
-
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">port</h3>
-        <p style="margin-bottom: 1rem;">The port your service listens on.</p>
-        <pre style="margin-bottom: 1.5rem;"><code>"port": 3000</code></pre>
-
-        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">Optional Fields</h2>
-        
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">features</h3>
-        <p style="margin-bottom: 1rem;">List of features to enable. Triggers corresponding generators.</p>
-        <ul style="margin-bottom: 1.5rem;">
-          <li><code>typescript</code> - TypeScript support</li>
-          <li><code>vite</code> - Vite bundler</li>
-          <li><code>bun</code> - Bun runtime</li>
-          <li><code>node</code> - Node.js runtime</li>
-          <li><code>nginx</code> - Nginx reverse proxy</li>
-          <li><code>playwright</code> - E2E testing</li>
-          <li><code>prisma</code> - Database ORM</li>
-        </ul>
-
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">stack</h3>
-        <p style="margin-bottom: 1rem;">Groups related services together for Tilt orchestration.</p>
-        <pre style="margin-bottom: 1.5rem;"><code>"stack": "order-management"</code></pre>
-
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">internalDependencies</h3>
-        <p style="margin-bottom: 1rem;">Other services this service depends on.</p>
-        <pre style="margin-bottom: 1.5rem;"><code>"internalDependencies": ["database", "redis", "auth-service"]</code></pre>
-
-        <h2 style="font-size: 1.75rem; margin: 2rem 0 1rem;">Examples by Type</h2>
-
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">Backend Service</h3>
-        <pre style="margin-bottom: 1.5rem;"><code>{
-  "appName": "api-gateway",
-  "appType": "backend",
-  "port": 3000,
-  "features": ["typescript", "bun"],
-  "internalDependencies": ["database", "redis"],
-  "envVars": {
-    "NODE_ENV": "development"
-  }
-}</code></pre>
-
-        <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.75rem;">Frontend Service</h3>
-        <pre style="margin-bottom: 1.5rem;"><code>{
-  "appName": "web-app",
-  "appType": "frontend",
-  "port": 5173,
-  "features": ["typescript", "vite"],
-  "backendName": "api-gateway",
-  "basePath": "/app"
-}</code></pre>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.aw-docs-body h1, .aw-docs-body .aw-lead', { y: 40, opacity: 0, stagger: 0.12, duration: 1, ease: 'power3.out', delay: 0.1 });
+  gsap.utils.toArray('.aw-codeblock').forEach(function (block) {
+    gsap.from(block, {
+      y: 30, opacity: 0, duration: 0.7, ease: 'power3.out',
+      scrollTrigger: { trigger: block, start: 'top 88%' }
+    });
+  });
+}
+</script>
