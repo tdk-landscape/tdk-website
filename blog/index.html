@@ -3,206 +3,188 @@ layout: default
 title: Blog - TDK CLI
 ---
 
-<div class="aw aw-blog">
-
-  <section class="aw-subhero">
-    <div class="aw-subhero-grid">
-      <div>
-        <h1>SDD is not a silver bullet. <span class="aw-accent">That is why TDK matters.</span></h1>
-      </div>
-      <div class="aw-blog-kicker">
-        <strong>Practical notes for local development</strong>
-        <p>SDD clarifies intent. TDK makes the system run, stay documented, and stay useful on ordinary laptops.</p>
+<div class="aw aw-blog aw-blog-index">
+  <section class="aw-blog-hero">
+    <div class="aw-blog-hero-media" aria-hidden="true"></div>
+    <div class="aw-blog-hero-inner">
+      <h1>Specs clarify the work. <span class="aw-inline-image" aria-hidden="true"></span> TDK makes it run.</h1>
+      <p>Field notes for teams building service-heavy products without turning every developer into a platform engineer.</p>
+      <div class="aw-blog-hero-actions">
+        <a class="aw-btn aw-btn-solid" href="#featured">Read the field guide</a>
+        <a class="aw-btn aw-btn-ghost" href="#library">Browse all articles</a>
       </div>
     </div>
   </section>
 
-  <section class="aw-section" style="padding-top: 0;">
+  <div class="aw-topic-marquee" aria-label="Topics covered in the TDK field guide">
+    <div class="aw-topic-track">
+      <span>Spec-driven development</span><span>Local feedback</span><span>Service topology</span><span>Generated infrastructure</span><span>AI context</span><span>Team ownership</span>
+      <span aria-hidden="true">Spec-driven development</span><span aria-hidden="true">Local feedback</span><span aria-hidden="true">Service topology</span><span aria-hidden="true">Generated infrastructure</span><span aria-hidden="true">AI context</span><span aria-hidden="true">Team ownership</span>
+    </div>
+  </div>
+
+  <section class="aw-section aw-blog-featured" id="featured">
     <div class="aw-wrap">
-      <div class="aw-article-shell">
-        <article class="aw-article-card">
-          <header>
-            <div class="aw-article-meta" aria-label="Article details">
-              <span>September 11, 2026</span>
-              <span>6 min read</span>
-              <span>Article 01</span>
-            </div>
-            <h2>Spec-driven development helps. Execution still decides whether teams move.</h2>
-            <p class="aw-article-intro">A good spec reduces fog. It does not boot your services, wire secrets, catch stale docs, or prove the stack works on a developer laptop.</p>
-          </header>
+      <div class="aw-blog-section-head">
+        <h2>Start with the argument</h2>
+        <p>Three essays on the distance between written intent and a system developers can trust.</p>
+      </div>
 
-          <div class="aw-article-body">
-            <section>
-              <h3>What SDD gets right</h3>
-              <p>Spec-driven development gives teams a stronger starting point. It asks people to describe intent before implementation, which makes the work easier to review and easier to hand to an AI assistant. It also gives founders and technical leads a shared artifact that is more concrete than a meeting note.</p>
-              <p>That matters. Ambiguity is expensive. A spec can name the desired behavior, the boundaries of a service, and the tradeoffs a team believes it is making. For product engineers, that is better than guessing from a ticket title. For platform engineers, it can make infrastructure expectations visible before code exists.</p>
-            </section>
+      <div class="aw-featured-grid">
+        <a class="aw-featured-story aw-featured-story-main" href="{{ '/blog/articles/the-spec-is-the-map-not-the-terrain/' | relative_url }}">
+          <span class="aw-featured-image aw-featured-image-map" aria-hidden="true"></span>
+          <span class="aw-featured-content">
+            <span class="aw-featured-category">Spec-driven development</span>
+            <strong>The Spec Is the Map, Not the Terrain</strong>
+            <span>Use specs to reduce ambiguity without confusing written intent for production behavior.</span>
+            <span class="aw-story-link">Read article <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
+          </span>
+        </a>
 
-            <section>
-              <h3>Where SDD stops helping</h3>
-              <p>SDD does not replace product judgment. It cannot tell you whether the customer problem is worth solving, whether the architecture is overbuilt, or whether a dependency will behave under real usage. A clear spec can still describe the wrong thing with perfect confidence.</p>
-              <p>It also does not solve integration. The hard part of local microservice development is rarely writing one service in isolation. The hard part is getting databases, queues, frontends, gateways, credentials, generated clients, test runners, and documentation to agree with each other while the system keeps changing.</p>
-              <p>That is where many teams feel the gap: the spec says what should exist, but the laptop still says no.</p>
-            </section>
+        <a class="aw-featured-story" href="{{ '/blog/articles/when-specs-lie-quietly/' | relative_url }}">
+          <span class="aw-featured-image aw-featured-image-signal" aria-hidden="true"></span>
+          <span class="aw-featured-content">
+            <span class="aw-featured-category">Failure modes</span>
+            <strong>When Specs Lie Quietly</strong>
+            <span>Stale assumptions and tidy requirements can create false confidence.</span>
+            <span class="aw-story-link">Read article <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
+          </span>
+        </a>
 
-            <div class="aw-article-note">
-              TDK starts from one service definition, then generates the local development surface around it: Docker, TypeScript, Tilt, Starlark, docs, credentials, and assistant context.
-            </div>
+        <a class="aw-featured-story" href="{{ '/blog/articles/why-tdk-matters-after-the-spec/' | relative_url }}">
+          <span class="aw-featured-image aw-featured-image-runtime" aria-hidden="true"></span>
+          <span class="aw-featured-content">
+            <span class="aw-featured-category">Execution</span>
+            <strong>Why TDK Matters After the Spec</strong>
+            <span>Pair clear intent with a workbench that can run the actual system.</span>
+            <span class="aw-story-link">Read article <i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-            <section>
-              <h3>The gap TDK fills</h3>
-              <p>TDK is the execution layer below the idea. It turns service definitions into runnable local systems, then keeps generated files and generated docs aligned with the live topology. The goal is not to hide engineering reality. The goal is to make the repeatable parts boring enough that teams can focus on the judgment calls.</p>
-              <p>Each service definition can produce about <span class="aw-mono">{{ site.data.tdk.files_per_service }}</span> files per service and <span class="aw-mono">{{ site.data.tdk.stack_artifacts }}</span> stack-wide artifacts. Those artifacts use ordinary Docker, TypeScript, Tilt, and Starlark conventions, so teams keep the generated files and avoid lock-in.</p>
-              <p>For AI-assisted work, that structure is useful context. A generated briefing can tell an assistant what the services are, how they depend on each other, which files are generated, and where changes belong. The result is less guessing and fewer confident edits in the wrong place.</p>
-            </section>
+  <section class="aw-section aw-blog-paths" aria-labelledby="paths-title">
+    <div class="aw-wrap">
+      <div class="aw-blog-section-head">
+        <h2 id="paths-title">Choose a way in</h2>
+        <p>The library is broad. These reading paths group the questions teams usually meet together.</p>
+      </div>
+      <div class="aw-path-accordion">
+        <a class="aw-path is-open" href="#library" data-blog-filter="SDD"><span class="aw-path-title">Intent and execution</span><span class="aw-path-copy">Where specs help, where they stop, and how runnable proof closes the gap.</span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        <a class="aw-path" href="#library" data-blog-filter="Local Dev"><span class="aw-path-title">A truthful laptop</span><span class="aw-path-copy">Fast feedback, selective startup, ports, hot reload, and reproducibility.</span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        <a class="aw-path" href="#library" data-blog-filter="AI"><span class="aw-path-title">Context for assistants</span><span class="aw-path-copy">Topology, boundaries, ownership, and generated briefings for safer AI work.</span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        <a class="aw-path" href="#library" data-blog-filter="Ownership"><span class="aw-path-title">Tools teams can leave</span><span class="aw-path-copy">Inspectable output, standard files, open licensing, and practical escape hatches.</span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
 
-            <section>
-              <h3>What good looks like in practice</h3>
-              <p>A new engineer should be able to clone the repo, run one command, and see the whole system. Not a mock. Not one happy-path service. The databases, queues, frontends, workers, and APIs should run together on a normal machine.</p>
-              <p>TDK is built for that shape of work. The current stack proves <span class="aw-mono">{{ site.data.tdk.scale_services }}</span> services in daily use, with a cold boot claim of <span class="aw-mono">{{ site.data.tdk.boot_claim }}</span> on a <span class="aw-mono">{{ site.data.tdk.machine }}</span>. That is not a replacement for production feedback. It is a practical way to make local feedback fast enough that developers keep using it.</p>
-              <p>Good local tooling should also handle the awkward parts without pretending they are elegant. Managed credentials, reproducible local stacks, generated diagrams, generated assistant briefings, and selective startup all exist because real teams have to integrate messy systems without spending every morning in Kubernetes configuration.</p>
-            </section>
-
-            <section>
-              <h3>The honest takeaway</h3>
-              <p>SDD is valuable when it improves the conversation before code. TDK is valuable when that conversation needs to become a working system. One clarifies intent. The other makes the intent runnable, inspectable, and teachable to the next developer or AI assistant.</p>
-              <p>The right promise is modest: fewer stale docs, fewer laptop setup rituals, fewer hidden credentials, and less local infrastructure ceremony. That is enough. Teams do not need a silver bullet. They need the workbench to be ready when the work begins.</p>
-            </section>
+  <section class="aw-section aw-blog-library-section" id="library">
+    <div class="aw-wrap aw-library-layout">
+      <div class="aw-library-intro">
+        <h2>Read for the problem in front of you.</h2>
+        <p class="aw-library-statement">One hundred practical notes on specs, local development, platform work, testing, security, and the systems between them.</p>
+        <div class="aw-library-count" aria-live="polite"><strong data-visible-count>{{ site.data.blog_articles | size }}</strong> articles shown</div>
+      </div>
+      <div class="aw-library-content">
+        <div class="aw-library-tools" aria-label="Filter articles">
+          <label class="aw-library-search"><span class="visually-hidden">Search articles</span><i class="bi bi-search" aria-hidden="true"></i><input type="search" placeholder="Search the field guide" data-blog-search /></label>
+          <div class="aw-library-filters" role="group" aria-label="Filter by category">
+            <button class="is-active" type="button" data-blog-filter="all">All</button><button type="button" data-blog-filter="SDD">SDD</button><button type="button" data-blog-filter="Local Dev">Local dev</button><button type="button" data-blog-filter="AI">AI</button><button type="button" data-blog-filter="Tooling">Tooling</button><button type="button" data-blog-filter="Teams">Teams</button>
           </div>
-        </article>
-
-        <aside class="aw-blog-side" aria-label="Article context">
-          <div class="aw-blog-side-card">
-            <h4>In this article</h4>
-            <ul>
-              <li>Why specs reduce ambiguity</li>
-              <li>Why integration remains hard</li>
-              <li>Where TDK fits in the workflow</li>
-              <li>What local readiness should feel like</li>
-            </ul>
-          </div>
-          <div class="aw-blog-side-card">
-            <h4>Useful numbers</h4>
-            <p><code>{{ site.data.tdk.product_features }}</code> capabilities, <code>{{ site.data.tdk.files_per_service }}</code> files per service, and <code>{{ site.data.tdk.stack_artifacts }}</code> stack artifacts generated from ordinary definitions.</p>
-          </div>
-        </aside>
+        </div>
+        <div class="aw-library-grid">
+          {% for article in site.data.blog_articles %}
+            {% assign article_slug = article.title | slugify %}
+            <a class="aw-library-card" href="{{ '/blog/articles/' | append: article_slug | append: '/' | relative_url }}" data-category="{{ article.category | escape }}" data-search="{{ article.title | append: ' ' | append: article.summary | downcase | escape }}">
+              <div class="aw-library-meta"><span>{{ article.category }}</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></div>
+              <h3>{{ article.title }}</h3><p>{{ article.summary }}</p>
+            </a>
+          {% endfor %}
+        </div>
+        <p class="aw-library-empty" hidden>No articles match that search. Try a broader term or another category.</p>
       </div>
     </div>
   </section>
 
-  <section class="aw-section" style="padding-top: 0;">
+  <section class="aw-section aw-blog-quotes" aria-labelledby="field-note-title">
     <div class="aw-wrap">
-      <div class="aw-head">
-        <h2>TDK matters because</h2>
-        <p>It handles the practical layer that specs describe but do not operate.</p>
-      </div>
-
-      <div class="aw-matters-grid">
-        <div class="aw-matter">
-          <strong>Day-one onboarding</strong>
-          <span>clone repo, run tdk up</span>
-          <p>New hires get a runnable system before setup work becomes the project.</p>
+      <div class="aw-quote-stage">
+        <h2 id="field-note-title">From the field guide</h2>
+        <div class="aw-quote-slides" aria-live="polite">
+          <blockquote class="is-active">“A clear spec can still describe the wrong thing with perfect confidence.”</blockquote>
+          <blockquote>“The spec says what should exist. The laptop still has to prove it.”</blockquote>
+          <blockquote>“Teams do not need more local ceremony. They need repeatable evidence.”</blockquote>
         </div>
-        <div class="aw-matter">
-          <strong>Ordinary laptop friendly</strong>
-          <span>{{ site.data.tdk.machine }}</span>
-          <p>Local development stays local, including weak wifi and travel days.</p>
-        </div>
-        <div class="aw-matter">
-          <strong>Reproducible stacks</strong>
-          <span>Docker + Tilt + Starlark</span>
-          <p>Every developer gets the same orchestration rules without a cluster.</p>
-        </div>
-        <div class="aw-matter">
-          <strong>Docs that track reality</strong>
-          <span>C4 + AGENTS.md</span>
-          <p>Generated diagrams and assistant briefings follow the live service graph.</p>
-        </div>
-        <div class="aw-matter">
-          <strong>Managed credentials</strong>
-          <span>Infisical identities</span>
-          <p>Secrets belong in managed paths, not screenshots or forgotten setup docs.</p>
-        </div>
-        <div class="aw-matter">
-          <strong>No lock-in</strong>
-          <span>MIT license</span>
-          <p>The output remains standard files your team can keep and inspect.</p>
-        </div>
+        <div class="aw-quote-controls"><button type="button" data-quote-prev aria-label="Previous field note"><i class="bi bi-arrow-left" aria-hidden="true"></i></button><span><strong data-quote-current>1</strong> / 3</span><button type="button" data-quote-next aria-label="Next field note"><i class="bi bi-arrow-right" aria-hidden="true"></i></button></div>
       </div>
     </div>
   </section>
 
-  <section class="aw-section aw-blog-library-section" id="library" style="padding-top: 0;">
-    <div class="aw-wrap">
-      <div class="aw-head">
-        <h2>Article library</h2>
-        <p>One featured essay plus 100 practical article pages for the TDK field guide.</p>
-      </div>
-
-      <div class="aw-library-grid">
-        {% for article in site.data.blog_articles %}
-          {% assign article_slug = article.title | slugify %}
-          <a class="aw-library-card" href="{{ '/blog/articles/' | append: article_slug | append: '/' | relative_url }}">
-            <div class="aw-library-meta">
-              <span class="aw-mono">{{ forloop.index | prepend: '00' | slice: -3, 3 }}</span>
-              <span>{{ article.category }}</span>
-            </div>
-            <h3>{{ article.title }}</h3>
-            <p>{{ article.summary }}</p>
-          </a>
-        {% endfor %}
-      </div>
-    </div>
+  <section class="aw-section aw-blog-action">
+    <div class="aw-wrap"><div class="aw-band"><h2>Make the spec runnable.</h2><p>See how TDK turns service definitions into local infrastructure your team can inspect and keep.</p><div class="aw-blog-cta-actions"><a href="{{ '/docs/' | relative_url }}" class="aw-btn aw-btn-solid">Read the docs</a><a href="{{ '/#waitlist' | relative_url }}" class="aw-btn aw-btn-ghost">Join waitlist</a></div></div></div>
   </section>
-
-  <section class="aw-section" style="padding-top: 0;">
-    <div class="aw-wrap">
-      <div class="aw-band">
-        <h2>Make the spec runnable</h2>
-        <p>Read the docs, then join the waitlist if your team wants local stacks that stay honest.</p>
-        <div class="aw-blog-cta-actions">
-          <a href="{{ '/docs/' | relative_url }}" class="aw-btn aw-btn-solid">Read docs</a>
-          <a href="{{ '/#waitlist' | relative_url }}" class="aw-btn aw-btn-ghost">Join waitlist</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-var REDUCED_BLOG = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (!REDUCED_BLOG && window.gsap && window.ScrollTrigger) {
+(function () {
+  var root = document.querySelector('.aw-blog-index');
+  if (!root) return;
+  var cards = Array.prototype.slice.call(root.querySelectorAll('.aw-library-card'));
+  var search = root.querySelector('[data-blog-search]');
+  var filters = Array.prototype.slice.call(root.querySelectorAll('.aw-library-filters [data-blog-filter]'));
+  var count = root.querySelector('[data-visible-count]');
+  var empty = root.querySelector('.aw-library-empty');
+  var activeCategory = 'all';
+
+  function applyFilters() {
+    var query = search.value.trim().toLowerCase();
+    var visible = 0;
+    cards.forEach(function (card) {
+      var matchesCategory = activeCategory === 'all' || card.dataset.category === activeCategory;
+      var matchesSearch = !query || card.dataset.search.indexOf(query) !== -1;
+      card.hidden = !(matchesCategory && matchesSearch);
+      if (!card.hidden) visible += 1;
+    });
+    count.textContent = visible;
+    empty.hidden = visible !== 0;
+  }
+
+  filters.forEach(function (button) {
+    button.addEventListener('click', function () {
+      activeCategory = button.dataset.blogFilter;
+      filters.forEach(function (item) { item.classList.toggle('is-active', item === button); });
+      applyFilters();
+    });
+  });
+  root.querySelectorAll('.aw-path[data-blog-filter]').forEach(function (path) {
+    path.addEventListener('mouseenter', function () { root.querySelectorAll('.aw-path').forEach(function (item) { item.classList.toggle('is-open', item === path); }); });
+    path.addEventListener('click', function () {
+      activeCategory = path.dataset.blogFilter;
+      filters.forEach(function (item) { item.classList.toggle('is-active', item.dataset.blogFilter === activeCategory); });
+      applyFilters();
+    });
+  });
+  search.addEventListener('input', applyFilters);
+
+  var quotes = Array.prototype.slice.call(root.querySelectorAll('.aw-quote-slides blockquote'));
+  var currentQuote = 0;
+  function showQuote(index) {
+    currentQuote = (index + quotes.length) % quotes.length;
+    quotes.forEach(function (quote, quoteIndex) { quote.classList.toggle('is-active', quoteIndex === currentQuote); });
+    root.querySelector('[data-quote-current]').textContent = currentQuote + 1;
+  }
+  root.querySelector('[data-quote-prev]').addEventListener('click', function () { showQuote(currentQuote - 1); });
+  root.querySelector('[data-quote-next]').addEventListener('click', function () { showQuote(currentQuote + 1); });
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
-
-  gsap.from('.aw-blog .aw-subhero h1', { y: 42, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.1 });
-  gsap.from('.aw-blog-kicker', { y: 28, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 0.28 });
-
-  gsap.from('.aw-article-card', {
-    y: 36, opacity: 0, duration: 0.85, ease: 'power3.out',
-    scrollTrigger: { trigger: '.aw-article-shell', start: 'top 82%' }
-  });
-
-  gsap.from('.aw-blog-side-card', {
-    y: 24, opacity: 0, stagger: 0.08, duration: 0.7, ease: 'power3.out',
-    scrollTrigger: { trigger: '.aw-blog-side', start: 'top 82%' }
-  });
-
-  gsap.from('.aw-matter', {
-    y: 30, opacity: 0, stagger: 0.06, duration: 0.7, ease: 'power3.out',
-    scrollTrigger: { trigger: '.aw-matters-grid', start: 'top 80%' }
-  });
-
-  gsap.from('.aw-library-card', {
-    y: 24, opacity: 0, stagger: 0.015, duration: 0.55, ease: 'power3.out',
-    scrollTrigger: { trigger: '.aw-library-grid', start: 'top 82%' }
-  });
-
-  gsap.from('.aw-blog .aw-band', {
-    y: 48, opacity: 0, duration: 0.85, ease: 'power3.out',
-    scrollTrigger: { trigger: '.aw-blog .aw-band', start: 'top 85%' }
-  });
-}
+  gsap.from('.aw-blog-hero h1, .aw-blog-hero p, .aw-blog-hero-actions', { y: 42, opacity: 0, duration: 1, stagger: 0.12, ease: 'power3.out' });
+  gsap.from('.aw-featured-story', { y: 80, opacity: 0, stagger: 0.12, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: '.aw-featured-grid', start: 'top 82%' } });
+  ScrollTrigger.create({ trigger: '.aw-blog-library-section', start: 'top top+=110', end: 'bottom bottom-=120', pin: '.aw-library-intro', pinSpacing: false });
+  gsap.from('.aw-library-card', { y: 70, opacity: 0, stagger: 0.025, duration: 0.65, ease: 'power2.out', scrollTrigger: { trigger: '.aw-library-grid', start: 'top 84%' } });
+  gsap.fromTo('.aw-library-statement', { opacity: 0.18 }, { opacity: 1, scrollTrigger: { trigger: '.aw-blog-library-section', start: 'top 72%', end: 'top 32%', scrub: true } });
+})();
 </script>
