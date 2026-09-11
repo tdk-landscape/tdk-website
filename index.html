@@ -1,6 +1,6 @@
 ---
 layout: default
-title: TDK CLI - Kubernetes-Free Microservice Development
+title: Kubernetes-Free Microservice Development
 description: Run complete microservice landscapes locally in seconds with generated Docker, Traefik, Tilt, health checks, and service URLs. No Kubernetes required.
 ---
 
@@ -1532,12 +1532,12 @@ body { background: #0a0a0e; overflow-x: hidden; }
           <div class="aw-route-stage">
             <div class="aw-route-head">
               <div>
-                <h3>Every service is already on the network.</h3>
-                <p>TDK auto-launches every URL. Traefik handles discovery, health checks, retries, and paths so ports stay out of your team&apos;s mental model.</p>
+                <h3>Every service is on the network in seconds.</h3>
+                <p>It looks like weeks of integration. TDK launches the topology at once while Traefik handles discovery, health checks, retries, and paths.</p>
               </div>
               <div class="aw-route-proof">
-                <strong><i class="bi bi-stopwatch" aria-hidden="true"></i> Ready in seconds, not weeks</strong>
-                <span>All six routes are generated and go live as soon as their services pass health checks.</span>
+                <strong><i class="bi bi-stopwatch" aria-hidden="true"></i> {{ site.data.tdk.demo_services }} services healthy in {{ site.data.tdk.demo_boot }}</strong>
+                <span>Measured on a {{ site.data.tdk.machine }}. Every route goes live as soon as its service passes health checks.</span>
                 <span class="aw-route-domain">*.commerce.localhost</span>
               </div>
             </div>

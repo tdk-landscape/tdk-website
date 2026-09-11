@@ -1,5 +1,6 @@
 title: TDK CLI
 email: hello@tdk.dev
+lang: en_US
 description: >-
   Kubernetes-free microservice development. Run 5-30+ services locally
   without learning Kubernetes. One service.json generates 12-17 files per service.
@@ -28,6 +29,10 @@ collections:
     permalink: /:collection/:path/
 
 defaults:
+  - scope:
+      path: ""
+    values:
+      sitemap: true
   - scope:
       path: "blog/articles"
     values:
