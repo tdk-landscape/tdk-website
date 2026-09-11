@@ -145,6 +145,14 @@
   color: rgba(236, 236, 241, 0.4);
 }
 
+.aw-fit-field label small {
+  display: block;
+  margin-top: 0.35rem;
+  color: rgba(236, 236, 241, 0.42);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
 .aw-fit-field output {
   display: block;
   font-size: 1.25rem;
@@ -185,6 +193,16 @@
   background: #9b77ff;
   color: #09090c;
   font-weight: 600;
+}
+
+.aw-fit-pills[data-group="today"] {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.aw-fit-pills[data-group="today"] button {
+  min-height: 2.65rem;
+  text-align: left;
 }
 
 .aw-fit-result {
@@ -314,8 +332,8 @@
           </div>
 
           <div class="aw-fit-field">
-            <label>How do you run things locally today?</label>
-            <div class="aw-fit-pills" data-group="today">
+            <label>How do you run things locally today?<small>Choose the setup closest to your current workflow.</small></label>
+            <div class="aw-fit-pills" data-group="today" role="group" aria-label="Current local development setup">
               <button type="button" data-value="10" data-profile="kubernetes">Kubernetes (kind / minikube / k3d)</button>
               <button type="button" data-value="9" data-profile="mixed">Mix of scripts, containers &amp; manual steps</button>
               <button type="button" data-value="8" data-profile="compose" class="is-active">Docker Compose</button>
@@ -402,9 +420,14 @@ document.querySelectorAll('.aw-fit-pills').forEach(function (group) {
         group.querySelector('button[data-exclusive="true"]').classList.remove('is-active');
         btn.classList.toggle('is-active');
       }
+      group.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b.classList.contains('is-active') ? 'true' : 'false'); });
       calcFit();
     });
   });
+});
+
+document.querySelectorAll('.aw-fit-pills button').forEach(function (btn) {
+  btn.setAttribute('aria-pressed', btn.classList.contains('is-active') ? 'true' : 'false');
 });
 
 function selectedValues(group) {
