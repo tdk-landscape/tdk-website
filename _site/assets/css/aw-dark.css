@@ -214,6 +214,13 @@ body:has(.aw) .site-footer {
   gap: 1rem;
 }
 
+/* Varied spans: asymmetric rhythm, mathematically gapless with dense flow.
+   7 items: rows [2+1] [1+2] [1+1+1]. 9 items: dense backfill closes every row. */
+.aw-grid-varied { grid-auto-flow: dense; }
+
+.aw-grid-varied > :nth-child(6n+1):not(:last-child) { grid-column: span 2; }
+.aw-grid-varied > :nth-child(6n+4) { grid-column: span 2; }
+
 /* ---------------- Blocked-devs story (pinned split) ---------------- */
 .aw-story {
   display: grid;
@@ -586,8 +593,7 @@ body:has(.aw) .site-footer {
   text-align: center;
   background: radial-gradient(circle at 35% 30%, rgba(124, 77, 255, 0.45) 0%, #1a1230 70%);
   border: 1px solid rgba(183, 154, 255, 0.5);
-  box-shadow: 0 0 80px rgba(124, 77, 255, 0.35);
-  animation: aw-orbit-pulse 3.2s ease-in-out infinite;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .aw-orbit-center strong {
@@ -601,11 +607,6 @@ body:has(.aw) .site-footer {
   font-size: 0.8125rem;
   color: #b79aff;
   margin-top: 0.25rem;
-}
-
-@keyframes aw-orbit-pulse {
-  0%, 100% { box-shadow: 0 0 60px rgba(124, 77, 255, 0.25); }
-  50% { box-shadow: 0 0 110px rgba(124, 77, 255, 0.5); }
 }
 
 .aw-orbit-chip {
@@ -664,6 +665,8 @@ body:has(.aw) .site-footer {
   .aw-subhero-grid { grid-template-columns: 1fr; align-items: start; }
   .aw-cat-head { grid-template-columns: 1fr; gap: 1rem; }
   .aw-feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .aw-grid-varied > * { grid-column: span 1; }
+  .aw-grid-varied > :last-child { grid-column: span 2; } /* odd-count grids close cleanly */
   .aw-story { grid-template-columns: 1fr; }
   .aw-docs { grid-template-columns: 1fr; }
   .aw-docs-side { position: relative; top: 0; }

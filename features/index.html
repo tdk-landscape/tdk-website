@@ -63,7 +63,7 @@ title: Features - TDK CLI
           <h3>Configuration generation</h3>
           <p>One service.json becomes ten production-grade files per service — written correctly, kept in sync forever.</p>
         </div>
-        <div class="aw-feature-grid">
+        <div class="aw-feature-grid aw-grid-varied">
           <div class="aw-card"><span class="aw-idx">01</span><h4>TypeScript config</h4><p>tsconfig.json with proper paths, includes and compiler options for backend, frontend and libraries.</p></div>
           <div class="aw-card"><span class="aw-idx">02</span><h4>Vite configuration</h4><p>vite.config.ts for local, Docker and production builds with optimized settings.</p></div>
           <div class="aw-card"><span class="aw-idx">03</span><h4>Docker and Compose</h4><p>Multi-stage Dockerfile with golden image layering. Compose orchestration per service.</p></div>
@@ -79,7 +79,7 @@ title: Features - TDK CLI
           <h3>Development experience</h3>
           <p>Built on Tilt — {{ site.data.tdk.tilt_stars }} GitHub stars — for a feedback loop measured in seconds.</p>
         </div>
-        <div class="aw-feature-grid">
+        <div class="aw-feature-grid aw-grid-varied">
           <div class="aw-card"><span class="aw-idx">08</span><h4>Hot reload</h4><p>Instant code sync with Tilt live_update. No container rebuilds while you type.</p></div>
           <div class="aw-card"><span class="aw-idx">09</span><h4>Selective startup</h4><p>Run 5 services instead of {{ site.data.tdk.scale_plain }}. Start only what your task touches.</p></div>
           <div class="aw-card"><span class="aw-idx">10</span><h4>Auto-discovery</h4><p>Finds every service.json in your directory tree. Zero manual registration.</p></div>
@@ -95,7 +95,7 @@ title: Features - TDK CLI
           <h3>Infrastructure</h3>
           <p>Production-grade Docker architecture without a production-grade ops team.</p>
         </div>
-        <div class="aw-feature-grid">
+        <div class="aw-feature-grid aw-grid-varied">
           <div class="aw-card"><span class="aw-idx">15</span><h4>Golden images</h4><p>Four cached layers — L1 OS, L2 runtime, L3 builder, L4 app — shared across all services.</p></div>
           <div class="aw-card"><span class="aw-idx">16</span><h4>Docker only</h4><p>Pure Docker + Tilt. No cluster, no control plane, no YAML maze.</p></div>
           <div class="aw-card"><span class="aw-idx">17</span><h4>Traefik integration</h4><p>Pretty URLs like user.backend.localhost, configured automatically.</p></div>
@@ -111,7 +111,7 @@ title: Features - TDK CLI
           <h3>Database and state</h3>
           <p>Per-service PostgreSQL, migrations, cache and events — provisioned, not documented.</p>
         </div>
-        <div class="aw-feature-grid">
+        <div class="aw-feature-grid aw-grid-varied">
           <div class="aw-card"><span class="aw-idx">22</span><h4>Database provisioning</h4><p>Isolated PostgreSQL database per service with proper naming.</p></div>
           <div class="aw-card"><span class="aw-idx">23</span><h4>Prisma integration</h4><p>Prisma config with DATABASE_URL generated. Migrations built in.</p></div>
           <div class="aw-card"><span class="aw-idx">24</span><h4>Readiness checks</h4><p>Services wait for the database. No connection errors on boot.</p></div>
@@ -127,7 +127,7 @@ title: Features - TDK CLI
           <h3>Security and operations</h3>
           <p>The boring, expensive parts — validated before they can break your morning.</p>
         </div>
-        <div class="aw-feature-grid">
+        <div class="aw-feature-grid aw-grid-varied">
           <div class="aw-card"><span class="aw-idx">29</span><h4>Infisical secrets</h4><p>Machine identities, paths and dynamic secrets per service.</p></div>
           <div class="aw-card"><span class="aw-idx">30</span><h4>Pre-flight validators</h4><p>Manifests validated before build. Misconfigurations caught early, in plain language.</p></div>
           <div class="aw-card"><span class="aw-idx">31</span><h4>Dependency manifest</h4><p>A full service graph for complex trees, resolved automatically.</p></div>

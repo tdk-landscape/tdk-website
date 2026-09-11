@@ -36,8 +36,6 @@ body { background: #0a0a0e; overflow-x: hidden; }
   min-height: 100dvh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
   padding: 11rem 1.5rem 9rem;
   overflow: hidden;
 }
@@ -74,11 +72,12 @@ body { background: #0a0a0e; overflow-x: hidden; }
   position: relative;
   width: min(80rem, 100%);
   margin: 0 auto;
+  text-align: left;
 }
 
 .aw-hero h1 {
-  max-width: 80rem;
-  margin: 0 auto 1.75rem;
+  max-width: 64rem;
+  margin: 0 0 1.75rem;
   font-size: clamp(3rem, 5.5vw, 5.75rem);
   line-height: 1.02;
   font-weight: 800;
@@ -99,7 +98,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   color: rgba(236, 236, 241, 0.7);
   font-weight: 300;
   max-width: 42rem;
-  margin: 0 auto 2.75rem;
+  margin: 0 0 2.75rem;
 }
 
 .aw-hero-sub strong { color: #fff; font-weight: 600; }
@@ -108,7 +107,6 @@ body { background: #0a0a0e; overflow-x: hidden; }
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .aw-btn {
@@ -130,7 +128,6 @@ body { background: #0a0a0e; overflow-x: hidden; }
 .aw-btn-solid:hover {
   color: #0a0a0e;
   transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(255, 255, 255, 0.16);
 }
 
 .aw-btn-ghost {
@@ -153,30 +150,6 @@ body { background: #0a0a0e; overflow-x: hidden; }
   .aw-marquee { animation: none; }
   .aw-cursor { animation: none; }
   .aw-card, .aw-price-card, .aw-btn, .aw-carousel-btn { transition: none; }
-}
-
-.aw-hero-scrollhint {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1px;
-  height: 4rem;
-  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(183,154,255,0.8));
-  overflow: hidden;
-}
-
-.aw-hero-scrollhint::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent, #fff, transparent);
-  animation: aw-beam 2.2s ease-in-out infinite;
-}
-
-@keyframes aw-beam {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
 }
 
 /* ---------------- Marquee ---------------- */
