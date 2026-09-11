@@ -1,6 +1,7 @@
 ---
 layout: default
 title: TDK CLI - Kubernetes-Free Microservice Development
+description: Run complete microservice landscapes locally in seconds with generated Docker, Traefik, Tilt, health checks, and service URLs. No Kubernetes required.
 ---
 
 <style>
@@ -759,6 +760,29 @@ body { background: #0a0a0e; overflow-x: hidden; }
   font-size: 0.82rem;
 }
 
+.aw-route-proof {
+  display: grid;
+  justify-items: end;
+  gap: 0.25rem;
+  max-width: 20rem;
+  text-align: right;
+}
+
+.aw-route-proof strong {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #6ee7b7;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.aw-route-proof span {
+  color: rgba(236, 236, 241, 0.56);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
 .aw-route-domain {
   color: #6ee7b7;
   font-family: 'JetBrains Mono', monospace;
@@ -1258,6 +1282,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   .aw-reel-stack { grid-template-columns: 1fr; gap: 0.5rem; }
   .aw-route-grid { grid-template-columns: 1fr; }
   .aw-route-head { align-items: flex-start; flex-direction: column; gap: 0.75rem; }
+  .aw-route-proof { justify-items: start; text-align: left; }
   .aw-section { padding: 6rem 1.25rem; }
 }
 
@@ -1510,7 +1535,11 @@ body { background: #0a0a0e; overflow-x: hidden; }
                 <h3>Every service is already on the network.</h3>
                 <p>TDK auto-launches every URL. Traefik handles discovery, health checks, retries, and paths so ports stay out of your team&apos;s mental model.</p>
               </div>
-              <span class="aw-route-domain">*.commerce.localhost</span>
+              <div class="aw-route-proof">
+                <strong><i class="bi bi-stopwatch" aria-hidden="true"></i> Ready in seconds, not weeks</strong>
+                <span>All six routes are generated and go live as soon as their services pass health checks.</span>
+                <span class="aw-route-domain">*.commerce.localhost</span>
+              </div>
             </div>
 
             <div class="aw-route-grid" aria-label="Locally orchestrated service URLs">
