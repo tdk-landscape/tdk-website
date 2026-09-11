@@ -21,8 +21,8 @@
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <link rel="stylesheet" href="/assets/css/aw-dark.css" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260911" />
+  <link rel="stylesheet" href="/assets/css/aw-dark.css?v=20260911" />
   
   <!-- SEO -->
   <!-- Begin Jekyll SEO tag v2.9.0 -->
@@ -804,6 +804,126 @@ body { background: #0a0a0e; overflow-x: hidden; }
   line-height: 1.6;
 }
 
+.aw-reel-thesis {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(22rem, 1.1fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
+  margin-bottom: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+.aw-reel-thesis h2 {
+  max-width: 44rem;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.5rem, 4.6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+.aw-reel-thesis-copy {
+  max-width: 35rem;
+  margin: 0 0 0.35rem;
+  color: rgba(236, 236, 241, 0.6);
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  line-height: 1.7;
+}
+
+.aw-reel-thesis-copy strong { color: #ececf1; font-weight: 600; }
+
+.aw-route-stage {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background: radial-gradient(circle at 100% 100%, rgba(110, 231, 183, 0.08), transparent 40%), #0b0b10;
+  opacity: 0.28;
+  transform: translateY(10px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.aw-route-stage.is-visible { opacity: 1; transform: translateY(0); }
+
+.aw-route-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.aw-route-head h3 {
+  margin: 0 0 0.35rem;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.aw-route-head p {
+  margin: 0;
+  color: rgba(236, 236, 241, 0.48);
+  font-size: 0.82rem;
+}
+
+.aw-route-domain {
+  color: #6ee7b7;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.aw-route-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.aw-route {
+  display: grid;
+  grid-template-columns: auto minmax(7rem, 0.55fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+  padding: 0.7rem 0.8rem;
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.025);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), background 0.35s ease;
+}
+
+.aw-route.is-visible { opacity: 1; transform: translateY(0); }
+.aw-route:hover { background: rgba(255, 255, 255, 0.05); }
+
+.aw-route-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #6ee7b7;
+  box-shadow: 0 0 0 0.25rem rgba(110, 231, 183, 0.08);
+}
+
+.aw-route strong {
+  overflow: hidden;
+  color: rgba(236, 236, 241, 0.74);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aw-route code {
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #a5d6ff;
+  font-size: 0.68rem;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ---------------- Scrub statement ---------------- */
 .aw-statement { text-align: center; }
 
@@ -1218,6 +1338,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   .aw-card-b { grid-column: span 2; }
   .aw-card-e { grid-column: span 2; }
   .aw-term-split { grid-template-columns: 1fr; }
+  .aw-reel-thesis { grid-template-columns: 1fr; }
   .aw-reel-workspace { grid-template-columns: 1fr; }
   .aw-reel-input { border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
   .aw-pricing-grid { grid-template-columns: 1fr; }
@@ -1241,7 +1362,14 @@ body { background: #0a0a0e; overflow-x: hidden; }
   .aw-bignum-sep { display: none; }
   .aw-reel-files { grid-template-columns: 1fr; }
   .aw-reel-stack { grid-template-columns: 1fr; gap: 0.5rem; }
+  .aw-route-grid { grid-template-columns: 1fr; }
+  .aw-route-head { align-items: flex-start; flex-direction: column; gap: 0.75rem; }
   .aw-section { padding: 6rem 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  .aw-route { grid-template-columns: auto minmax(0, 1fr); }
+  .aw-route code { grid-column: 2; text-align: left; }
 }
 </style>
 
@@ -1421,8 +1549,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
         <!-- B: scale numbers (2x1) -->
         <div class="aw-card aw-card-b">
-          <h3>One manifest in. Ten files out.</h3>
-          <p>Three numbers, three different axes — all from the same service.json.</p>
+          <h3>One manifest in. 12-17 files out.</h3>
+          <p>Service output and stack contracts, both derived from the same service.json.</p>
           <div class="aw-bignums">
             <div class="aw-bignum">
               <strong>12-17</strong>
@@ -1504,117 +1632,97 @@ body { background: #0a0a0e; overflow-x: hidden; }
     </div>
   </section>
 
-  <!-- ================= SOURCE CAROUSEL ================= -->
+  <!-- ================= GENERATED FILESYSTEM REEL ================= -->
   <section class="aw-section" id="source" style="padding-top: 0;">
     <div class="aw-wrap">
-      <div class="aw-head">
-        <h2>Straight from the source tree</h2>
-        <p>Not marketing mockups. These are the actual generator modules and the artifacts they emit.</p>
+      <div class="aw-reel-thesis">
+        <h2>Watch one manifest become a working service.</h2>
+        <p class="aw-reel-thesis-copy"><strong>No more monolith-shaped AI output.</strong> TDK gives coding agents a legible topology, then keeps dozens of services independently owned, generated, and reachable through one local domain namespace.</p>
       </div>
 
-      <div class="aw-carousel">
-        <div class="aw-carousel-stage" id="aw-stage">
-
-          <div class="aw-slide is-active">
-            <div class="aw-slide-meta">
-              <span class="aw-slide-tag">service.json</span>
-              <h3>One manifest is the whole contract</h3>
-              <p>The single source of truth. Everything else on this page is derived from this file — and regenerated when it changes.</p>
+      <div class="aw-reel-shell">
+        <figure class="aw-reel" id="aw-artifact-reel" aria-label="Animated walkthrough of files generated by TDK">
+          <div class="aw-reel-toolbar">
+            <div class="aw-reel-command">
+              <i class="bi bi-terminal" aria-hidden="true"></i>
+              <span>tdk generate --service order-frontend</span>
             </div>
-            <div class="aw-slide-code">
-              <div class="aw-terminal-bar"><i></i><i></i><i></i><span>service.json</span></div>
-              <pre>{
+            <button class="aw-reel-toggle" type="button" aria-pressed="false">
+              <i class="bi bi-pause-fill" aria-hidden="true"></i>
+              <span>Pause demo</span>
+            </button>
+            <div class="aw-reel-progress" role="progressbar" aria-label="Filesystem generation progress" aria-valuemin="0" aria-valuemax="17" aria-valuenow="0">
+              <span></span>
+            </div>
+          </div>
+
+          <div class="aw-reel-workspace">
+            <div class="aw-reel-pane aw-reel-input">
+              <div class="aw-reel-pane-head">
+                <span class="aw-reel-pane-title"><i class="bi bi-braces" aria-hidden="true"></i> input / service.json</span>
+                <span class="aw-reel-count">1 source</span>
+              </div>
+              <pre class="aw-reel-manifest">{
   <span class="k">"appName"</span>: <span class="s">"order-frontend"</span>,
   <span class="k">"appType"</span>: <span class="s">"frontend"</span>,
   <span class="k">"port"</span>: <span class="n">3001</span>,
   <span class="k">"features"</span>: [<span class="s">"vite"</span>, <span class="s">"typescript"</span>],
   <span class="k">"backendName"</span>: <span class="s">"order-backend"</span>
 }</pre>
+              <div class="aw-reel-status" aria-live="polite">Reading the service contract</div>
+            </div>
+
+            <div class="aw-reel-pane aw-reel-output">
+              <div class="aw-reel-pane-head">
+                <span class="aw-reel-pane-title"><i class="bi bi-folder2-open" aria-hidden="true"></i> output / .autogenerated/</span>
+                <span class="aw-reel-count"><span id="aw-reel-count">0</span> / 17 files</span>
+              </div>
+              <ul class="aw-reel-files">
+                <li class="aw-reel-file"><i class="bi bi-file-earmark-code" aria-hidden="true"></i><span>.env.frontend.autogenerated</span></li>
+                <li class="aw-reel-file"><i class="bi bi-file-earmark-code" aria-hidden="true"></i><span>.npmrc.autogenerated</span></li>
+                <li class="aw-reel-file"><i class="bi bi-file-earmark-code" aria-hidden="true"></i><span>.npmrc.docker.autogenerated</span></li>
+                <li class="aw-reel-file"><i class="bi bi-file-earmark-text" aria-hidden="true"></i><span>AGENTS.md</span></li>
+                <li class="aw-reel-file"><i class="bi bi-box" aria-hidden="true"></i><span>Dockerfile.app.autogenerated</span></li>
+                <li class="aw-reel-file"><i class="bi bi-filetype-ts" aria-hidden="true"></i><span>api-client.ts</span></li>
+                <li class="aw-reel-file"><i class="bi bi-filetype-ts" aria-hidden="true"></i><span>api-index.ts</span></li>
+                <li class="aw-reel-file"><i class="bi bi-file-earmark-code" aria-hidden="true"></i><span>bunfig.autogenerated.toml</span></li>
+                <li class="aw-reel-file"><i class="bi bi-file-earmark-code" aria-hidden="true"></i><span>bunfig.docker.autogenerated.toml</span></li>
+                <li class="aw-reel-file"><i class="bi bi-filetype-ts" aria-hidden="true"></i><span>env.ts</span></li>
+                <li class="aw-reel-file"><i class="bi bi-file-earmark-code" aria-hidden="true"></i><span>nginx.autogenerated.conf</span></li>
+                <li class="aw-reel-file"><i class="bi bi-filetype-ts" aria-hidden="true"></i><span>playwright.config.autogenerated.ts</span></li>
+                <li class="aw-reel-file"><i class="bi bi-braces" aria-hidden="true"></i><span>tsconfig.autogenerated.json</span></li>
+                <li class="aw-reel-file"><i class="bi bi-braces" aria-hidden="true"></i><span>tsconfig.docker.autogenerated.json</span></li>
+                <li class="aw-reel-file"><i class="bi bi-braces" aria-hidden="true"></i><span>validation-report.autogenerated.json</span></li>
+                <li class="aw-reel-file"><i class="bi bi-filetype-ts" aria-hidden="true"></i><span>vite.config.build.autogenerated.ts</span></li>
+                <li class="aw-reel-file"><i class="bi bi-filetype-ts" aria-hidden="true"></i><span>vite.config.frontend.autogenerated.ts</span></li>
+              </ul>
+
+              <div class="aw-reel-stack">
+                <strong>Stack contracts</strong>
+                <span class="aw-reel-stack-files">Tiltfile / TILT_TECH_STACK.star / dependency-manifest.json / docs/architecture.c4 / AGENTS.md</span>
+              </div>
             </div>
           </div>
 
-          <div class="aw-slide">
-            <div class="aw-slide-meta">
-              <span class="aw-slide-tag">engine / docker / layers</span>
-              <h3>Golden L1–L4 Docker layers</h3>
-              <p>OS base, runtime, dependencies, service code — four cached layers so rebuilds take seconds, not minutes. Golden images are shared across every service in the stack.</p>
+          <div class="aw-route-stage">
+            <div class="aw-route-head">
+              <div>
+                <h3>Every service is already on the network.</h3>
+                <p>Traefik discovers the topology, routes each path, and keeps ports out of your team&apos;s mental model.</p>
+              </div>
+              <span class="aw-route-domain">*.commerce.localhost</span>
             </div>
-            <div class="aw-slide-code">
-              <div class="aw-terminal-bar"><i></i><i></i><i></i><span>l1_base_layers.star — real generator</span></div>
-              <pre><span class="c"># L1 Base Layers — OS and Runtime Foundation</span>
-BUN_BASE = <span class="s">"oven/bun:1.3.11-alpine"</span>
-ALPINE_BASE = <span class="s">"alpine:3.18"</span>
 
-<span class="k">def</span> <span class="f">L1_generate_os_base</span>(base_image = <span class="k">None</span>, use_golden = <span class="k">True</span>):
-    <span class="c"># Golden L1 image: deps pre-installed, CVE-patched</span>
-    <span class="k">if</span> base_image == <span class="k">None</span>:
-        base_image = GOLDEN_L1_IMAGE <span class="k">if</span> use_golden <span class="k">else</span> ALPINE_BASE</pre>
+            <div class="aw-route-grid" aria-label="Locally orchestrated service URLs">
+              <div class="aw-route"><span class="aw-route-dot" aria-hidden="true"></span><strong>Storefront</strong><code>app.commerce.localhost/store</code></div>
+              <div class="aw-route"><span class="aw-route-dot" aria-hidden="true"></span><strong>Operations</strong><code>app.commerce.localhost/ops</code></div>
+              <div class="aw-route"><span class="aw-route-dot" aria-hidden="true"></span><strong>Orders API</strong><code>api.commerce.localhost/api/v1/orders</code></div>
+              <div class="aw-route"><span class="aw-route-dot" aria-hidden="true"></span><strong>Inventory API</strong><code>api.commerce.localhost/api/v1/inventory</code></div>
+              <div class="aw-route"><span class="aw-route-dot" aria-hidden="true"></span><strong>Identity API</strong><code>api.commerce.localhost/api/v1/identity</code></div>
+              <div class="aw-route"><span class="aw-route-dot" aria-hidden="true"></span><strong>Payments API</strong><code>api.commerce.localhost/api/v1/payments</code></div>
             </div>
           </div>
-
-          <div class="aw-slide">
-            <div class="aw-slide-meta">
-              <span class="aw-slide-tag">engine / infisical</span>
-              <h3>Secrets with machine identities</h3>
-              <p>TDK generates Infisical machine identity configuration, auth methods and token lifecycle per service — the work that usually becomes a week of shell scripts.</p>
-            </div>
-            <div class="aw-slide-code">
-              <div class="aw-terminal-bar"><i></i><i></i><i></i><span>machine_identity.star — real generator</span></div>
-              <pre><span class="c"># Manages Infisical Machine Identity configuration</span>
-<span class="c"># Replaces: shell scripts for machine identity setup</span>
-AUTH_METHODS = {
-    <span class="s">"universal-auth"</span>: {
-        <span class="k">"env_vars"</span>: [<span class="s">"INFISICAL_CLIENT_ID"</span>,
-                     <span class="s">"INFISICAL_CLIENT_SECRET"</span>],
-        <span class="k">"recommended"</span>: <span class="k">True</span>,
-    },
-    <span class="s">"oidc-auth"</span>: { ... },
-}</pre>
-            </div>
-          </div>
-
-          <div class="aw-slide">
-            <div class="aw-slide-meta">
-              <span class="aw-slide-tag">cli / commands</span>
-              <h3>A CLI that operates the whole stack</h3>
-              <p>Not just up and down — doctor diagnostics, a live terminal UI, network management, stack snapshots and safe upgrades.</p>
-            </div>
-            <div class="aw-slide-code">
-              <div class="aw-terminal-bar"><i></i><i></i><i></i><span>terminal</span></div>
-              <pre><span class="c">$ tdk up</span>          <span class="c"># boot the stack, selective startup</span>
-<span class="c">$ tdk ui</span>          <span class="c"># live terminal dashboard</span>
-<span class="c">$ tdk doctor</span>      <span class="c"># diagnose ports, images, secrets</span>
-<span class="c">$ tdk status</span>      <span class="c"># health of every service</span>
-<span class="c">$ tdk networks</span>    <span class="c"># routing topology, conflict-free</span>
-<span class="c">$ tdk stacks</span>      <span class="c"># snapshot & switch stacks</span>
-<span class="c">$ tdk upgrade</span>     <span class="c"># safe engine upgrades</span></pre>
-            </div>
-          </div>
-
-          <div class="aw-slide">
-            <div class="aw-slide-meta">
-              <span class="aw-slide-tag">engine / generators</span>
-              <h3>Docs and diagrams, generated too</h3>
-              <p>C4 architecture diagrams, a dependency manifest, and AGENTS.md so AI coding assistants understand your stack on day one. Onboarding documentation that cannot rot.</p>
-            </div>
-            <div class="aw-slide-code">
-              <div class="aw-terminal-bar"><i></i><i></i><i></i><span>generated stack artifacts</span></div>
-              <pre>docs/architecture.c4        <span class="c"># C4 system diagram</span>
-AGENTS.md                   <span class="c"># AI-assistant briefing</span>
-dependency-manifest.json    <span class="c"># full service graph</span>
-Tiltfile                    <span class="c"># orchestration entrypoint</span>
-TILT_TECH_STACK.star        <span class="c"># stack topology</span>
-TILT_RESOURCE_DEFAULTS.star <span class="c"># resource policies</span></pre>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="aw-carousel-nav">
-          <button class="aw-carousel-btn" type="button" onclick="awSlide(-1)" aria-label="Previous artifact">←</button>
-          <button class="aw-carousel-btn" type="button" onclick="awSlide(1)" aria-label="Next artifact">→</button>
-          <span class="aw-carousel-dots" id="aw-dots" role="tablist" aria-label="Choose artifact"></span>
-        </div>
+        </figure>
       </div>
     </div>
   </section>
@@ -1923,27 +2031,121 @@ function sendWaitlistEmail() {
     encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 }
 
-/* Source artifact carousel */
-var awCur = 0;
-var awSlides = document.querySelectorAll('.aw-slide');
-var awDotsBox = document.getElementById('aw-dots');
-awSlides.forEach(function (s, i) {
-  var d = document.createElement('button');
-  d.type = 'button';
-  d.className = 'aw-carousel-dot' + (i === 0 ? ' is-active' : '');
-  d.setAttribute('role', 'tab');
-  d.setAttribute('aria-label', 'Show artifact ' + (i + 1));
-  d.addEventListener('click', function () { awGo(i); });
-  awDotsBox.appendChild(d);
-});
-function awGo(i) {
-  awCur = (i + awSlides.length) % awSlides.length;
-  awSlides.forEach(function (s, j) { s.classList.toggle('is-active', j === awCur); });
-  awDotsBox.querySelectorAll('.aw-carousel-dot').forEach(function (d, j) {
-    d.classList.toggle('is-active', j === awCur);
+/* Generated filesystem reel */
+(function () {
+  var reel = document.getElementById('aw-artifact-reel');
+  if (!reel) return;
+
+  var files = Array.from(reel.querySelectorAll('.aw-reel-file'));
+  var count = document.getElementById('aw-reel-count');
+  var status = reel.querySelector('.aw-reel-status');
+  var stack = reel.querySelector('.aw-reel-stack');
+  var routeStage = reel.querySelector('.aw-route-stage');
+  var routes = Array.from(reel.querySelectorAll('.aw-route'));
+  var progress = reel.querySelector('.aw-reel-progress');
+  var progressFill = progress.querySelector('span');
+  var toggle = reel.querySelector('.aw-reel-toggle');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timer = null;
+  var current = 0;
+  var currentRoute = 0;
+  var playing = false;
+  var complete = false;
+
+  function setButton(icon, label) {
+    toggle.innerHTML = '<i class="bi ' + icon + '" aria-hidden="true"></i><span>' + label + '</span>';
+  }
+
+  function renderProgress() {
+    var ratio = current / files.length;
+    count.textContent = current;
+    progress.setAttribute('aria-valuenow', String(current));
+    progressFill.style.transform = 'scaleX(' + ratio + ')';
+  }
+
+  function reset() {
+    window.clearTimeout(timer);
+    files.forEach(function (file) { file.classList.remove('is-visible'); });
+    routes.forEach(function (route) { route.classList.remove('is-visible'); });
+    stack.classList.remove('is-visible');
+    routeStage.classList.remove('is-visible');
+    current = 0;
+    currentRoute = 0;
+    complete = false;
+    status.textContent = 'Reading the service contract';
+    renderProgress();
+  }
+
+  function advance() {
+    if (!playing) return;
+    if (current < files.length) {
+      var file = files[current];
+      file.classList.add('is-visible');
+      current += 1;
+      status.textContent = 'Writing ' + file.textContent.trim();
+      renderProgress();
+      timer = window.setTimeout(advance, 260);
+      return;
+    }
+
+    stack.classList.add('is-visible');
+    routeStage.classList.add('is-visible');
+    if (currentRoute < routes.length) {
+      var route = routes[currentRoute];
+      route.classList.add('is-visible');
+      currentRoute += 1;
+      status.textContent = 'Traefik routing ' + route.querySelector('strong').textContent;
+      timer = window.setTimeout(advance, 340);
+      return;
+    }
+
+    status.textContent = files.length + ' files generated. ' + routes.length + ' routes healthy behind Traefik.';
+    playing = false;
+    complete = true;
+    toggle.setAttribute('aria-pressed', 'false');
+    setButton('bi-arrow-clockwise', 'Replay demo');
+  }
+
+  function play() {
+    if (complete) reset();
+    playing = true;
+    toggle.setAttribute('aria-pressed', 'true');
+    setButton('bi-pause-fill', 'Pause demo');
+    timer = window.setTimeout(advance, current === 0 ? 600 : 0);
+  }
+
+  function pause() {
+    playing = false;
+    window.clearTimeout(timer);
+    toggle.setAttribute('aria-pressed', 'false');
+    setButton('bi-play-fill', 'Resume demo');
+  }
+
+  toggle.addEventListener('click', function () {
+    if (playing) pause(); else play();
   });
-}
-function awSlide(dir) { awGo(awCur + dir); }
+
+  if (reduced) {
+    files.forEach(function (file) { file.classList.add('is-visible'); });
+    routes.forEach(function (route) { route.classList.add('is-visible'); });
+    stack.classList.add('is-visible');
+    routeStage.classList.add('is-visible');
+    current = files.length;
+    currentRoute = routes.length;
+    status.textContent = files.length + ' files generated. ' + routes.length + ' routes healthy behind Traefik.';
+    renderProgress();
+    toggle.hidden = true;
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting) {
+      play();
+      observer.disconnect();
+    }
+  }, { threshold: 0.35 });
+  observer.observe(reel);
+})();
 
 /* FAQ accordion — tap support for touch devices */
 document.querySelectorAll('.aw-acc-item').forEach(function (item) {
@@ -2252,6 +2454,6 @@ if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   
   <!-- Custom scripts -->
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=20260911"></script>
 </body>
 </html>

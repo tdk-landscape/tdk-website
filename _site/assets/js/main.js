@@ -47,7 +47,8 @@ function initNavigation() {
   const menu = navigation?.querySelector('.aw-nav-links');
   const exploreMenu = navigation?.querySelector('.aw-nav-more');
 
-  if (!navigation || !menuButton || !menu) return;
+  if (!navigation || !menuButton || !menu || navigation.dataset.navigationReady) return;
+  navigation.dataset.navigationReady = 'true';
 
   const closeNavigation = () => {
     navigation.classList.remove('is-open');
@@ -88,8 +89,9 @@ function initNavigation() {
 // Copy code blocks
 function addCopyButtons() {
   document.querySelectorAll('pre').forEach(pre => {
+    if (pre.querySelector('.copy-code-button')) return;
     const button = document.createElement('button');
-    button.className = 'btn btn-sm btn-outline-light';
+    button.className = 'btn btn-sm btn-outline-light copy-code-button';
     button.style.cssText = 'position: absolute; top: 0.5rem; right: 0.5rem; padding: 0.25rem 0.75rem; font-size: 0.75rem;';
     button.innerHTML = '<i class="bi bi-clipboard"></i>';
     button.setAttribute('aria-label', 'Copy to clipboard');
@@ -111,8 +113,13 @@ function addCopyButtons() {
   });
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+function initializeSite() {
   initNavigation();
   addCopyButtons();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeSite);
+} else {
+  initializeSite();
+}

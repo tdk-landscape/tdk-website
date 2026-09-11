@@ -21,8 +21,8 @@
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <link rel="stylesheet" href="/assets/css/aw-dark.css" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260911" />
+  <link rel="stylesheet" href="/assets/css/aw-dark.css?v=20260911" />
   
   <!-- SEO -->
   <!-- Begin Jekyll SEO tag v2.9.0 -->
@@ -312,20 +312,25 @@
           <div class="aw-fit-field">
             <label>How do you run things locally today?</label>
             <div class="aw-fit-pills" data-group="today">
-              <button type="button" data-value="10">Kubernetes (kind / minikube / k3d)</button>
-              <button type="button" data-value="9" class="is-active">Docker Compose</button>
-              <button type="button" data-value="6">Cloud IDE / devcontainers</button>
-              <button type="button" data-value="4">No containers yet</button>
+              <button type="button" data-value="10" data-profile="kubernetes">Kubernetes (kind / minikube / k3d)</button>
+              <button type="button" data-value="9" data-profile="mixed">Mix of scripts, containers &amp; manual steps</button>
+              <button type="button" data-value="8" data-profile="compose" class="is-active">Docker Compose</button>
+              <button type="button" data-value="8" data-profile="orchestrator">Tilt / Skaffold / Garden / DevSpace</button>
+              <button type="button" data-value="7" data-profile="container-ui">Portainer / Rancher Desktop / OrbStack</button>
+              <button type="button" data-value="6" data-profile="dev-container">Dev Containers (VS Code Remote)</button>
+              <button type="button" data-value="5" data-profile="cloud-ide">Cloud IDE (Gitpod / Codespaces / Coder)</button>
+              <button type="button" data-value="4" data-profile="native">No containers — native processes</button>
+              <button type="button" data-value="5" data-profile="other">Other / custom setup</button>
             </div>
           </div>
 
           <div class="aw-fit-field">
             <label>What's slowing your team down? <span>(pick any that apply)</span></label>
             <div class="aw-fit-pills" data-group="pain" data-multi="true">
-              <button type="button" data-value="6" class="is-active">Onboarding takes days</button>
-              <button type="button" data-value="6" class="is-active">Environment drift between machines</button>
-              <button type="button" data-value="6">Secrets / credentials setup</button>
-              <button type="button" data-value="6">Nobody can run the whole system locally</button>
+              <button type="button" data-value="6" class="is-active" data-reason="TDK's manifest gets new hires running on day one instead of week two.">Onboarding takes days</button>
+              <button type="button" data-value="6" class="is-active" data-reason="Golden Docker L1–L4 layers make every developer's machine identical.">Environment drift between machines</button>
+              <button type="button" data-value="6" data-reason="Infisical machine identities are generated per service automatically.">Secrets / credentials setup</button>
+              <button type="button" data-value="6" data-reason="Selective startup + auto-discovery boots the whole stack on one laptop.">Nobody can run the whole system locally</button>
               <button type="button" data-value="0" data-exclusive="true">None — we're happy</button>
             </div>
           </div>
@@ -412,6 +417,11 @@ function selectedLabels(group) {
   );
 }
 
+function selectedProfile(group) {
+  var selected = document.querySelector('.aw-fit-pills[data-group="' + group + '"] button.is-active');
+  return selected ? selected.dataset.profile : '';
+}
+
 function serviceScore(n) {
   if (n <= 1) return 4;
   if (n < 5) return Math.round(4 + ((n - 1) / 4) * 16);
@@ -480,25 +490,34 @@ function calcFit() {
     reasons.push(['✗', runtimeLabel + ' stacks aren\'t the primary target for TDK\'s generators yet.']);
   }
 
-  var todayLabel = (selectedLabels('today')[0] || '');
-  if (todayVals[0] === 10) {
+  var todayProfile = selectedProfile('today');
+  if (todayProfile === 'kubernetes') {
     reasons.push(['✓', 'You\'re paying the Kubernetes tax locally — TDK removes it entirely.']);
-  } else if (todayVals[0] === 9) {
+  } else if (todayProfile === 'mixed') {
+    reasons.push(['✓', 'A different setup per developer is exactly the drift TDK\'s manifest eliminates.']);
+  } else if (todayProfile === 'compose') {
     reasons.push(['✓', 'You already think in containers — TDK is a drop-in upgrade from Compose.']);
-  } else if (todayVals[0] === 6) {
+  } else if (todayProfile === 'orchestrator') {
+    reasons.push(['✓', 'You already use local orchestration — TDK adds generated service definitions, docs and diagnostics around that workflow.']);
+  } else if (todayProfile === 'container-ui') {
+    reasons.push(['~', 'Container dashboards make runtimes visible; TDK adds repeatable multi-service generation and orchestration.']);
+  } else if (todayProfile === 'dev-container') {
+    reasons.push(['~', 'Dev Containers solve per-service isolation — TDK adds multi-service orchestration on top.']);
+  } else if (todayProfile === 'cloud-ide') {
     reasons.push(['~', 'Cloud IDEs solve a different problem — TDK runs the same stack on your laptop, no per-seat bill.']);
-  } else {
+  } else if (todayProfile === 'native') {
     reasons.push(['~', 'You\'ll containerize as part of adopting TDK — worth it once you pass ~5 services.']);
+  } else {
+    reasons.push(['~', 'A custom setup may fit — compare its orchestration, generated files and diagnostics with TDK\'s workflow.']);
   }
 
-  var painLabels = selectedLabels('pain');
-  if (painLabels.length === 0 || (painLabels.length === 1 && painLabels[0].indexOf('happy') > -1)) {
+  var painButtons = document.querySelectorAll('.aw-fit-pills[data-group="pain"] button.is-active');
+  var painIsNone = painButtons.length === 1 && painButtons[0].dataset.exclusive === 'true';
+  if (painButtons.length === 0 || painIsNone) {
     reasons.push(['✗', 'Nothing\'s broken today — TDK mostly pays off once local dev has friction.']);
   } else {
-    painLabels.forEach(function (label) {
-      if (label.indexOf('happy') === -1) {
-        reasons.push(['✓', label + ' — TDK\'s manifest and doctor exist for exactly this.']);
-      }
+    Array.prototype.forEach.call(painButtons, function (btn) {
+      reasons.push(['✓', btn.dataset.reason]);
     });
   }
 
@@ -507,7 +526,7 @@ function calcFit() {
   } else if (services < 5) {
     reasons.push(['~', 'A few services already benefit, but TDK\'s proven sweet spot is 5–30+ services.']);
   } else {
-    reasons.push(['✓', services + ' services is exactly TDK\'s sweet spot (30+ in daily use).']);
+    reasons.push(['✓', services + ' services is squarely in TDK\'s proven range (5–30+ services in daily use).']);
   }
 
   if (devs < 5) {
@@ -631,6 +650,6 @@ if (window.gsap && window.ScrollTrigger) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   
   <!-- Custom scripts -->
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=20260911"></script>
 </body>
 </html>
