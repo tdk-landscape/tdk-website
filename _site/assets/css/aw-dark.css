@@ -512,6 +512,247 @@ body:has(.aw) .site-footer {
   color: #b79aff;
 }
 
+/* ---------------- Blog article ---------------- */
+.aw-blog .aw-subhero-grid {
+  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+}
+
+.aw-blog-kicker {
+  align-self: end;
+  border: 1px solid rgba(183, 154, 255, 0.18);
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(140deg, rgba(124, 77, 255, 0.14), rgba(18, 18, 24, 0.92) 42%),
+    #121218;
+  padding: 1.5rem;
+}
+
+.aw-blog-kicker p {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  color: rgba(236, 236, 241, 0.72);
+}
+
+.aw-blog-kicker strong {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-family: 'Satoshi', 'Geist', 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: -0.015em;
+}
+
+.aw-article-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.42fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.aw-article-card {
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 18rem),
+    #121218;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: clamp(2rem, 4vw, 3.5rem);
+}
+
+.aw-article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-bottom: 1.5rem;
+}
+
+.aw-article-meta span {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.45rem 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(236, 236, 241, 0.58);
+}
+
+.aw-article-card h2 {
+  max-width: 48rem;
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 3.6vw, 3.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  color: #fff;
+}
+
+.aw-article-intro {
+  max-width: 45rem;
+  margin: 0 0 3rem;
+  color: rgba(236, 236, 241, 0.68);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.aw-article-body {
+  max-width: 46rem;
+}
+
+.aw-article-body section {
+  padding-top: 2.25rem;
+  margin-top: 2.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.aw-article-body section:first-child {
+  padding-top: 0;
+  margin-top: 0;
+  border-top: none;
+}
+
+.aw-article-body h3 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+.aw-article-body p {
+  margin: 0 0 1.25rem;
+  color: rgba(236, 236, 241, 0.66);
+  font-size: 1.02rem;
+  line-height: 1.82;
+}
+
+.aw-article-body p:last-child {
+  margin-bottom: 0;
+}
+
+.aw-article-body strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.aw-article-note {
+  margin: 2.25rem 0;
+  border-radius: 1rem;
+  border: 1px solid rgba(183, 154, 255, 0.25);
+  background: rgba(124, 77, 255, 0.08);
+  padding: 1.25rem 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(236, 236, 241, 0.75);
+  font-size: 0.875rem;
+  line-height: 1.75;
+}
+
+.aw-blog-side {
+  position: sticky;
+  top: 7.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.aw-blog-side-card {
+  border-radius: 1.25rem;
+  background: #0d0d13;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.25rem;
+}
+
+.aw-blog-side-card h4 {
+  margin: 0 0 0.875rem;
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: -0.015em;
+}
+
+.aw-blog-side-card p,
+.aw-blog-side-card li {
+  color: rgba(236, 236, 241, 0.58);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.aw-blog-side-card p,
+.aw-blog-side-card ul {
+  margin: 0;
+}
+
+.aw-blog-side-card ul {
+  padding-left: 1.1rem;
+}
+
+.aw-blog-side-card li + li {
+  margin-top: 0.55rem;
+}
+
+.aw-blog-side-card code {
+  font-family: 'JetBrains Mono', monospace;
+  color: #d6c6ff;
+}
+
+.aw-matters-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.aw-matter {
+  min-height: 11rem;
+  border-radius: 1.25rem;
+  background: #121218;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.4rem;
+}
+
+.aw-matter:nth-child(1),
+.aw-matter:nth-child(4) {
+  grid-column: span 2;
+  background:
+    radial-gradient(ellipse 90% 80% at 20% 0%, rgba(124, 77, 255, 0.18), transparent 60%),
+    #121218;
+}
+
+.aw-matter:nth-child(2),
+.aw-matter:nth-child(3),
+.aw-matter:nth-child(5),
+.aw-matter:nth-child(6) {
+  grid-column: span 1;
+}
+
+.aw-matter strong {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #fff;
+  letter-spacing: -0.015em;
+}
+
+.aw-matter span {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  color: #b79aff;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.aw-matter p {
+  margin: 0.75rem 0 0;
+  color: rgba(236, 236, 241, 0.56);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.aw-blog-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+}
+
 /* ---------------- CTA band ---------------- */
 .aw-band {
   position: relative;
@@ -663,6 +904,7 @@ body:has(.aw) .site-footer {
 /* ---------------- Responsive ---------------- */
 @media (max-width: 1000px) {
   .aw-subhero-grid { grid-template-columns: 1fr; align-items: start; }
+  .aw-blog .aw-subhero-grid { grid-template-columns: 1fr; }
   .aw-cat-head { grid-template-columns: 1fr; gap: 1rem; }
   .aw-feature-grid { grid-template-columns: repeat(2, 1fr); }
   .aw-grid-varied > * { grid-column: span 1; }
@@ -671,6 +913,12 @@ body:has(.aw) .site-footer {
   .aw-docs { grid-template-columns: 1fr; }
   .aw-docs-side { position: relative; top: 0; }
   .aw-docs-side nav { flex-direction: row; flex-wrap: wrap; }
+  .aw-article-shell { grid-template-columns: 1fr; }
+  .aw-blog-side { position: relative; top: 0; grid-template-columns: repeat(2, 1fr); }
+  .aw-matters-grid { grid-template-columns: repeat(2, 1fr); }
+  .aw-matter,
+  .aw-matter:nth-child(1),
+  .aw-matter:nth-child(4) { grid-column: span 1; }
 }
 
 @media (max-width: 600px) {
@@ -678,4 +926,9 @@ body:has(.aw) .site-footer {
   .aw-doc-cards { grid-template-columns: 1fr; }
   .aw-section { padding: 5rem 1.25rem; }
   .aw-subhero { padding: 10rem 1.25rem 4rem; }
+  .aw-blog-side,
+  .aw-matters-grid { grid-template-columns: 1fr; }
+  .aw-article-card { padding: 1.5rem; }
+  .aw-article-meta span { width: 100%; justify-content: center; }
+  .aw-blog-cta-actions .aw-btn { width: 100%; }
 }

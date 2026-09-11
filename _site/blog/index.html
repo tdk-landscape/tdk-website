@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>Blog - TDK CLI</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/aw-dark.css" />
+  
+  <!-- SEO -->
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Blog - TDK CLI | TDK CLI</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Blog - TDK CLI" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Kubernetes-free microservice development. Run 5-120+ services locally without learning Kubernetes. One service.json generates 10+ configs." />
+<meta name="twitter:description" property="og:description" content="Kubernetes-free microservice development. Run 5-120+ services locally without learning Kubernetes. One service.json generates 10+ configs." />
+<link rel="canonical" href="http://0.0.0.0:4000/blog/" />
+<meta property="og:url" content="http://0.0.0.0:4000/blog/" />
+<meta property="og:site_name" content="TDK CLI" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Blog - TDK CLI" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Kubernetes-free microservice development. Run 5-120+ services locally without learning Kubernetes. One service.json generates 10+ configs.","headline":"Blog - TDK CLI","url":"http://0.0.0.0:4000/blog/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+  <meta name="theme-color" content="#7c4dff" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="aw-nav" aria-label="Main navigation">
+  <div class="aw-nav-pill">
+    <a class="aw-brand" href="/">
+      TDK<span>CLI</span>
+    </a>
+
+    <div class="aw-nav-links" id="aw-nav-links">
+      <a class="aw-nav-link" href="/">Home</a>
+      <a class="aw-nav-link" href="/features/">Features</a>
+      <a class="aw-nav-link" href="/compare/">Compare</a>
+      <a class="aw-nav-link" href="/why/">Why TDK</a>
+      <a class="aw-nav-link" href="/waiting/">Waiting for MVP?</a>
+      <a class="aw-nav-link is-active" href="/blog/">Blog</a>
+      <a class="aw-nav-link" href="/#roi">ROI</a>
+      <a class="aw-nav-link" href="/#pricing">Pricing</a>
+      <a class="aw-nav-link" href="/docs/">Docs</a>
+      <a class="aw-nav-link" href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">Example</a>
+      <a class="aw-nav-cta aw-nav-cta-mobile" href="/#waitlist">Join waitlist</a>
+    </div>
+
+    <div class="aw-nav-actions">
+      <a href="https://github.com/tdk-landscape" class="aw-nav-icon" target="_blank" rel="noopener" aria-label="TDK Landscape on GitHub">
+        <i class="bi bi-github"></i>
+      </a>
+      <a href="/#waitlist" class="aw-nav-cta">Join waitlist</a>
+      <button class="aw-nav-burger" type="button" aria-label="Toggle navigation menu" aria-expanded="false"
+              onclick="var n=document.querySelector('.aw-nav');n.classList.toggle('is-open');this.setAttribute('aria-expanded',n.classList.contains('is-open'))">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main id="main-content" class="page-content" aria-label="Main content">
+    <div class="aw aw-blog">
+
+  <section class="aw-subhero">
+    <div class="aw-subhero-grid">
+      <div>
+        <h1>SDD is not a silver bullet. <span class="aw-accent">That is why TDK matters.</span></h1>
+      </div>
+      <div class="aw-blog-kicker">
+        <strong>Practical notes for local development</strong>
+        <p>SDD clarifies intent. TDK makes the system run, stay documented, and stay useful on ordinary laptops.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="aw-section" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-article-shell">
+        <article class="aw-article-card">
+          <header>
+            <div class="aw-article-meta" aria-label="Article details">
+              <span>September 11, 2026</span>
+              <span>6 min read</span>
+              <span>Article 01</span>
+            </div>
+            <h2>Spec-driven development helps. Execution still decides whether teams move.</h2>
+            <p class="aw-article-intro">A good spec reduces fog. It does not boot your services, wire secrets, catch stale docs, or prove the stack works on a developer laptop.</p>
+          </header>
+
+          <div class="aw-article-body">
+            <section>
+              <h3>What SDD gets right</h3>
+              <p>Spec-driven development gives teams a stronger starting point. It asks people to describe intent before implementation, which makes the work easier to review and easier to hand to an AI assistant. It also gives founders and technical leads a shared artifact that is more concrete than a meeting note.</p>
+              <p>That matters. Ambiguity is expensive. A spec can name the desired behavior, the boundaries of a service, and the tradeoffs a team believes it is making. For product engineers, that is better than guessing from a ticket title. For platform engineers, it can make infrastructure expectations visible before code exists.</p>
+            </section>
+
+            <section>
+              <h3>Where SDD stops helping</h3>
+              <p>SDD does not replace product judgment. It cannot tell you whether the customer problem is worth solving, whether the architecture is overbuilt, or whether a dependency will behave under real usage. A clear spec can still describe the wrong thing with perfect confidence.</p>
+              <p>It also does not solve integration. The hard part of local microservice development is rarely writing one service in isolation. The hard part is getting databases, queues, frontends, gateways, credentials, generated clients, test runners, and documentation to agree with each other while the system keeps changing.</p>
+              <p>That is where many teams feel the gap: the spec says what should exist, but the laptop still says no.</p>
+            </section>
+
+            <div class="aw-article-note">
+              TDK starts from one service definition, then generates the local development surface around it: Docker, TypeScript, Tilt, Starlark, docs, credentials, and assistant context.
+            </div>
+
+            <section>
+              <h3>The gap TDK fills</h3>
+              <p>TDK is the execution layer below the idea. It turns service definitions into runnable local systems, then keeps generated files and generated docs aligned with the live topology. The goal is not to hide engineering reality. The goal is to make the repeatable parts boring enough that teams can focus on the judgment calls.</p>
+              <p>Each service definition can produce about <span class="aw-mono">10</span> files per service and <span class="aw-mono">40+</span> stack-wide artifacts. Those artifacts use ordinary Docker, TypeScript, Tilt, and Starlark conventions, so teams keep the generated files and avoid lock-in.</p>
+              <p>For AI-assisted work, that structure is useful context. A generated briefing can tell an assistant what the services are, how they depend on each other, which files are generated, and where changes belong. The result is less guessing and fewer confident edits in the wrong place.</p>
+            </section>
+
+            <section>
+              <h3>What good looks like in practice</h3>
+              <p>A new engineer should be able to clone the repo, run one command, and see the whole system. Not a mock. Not one happy-path service. The databases, queues, frontends, workers, and APIs should run together on a normal machine.</p>
+              <p>TDK is built for that shape of work. The current stack proves <span class="aw-mono">30+</span> services in daily use, with a cold boot claim of <span class="aw-mono">under 5 seconds</span> on a <span class="aw-mono">16 GB M1 MacBook</span>. That is not a replacement for production feedback. It is a practical way to make local feedback fast enough that developers keep using it.</p>
+              <p>Good local tooling should also handle the awkward parts without pretending they are elegant. Managed credentials, reproducible local stacks, generated diagrams, generated assistant briefings, and selective startup all exist because real teams have to integrate messy systems without spending every morning in Kubernetes configuration.</p>
+            </section>
+
+            <section>
+              <h3>The honest takeaway</h3>
+              <p>SDD is valuable when it improves the conversation before code. TDK is valuable when that conversation needs to become a working system. One clarifies intent. The other makes the intent runnable, inspectable, and teachable to the next developer or AI assistant.</p>
+              <p>The right promise is modest: fewer stale docs, fewer laptop setup rituals, fewer hidden credentials, and less local infrastructure ceremony. That is enough. Teams do not need a silver bullet. They need the workbench to be ready when the work begins.</p>
+            </section>
+          </div>
+        </article>
+
+        <aside class="aw-blog-side" aria-label="Article context">
+          <div class="aw-blog-side-card">
+            <h4>In this article</h4>
+            <ul>
+              <li>Why specs reduce ambiguity</li>
+              <li>Why integration remains hard</li>
+              <li>Where TDK fits in the workflow</li>
+              <li>What local readiness should feel like</li>
+            </ul>
+          </div>
+          <div class="aw-blog-side-card">
+            <h4>Useful numbers</h4>
+            <p><code>35+</code> capabilities, <code>10</code> files per service, and <code>40+</code> stack artifacts generated from ordinary definitions.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="aw-section" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-head">
+        <h2>TDK matters because</h2>
+        <p>It handles the practical layer that specs describe but do not operate.</p>
+      </div>
+
+      <div class="aw-matters-grid">
+        <div class="aw-matter">
+          <strong>Day-one onboarding</strong>
+          <span>clone repo, run tdk up</span>
+          <p>New hires get a runnable system before setup work becomes the project.</p>
+        </div>
+        <div class="aw-matter">
+          <strong>Ordinary laptop friendly</strong>
+          <span>16 GB M1 MacBook</span>
+          <p>Local development stays local, including weak wifi and travel days.</p>
+        </div>
+        <div class="aw-matter">
+          <strong>Reproducible stacks</strong>
+          <span>Docker + Tilt + Starlark</span>
+          <p>Every developer gets the same orchestration rules without a cluster.</p>
+        </div>
+        <div class="aw-matter">
+          <strong>Docs that track reality</strong>
+          <span>C4 + AGENTS.md</span>
+          <p>Generated diagrams and assistant briefings follow the live service graph.</p>
+        </div>
+        <div class="aw-matter">
+          <strong>Managed credentials</strong>
+          <span>Infisical identities</span>
+          <p>Secrets belong in managed paths, not screenshots or forgotten setup docs.</p>
+        </div>
+        <div class="aw-matter">
+          <strong>No lock-in</strong>
+          <span>MIT license</span>
+          <p>The output remains standard files your team can keep and inspect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aw-section" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-band">
+        <h2>Make the spec runnable</h2>
+        <p>Read the docs, then join the waitlist if your team wants local stacks that stay honest.</p>
+        <div class="aw-blog-cta-actions">
+          <a href="/docs/" class="aw-btn aw-btn-solid">Read docs</a>
+          <a href="/#waitlist" class="aw-btn aw-btn-ghost">Join waitlist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+var REDUCED_BLOG = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!REDUCED_BLOG && window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.aw-blog .aw-subhero h1', { y: 42, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.1 });
+  gsap.from('.aw-blog-kicker', { y: 28, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 0.28 });
+
+  gsap.from('.aw-article-card', {
+    y: 36, opacity: 0, duration: 0.85, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-article-shell', start: 'top 82%' }
+  });
+
+  gsap.from('.aw-blog-side-card', {
+    y: 24, opacity: 0, stagger: 0.08, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-blog-side', start: 'top 82%' }
+  });
+
+  gsap.from('.aw-matter', {
+    y: 30, opacity: 0, stagger: 0.06, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-matters-grid', start: 'top 80%' }
+  });
+
+  gsap.from('.aw-blog .aw-band', {
+    y: 48, opacity: 0, duration: 0.85, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-blog .aw-band', start: 'top 85%' }
+  });
+}
+</script>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <h5>
+          <i class="bi bi-layers-fill me-2" aria-hidden="true"></i>
+          TDK<span style="color: var(--color-purple)">CLI</span>
+        </h5>
+        <p class="footer-text">
+          Kubernetes-free microservice development by TDK Landscape.
+          Run 5-30+ services locally without the complexity.
+        </p>
+        <p class="footer-text" style="margin-top: 0.75rem;">
+          <a href="mailto:hello@tdk.dev">hello@tdk.dev</a>
+        </p>
+        <div class="d-flex gap-3 mb-3">
+          <a href="https://github.com/tdk-landscape" target="_blank" rel="noopener" aria-label="TDK Landscape on GitHub">
+            <i class="bi bi-github fs-5"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-4 mb-4 mb-lg-0">
+        <h6>Product</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a href="/features/">Features</a></li>
+          <li><a href="/compare/">Compare</a></li>
+          <li><a href="/why/">Why TDK</a></li>
+          <li><a href="/waiting/">Waiting for MVP?</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/docs/">Documentation</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-4 mb-4 mb-lg-0">
+        <h6>Resources</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/docs/quickstart/">Quick Start</a></li>
+          <li><a href="/docs/examples/">Examples</a></li>
+          <li><a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">Example App (GitHub)</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-4 mb-4 mb-lg-0">
+        <h6>Community</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a href="https://github.com/tdk-landscape" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="/#waitlist">Join waitlist</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-4">
+        <h6>Legal</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-3 mb-md-0">
+        <p class="mb-0 footer-text">
+          © 2026 TDK CLI Contributors. Licensed under MIT.
+        </p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <p class="mb-0 footer-text">
+          Built for developers who just want to write code.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
+  <!-- Custom scripts -->
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

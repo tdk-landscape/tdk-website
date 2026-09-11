@@ -1,0 +1,180 @@
+---
+layout: default
+title: Blog - TDK CLI
+---
+
+<div class="aw aw-blog">
+
+  <section class="aw-subhero">
+    <div class="aw-subhero-grid">
+      <div>
+        <h1>SDD is not a silver bullet. <span class="aw-accent">That is why TDK matters.</span></h1>
+      </div>
+      <div class="aw-blog-kicker">
+        <strong>Practical notes for local development</strong>
+        <p>SDD clarifies intent. TDK makes the system run, stay documented, and stay useful on ordinary laptops.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="aw-section" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-article-shell">
+        <article class="aw-article-card">
+          <header>
+            <div class="aw-article-meta" aria-label="Article details">
+              <span>September 11, 2026</span>
+              <span>6 min read</span>
+              <span>Article 01</span>
+            </div>
+            <h2>Spec-driven development helps. Execution still decides whether teams move.</h2>
+            <p class="aw-article-intro">A good spec reduces fog. It does not boot your services, wire secrets, catch stale docs, or prove the stack works on a developer laptop.</p>
+          </header>
+
+          <div class="aw-article-body">
+            <section>
+              <h3>What SDD gets right</h3>
+              <p>Spec-driven development gives teams a stronger starting point. It asks people to describe intent before implementation, which makes the work easier to review and easier to hand to an AI assistant. It also gives founders and technical leads a shared artifact that is more concrete than a meeting note.</p>
+              <p>That matters. Ambiguity is expensive. A spec can name the desired behavior, the boundaries of a service, and the tradeoffs a team believes it is making. For product engineers, that is better than guessing from a ticket title. For platform engineers, it can make infrastructure expectations visible before code exists.</p>
+            </section>
+
+            <section>
+              <h3>Where SDD stops helping</h3>
+              <p>SDD does not replace product judgment. It cannot tell you whether the customer problem is worth solving, whether the architecture is overbuilt, or whether a dependency will behave under real usage. A clear spec can still describe the wrong thing with perfect confidence.</p>
+              <p>It also does not solve integration. The hard part of local microservice development is rarely writing one service in isolation. The hard part is getting databases, queues, frontends, gateways, credentials, generated clients, test runners, and documentation to agree with each other while the system keeps changing.</p>
+              <p>That is where many teams feel the gap: the spec says what should exist, but the laptop still says no.</p>
+            </section>
+
+            <div class="aw-article-note">
+              TDK starts from one service definition, then generates the local development surface around it: Docker, TypeScript, Tilt, Starlark, docs, credentials, and assistant context.
+            </div>
+
+            <section>
+              <h3>The gap TDK fills</h3>
+              <p>TDK is the execution layer below the idea. It turns service definitions into runnable local systems, then keeps generated files and generated docs aligned with the live topology. The goal is not to hide engineering reality. The goal is to make the repeatable parts boring enough that teams can focus on the judgment calls.</p>
+              <p>Each service definition can produce about <span class="aw-mono">{{ site.data.tdk.files_per_service }}</span> files per service and <span class="aw-mono">{{ site.data.tdk.stack_artifacts }}</span> stack-wide artifacts. Those artifacts use ordinary Docker, TypeScript, Tilt, and Starlark conventions, so teams keep the generated files and avoid lock-in.</p>
+              <p>For AI-assisted work, that structure is useful context. A generated briefing can tell an assistant what the services are, how they depend on each other, which files are generated, and where changes belong. The result is less guessing and fewer confident edits in the wrong place.</p>
+            </section>
+
+            <section>
+              <h3>What good looks like in practice</h3>
+              <p>A new engineer should be able to clone the repo, run one command, and see the whole system. Not a mock. Not one happy-path service. The databases, queues, frontends, workers, and APIs should run together on a normal machine.</p>
+              <p>TDK is built for that shape of work. The current stack proves <span class="aw-mono">{{ site.data.tdk.scale_services }}</span> services in daily use, with a cold boot claim of <span class="aw-mono">{{ site.data.tdk.boot_claim }}</span> on a <span class="aw-mono">{{ site.data.tdk.machine }}</span>. That is not a replacement for production feedback. It is a practical way to make local feedback fast enough that developers keep using it.</p>
+              <p>Good local tooling should also handle the awkward parts without pretending they are elegant. Managed credentials, reproducible local stacks, generated diagrams, generated assistant briefings, and selective startup all exist because real teams have to integrate messy systems without spending every morning in Kubernetes configuration.</p>
+            </section>
+
+            <section>
+              <h3>The honest takeaway</h3>
+              <p>SDD is valuable when it improves the conversation before code. TDK is valuable when that conversation needs to become a working system. One clarifies intent. The other makes the intent runnable, inspectable, and teachable to the next developer or AI assistant.</p>
+              <p>The right promise is modest: fewer stale docs, fewer laptop setup rituals, fewer hidden credentials, and less local infrastructure ceremony. That is enough. Teams do not need a silver bullet. They need the workbench to be ready when the work begins.</p>
+            </section>
+          </div>
+        </article>
+
+        <aside class="aw-blog-side" aria-label="Article context">
+          <div class="aw-blog-side-card">
+            <h4>In this article</h4>
+            <ul>
+              <li>Why specs reduce ambiguity</li>
+              <li>Why integration remains hard</li>
+              <li>Where TDK fits in the workflow</li>
+              <li>What local readiness should feel like</li>
+            </ul>
+          </div>
+          <div class="aw-blog-side-card">
+            <h4>Useful numbers</h4>
+            <p><code>{{ site.data.tdk.product_features }}</code> capabilities, <code>{{ site.data.tdk.files_per_service }}</code> files per service, and <code>{{ site.data.tdk.stack_artifacts }}</code> stack artifacts generated from ordinary definitions.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="aw-section" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-head">
+        <h2>TDK matters because</h2>
+        <p>It handles the practical layer that specs describe but do not operate.</p>
+      </div>
+
+      <div class="aw-matters-grid">
+        <div class="aw-matter">
+          <strong>Day-one onboarding</strong>
+          <span>clone repo, run tdk up</span>
+          <p>New hires get a runnable system before setup work becomes the project.</p>
+        </div>
+        <div class="aw-matter">
+          <strong>Ordinary laptop friendly</strong>
+          <span>{{ site.data.tdk.machine }}</span>
+          <p>Local development stays local, including weak wifi and travel days.</p>
+        </div>
+        <div class="aw-matter">
+          <strong>Reproducible stacks</strong>
+          <span>Docker + Tilt + Starlark</span>
+          <p>Every developer gets the same orchestration rules without a cluster.</p>
+        </div>
+        <div class="aw-matter">
+          <strong>Docs that track reality</strong>
+          <span>C4 + AGENTS.md</span>
+          <p>Generated diagrams and assistant briefings follow the live service graph.</p>
+        </div>
+        <div class="aw-matter">
+          <strong>Managed credentials</strong>
+          <span>Infisical identities</span>
+          <p>Secrets belong in managed paths, not screenshots or forgotten setup docs.</p>
+        </div>
+        <div class="aw-matter">
+          <strong>No lock-in</strong>
+          <span>MIT license</span>
+          <p>The output remains standard files your team can keep and inspect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aw-section" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-band">
+        <h2>Make the spec runnable</h2>
+        <p>Read the docs, then join the waitlist if your team wants local stacks that stay honest.</p>
+        <div class="aw-blog-cta-actions">
+          <a href="{{ '/docs/' | relative_url }}" class="aw-btn aw-btn-solid">Read docs</a>
+          <a href="{{ '/#waitlist' | relative_url }}" class="aw-btn aw-btn-ghost">Join waitlist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+var REDUCED_BLOG = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!REDUCED_BLOG && window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.aw-blog .aw-subhero h1', { y: 42, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.1 });
+  gsap.from('.aw-blog-kicker', { y: 28, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 0.28 });
+
+  gsap.from('.aw-article-card', {
+    y: 36, opacity: 0, duration: 0.85, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-article-shell', start: 'top 82%' }
+  });
+
+  gsap.from('.aw-blog-side-card', {
+    y: 24, opacity: 0, stagger: 0.08, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-blog-side', start: 'top 82%' }
+  });
+
+  gsap.from('.aw-matter', {
+    y: 30, opacity: 0, stagger: 0.06, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-matters-grid', start: 'top 80%' }
+  });
+
+  gsap.from('.aw-blog .aw-band', {
+    y: 48, opacity: 0, duration: 0.85, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-blog .aw-band', start: 'top 85%' }
+  });
+}
+</script>
