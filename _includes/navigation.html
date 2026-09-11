@@ -1,37 +1,28 @@
-<nav class="navbar navbar-expand-lg" aria-label="Main navigation">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center text-nowrap" href="{{ '/' | relative_url }}">
-      <i class="bi bi-layers-fill me-2"></i>
-      <span>TDK</span>
-      <span class="ms-1" style="color: var(--color-purple)">CLI</span>
+<nav class="aw-nav" aria-label="Main navigation">
+  <div class="aw-nav-pill">
+    <a class="aw-brand" href="{{ '/' | relative_url }}">
+      TDK<span>CLI</span>
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation menu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="aw-nav-links" id="aw-nav-links">
+      <a class="aw-nav-link{% if page.url == '/' %} is-active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+      <a class="aw-nav-link{% if page.url contains '/features/' %} is-active{% endif %}" href="{{ '/features/' | relative_url }}">Features</a>
+      <a class="aw-nav-link{% if page.url contains '/compare/' %} is-active{% endif %}" href="{{ '/compare/' | relative_url }}">Compare</a>
+      <a class="aw-nav-link" href="{{ '/#roi' | relative_url }}">ROI</a>
+      <a class="aw-nav-link" href="{{ '/#pricing' | relative_url }}">Pricing</a>
+      <a class="aw-nav-link{% if page.url contains '/docs/' %} is-active{% endif %}" href="{{ '/docs/' | relative_url }}">Docs</a>
+      <a class="aw-nav-cta aw-nav-cta-mobile" href="{{ '/#waitlist' | relative_url }}">Get Started</a>
+    </div>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link{% if page.url == '/' %} active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link{% if page.url contains '/features/' %} active{% endif %}" href="{{ '/features/' | relative_url }}">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link{% if page.url contains '/compare/' %} active{% endif %}" href="{{ '/compare/' | relative_url }}">Compare</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link{% if page.url contains '/docs/' %} active{% endif %}" href="{{ '/docs/' | relative_url }}">Docs</a>
-        </li>
-      </ul>
-
-      <div class="d-flex align-items-center gap-2">
-        <a href="https://github.com/tdk-cli/tdk" class="btn btn-sm btn-outline-dark" target="_blank" rel="noopener" aria-label="View on GitHub">
-          <i class="bi bi-github"></i>
-        </a>
-        <a href="#get-started" class="btn btn-sm btn-primary">Get Started</a>
-      </div>
+    <div class="aw-nav-actions">
+      <a href="https://github.com/tdk-cli/tdk" class="aw-nav-icon" target="_blank" rel="noopener" aria-label="View on GitHub">
+        <i class="bi bi-github"></i>
+      </a>
+      <a href="{{ '/#waitlist' | relative_url }}" class="aw-nav-cta">Get Started</a>
+      <button class="aw-nav-burger" type="button" aria-label="Toggle navigation menu" aria-expanded="false"
+              onclick="var n=document.querySelector('.aw-nav');n.classList.toggle('is-open');this.setAttribute('aria-expanded',n.classList.contains('is-open'))">
+        <span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
