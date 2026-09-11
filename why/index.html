@@ -1,0 +1,93 @@
+---
+layout: default
+title: Why TDK - TDK CLI
+---
+
+<div class="aw">
+
+  <!-- Subhero -->
+  <section class="aw-subhero">
+    <div class="aw-subhero-grid">
+      <h1>Cost is only <span class="aw-accent">the first reason.</span></h1>
+      <p class="aw-subhero-sub">Saving money gets attention. These nine reasons are why teams stay. <strong>Each one removes a weekly annoyance your developers stopped complaining about.</strong></p>
+    </div>
+  </section>
+
+  <!-- Benefits grid -->
+  <section class="aw-section" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-feature-grid">
+        <div class="aw-card">
+          <h4>Day-one onboarding</h4>
+          <p>Clone the repo, run one command, get the whole system. New hires ship code before lunch instead of configuring laptops for a fortnight.</p>
+        </div>
+        <div class="aw-card">
+          <h4>DevOps stays on production</h4>
+          <p>Local environments stop eating infrastructure time. Your platform people work on uptime and delivery, not on someone's broken laptop setup.</p>
+        </div>
+        <div class="aw-card">
+          <h4>Runs on ordinary laptops</h4>
+          <p>Proven daily on a {{ site.data.tdk.machine }}. No cloud computers to rent, no GPU bills, and it works on planes and bad hotel wifi.</p>
+        </div>
+        <div class="aw-card">
+          <h4>Secrets without spreadsheets</h4>
+          <p>Every service gets its own managed identity and credentials through Infisical. Nothing pasted into chat, nothing committed by accident.</p>
+        </div>
+        <div class="aw-card">
+          <h4>Documents that cannot rot</h4>
+          <p>Architecture diagrams and assistant briefings regenerate from the live system on every boot. The docs always match reality.</p>
+        </div>
+        <div class="aw-card">
+          <h4>Same stack on every machine</h4>
+          <p>Ten developers, ten identical environments. "Works on my machine" stops being a sentence anyone says out loud.</p>
+        </div>
+        <div class="aw-card">
+          <h4>Fast feedback loop</h4>
+          <p>A full cold boot in {{ site.data.tdk.boot_claim }}, hot reload while you type, and selective startup that boots only what your task touches.</p>
+        </div>
+        <div class="aw-card">
+          <h4>AI assistants understand it</h4>
+          <p>A generated briefing tells coding assistants how the stack fits together, so AI help is correct on the first answer instead of the fifth.</p>
+        </div>
+        <div class="aw-card">
+          <h4>No lock-in, ever</h4>
+          <p>Everything generated is standard Docker and TypeScript tooling under an MIT license. If you outgrow TDK, you keep every file.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="aw-section" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-band">
+        <h2>Nine reasons, one waitlist</h2>
+        <p>Pick the three that hurt most. Tell us in the form, and they shape what we build first.</p>
+        <a href="{{ '/#waitlist' | relative_url }}" class="aw-btn aw-btn-solid">Join waitlist</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+var REDUCED_WHY = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!REDUCED_WHY && window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.aw-subhero h1', { y: 50, opacity: 0, duration: 1.1, ease: 'power3.out', delay: 0.1 });
+  gsap.from('.aw-subhero-sub', { y: 30, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.35 });
+
+  gsap.from('.aw-feature-grid .aw-card', {
+    y: 40, opacity: 0, stagger: 0.07, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-feature-grid', start: 'top 80%' }
+  });
+
+  gsap.from('.aw-band', {
+    y: 60, opacity: 0, duration: 1, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-band', start: 'top 85%' }
+  });
+}
+</script>
