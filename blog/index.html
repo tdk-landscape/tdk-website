@@ -183,7 +183,9 @@ title: Blog - TDK CLI
   gsap.registerPlugin(ScrollTrigger);
   gsap.from('.aw-blog-hero h1, .aw-blog-hero p, .aw-blog-hero-actions', { y: 42, opacity: 0, duration: 1, stagger: 0.12, ease: 'power3.out' });
   gsap.from('.aw-featured-story', { y: 80, opacity: 0, stagger: 0.12, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: '.aw-featured-grid', start: 'top 82%' } });
-  ScrollTrigger.create({ trigger: '.aw-blog-library-section', start: 'top top+=110', end: 'bottom bottom-=120', pin: '.aw-library-intro', pinSpacing: false });
+  gsap.matchMedia().add('(min-width: 901px)', function () {
+    ScrollTrigger.create({ trigger: '.aw-blog-library-section', start: 'top top+=110', end: 'bottom bottom-=120', pin: '.aw-library-intro', pinSpacing: false });
+  });
   gsap.from('.aw-library-card', { y: 70, opacity: 0, stagger: 0.025, duration: 0.65, ease: 'power2.out', scrollTrigger: { trigger: '.aw-library-grid', start: 'top 84%' } });
   gsap.fromTo('.aw-library-statement', { opacity: 0.18 }, { opacity: 1, scrollTrigger: { trigger: '.aw-blog-library-section', start: 'top 72%', end: 'top 32%', scrub: true } });
 })();
