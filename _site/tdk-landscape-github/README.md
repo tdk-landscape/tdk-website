@@ -25,8 +25,6 @@ The result is a repeatable developer environment that does not require Kubernete
 
 | Project | Purpose |
 | --- | --- |
-| [TDK CLI](https://github.com/tdk-landscape/tdk-cli) | The command-line toolkit for bootstrapping and orchestrating local service landscapes. |
-| [Platform](https://github.com/tdk-landscape/platform) | Shared `@tdk-landscape/*` packages for eventing, logging, secrets, Prisma, and server foundations. |
 | [TDK Example](https://github.com/tdk-landscape/tdk-example) | A reference service stack that demonstrates the TDK workflow end to end. |
 | [TDK User Management](https://github.com/tdk-landscape/tdk-user-management) | An identity-focused example landscape with SCIM 2.0 and OAuth 2.0 PKCE. |
 | [TDK Website](https://github.com/tdk-landscape/tdk-website) | Documentation, guides, and examples for working with TDK. |
