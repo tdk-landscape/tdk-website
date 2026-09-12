@@ -125,7 +125,174 @@
 
 
   <main id="main-content" class="page-content" aria-label="Main content">
-    <div class="aw">
+    <style>
+/* ERP-specific styles */
+.aw-erp-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(124, 77, 255, 0.2));
+  border: 2px solid rgba(244, 114, 182, 0.4);
+  color: #f472b6;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.aw-erp-badge small {
+  font-size: 0.6rem;
+  color: rgba(244, 114, 182, 0.7);
+  font-weight: 500;
+  margin-top: 0.1rem;
+}
+
+.aw-erp-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: center;
+  padding: clamp(4rem, 8vw, 6rem) 0;
+}
+
+.aw-erp-copy {
+  max-width: 28rem;
+}
+
+.aw-erp-kicker {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f472b6;
+  margin: 0 0 1.5rem;
+}
+
+.aw-erp-showcase h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #fff;
+  margin: 0 0 1.25rem;
+}
+
+.aw-erp-showcase p {
+  color: rgba(236, 236, 241, 0.6);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin: 0 0 2rem;
+}
+
+.aw-erp-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.aw-erp-stage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  position: relative;
+}
+
+.aw-erp-panel {
+  background: rgba(244, 114, 182, 0.08);
+  border: 1px solid rgba(244, 114, 182, 0.2);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.5s ease;
+}
+
+.aw-erp-panel:hover {
+  transform: translateY(-4px);
+  border-color: rgba(244, 114, 182, 0.5);
+}
+
+.aw-erp-panel strong {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #f472b6;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.aw-erp-panel span {
+  font-size: 0.8125rem;
+  color: rgba(236, 236, 241, 0.6);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.aw-erp-domain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.aw-erp-domain-grid a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: rgba(244, 114, 182, 0.05);
+  border: 1px solid rgba(244, 114, 182, 0.15);
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, background 0.3s ease;
+}
+
+.aw-erp-domain-grid a:hover {
+  transform: translateY(-4px);
+  border-color: rgba(244, 114, 182, 0.4);
+  background: rgba(244, 114, 182, 0.1);
+}
+
+.aw-erp-domain-grid i {
+  font-size: 1.5rem;
+  color: #f472b6;
+}
+
+.aw-erp-domain-grid strong {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.aw-erp-domain-grid span {
+  font-size: 0.875rem;
+  color: rgba(236, 236, 241, 0.5);
+  line-height: 1.4;
+}
+
+.aw-erp-code {
+  border-color: rgba(244, 114, 182, 0.3);
+}
+
+@media (max-width: 1000px) {
+  .aw-erp-showcase {
+    grid-template-columns: 1fr;
+  }
+  .aw-erp-stage {
+    grid-template-columns: 1fr;
+  }
+  .aw-erp-domain-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<div class="aw">
   <section class="aw-section" style="padding-top: 10rem;">
     <div class="aw-wrap aw-docs">
       <aside class="aw-docs-side">
@@ -158,6 +325,17 @@
             <h3>tdk-user-management</h3>
             <p>Enterprise identity governance: 3 stacks (admin, portal, compliance), 6 resources, SCIM 2.0 provisioning, OIDC PKCE, and SIEM workers.</p>
             <span style="margin-top: 1.25rem; display: inline-flex; align-items: center; font-weight: 600; color: #38bdf8; gap: 0.35rem;">Clone on GitHub <i class="bi bi-box-arrow-up-right" style="font-size: 0.85em;"></i></span>
+          </a>
+
+          <a class="aw-card aw-card-erp" href="https://github.com/tdk-landscape/tdk-erp-system" target="_blank" rel="noopener" style="border-color: rgba(244, 114, 182, 0.5); background: linear-gradient(160deg, rgba(244, 114, 182, 0.12) 0%, #121218 55%);">
+            <div class="aw-erp-badge" aria-hidden="true">
+              <span>100</span>
+              <small>services</small>
+            </div>
+            <span class="aw-mono" style="font-size: 0.75rem; color: #f472b6; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem; font-weight: 700;">ENTERPRISE ERP SYSTEM</span>
+            <h3>tdk-erp-system</h3>
+            <p>Complete enterprise ERP: 7 business domains, 100 microservices, finance through analytics, production-grade architecture.</p>
+            <span style="margin-top: 1.25rem; display: inline-flex; align-items: center; font-weight: 600; color: #f472b6; gap: 0.35rem;">Clone on GitHub <i class="bi bi-box-arrow-up-right" style="font-size: 0.85em;"></i></span>
           </a>
 
           <a class="aw-card aw-card-restaurant" href="https://github.com/tdk-landscape/tdk-restaurant-example" target="_blank" rel="noopener">
@@ -198,8 +376,98 @@
           </div>
         </section>
 
+        <section class="aw-erp-showcase" aria-labelledby="erp-example-title" style="margin-top: 6rem;">
+          <div class="aw-erp-copy">
+            <p class="aw-erp-kicker">Enterprise-scale architecture</p>
+            <h2 id="erp-example-title">100 microservices. 7 business domains. One command.</h2>
+            <p>Experience the full power of TDK PSR model with a complete enterprise ERP system spanning finance, HR, inventory, sales, manufacturing, supply chain, and analytics.</p>
+            <div class="aw-erp-actions">
+              <a class="aw-btn aw-btn-solid" href="https://github.com/tdk-landscape/tdk-erp-system" target="_blank" rel="noopener" style="background: linear-gradient(135deg, #f472b6 0%, #7c4dff 100%); border: none;">Clone ERP system</a>
+              <a class="aw-btn aw-btn-ghost" href="#erp-manifest">View architecture</a>
+            </div>
+          </div>
+          <div class="aw-erp-stage" aria-hidden="true">
+            <div class="aw-erp-panel aw-erp-panel-finance">
+              <strong>finance</strong>
+              <span>15 services</span>
+              <span>4010-4024</span>
+            </div>
+            <div class="aw-erp-panel aw-erp-panel-hr">
+              <strong>hr</strong>
+              <span>12 services</span>
+              <span>4100-4111</span>
+            </div>
+            <div class="aw-erp-panel aw-erp-panel-inventory">
+              <strong>inventory</strong>
+              <span>18 services</span>
+              <span>4200-4217</span>
+            </div>
+            <div class="aw-erp-panel aw-erp-panel-sales">
+              <strong>sales</strong>
+              <span>20 services</span>
+              <span>4300-4319</span>
+            </div>
+            <div class="aw-erp-panel aw-erp-panel-manufacturing">
+              <strong>manufacturing</strong>
+              <span>15 services</span>
+              <span>4400-4414</span>
+            </div>
+            <div class="aw-erp-panel aw-erp-panel-supply">
+              <strong>supply_chain</strong>
+              <span>12 services</span>
+              <span>4500-4511</span>
+            </div>
+            <div class="aw-erp-panel aw-erp-panel-analytics">
+              <strong>analytics</strong>
+              <span>8 services</span>
+              <span>4600-4607</span>
+            </div>
+          </div>
+        </section>
+
         <h2>Restaurant Operations Landscape</h2>
         <p>The newest reference repo shows how a hospitality team can split the host stand, kitchen pass, menu state, and floor control into independently runnable resources.</p>
+
+        <h2>Enterprise ERP System Landscape</h2>
+        <p>A production-grade demonstration of enterprise-scale microservice architecture with 100 services across 7 business domains, demonstrating the full power of the TDK PSR model for complex organizational needs.</p>
+
+        <div class="aw-erp-domain-grid">
+          <a href="https://github.com/tdk-landscape/tdk-erp-system/tree/main/services/finance" target="_blank" rel="noopener">
+            <i class="bi bi-currency-dollar" aria-hidden="true"></i>
+            <strong>Finance</strong>
+            <span>15 services • GL, AP/AR, budgeting, tax, assets</span>
+          </a>
+          <a href="https://github.com/tdk-landscape/tdk-erp-system/tree/main/services/hr" target="_blank" rel="noopener">
+            <i class="bi bi-people" aria-hidden="true"></i>
+            <strong>Human Resources</strong>
+            <span>12 services • records, recruitment, performance, benefits</span>
+          </a>
+          <a href="https://github.com/tdk-landscape/tdk-erp-system/tree/main/services/inventory" target="_blank" rel="noopener">
+            <i class="bi bi-box-seam" aria-hidden="true"></i>
+            <strong>Inventory</strong>
+            <span>18 services • management, warehouse, forecasting, tracking</span>
+          </a>
+          <a href="https://github.com/tdk-landscape/tdk-erp-system/tree/main/services/sales" target="_blank" rel="noopener">
+            <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+            <strong>Sales</strong>
+            <span>20 services • CRM, orders, pricing, analytics</span>
+          </a>
+          <a href="https://github.com/tdk-landscape/tdk-erp-system/tree/main/services/manufacturing" target="_blank" rel="noopener">
+            <i class="bi bi-gear" aria-hidden="true"></i>
+            <strong>Manufacturing</strong>
+            <span>15 services • planning, quality, maintenance, BOM</span>
+          </a>
+          <a href="https://github.com/tdk-landscape/tdk-erp-system/tree/main/services/supply_chain" target="_blank" rel="noopener">
+            <i class="bi bi-truck" aria-hidden="true"></i>
+            <strong>Supply Chain</strong>
+            <span>12 services • procurement, logistics, planning</span>
+          </a>
+          <a href="https://github.com/tdk-landscape/tdk-erp-system/tree/main/services/analytics" target="_blank" rel="noopener">
+            <i class="bi bi-bar-chart" aria-hidden="true"></i>
+            <strong>Analytics</strong>
+            <span>8 services • BI, data warehouse, ML, dashboard</span>
+          </a>
+        </div>
 
         <div class="aw-restaurant-resource-grid">
           <a href="https://github.com/tdk-landscape/tdk-restaurant-example/tree/main/services/guest/reservation-api" target="_blank" rel="noopener">
@@ -233,6 +501,23 @@
   <span class="k">"type"</span>: <span class="s">"backend"</span>,
   <span class="k">"stack"</span>: <span class="s">"guest"</span>,
   <span class="k">"port"</span>: <span class="n">4100</span>,
+  <span class="k">"dependencies"</span>: [],
+  <span class="k">"healthCheck"</span>: {
+    <span class="k">"enabled"</span>: <span class="k">true</span>,
+    <span class="k">"path"</span>: <span class="s">"/health"</span>
+  }
+}</pre>
+        </div>
+
+        <h3 id="erp-manifest">General Ledger API manifest</h3>
+        <div class="aw-codeblock aw-erp-code">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/finance/general-ledger-api/service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"general-ledger-api"</span>,
+  <span class="k">"domain"</span>: <span class="s">"finance"</span>,
+  <span class="k">"type"</span>: <span class="s">"backend"</span>,
+  <span class="k">"stack"</span>: <span class="s">"finance"</span>,
+  <span class="k">"port"</span>: <span class="n">4010</span>,
   <span class="k">"dependencies"</span>: [],
   <span class="k">"healthCheck"</span>: {
     <span class="k">"enabled"</span>: <span class="k">true</span>,
@@ -514,7 +799,7 @@ dependency-manifest.json    <span class="c"># full service graph</span></pre>
 
         <div class="aw-callout">
           <h4>Explore Reference Repositories</h4>
-          <p>Check out our official working projects on GitHub: <a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">tdk-example</a> (base PSR stack), <a href="https://github.com/tdk-landscape/tdk-user-management" target="_blank" rel="noopener">tdk-user-management</a> (enterprise SCIM 2.0 &amp; OAuth2 PKCE sales demo landscape), and <a href="https://github.com/tdk-landscape/tdk-restaurant-example" target="_blank" rel="noopener">tdk-restaurant-example</a> (restaurant operations demo).</p>
+          <p>Check out our official working projects on GitHub: <a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">tdk-example</a> (base PSR stack), <a href="https://github.com/tdk-landscape/tdk-user-management" target="_blank" rel="noopener">tdk-user-management</a> (enterprise SCIM 2.0 &amp; OAuth2 PKCE sales demo landscape), <a href="https://github.com/tdk-landscape/tdk-restaurant-example" target="_blank" rel="noopener">tdk-restaurant-example</a> (restaurant operations demo), and <a href="https://github.com/tdk-landscape/tdk-erp-system" target="_blank" rel="noopener">tdk-erp-system</a> (enterprise ERP with 100 microservices).</p>
         </div>
       </div>
     </div>
@@ -530,6 +815,10 @@ if (window.gsap && window.ScrollTrigger) {
   gsap.from('.aw-restaurant-panel', {
     y: 42, opacity: 0, scale: 0.96, stagger: 0.1, duration: 0.9, ease: 'power3.out',
     scrollTrigger: { trigger: '.aw-restaurant-showcase', start: 'top 74%' }
+  });
+  gsap.from('.aw-erp-panel', {
+    y: 38, opacity: 0, scale: 0.94, stagger: 0.08, duration: 0.85, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-erp-showcase', start: 'top 72%' }
   });
   gsap.utils.toArray('.aw-codeblock').forEach(function (block) {
     gsap.from(block, {
@@ -552,7 +841,7 @@ if (window.gsap && window.ScrollTrigger) {
         </h5>
         <p class="footer-text">
           Kubernetes-free microservice development by TDK Landscape.
-          Run 5-30+ services locally without the complexity.
+          Run 5-100+ services locally without the complexity.
         </p>
         <p class="footer-text" style="margin-top: 0.75rem;">
           <a href="mailto:hello@tdk.dev">hello@tdk.dev</a>

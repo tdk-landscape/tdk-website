@@ -567,9 +567,9 @@ function calcFit() {
   if (services <= 1) {
     reasons.push(['✗', 'One service doesn\'t need a multi-service orchestrator — TDK shines at 5+.']);
   } else if (services < 5) {
-    reasons.push(['~', 'A few services already benefit, but TDK\'s proven sweet spot is 5–30+ services.']);
+    reasons.push(['~', 'A few services already benefit, but TDK\'s proven sweet spot is 5–100+ services.']);
   } else {
-    reasons.push(['✓', services + ' services is squarely in TDK\'s proven range (5–30+ services in daily use).']);
+    reasons.push(['✓', services + ' services is squarely in TDK\'s proven range (5–100+ services in daily use).']);
   }
 
   if (devs < 5) {
@@ -620,7 +620,7 @@ if (window.gsap && window.ScrollTrigger) {
         </h5>
         <p class="footer-text">
           Kubernetes-free microservice development by TDK Landscape.
-          Run 5-30+ services locally without the complexity.
+          Run 5-100+ services locally without the complexity.
         </p>
         <p class="footer-text" style="margin-top: 0.75rem;">
           <a href="mailto:hello@tdk.dev">hello@tdk.dev</a>
