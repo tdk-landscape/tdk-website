@@ -1954,7 +1954,7 @@ function sendWaitlistEmail() {
       play();
       observer.disconnect();
     }
-  }, { threshold: 0.35 });
+  }, { threshold: 0.15, rootMargin: '0px 0px -100px 0px' });
   observer.observe(reel);
 })();
 
@@ -2006,6 +2006,7 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
   ];
 
   var started = false;
+  var fallbackTimer = null;
 
   function addCursor() {
     var c = document.createElement('span');
@@ -2060,10 +2061,11 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
   var io = new IntersectionObserver(function (entries) {
     if (entries[0].isIntersecting && !started) {
       started = true;
+      window.clearTimeout(fallbackTimer);
       play(0);
       io.disconnect();
     }
-  }, { threshold: 0.4 });
+  }, { threshold: 0.2, rootMargin: '0px 0px -150px 0px' });
 
   if (REDUCED) {
     /* Instant static render, no typing, no observer */
@@ -2078,6 +2080,12 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
     });
   } else {
     io.observe(body);
+    fallbackTimer = window.setTimeout(function () {
+      if (!started) {
+        started = true;
+        play(0);
+      }
+    }, 2000);
   }
 })();
 
@@ -2108,8 +2116,8 @@ if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
   if (window.matchMedia('(min-width: 1000px)').matches) {
     ScrollTrigger.create({
       trigger: '#demo',
-      start: 'top 12%',
-      end: 'bottom 90%',
+      start: 'top top',
+      end: 'bottom 85%',
       pin: '#aw-term-pin',
       pinSpacing: false
     });
