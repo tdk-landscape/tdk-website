@@ -15,7 +15,7 @@ title: Examples - TDK CLI
         <h2>Official Reference Repositories</h2>
         <p>Clone and run these complete, battle-tested TDK landscapes locally with a single command:</p>
 
-        <div class="aw-doc-cards" style="margin-bottom: 3.5rem;">
+        <div class="aw-doc-cards aw-doc-cards-featured" style="margin-bottom: 3.5rem;">
           <a class="aw-card" href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">
             <span class="aw-mono" style="font-size: 0.75rem; color: #b79aff; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem; font-weight: 700;">BASE REFERENCE STACK</span>
             <h3>tdk-example</h3>
@@ -29,6 +29,86 @@ title: Examples - TDK CLI
             <p>Enterprise identity governance: 3 stacks (admin, portal, compliance), 6 resources, SCIM 2.0 provisioning, OIDC PKCE, and SIEM workers.</p>
             <span style="margin-top: 1.25rem; display: inline-flex; align-items: center; font-weight: 600; color: #38bdf8; gap: 0.35rem;">Clone on GitHub <i class="bi bi-box-arrow-up-right" style="font-size: 0.85em;"></i></span>
           </a>
+
+          <a class="aw-card aw-card-restaurant" href="https://github.com/tdk-landscape/tdk-restaurant-example" target="_blank" rel="noopener">
+            <div class="aw-restaurant-photo" aria-hidden="true"></div>
+            <span class="aw-repo-kicker">Restaurant ops demo</span>
+            <h3>tdk-restaurant-example</h3>
+            <p>Restaurant operations landscape: 3 stacks (guest, kitchen, operations), 6 resources, live reservation flow, kitchen worker, menu API, and floor app.</p>
+            <span class="aw-repo-link">Clone on GitHub <i class="bi bi-box-arrow-up-right" style="font-size: 0.85em;"></i></span>
+          </a>
+        </div>
+
+        <section class="aw-restaurant-showcase" aria-labelledby="restaurant-example-title">
+          <div class="aw-restaurant-copy">
+            <p class="aw-restaurant-kicker">New official example</p>
+            <h2 id="restaurant-example-title">A restaurant stack that feels like a live service.</h2>
+            <p>Clone the repo and run reservations, kitchen pacing, menu availability, and the floor view as separate TDK resources.</p>
+            <div class="aw-restaurant-actions">
+              <a class="aw-btn aw-btn-solid" href="https://github.com/tdk-landscape/tdk-restaurant-example" target="_blank" rel="noopener">Clone repo</a>
+              <a class="aw-btn aw-btn-ghost" href="#restaurant-manifest">View manifest</a>
+            </div>
+          </div>
+          <div class="aw-restaurant-stage" aria-hidden="true">
+            <div class="aw-restaurant-panel aw-restaurant-panel-main">
+              <strong>guest</strong>
+              <span>reservation-api :4100</span>
+              <span>reservation-app :3100</span>
+            </div>
+            <div class="aw-restaurant-panel aw-restaurant-panel-kitchen">
+              <strong>kitchen</strong>
+              <span>kitchen-api :4110</span>
+              <span>kitchen-worker :4111</span>
+            </div>
+            <div class="aw-restaurant-panel aw-restaurant-panel-floor">
+              <strong>operations</strong>
+              <span>menu-api :4120</span>
+              <span>floor-app :3120</span>
+            </div>
+          </div>
+        </section>
+
+        <h2>Restaurant Operations Landscape</h2>
+        <p>The newest reference repo shows how a hospitality team can split the host stand, kitchen pass, menu state, and floor control into independently runnable resources.</p>
+
+        <div class="aw-restaurant-resource-grid">
+          <a href="https://github.com/tdk-landscape/tdk-restaurant-example/tree/main/services/guest/reservation-api" target="_blank" rel="noopener">
+            <i class="bi bi-calendar-check" aria-hidden="true"></i>
+            <strong>Reservations</strong>
+            <span>Guest bookings, waitlist, and table holds.</span>
+          </a>
+          <a href="https://github.com/tdk-landscape/tdk-restaurant-example/tree/main/services/kitchen/kitchen-api" target="_blank" rel="noopener">
+            <i class="bi bi-fire" aria-hidden="true"></i>
+            <strong>Kitchen pass</strong>
+            <span>Tickets, stations, and course-fire timing.</span>
+          </a>
+          <a href="https://github.com/tdk-landscape/tdk-restaurant-example/tree/main/services/operations/menu-api" target="_blank" rel="noopener">
+            <i class="bi bi-menu-button-wide" aria-hidden="true"></i>
+            <strong>Menu state</strong>
+            <span>Item availability, modifiers, and 86s.</span>
+          </a>
+          <a href="https://github.com/tdk-landscape/tdk-restaurant-example/tree/main/services/operations/floor-app" target="_blank" rel="noopener">
+            <i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>
+            <strong>Floor view</strong>
+            <span>Manager visibility across tables and service status.</span>
+          </a>
+        </div>
+
+        <h3 id="restaurant-manifest">Reservation API manifest</h3>
+        <div class="aw-codeblock aw-restaurant-code">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/guest/reservation-api/service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"reservation-api"</span>,
+  <span class="k">"domain"</span>: <span class="s">"guest"</span>,
+  <span class="k">"type"</span>: <span class="s">"backend"</span>,
+  <span class="k">"stack"</span>: <span class="s">"guest"</span>,
+  <span class="k">"port"</span>: <span class="n">4100</span>,
+  <span class="k">"dependencies"</span>: [],
+  <span class="k">"healthCheck"</span>: {
+    <span class="k">"enabled"</span>: <span class="k">true</span>,
+    <span class="k">"path"</span>: <span class="s">"/health"</span>
+  }
+}</pre>
         </div>
 
         <h2>Enterprise User Management Landscape</h2>
@@ -304,7 +384,7 @@ dependency-manifest.json    <span class="c"># full service graph</span></pre>
 
         <div class="aw-callout">
           <h4>Explore Reference Repositories</h4>
-          <p>Check out our official working projects on GitHub: <a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">tdk-example</a> (base PSR stack) and <a href="https://github.com/tdk-landscape/tdk-user-management" target="_blank" rel="noopener">tdk-user-management</a> (enterprise SCIM 2.0 &amp; OAuth2 PKCE sales demo landscape).</p>
+          <p>Check out our official working projects on GitHub: <a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">tdk-example</a> (base PSR stack), <a href="https://github.com/tdk-landscape/tdk-user-management" target="_blank" rel="noopener">tdk-user-management</a> (enterprise SCIM 2.0 &amp; OAuth2 PKCE sales demo landscape), and <a href="https://github.com/tdk-landscape/tdk-restaurant-example" target="_blank" rel="noopener">tdk-restaurant-example</a> (restaurant operations demo).</p>
         </div>
       </div>
     </div>
@@ -317,6 +397,10 @@ dependency-manifest.json    <span class="c"># full service graph</span></pre>
 if (window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
   gsap.from('.aw-docs-body h1, .aw-docs-body .aw-lead', { y: 40, opacity: 0, stagger: 0.12, duration: 1, ease: 'power3.out', delay: 0.1 });
+  gsap.from('.aw-restaurant-panel', {
+    y: 42, opacity: 0, scale: 0.96, stagger: 0.1, duration: 0.9, ease: 'power3.out',
+    scrollTrigger: { trigger: '.aw-restaurant-showcase', start: 'top 74%' }
+  });
   gsap.utils.toArray('.aw-codeblock').forEach(function (block) {
     gsap.from(block, {
       y: 30, opacity: 0, duration: 0.7, ease: 'power3.out',
