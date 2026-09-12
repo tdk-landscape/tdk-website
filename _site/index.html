@@ -678,6 +678,34 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
 .aw-reel-toggle:hover { transform: translateY(-2px); background: #fff; }
 
+.aw-motion-fallback .aw-card,
+.aw-motion-fallback .aw-price-card,
+.aw-motion-fallback .aw-stack-card,
+.aw-motion-fallback .aw-scroll-img,
+.aw-motion-fallback .aw-reel-thesis h2,
+.aw-motion-fallback .aw-reel-thesis-copy {
+  opacity: 0;
+  transform: translateY(2.25rem) scale(0.98);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--aw-delay, 0ms);
+}
+
+.aw-motion-fallback .aw-scroll-img {
+  transform: scale(0.82);
+}
+
+.aw-motion-fallback .aw-card.is-motion-visible,
+.aw-motion-fallback .aw-price-card.is-motion-visible,
+.aw-motion-fallback .aw-stack-card.is-motion-visible,
+.aw-motion-fallback .aw-scroll-img.is-motion-visible,
+.aw-motion-fallback .aw-reel-thesis h2.is-motion-visible,
+.aw-motion-fallback .aw-reel-thesis-copy.is-motion-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 .aw-reel-progress {
   grid-column: 1 / -1;
   height: 2px;
@@ -980,7 +1008,20 @@ body { background: #0a0a0e; overflow-x: hidden; }
   color: #fff;
 }
 
-.aw-statement .aw-word { opacity: 0.12; }
+.aw-statement .aw-word {
+  display: inline-block;
+  opacity: 0.12;
+  transform: translateY(0.28em);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--aw-delay, 0ms);
+}
+
+.aw-statement .aw-word.is-motion-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .aw-inline-img {
   display: inline-block;
@@ -2150,6 +2191,14 @@ function sendWaitlistEmail() {
     progressFill.style.transform = 'scaleX(' + ratio + ')';
   }
 
+  function completeReel() {
+    status.textContent = files.length + ' files generated. ' + routes.length + ' routes healthy behind Traefik.';
+    playing = false;
+    complete = true;
+    toggle.setAttribute('aria-pressed', 'false');
+    setButton('bi-arrow-clockwise', 'Replay demo');
+  }
+
   function reset() {
     window.clearTimeout(timer);
     files.forEach(function (file) { file.classList.remove('is-visible'); });
@@ -2186,11 +2235,7 @@ function sendWaitlistEmail() {
       return;
     }
 
-    status.textContent = files.length + ' files generated. ' + routes.length + ' routes healthy behind Traefik.';
-    playing = false;
-    complete = true;
-    toggle.setAttribute('aria-pressed', 'false');
-    setButton('bi-arrow-clockwise', 'Replay demo');
+    completeReel();
   }
 
   function play() {
@@ -2230,6 +2275,13 @@ function sendWaitlistEmail() {
   startWhenNearViewport(reel, function () {
     if (!hasPlayedOnce && !complete) play();
   }, { rootMargin: '260px 0px', timeout: 1800 });
+
+  window.setInterval(function () {
+    if (playing && !complete && current >= files.length && currentRoute >= routes.length) {
+      window.clearTimeout(timer);
+      completeReel();
+    }
+  }, 250);
 })();
 
 /* FAQ accordion — tap support for touch devices */
@@ -2239,6 +2291,30 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
     item.classList.add('is-open');
   });
 });
+
+function prepareScrubWords() {
+  var el = document.getElementById('aw-scrub-text');
+  if (!el || el.dataset.wordsPrepared === 'true') return [];
+  var nodes = Array.from(el.childNodes);
+  el.innerHTML = '';
+  nodes.forEach(function (node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      node.textContent.split(/\s+/).filter(Boolean).forEach(function (w) {
+        var s = document.createElement('span');
+        s.className = 'aw-word';
+        s.textContent = w;
+        el.appendChild(s);
+        el.appendChild(document.createTextNode(' '));
+      });
+    } else {
+      node.classList.add('aw-word');
+      el.appendChild(node);
+      el.appendChild(document.createTextNode(' '));
+    }
+  });
+  el.dataset.wordsPrepared = 'true';
+  return Array.from(el.querySelectorAll('.aw-word'));
+}
 
 /* Terminal typing — real boot sequence, fires once when scrolled into view.
    Respects prefers-reduced-motion: renders the full log instantly. */
@@ -2354,6 +2430,7 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
 
 /* GSAP motion (skipped under prefers-reduced-motion) */
 var REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var SCRUB_WORDS = prepareScrubWords();
 if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -2388,25 +2465,7 @@ if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
 
   /* Paradigm 2: Scrubbing Text Reveal — words 0.1 → 1 sequentially */
   (function () {
-    var el = document.getElementById('aw-scrub-text');
-    if (!el) return;
-    var nodes = Array.from(el.childNodes);
-    el.innerHTML = '';
-    nodes.forEach(function (node) {
-      if (node.nodeType === Node.TEXT_NODE) {
-        node.textContent.split(/\s+/).filter(Boolean).forEach(function (w) {
-          var s = document.createElement('span');
-          s.className = 'aw-word';
-          s.textContent = w;
-          el.appendChild(s);
-          el.appendChild(document.createTextNode(' '));
-        });
-      } else {
-        node.classList.add('aw-word');
-        el.appendChild(node);
-        el.appendChild(document.createTextNode(' '));
-      }
-    });
+    if (!SCRUB_WORDS.length) return;
     gsap.to('.aw-word', {
       opacity: 1, stagger: 0.06, ease: 'none',
       scrollTrigger: { trigger: '#statement', start: 'top 75%', end: 'center 40%', scrub: 0.6 }
@@ -2449,10 +2508,32 @@ if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
     scrollTrigger: { trigger: '.aw-pricing-grid', start: 'top 80%' }
   });
 } else {
-  document.querySelectorAll('.aw-word').forEach(function (word) { word.style.opacity = '1'; });
-  document.querySelectorAll('.aw-card, .aw-price-card, .aw-stack-card, .aw-scroll-img').forEach(function (el) {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
+  document.documentElement.classList.add('aw-motion-fallback');
+  document.querySelectorAll('.aw-card, .aw-price-card, .aw-stack-card, .aw-scroll-img, .aw-reel-thesis h2, .aw-reel-thesis-copy').forEach(function (el, i) {
+    el.style.setProperty('--aw-delay', Math.min(i * 70, 420) + 'ms');
+    startWhenNearViewport(el, function () {
+      el.classList.add('is-motion-visible');
+    }, { rootMargin: '180px 0px', timeout: 900 + i * 20 });
+  });
+  SCRUB_WORDS.forEach(function (word, i) {
+    word.style.setProperty('--aw-delay', Math.min(i * 28, 900) + 'ms');
+  });
+  startWhenNearViewport(document.getElementById('statement'), function () {
+    SCRUB_WORDS.forEach(function (word) {
+      word.classList.add('is-motion-visible');
+    });
+  }, { rootMargin: '220px 0px', timeout: 1600 });
+  if (REDUCED_MOTION) {
+    document.querySelectorAll('.aw-word, .aw-card, .aw-price-card, .aw-stack-card, .aw-scroll-img, .aw-reel-thesis h2, .aw-reel-thesis-copy').forEach(function (el) {
+      el.classList.add('is-motion-visible');
+    });
+  }
+}
+
+if (!REDUCED_MOTION) {
+  document.querySelectorAll('.aw-reel-file, .aw-route').forEach(function (el) {
+    el.addEventListener('mouseenter', function () { el.style.transform = 'translateY(-2px) scale(1.01)'; });
+    el.addEventListener('mouseleave', function () { el.style.transform = ''; });
   });
 }
 </script>
