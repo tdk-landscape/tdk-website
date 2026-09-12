@@ -1862,6 +1862,7 @@ function sendWaitlistEmail() {
   var currentRoute = 0;
   var playing = false;
   var complete = false;
+  var reelFallbackTimer = null;
 
   function setButton(icon, label) {
     toggle.innerHTML = '<i class="bi ' + icon + '" aria-hidden="true"></i><span>' + label + '</span>';
@@ -1876,6 +1877,7 @@ function sendWaitlistEmail() {
 
   function reset() {
     window.clearTimeout(timer);
+    window.clearTimeout(reelFallbackTimer);
     files.forEach(function (file) { file.classList.remove('is-visible'); });
     routes.forEach(function (route) { route.classList.remove('is-visible'); });
     stack.classList.remove('is-visible');
@@ -1951,11 +1953,18 @@ function sendWaitlistEmail() {
 
   var observer = new IntersectionObserver(function (entries) {
     if (entries[0].isIntersecting) {
+      window.clearTimeout(reelFallbackTimer);
       play();
       observer.disconnect();
     }
   }, { threshold: 0.15, rootMargin: '0px 0px -100px 0px' });
   observer.observe(reel);
+
+  reelFallbackTimer = window.setTimeout(function () {
+    if (!playing && !complete) {
+      play();
+    }
+  }, 2500);
 })();
 
 /* FAQ accordion — tap support for touch devices */
