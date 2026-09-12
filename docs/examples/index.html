@@ -168,7 +168,7 @@ title: Examples - TDK CLI
         <h2>Environment configuration</h2>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>tdk.yml / tdk.production.yml</span></div>
-          <pre><span class="c"># development overrides — tdk.yml</span>
+          <pre><span class="c"># development overrides: tdk.yml</span>
 <span class="k">env</span>: development
 <span class="k">services</span>:
   - <span class="k">name</span>: api-gateway
@@ -176,7 +176,7 @@ title: Examples - TDK CLI
     <span class="k">envVars</span>:
       <span class="k">DEBUG</span>: <span class="s">"true"</span>
 
-<span class="c"># production overrides — tdk.production.yml</span>
+<span class="c"># production overrides: tdk.production.yml</span>
 <span class="k">env</span>: production
 <span class="k">services</span>:
   - <span class="k">name</span>: api-gateway
@@ -294,7 +294,7 @@ tdk up --stack media</pre>
         </div>
 
         <h2>AI-assisted stack</h2>
-        <p>Every boot also regenerates <code>AGENTS.md</code> and the C4 architecture diagram, so AI coding assistants understand the whole system on their first day — the same way your new hires do.</p>
+        <p>Every boot also regenerates <code>AGENTS.md</code> and the C4 architecture diagram, so AI coding assistants understand the whole system on their first day, just like human team members.</p>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>generated stack artifacts</span></div>
           <pre>AGENTS.md                   <span class="c"># assistant briefing, always current</span>
