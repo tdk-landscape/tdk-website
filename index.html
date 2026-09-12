@@ -2029,8 +2029,8 @@ function sendWaitlistEmail() {
     routeStage.classList.add('is-visible');
     current = files.length;
     currentRoute = routes.length;
-    status.textContent = files.length + ' files generated. ' + routes.length + ' routes healthy behind Traefik.';
     renderProgress();
+    completeReel();
     toggle.hidden = true;
     return;
   }
