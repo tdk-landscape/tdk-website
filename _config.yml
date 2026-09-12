@@ -12,6 +12,7 @@ url: "https://tdk-landscape.github.io"
 
 twitter_username: tdkcli
 github_username: tdk-cli
+social_image: "/assets/images/tdk-social-card.svg"
 
 markdown: kramdown
 highlighter: rouge

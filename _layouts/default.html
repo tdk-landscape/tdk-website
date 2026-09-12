@@ -39,6 +39,7 @@
   {% if article %}
     {% assign article_title = article.title | append: ' | ' | append: site.title %}
     {% assign canonical_url = page.url | absolute_url %}
+    {% assign social_image_url = site.url | append: site.baseurl | append: site.social_image %}
     <title>{{ article_title }}</title>
     <meta name="description" content="{{ article.summary | escape }}" />
     <link rel="canonical" href="{{ canonical_url }}" />
@@ -47,12 +48,18 @@
     <meta property="og:title" content="{{ article_title | escape }}" />
     <meta property="og:description" content="{{ article.summary | escape }}" />
     <meta property="og:url" content="{{ canonical_url }}" />
+    <meta property="og:image" content="{{ social_image_url }}" />
+    <meta property="og:image:alt" content="{{ article_title | escape }}" />
     <meta property="article:section" content="{{ article.category | escape }}" />
     <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
     <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}" />
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@{{ site.twitter_username }}" />
+    <meta name="twitter:creator" content="@{{ site.twitter_username }}" />
     <meta name="twitter:title" content="{{ article_title | escape }}" />
     <meta name="twitter:description" content="{{ article.summary | escape }}" />
+    <meta name="twitter:image" content="{{ social_image_url }}" />
+    <meta name="twitter:image:alt" content="{{ article_title | escape }}" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
