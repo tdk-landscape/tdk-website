@@ -1807,6 +1807,44 @@ body { background: #0a0a0e; overflow-x: hidden; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
+function startWhenNearViewport(target, start, options) {
+  if (!target) return;
+  options = options || {};
+  var started = false;
+  var rootMargin = options.rootMargin || '220px 0px';
+  var timeout = options.timeout || 1800;
+  var observer = null;
+  var fallbackTimer = null;
+
+  function run() {
+    if (started) return;
+    started = true;
+    window.clearTimeout(fallbackTimer);
+    window.removeEventListener('scroll', check, { passive: true });
+    window.removeEventListener('resize', check);
+    if (observer) observer.disconnect();
+    start();
+  }
+
+  function check() {
+    var rect = target.getBoundingClientRect();
+    var buffer = Math.max(window.innerHeight * 0.32, 220);
+    if (rect.top < window.innerHeight + buffer && rect.bottom > -buffer) run();
+  }
+
+  if ('IntersectionObserver' in window) {
+    observer = new IntersectionObserver(function (entries) {
+      if (entries.some(function (entry) { return entry.isIntersecting; })) run();
+    }, { threshold: 0.01, rootMargin: rootMargin });
+    observer.observe(target);
+  }
+
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check);
+  requestAnimationFrame(check);
+  fallbackTimer = window.setTimeout(run, timeout);
+}
+
 /* ROI calculator */
 function calcRoi() {
   var devs = parseInt(document.getElementById('roi-devs').value, 10);
@@ -1862,7 +1900,7 @@ function sendWaitlistEmail() {
   var currentRoute = 0;
   var playing = false;
   var complete = false;
-  var reelFallbackTimer = null;
+  var hasPlayedOnce = false;
 
   function setButton(icon, label) {
     toggle.innerHTML = '<i class="bi ' + icon + '" aria-hidden="true"></i><span>' + label + '</span>';
@@ -1877,7 +1915,6 @@ function sendWaitlistEmail() {
 
   function reset() {
     window.clearTimeout(timer);
-    window.clearTimeout(reelFallbackTimer);
     files.forEach(function (file) { file.classList.remove('is-visible'); });
     routes.forEach(function (route) { route.classList.remove('is-visible'); });
     stack.classList.remove('is-visible');
@@ -1920,7 +1957,9 @@ function sendWaitlistEmail() {
   }
 
   function play() {
+    if (playing) return;
     if (complete) reset();
+    hasPlayedOnce = true;
     playing = true;
     toggle.setAttribute('aria-pressed', 'true');
     setButton('bi-pause-fill', 'Pause demo');
@@ -1951,20 +1990,9 @@ function sendWaitlistEmail() {
     return;
   }
 
-  var observer = new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting) {
-      window.clearTimeout(reelFallbackTimer);
-      play();
-      observer.disconnect();
-    }
-  }, { threshold: 0.15, rootMargin: '0px 0px -100px 0px' });
-  observer.observe(reel);
-
-  reelFallbackTimer = window.setTimeout(function () {
-    if (!playing && !complete) {
-      play();
-    }
-  }, 2500);
+  startWhenNearViewport(reel, function () {
+    if (!hasPlayedOnce && !complete) play();
+  }, { rootMargin: '260px 0px', timeout: 1800 });
 })();
 
 /* FAQ accordion — tap support for touch devices */
@@ -2015,7 +2043,6 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
   ];
 
   var started = false;
-  var fallbackTimer = null;
 
   function addCursor() {
     var c = document.createElement('span');
@@ -2067,15 +2094,6 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
     }
   }
 
-  var io = new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting && !started) {
-      started = true;
-      window.clearTimeout(fallbackTimer);
-      play(0);
-      io.disconnect();
-    }
-  }, { threshold: 0.2, rootMargin: '0px 0px -150px 0px' });
-
   if (REDUCED) {
     /* Instant static render, no typing, no observer */
     script.forEach(function (step) {
@@ -2088,13 +2106,12 @@ document.querySelectorAll('.aw-acc-item').forEach(function (item) {
       body.appendChild(line);
     });
   } else {
-    io.observe(body);
-    fallbackTimer = window.setTimeout(function () {
+    startWhenNearViewport(body, function () {
       if (!started) {
         started = true;
         play(0);
       }
-    }, 2000);
+    }, { rootMargin: '280px 0px', timeout: 1900 });
   }
 })();
 
@@ -2193,6 +2210,12 @@ if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
   gsap.from('.aw-price-card', {
     y: 60, opacity: 0, stagger: 0.12, duration: 0.9, ease: 'power3.out',
     scrollTrigger: { trigger: '.aw-pricing-grid', start: 'top 80%' }
+  });
+} else {
+  document.querySelectorAll('.aw-word').forEach(function (word) { word.style.opacity = '1'; });
+  document.querySelectorAll('.aw-card, .aw-price-card, .aw-stack-card, .aw-scroll-img').forEach(function (el) {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
   });
 }
 </script>
