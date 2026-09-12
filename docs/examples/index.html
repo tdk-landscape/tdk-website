@@ -9,8 +9,81 @@ title: Examples - TDK CLI
       {% include docs-sidebar.html %}
 
       <div class="aw-docs-body">
-        <h1>Examples</h1>
-        <p class="aw-lead">Real-world stacks, from a five-service shop to worker queues and multi-stack startups.</p>
+        <h1>Examples &amp; Reference Landscapes</h1>
+        <p class="aw-lead">Production-grade example repositories demonstrating the Project-Stack-Resource (PSR) model in action.</p>
+
+        <h2>Official Reference Repositories</h2>
+        <p>Clone and run these complete, battle-tested TDK landscapes locally with a single command:</p>
+
+        <div class="aw-doc-cards" style="margin-bottom: 3rem;">
+          <a class="aw-card" href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">
+            <span class="aw-mono" style="font-size: 0.75rem; color: #b79aff; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem;">Reference Repo 01</span>
+            <h3>tdk-example</h3>
+            <p>Minimal PSR demonstration: 1 project, 2 stacks (identity &amp; appointment), and 4 resources using Hono, Vite, and Bun.</p>
+            <span style="margin-top: 1rem; display: inline-block; font-weight: 600; color: #fff;">View on GitHub →</span>
+          </a>
+
+          <a class="aw-card" href="https://github.com/tdk-landscape/tdk-user-management" target="_blank" rel="noopener" style="border-color: rgba(124, 77, 255, 0.4);">
+            <span class="aw-mono" style="font-size: 0.75rem; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem;">Enterprise Sales Demo Repo 02</span>
+            <h3>tdk-user-management</h3>
+            <p>Enterprise identity governance: 3 stacks (admin, portal, compliance), 6 resources, SCIM 2.0 provisioning, OIDC PKCE, and SIEM event streams.</p>
+            <span style="margin-top: 1rem; display: inline-block; font-weight: 600; color: #38bdf8;">View on GitHub →</span>
+          </a>
+        </div>
+
+        <h2>Enterprise User Management Landscape</h2>
+        <p>A multi-stack, zero-trust identity system featuring SCIM 2.0 provisioning, OAuth2/OIDC PKCE, and asynchronous background audit stream workers.</p>
+
+        <h3>1 — Admin Directory API (SCIM 2.0)</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/admin/user-admin-api/service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"user-admin-api"</span>,
+  <span class="k">"domain"</span>: <span class="s">"admin"</span>,
+  <span class="k">"type"</span>: <span class="s">"backend"</span>,
+  <span class="k">"stack"</span>: <span class="s">"admin"</span>,
+  <span class="k">"port"</span>: <span class="n">4010</span>,
+  <span class="k">"dependencies"</span>: [],
+  <span class="k">"healthCheck"</span>: {
+    <span class="k">"enabled"</span>: <span class="k">true</span>,
+    <span class="k">"path"</span>: <span class="s">"/health"</span>
+  }
+}</pre>
+        </div>
+
+        <h3>2 — OAuth2 / OIDC Self-Service Portal API</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/portal/user-portal-api/service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"user-portal-api"</span>,
+  <span class="k">"domain"</span>: <span class="s">"portal"</span>,
+  <span class="k">"type"</span>: <span class="s">"backend"</span>,
+  <span class="k">"stack"</span>: <span class="s">"portal"</span>,
+  <span class="k">"port"</span>: <span class="n">4020</span>,
+  <span class="k">"dependencies"</span>: [],
+  <span class="k">"healthCheck"</span>: {
+    <span class="k">"enabled"</span>: <span class="k">true</span>,
+    <span class="k">"path"</span>: <span class="s">"/health"</span>
+  }
+}</pre>
+        </div>
+
+        <h3>3 — Asynchronous Audit &amp; SIEM Worker</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/compliance/user-audit-worker/service.json</span></div>
+          <pre>{
+  <span class="k">"appName"</span>: <span class="s">"user-audit-worker"</span>,
+  <span class="k">"domain"</span>: <span class="s">"compliance"</span>,
+  <span class="k">"type"</span>: <span class="s">"worker"</span>,
+  <span class="k">"stack"</span>: <span class="s">"compliance"</span>,
+  <span class="k">"port"</span>: <span class="n">4031</span>,
+  <span class="k">"dependencies"</span>: [<span class="s">"user-audit-api"</span>],
+  <span class="k">"healthCheck"</span>: {
+    <span class="k">"enabled"</span>: <span class="k">true</span>,
+    <span class="k">"path"</span>: <span class="s">"/health"</span>
+  }
+}</pre>
+        </div>
 
         <h2>E-commerce platform</h2>
         <p>A typical setup with {{ site.data.tdk.story_devs }} services, wired by manifests alone:</p>
@@ -230,8 +303,8 @@ dependency-manifest.json    <span class="c"># full service graph</span></pre>
         </div>
 
         <div class="aw-callout">
-          <h4>Want more?</h4>
-          <p>Check the <a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">reference example stack</a> on GitHub for a complete working project.</p>
+          <h4>Explore Reference Repositories</h4>
+          <p>Check out our official working projects on GitHub: <a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">tdk-example</a> (base PSR stack) and <a href="https://github.com/tdk-landscape/tdk-user-management" target="_blank" rel="noopener">tdk-user-management</a> (enterprise SCIM 2.0 &amp; OAuth2 PKCE sales demo landscape).</p>
         </div>
       </div>
     </div>
