@@ -25,7 +25,7 @@ title: Documentation - TDK CLI
           </a>
           <a class="aw-card" href="{{ '/docs/examples/' | relative_url }}">
             <h3>Examples &amp; Repos</h3>
-            <p>Explore tdk-example, tdk-user-management, and the restaurant operations stack.</p>
+            <p>Explore tdk-example, tdk-user-management, tdk-erp-system ({{ site.data.tdk.erp_services }} services), and the restaurant operations stack.</p>
             <span>View examples →</span>
           </a>
           <a class="aw-card" href="{{ '/compare/' | relative_url }}">
@@ -36,7 +36,7 @@ title: Documentation - TDK CLI
         </div>
 
         <h2>What is TDK CLI?</h2>
-        <p>TDK CLI is a <strong>Kubernetes-free</strong> microservice development tool. It runs 5-{{ site.data.tdk.scale_services }} services locally using only Docker and Tilt with zero cluster tax and no K8s knowledge required. Onboarding a new developer becomes: clone, <code>tdk up</code>, code.</p>
+        <p>TDK CLI is a <strong>Kubernetes-free</strong> microservice development tool. It runs 5-{{ site.data.tdk.scale_services }} services locally using only Docker and Tilt with zero cluster tax and no K8s knowledge required. Our <a href="{{ '/docs/examples/' | relative_url }}" style="color: #b79aff;">ERP system</a> demonstrates this with {{ site.data.tdk.erp_services }} microservices across {{ site.data.tdk.erp_domains }} business domains. Onboarding a new developer becomes: clone, <code>tdk up</code>, code.</p>
         <p>Write one <code>service.json</code> file per service, and TDK automatically generates {{ site.data.tdk.files_per_service }} files per service and {{ site.data.tdk.stack_artifacts }} stack-wide artifacts:</p>
         <ul>
           <li>Dockerfile with optimized L1-L4 golden layering</li>

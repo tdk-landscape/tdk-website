@@ -14,8 +14,10 @@ frontend_files: 17         # Verified in identity/identity-management-frontend/.
 stack_artifacts: "40+"     # stack-wide: Tiltfile, C4, AGENTS.md, identities, registry, migrators
 product_features: "35+"    # feature catalog on /features/
 monorepo_services: 27      # service.json files parsed in beauty-crm (do not round this one)
-scale_services: "30+"      # 27 manifests + platform infra (postgres/redis/nats/registry), rounded down
-scale_plain: 30            # same, without "+" — for sentences where "+" reads badly
+scale_services: "100+"     # 100 microservices in tdk-erp-system, 27 in beauty-crm + platform infra
+scale_plain: 100           # same, without "+" — for sentences where "+" reads badly
+erp_services: 100          # exact count in tdk-erp-system
+erp_domains: 7             # finance, hr, inventory, sales, manufacturing, supply_chain, analytics
 
 # --- Demo facts (the boot-demo stack) ---
 demo_services: 14          # services in the demo stack shown in the terminal
