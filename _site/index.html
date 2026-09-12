@@ -2114,6 +2114,7 @@ function sendWaitlistEmail() {
 
   function reset() {
     window.clearTimeout(timer);
+    window.clearTimeout(reelFallbackTimer);
     files.forEach(function (file) { file.classList.remove('is-visible'); });
     routes.forEach(function (route) { route.classList.remove('is-visible'); });
     stack.classList.remove('is-visible');
