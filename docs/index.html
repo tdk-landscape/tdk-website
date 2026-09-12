@@ -10,7 +10,7 @@ title: Documentation - TDK CLI
 
       <div class="aw-docs-body">
         <h1>Documentation</h1>
-        <p class="aw-lead">Learn how to run your microservices locally without Kubernetes — and give every new hire a running system on day one.</p>
+        <p class="aw-lead">Learn how to run your microservices locally without Kubernetes and give every new team member a running system on day one.</p>
 
         <div class="aw-doc-cards">
           <a class="aw-card" href="{{ '/docs/quickstart/' | relative_url }}">
@@ -24,22 +24,22 @@ title: Documentation - TDK CLI
             <span>Read more →</span>
           </a>
           <a class="aw-card" href="{{ '/docs/examples/' | relative_url }}">
-            <h3>Examples</h3>
-            <p>Real-world stacks: e-commerce, workers, multi-stack setups.</p>
+            <h3>Examples &amp; Repos</h3>
+            <p>Explore tdk-example and tdk-user-management reference stacks.</p>
             <span>View examples →</span>
           </a>
           <a class="aw-card" href="{{ '/compare/' | relative_url }}">
             <h3>Compare tools</h3>
-            <p>TDK against Garden, Skaffold, Codespaces and the rest — with real prices.</p>
+            <p>TDK against Garden, Skaffold, Codespaces and the rest with transparent pricing.</p>
             <span>Compare →</span>
           </a>
         </div>
 
         <h2>What is TDK CLI?</h2>
-        <p>TDK CLI is a <strong>Kubernetes-free</strong> microservice development tool. It runs 5–{{ site.data.tdk.scale_services }} services locally using only Docker and Tilt — no cluster, no K8s knowledge required. Onboarding a new developer becomes: clone, <code>tdk up</code>, code.</p>
+        <p>TDK CLI is a <strong>Kubernetes-free</strong> microservice development tool. It runs 5-{{ site.data.tdk.scale_services }} services locally using only Docker and Tilt with zero cluster tax and no K8s knowledge required. Onboarding a new developer becomes: clone, <code>tdk up</code>, code.</p>
         <p>Write one <code>service.json</code> file per service, and TDK automatically generates {{ site.data.tdk.files_per_service }} files per service and {{ site.data.tdk.stack_artifacts }} stack-wide artifacts:</p>
         <ul>
-          <li>Dockerfile with optimized L1–L4 golden layering</li>
+          <li>Dockerfile with optimized L1-L4 golden layering</li>
           <li>Vite and TypeScript configuration per app type</li>
           <li>nginx reverse proxy rules and Traefik routes</li>
           <li>Environment files and .npmrc wired to the local registry</li>
@@ -48,7 +48,7 @@ title: Documentation - TDK CLI
         </ul>
 
         <h2>Why it matters for the business</h2>
-        <p>Every new developer typically loses one to two weeks waiting for environment setup, credentials and specs. Hire five developers at once — the normal way projects start — and the whole payroll idles. TDK compresses that to minutes, on hardware the company already owns. See <a href="{{ '/features/' | relative_url }}#story">the full story</a>.</p>
+        <p>Every new developer typically loses one to two weeks waiting for environment setup, credentials and specs. Hire five developers at once (the standard onboarding routine) and payroll idles. TDK compresses that to minutes, on hardware the company already owns. See <a href="{{ '/features/' | relative_url }}#story">the full story</a>.</p>
 
         <h2>Key capabilities</h2>
         <div class="aw-feature-grid">
