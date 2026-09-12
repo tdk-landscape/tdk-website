@@ -2057,6 +2057,15 @@ body:has(.aw) .site-footer {
 }
 
 @media (max-width: 600px) {
+  .aw .aw-bento {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .aw .aw-bento>.aw-card {
+    grid-column: 1 !important;
+    width: 100%;
+  }
+
   .aw-feature-grid {
     grid-template-columns: 1fr;
   }
