@@ -75,11 +75,11 @@
           </a>
           <a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">
             <i class="bi bi-code-square" aria-hidden="true"></i>
-            <span><strong>Example: tdk-example</strong><small>Base PSR stack</small></span>
+            <span><strong>tdk-example (GitHub)</strong><small>Minimal PSR landscape: Hono, Vite &amp; Bun</small></span>
           </a>
           <a href="https://github.com/tdk-landscape/tdk-user-management" target="_blank" rel="noopener">
             <i class="bi bi-shield-lock" aria-hidden="true"></i>
-            <span><strong>Example: User Management</strong><small>Enterprise identity &amp; SCIM 2.0</small></span>
+            <span><strong>tdk-user-management (GitHub)</strong><small>Enterprise security: SCIM 2.0 &amp; PKCE</small></span>
           </a>
           <a href="/fit/">
             <i class="bi bi-sliders" aria-hidden="true"></i>
@@ -137,26 +137,26 @@
         <h2>Official Reference Repositories</h2>
         <p>Clone and run these complete, battle-tested TDK landscapes locally with a single command:</p>
 
-        <div class="aw-doc-cards" style="margin-bottom: 3rem;">
+        <div class="aw-doc-cards" style="margin-bottom: 3.5rem;">
           <a class="aw-card" href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">
-            <span class="aw-mono" style="font-size: 0.75rem; color: #b79aff; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem;">Reference Repo 01</span>
+            <span class="aw-mono" style="font-size: 0.75rem; color: #b79aff; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem; font-weight: 700;">BASE REFERENCE STACK</span>
             <h3>tdk-example</h3>
             <p>Minimal PSR demonstration: 1 project, 2 stacks (identity &amp; appointment), and 4 resources using Hono, Vite, and Bun.</p>
-            <span style="margin-top: 1rem; display: inline-block; font-weight: 600; color: #fff;">View on GitHub →</span>
+            <span style="margin-top: 1.25rem; display: inline-flex; align-items: center; font-weight: 600; color: #fff; gap: 0.35rem;">Clone on GitHub <i class="bi bi-box-arrow-up-right" style="font-size: 0.85em;"></i></span>
           </a>
 
-          <a class="aw-card" href="https://github.com/tdk-landscape/tdk-user-management" target="_blank" rel="noopener" style="border-color: rgba(124, 77, 255, 0.4);">
-            <span class="aw-mono" style="font-size: 0.75rem; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem;">Enterprise Sales Demo Repo 02</span>
+          <a class="aw-card" href="https://github.com/tdk-landscape/tdk-user-management" target="_blank" rel="noopener" style="border-color: rgba(56, 189, 248, 0.4);">
+            <span class="aw-mono" style="font-size: 0.75rem; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem; font-weight: 700;">ENTERPRISE GOVERNANCE DEMO</span>
             <h3>tdk-user-management</h3>
-            <p>Enterprise identity governance: 3 stacks (admin, portal, compliance), 6 resources, SCIM 2.0 provisioning, OIDC PKCE, and SIEM event streams.</p>
-            <span style="margin-top: 1rem; display: inline-block; font-weight: 600; color: #38bdf8;">View on GitHub →</span>
+            <p>Enterprise identity governance: 3 stacks (admin, portal, compliance), 6 resources, SCIM 2.0 provisioning, OIDC PKCE, and SIEM workers.</p>
+            <span style="margin-top: 1.25rem; display: inline-flex; align-items: center; font-weight: 600; color: #38bdf8; gap: 0.35rem;">Clone on GitHub <i class="bi bi-box-arrow-up-right" style="font-size: 0.85em;"></i></span>
           </a>
         </div>
 
         <h2>Enterprise User Management Landscape</h2>
         <p>A multi-stack, zero-trust identity system featuring SCIM 2.0 provisioning, OAuth2/OIDC PKCE, and asynchronous background audit stream workers.</p>
 
-        <h3>1 — Admin Directory API (SCIM 2.0)</h3>
+        <h3>1. Admin Directory API (SCIM 2.0)</h3>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/admin/user-admin-api/service.json</span></div>
           <pre>{
@@ -173,7 +173,7 @@
 }</pre>
         </div>
 
-        <h3>2 — OAuth2 / OIDC Self-Service Portal API</h3>
+        <h3>2. OAuth2 / OIDC Self-Service Portal API</h3>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/portal/user-portal-api/service.json</span></div>
           <pre>{
@@ -190,7 +190,7 @@
 }</pre>
         </div>
 
-        <h3>3 — Asynchronous Audit &amp; SIEM Worker</h3>
+        <h3>3. Asynchronous Audit &amp; SIEM Worker</h3>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/compliance/user-audit-worker/service.json</span></div>
           <pre>{
@@ -210,7 +210,7 @@
         <h2>E-commerce platform</h2>
         <p>A typical setup with 5 services, wired by manifests alone:</p>
 
-        <h3>1 — API gateway</h3>
+        <h3>1. API gateway</h3>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/api-gateway/service.json</span></div>
           <pre>{
@@ -227,7 +227,7 @@
 }</pre>
         </div>
 
-        <h3>2 — Order service</h3>
+        <h3>2. Order service</h3>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/order-service/service.json</span></div>
           <pre>{
@@ -240,7 +240,7 @@
 }</pre>
         </div>
 
-        <h3>3 — Frontend store</h3>
+        <h3>3. Frontend store</h3>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/frontend-store/service.json</span></div>
           <pre>{
@@ -486,13 +486,13 @@ if (window.gsap && window.ScrollTrigger) {
       </div>
 
       <div class="col-lg-2 col-md-4 mb-4 mb-lg-0">
-        <h6>Resources</h6>
+        <h6>Resources &amp; Code</h6>
         <ul class="list-unstyled footer-links">
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/docs/quickstart/">Quick Start</a></li>
-          <li><a href="/docs/examples/">Examples</a></li>
-          <li><a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">Example App (GitHub)</a></li>
-          <li><a href="https://github.com/tdk-landscape/tdk-user-management" target="_blank" rel="noopener">User Management App (GitHub)</a></li>
+          <li><a href="/docs/examples/">All Examples</a></li>
+          <li><a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">tdk-example Stack (GitHub)</a></li>
+          <li><a href="https://github.com/tdk-landscape/tdk-user-management" target="_blank" rel="noopener">tdk-user-management Stack (GitHub)</a></li>
         </ul>
       </div>
 
