@@ -434,6 +434,150 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
 .aw-term-badge span { color: rgba(236, 236, 241, 0.5); font-size: 0.9375rem; }
 
+/* ---------------- Premium Icon Styling ---------------- */
+.aw-icon-gradient {
+  background: linear-gradient(135deg, #b79aff 0%, #7c4dff 50%, #4dd0ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.aw-icon-gradient:hover {
+  background: linear-gradient(135deg, #4dd0ff 0%, #b79aff 50%, #7c4dff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.1);
+}
+
+/* File type icons - specific gradients (high specificity to override generic rules) */
+.aw-reel-file .bi-sliders2 { color: #f472b6 !important; }
+.aw-reel-file .bi-nut { color: #a78bfa !important; }
+.aw-reel-file .bi-cloud-arrow-down { color: #60a5fa !important; }
+.aw-reel-file .bi-robot { color: #34d399 !important; }
+.aw-reel-file .bi-box-seam { color: #fbbf24 !important; }
+.aw-reel-file .bi-hdd-network { color: #f87171 !important; }
+.aw-reel-file .bi-diagram-3 { color: #c084fc !important; }
+.aw-reel-file .bi-lightning-charge { color: #fbbf24 !important; }
+.aw-reel-file .bi-lightning-charge-fill { color: #f59e0b !important; }
+.aw-reel-file .bi-filetype-tsx { color: #60a5fa !important; }
+.aw-reel-file .bi-signpost-split { color: #34d399 !important; }
+.aw-reel-file .bi-browser-chrome { color: #f472b6 !important; }
+.aw-reel-file .bi-braces-asterisk { color: #a78bfa !important; }
+.aw-reel-file .bi-braces { color: #c084fc !important; }
+.aw-reel-file .bi-clipboard2-check { color: #34d399 !important; }
+.aw-reel-file .bi-hammer { color: #f87171 !important; }
+.aw-reel-file .bi-window-sidebar { color: #60a5fa !important; }
+
+/* System icons with glow effects */
+.bi-terminal, 
+.bi-braces, 
+.bi-folder2-open,
+.bi-layers,
+.bi-kanban,
+.bi-bounding-box {
+  color: #b79aff;
+  filter: drop-shadow(0 0 8px rgba(183, 154, 255, 0.3));
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bi-terminal:hover,
+.bi-braces:hover,
+.bi-folder2-open:hover,
+.bi-layers:hover,
+.bi-kanban:hover,
+.bi-bounding-box:hover {
+  color: #4dd0ff;
+  filter: drop-shadow(0 0 12px rgba(77, 208, 255, 0.5));
+  transform: scale(1.15);
+}
+
+/* Status and action icons */
+.bi-pause-fill, 
+.bi-play-fill, 
+.bi-arrow-clockwise {
+  color: #b79aff;
+  transition: all 0.3s ease;
+}
+
+.bi-pause-fill:hover,
+.bi-play-fill:hover,
+.bi-arrow-clockwise:hover {
+  color: #4dd0ff;
+  transform: scale(1.1);
+}
+
+/* Terminal window controls with enhanced colors */
+.aw-terminal-bar i:nth-child(1) { 
+  background: linear-gradient(135deg, #ff5f56, #ff3b30);
+  box-shadow: 0 0 8px rgba(255, 95, 86, 0.4);
+}
+.aw-terminal-bar i:nth-child(2) { 
+  background: linear-gradient(135deg, #ffbd2e, #ffcc00);
+  box-shadow: 0 0 8px rgba(255, 189, 46, 0.4);
+}
+.aw-terminal-bar i:nth-child(3) { 
+  background: linear-gradient(135deg, #27c93f, #34c759);
+  box-shadow: 0 0 8px rgba(39, 201, 63, 0.4);
+}
+
+/* Route dots with pulsing effect */
+.aw-route-dot {
+  background: linear-gradient(135deg, #6ee7b7, #34d399);
+  box-shadow: 0 0 0 0.25rem rgba(110, 231, 183, 0.15);
+  animation: aw-pulse 2s ease-in-out infinite;
+}
+
+@keyframes aw-pulse {
+  0%, 100% { box-shadow: 0 0 0 0.25rem rgba(110, 231, 183, 0.15); }
+  50% { box-shadow: 0 0 0 0.4rem rgba(110, 231, 183, 0.3); }
+}
+
+/* Icon hover physics in file list */
+.aw-reel-file i {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.aw-reel-file:hover i {
+  transform: scale(1.2) rotate(5deg);
+  filter: brightness(1.2);
+}
+
+/* Stack icons with gradient */
+.aw-reel-stack i {
+  background: linear-gradient(135deg, #6ee7b7, #34d399);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.aw-reel-stack-files .bi-kanban { color: #f472b6 !important; }
+.aw-reel-stack-files .bi-braces { color: #a78bfa !important; }
+.aw-reel-stack-files .bi-diagram-3 { color: #c084fc !important; }
+.aw-reel-stack-files .bi-bounding-box { color: #60a5fa !important; }
+.aw-reel-stack-files .bi-robot { color: #34d399 !important; }
+
+.aw-reel-stack-files i {
+  transition: color 0.3s ease;
+}
+
+.aw-reel-stack-files i:hover {
+  filter: brightness(1.3);
+}
+
+/* Proof icons */
+.aw-route-proof i {
+  color: #6ee7b7;
+  filter: drop-shadow(0 0 6px rgba(110, 231, 183, 0.3));
+  transition: all 0.3s ease;
+}
+
+.aw-route-proof i:hover {
+  color: #34d399;
+  transform: scale(1.1);
+}
+
 .aw-terminal {
   background: #0d0d13;
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -451,9 +595,6 @@ body { background: #0a0a0e; overflow-x: hidden; }
 }
 
 .aw-terminal-bar i { width: 11px; height: 11px; border-radius: 50%; }
-.aw-terminal-bar i:nth-child(1) { background: #ff5f56; }
-.aw-terminal-bar i:nth-child(2) { background: #ffbd2e; }
-.aw-terminal-bar i:nth-child(3) { background: #27c93f; }
 
 .aw-terminal-bar span {
   margin-left: 0.75rem;
@@ -697,7 +838,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   transform: translateY(0);
 }
 
-.aw-reel-file.is-visible i { color: #b79aff; }
+.aw-reel-file.is-visible i { color: inherit; }
 
 .aw-reel-stack {
   display: grid;
