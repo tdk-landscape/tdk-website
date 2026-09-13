@@ -16,7 +16,7 @@ title: Compare - TDK CLI
   <!-- Scrub statement -->
   <section class="aw-section aw-statement" style="padding-top: 0;">
     <div class="aw-wrap">
-      <h2 id="aw-scrub-text">Garden, Skaffold and DevSpace assume a cluster. Gitpod and Codespaces assume a credit card. <span class="aw-hot">TDK assumes a laptop.</span></h2>
+      <h2 id="aw-scrub-text">Garden, Skaffold and DevSpace assume a cluster. Gitpod and Codespaces assume a credit card. Devbox and Devenv assume Nix. <span class="aw-hot">TDK assumes a laptop.</span></h2>
     </div>
   </section>
 
@@ -34,6 +34,8 @@ title: Compare - TDK CLI
             <tr>
               <th>Feature</th>
               <th class="aw-tdk-col">TDK CLI</th>
+              <th>Devbox</th>
+              <th>Devenv</th>
               <th>Garden</th>
               <th>Skaffold</th>
               <th>DevSpace</th>
@@ -43,6 +45,8 @@ title: Compare - TDK CLI
             <tr>
               <td>Kubernetes required</td>
               <td class="aw-tdk-col"><span class="aw-yes">No</span></td>
+              <td><span class="aw-yes">No</span></td>
+              <td><span class="aw-yes">No</span></td>
               <td><span class="aw-warn">Optional (leaks)</span></td>
               <td><span class="aw-no">Yes</span></td>
               <td><span class="aw-no">Yes</span></td>
@@ -50,6 +54,8 @@ title: Compare - TDK CLI
             <tr>
               <td>Learning curve</td>
               <td class="aw-tdk-col"><span class="aw-yes">Low</span></td>
+              <td><span class="aw-warn">Medium</span></td>
+              <td><span class="aw-warn">High</span></td>
               <td><span class="aw-warn">High</span></td>
               <td><span class="aw-warn">High</span></td>
               <td><span class="aw-warn">High</span></td>
@@ -57,6 +63,8 @@ title: Compare - TDK CLI
             <tr>
               <td>Setup time</td>
               <td class="aw-tdk-col"><span class="aw-yes">Minutes</span></td>
+              <td><span class="aw-yes">Minutes</span></td>
+              <td><span class="aw-warn">Hours</span></td>
               <td><span class="aw-warn">Days</span></td>
               <td><span class="aw-warn">Days</span></td>
               <td><span class="aw-warn">Days</span></td>
@@ -64,6 +72,8 @@ title: Compare - TDK CLI
             <tr>
               <td>Manifest format</td>
               <td class="aw-tdk-col"><span class="aw-yes">Simple JSON</span></td>
+              <td>JSON</td>
+              <td>Nix</td>
               <td>Complex YAML</td>
               <td>Complex YAML</td>
               <td>YAML</td>
@@ -71,6 +81,8 @@ title: Compare - TDK CLI
             <tr>
               <td>Auto-generated files</td>
               <td class="aw-tdk-col"><span class="aw-yes">10 per service</span></td>
+              <td><span class="aw-no">Manual</span></td>
+              <td><span class="aw-no">Manual</span></td>
               <td>3–5 files</td>
               <td><span class="aw-no">Manual</span></td>
               <td><span class="aw-no">Manual</span></td>
@@ -81,6 +93,8 @@ title: Compare - TDK CLI
               <td><span class="aw-no">DIY</span></td>
               <td><span class="aw-no">DIY</span></td>
               <td><span class="aw-no">DIY</span></td>
+              <td><span class="aw-no">DIY</span></td>
+              <td><span class="aw-no">DIY</span></td>
             </tr>
             <tr>
               <td>Auto-discovery</td>
@@ -88,10 +102,14 @@ title: Compare - TDK CLI
               <td><span class="aw-no">Manual</span></td>
               <td><span class="aw-no">Manual</span></td>
               <td><span class="aw-no">Manual</span></td>
+              <td><span class="aw-no">Manual</span></td>
+              <td><span class="aw-no">Manual</span></td>
             </tr>
             <tr>
               <td>Selective startup</td>
               <td class="aw-tdk-col"><span class="aw-yes">Yes</span></td>
+              <td><span class="aw-yes">Yes</span></td>
+              <td><span class="aw-yes">Yes</span></td>
               <td><span class="aw-no">Limited</span></td>
               <td><span class="aw-no">No</span></td>
               <td><span class="aw-yes">Yes</span></td>
@@ -99,6 +117,8 @@ title: Compare - TDK CLI
             <tr>
               <td>Local-only mode</td>
               <td class="aw-tdk-col"><span class="aw-yes">Docker only</span></td>
+              <td><span class="aw-yes">Nix shell</span></td>
+              <td><span class="aw-yes">Nix shell</span></td>
               <td><span class="aw-no">Needs cluster</span></td>
               <td><span class="aw-no">Needs cluster</span></td>
               <td><span class="aw-no">Needs cluster</span></td>
@@ -106,6 +126,8 @@ title: Compare - TDK CLI
             <tr>
               <td>Cost at 10 developers</td>
               <td class="aw-tdk-col"><span class="aw-yes">{{ site.data.tdk.community_price }} (MIT)</span></td>
+              <td><span class="aw-yes">Free (MIT)</span></td>
+              <td><span class="aw-yes">Free (MIT)</span></td>
               <td>Platform team time</td>
               <td>Platform team time</td>
               <td><span class="aw-no">Commercial</span></td>
@@ -113,6 +135,8 @@ title: Compare - TDK CLI
             <tr>
               <td>Scale proven</td>
               <td class="aw-tdk-col"><span class="aw-yes">{{ site.data.tdk.scale_services }} in daily use</span></td>
+              <td>Thousands of developers</td>
+              <td>Active community</td>
               <td>Enterprise</td>
               <td>Medium</td>
               <td>Medium</td>
@@ -120,6 +144,8 @@ title: Compare - TDK CLI
             <tr>
               <td>Built on</td>
               <td class="aw-tdk-col"><span class="aw-yes">Tilt (10k stars)</span></td>
+              <td>Nix</td>
+              <td>Nix</td>
               <td>Custom</td>
               <td>Custom</td>
               <td>Custom</td>
@@ -127,6 +153,8 @@ title: Compare - TDK CLI
             <tr>
               <td>Open source</td>
               <td class="aw-tdk-col"><span class="aw-yes">MIT</span></td>
+              <td><span class="aw-yes">MIT</span></td>
+              <td><span class="aw-yes">MIT</span></td>
               <td><span class="aw-yes">Apache</span></td>
               <td><span class="aw-yes">Apache</span></td>
               <td><span class="aw-no">Commercial</span></td>
@@ -157,6 +185,8 @@ title: Compare - TDK CLI
         <span class="aw-orbit-chip" style="--ox: -20%; --oy: 40%;">Okteto · custom</span>
         <span class="aw-orbit-chip" style="--ox: -44%; --oy: 12%;">Garden · ops time</span>
         <span class="aw-orbit-chip" style="--ox: -36%; --oy: -30%;">DevOps hire · {{ site.data.tdk.devops_monthly }}/mo</span>
+        <span class="aw-orbit-chip" style="--ox: 0%; --oy: 25%;">Devbox · Nix learning</span>
+        <span class="aw-orbit-chip" style="--ox: -25%; --oy: -15%;">Devenv · Nix learning</span>
       </div>
     </div>
   </section>
@@ -256,20 +286,120 @@ title: Compare - TDK CLI
     </div>
   </section>
 
+  <!-- Devbox vs Devenv comparison -->
+  <section class="aw-section" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-head">
+        <h2>Devbox vs Devenv: Nix-based alternatives</h2>
+        <p>Both are excellent Nix-based tools, but TDK takes a different approach focused on Docker services.</p>
+      </div>
+
+      <div class="aw-matrix">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="aw-tdk-col">TDK CLI</th>
+              <th>Devbox</th>
+              <th>Devenv</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary focus</td>
+              <td class="aw-tdk-col"><span class="aw-yes">Docker services</span></td>
+              <td>Package management</td>
+              <td>Full environment</td>
+            </tr>
+            <tr>
+              <td>Service orchestration</td>
+              <td class="aw-tdk-col"><span class="aw-yes">Built-in (Tilt)</span></td>
+              <td>process-compose</td>
+              <td>Native processes</td>
+            </tr>
+            <tr>
+              <td>Auto-generated Dockerfiles</td>
+              <td class="aw-tdk-col"><span class="aw-yes">10 per service</span></td>
+              <td><span class="aw-no">Manual</span></td>
+              <td><span class="aw-no">Manual</span></td>
+            </tr>
+            <tr>
+              <td>Docker Compose generation</td>
+              <td class="aw-tdk-col"><span class="aw-yes">Auto-generated</span></td>
+              <td><span class="aw-no">Manual</span></td>
+              <td><span class="aw-no">Manual</span></td>
+            </tr>
+            <tr>
+              <td>Hot reload</td>
+              <td class="aw-tdk-col"><span class="aw-yes">Built-in</span></td>
+              <td>Limited</td>
+              <td>Manual setup</td>
+            </tr>
+            <tr>
+              <td>Multi-service discovery</td>
+              <td class="aw-tdk-col"><span class="aw-yes">Automatic</span></td>
+              <td><span class="aw-no">Manual</span></td>
+              <td><span class="aw-no">Manual</span></td>
+            </tr>
+            <tr>
+              <td>Golden images included</td>
+              <td class="aw-tdk-col"><span class="aw-yes">L1–L4 layers</span></td>
+              <td><span class="aw-no">DIY</span></td>
+              <td><span class="aw-no">DIY</span></td>
+            </tr>
+            <tr>
+              <td>Nix knowledge required</td>
+              <td class="aw-tdk-col"><span class="aw-yes">No</span></td>
+              <td><span class="aw-warn">Hidden</span></td>
+              <td><span class="aw-no">Yes</span></td>
+            </tr>
+            <tr>
+              <td>Language support</td>
+              <td class="aw-tdk-col"><span class="aw-yes">Any (Docker)</span></td>
+              <td>80,000+ packages</td>
+              <td>58+ languages</td>
+            </tr>
+            <tr>
+              <td>CI/CD integration</td>
+              <td class="aw-tdk-col"><span class="aw-yes">Native</span></td>
+              <td>GitHub Actions</td>
+              <td>GitHub Actions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <!-- Which tool -->
   <section class="aw-section" style="padding-top: 0;">
     <div class="aw-wrap">
       <div class="aw-head">
         <h2>Which tool is right for you?</h2>
       </div>
-      <div class="aw-feature-grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="aw-feature-grid" style="grid-template-columns: repeat(3, 1fr);">
         <div class="aw-card" style="border-color: rgba(124, 77, 255, 0.5); background: linear-gradient(160deg, rgba(124, 77, 255, 0.14) 0%, #121218 55%);">
           <h4>Choose TDK if you…</h4>
           <p>Don't know Kubernetes and don't want to learn it. Need services running locally in minutes. Want manifest-driven simplicity. Are a full-stack or product developer. Work at a startup without a platform team — and want your next five hires coding on day one, not week three.</p>
         </div>
         <div class="aw-card">
+          <h4>Choose Devbox if you…</h4>
+          <p>Want Nix power without learning Nix language. Need JSON configuration. Prefer simple package management. Want cloud deployment with Jetify Cloud. Are building for cloud-native teams with budget for managed services.</p>
+        </div>
+        <div class="aw-card">
+          <h4>Choose Devenv if you…</h4>
+          <p>Already know Nix or willing to learn. Need maximum reproducibility. Want full environment declaration (languages, services, processes). Are working with complex monorepos. Need fine-grained control over every aspect of your dev environment.</p>
+        </div>
+      </div>
+      
+      <div class="aw-feature-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 2rem;">
+        <div class="aw-card">
           <h4>Choose Garden if you…</h4>
           <p>Have Kubernetes expertise in-house. Need production-like environments for integration testing. Employ a dedicated platform team with time to maintain YAML pipelines. TDK complements this setup nicely for the fast local loop, by the way.</p>
+        </div>
+        <div class="aw-card">
+          <h4>Choose Cloud CDEs if you…</h4>
+          <p>Have budget for cloud spend. Need instant onboarding for remote teams. Want standardized environments without local machine variations. Don't mind working offline or managing cloud costs. Value convenience over control.</p>
         </div>
       </div>
     </div>

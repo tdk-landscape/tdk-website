@@ -59,6 +59,10 @@ daytona_vcpu: "~$0.05/vCPU/hr"     # Daytona usage rate
 daytona_monthly: "~$140"           # ≈ full-time 4-vCPU month at that rate
 daytona_annual_10: "~$16,800"      # 10 devs full-time, rounded
 okteto_free: "Free 5 seats"        # Okteto Starter tier
+devbox_packages: "80,000+"         # Number of packages available via Nix
+devbox_versions: "400,000+"        # Number of package versions available
+devenv_languages: "58+"            # Number of supported languages
+devenv_services: "42"               # Number of preconfigured services
 
 # --- Lists (rendered with Liquid loops — edit here, updates everywhere) ---
 marquee_tools:             # competitors replaced, shown in the homepage marquee
@@ -70,6 +74,8 @@ marquee_tools:             # competitors replaced, shown in the homepage marquee
   - "Garden"
   - "Skaffold"
   - "DevSpace"
+  - "Devbox"
+  - "Devenv"
   - "Telepresence"
   - "mirrord"
   - "DevPod"
