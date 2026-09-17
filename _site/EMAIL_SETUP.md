@@ -131,8 +131,8 @@ Your TDK website needs to collect waitlist emails. Here are **100% free** soluti
 Already implemented in your site as a fallback!
 
 ```html
-<a href="mailto:hello@tdk.dev?subject=Waitlist: TDK CLI Early Access">
-  hello@tdk.dev
+<a href="mailto:vntu0412179+tdk-waitlist@gmail.com?subject=Waitlist: TDK CLI Early Access">
+  vntu0412179+tdk-waitlist@gmail.com
 </a>
 ```
 
