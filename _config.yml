@@ -12,7 +12,8 @@ url: "https://tdk-landscape.github.io"
 
 twitter_username: tdkcli
 github_username: tdk-cli
-social_image: "/assets/images/tdk-social-card.svg"
+social_image: "/assets/images/tdk-social-card.png"
+logo: "/assets/images/tdk-social-card.png"
 
 markdown: kramdown
 highlighter: rouge
@@ -33,6 +34,7 @@ defaults:
   - scope:
       path: ""
     values:
+      image: "/assets/images/tdk-social-card.png"
       sitemap: true
   - scope:
       path: "blog/articles"
