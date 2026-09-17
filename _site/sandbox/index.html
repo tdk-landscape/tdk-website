@@ -248,7 +248,7 @@
   .sb-err { color: var(--sb-danger); }
   .sb-caret { display: inline-block; width: 8px; height: 1.05em; background: var(--sb-accent); animation: sb-blink 0.9s steps(2, end) infinite; vertical-align: text-bottom; }
   @keyframes sb-blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
-  .sb-term-controls { display: flex; align-items: center; gap: 0.8rem; margin-top: 1.1rem; flex-wrap: wrap; }
+  .sb-term-controls { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin-top: 0.35rem; border-top: 1px solid var(--sb-line); padding: 0.9rem 1rem 1.15rem; }
   .sb-run-hint { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; color: var(--sb-faint); }
 
   /* Pinned split chapter */
@@ -414,12 +414,6 @@
             <span class="sb-eyebrow">The terminal</span>
             <h2>Every keystroke is real output from an isolated container.</h2>
             <p>No mockups, no screenshots. This transcript was captured live from TDK CLI v1.1.0 running in a fresh docker container &mdash; the exact commands from the quick start.</p>
-            <div class="sb-term-controls" style="margin-top: 1.4rem;">
-              <button class="sb-btn sb-btn--small sb-btn--accent" data-js="play-all" id="sb-play-2">Play all</button>
-              <button class="sb-btn sb-btn--small sb-btn--ghost" data-js="step">Step</button>
-              <button class="sb-btn sb-btn--small sb-btn--ghost" data-js="reset">Reset</button>
-              <span class="sb-run-hint" id="sb-hint">step <b id="sb-pos">1</b>/<span id="sb-total">7</span> &middot; press step to advance</span>
-            </div>
           </div>
 
           <div class="sb-term" id="sb-term-card">
@@ -429,6 +423,12 @@
               <span class="sb-term-status" id="sb-term-status">idle</span>
             </div>
             <div class="sb-term-body" id="sb-term-body"><span class="sb-prompt">$</span> <span class="sb-caret"></span></div>
+            <div class="sb-term-controls">
+              <button class="sb-btn sb-btn--small sb-btn--accent" data-js="play-all" id="sb-play-2">Play all</button>
+              <button class="sb-btn sb-btn--small sb-btn--ghost" data-js="step">Step</button>
+              <button class="sb-btn sb-btn--small sb-btn--ghost" data-js="reset">Reset</button>
+              <span class="sb-run-hint" id="sb-hint">step <b id="sb-pos">1</b>/<span id="sb-total">7</span> &middot; press step to advance</span>
+            </div>
           </div>
         </div>
       </div>
@@ -640,7 +640,10 @@ Starting 2 services from stack "pre-alpha":
         scrollTrigger: { trigger: el, start: 'top top', end: 'bottom top', pin: true, scrub: 0.5, anticipatePin: 1 }
       });
     });
-    gsap.from('#sb-term-card, #sb-bento', { y: 60, opacity: 0, duration: 1.1, ease: 'power3.out', scrollTrigger: 'top 86%' });
+    gsap.from('#sb-term-card, #sb-bento', {
+      y: 60, opacity: 0, duration: 1.1, ease: 'power3.out',
+      scrollTrigger: { start: 'top 86%' }
+    });
     gsap.utils.toArray('.sb-bento-card').forEach(function (c) {
       gsap.from(c, { y: 40, opacity: 0, scale: 0.96, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: c, start: 'top 90%' } });
     });
