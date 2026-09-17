@@ -1987,38 +1987,834 @@ body { background: #0a0a0e; overflow-x: hidden; }
     </div>
   </section>
 
-  <!-- ================= 100 MANIFEST RAIN ================= -->
-  <section class="aw-section aw-manifest-rain" aria-label="One hundred tiny service manifests moving in four columns">
-    <div class="aw-wrap">
-      <div class="aw-manifest-copy">
-        <h2>One hundred services, still readable.</h2>
-        <p>Every tile is the same small contract: name, type, port, owner. TDK keeps the whole landscape legible instead of melting it into one giant generated repo.</p>
-      </div>
+<!-- ================= 100 MANIFEST RAIN ================= -->
+<section class="aw-section aw-manifest-rain" aria-label="One hundred tiny ERP service manifests moving in four columns">
+  <div class="aw-wrap">
+    <div class="aw-manifest-copy">
+      <h2>One hundred ERP services, still readable.</h2>
+      <p>Finance, procurement, warehouse, payroll, billing, compliance, analytics. Every tiny manifest keeps ownership, port, runtime, and domain visible before an agent writes a single file.</p>
+    </div>
 
-      <div class="aw-manifest-wall" aria-hidden="true">
-        {% for lane in (1..4) %}
+    <div class="aw-manifest-wall" aria-hidden="true">
         <div class="aw-manifest-lane">
           <div class="aw-manifest-track">
-            {% assign start = lane | minus: 1 | times: 25 | plus: 1 %}
-            {% assign end = start | plus: 24 %}
-            {% for id in (start..end) %}
-            {% assign port = 3000 | plus: id %}
-            <div class="aw-mini-manifest"><strong>service-{{ id }}</strong>{ "appType": <span class="s">"api"</span>,
-  "port": <span class="n">{{ port }}</span>,
-  "owner": <span class="s">"team-{{ lane }}"</span> }</div>
-            {% endfor %}
-            {% for id in (start..end) %}
-            {% assign port = 3000 | plus: id %}
-            <div class="aw-mini-manifest"><strong>service-{{ id }}</strong>{ "appType": <span class="s">"api"</span>,
-  "port": <span class="n">{{ port }}</span>,
-  "owner": <span class="s">"team-{{ lane }}"</span> }</div>
-            {% endfor %}
+            <div class="aw-mini-manifest"><strong>gl-ledger-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4101</span>,
+  "owner": <span class="s">"finance-finops"</span> }</div>
+            <div class="aw-mini-manifest"><strong>ap-invoice-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4102</span>,
+  "owner": <span class="s">"finance-finops"</span> }</div>
+            <div class="aw-mini-manifest"><strong>ar-collections-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4103</span>,
+  "owner": <span class="s">"finance-finops"</span> }</div>
+            <div class="aw-mini-manifest"><strong>cash-position-worker</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4104</span>,
+  "owner": <span class="s">"treasury"</span> }</div>
+            <div class="aw-mini-manifest"><strong>bank-reconciliation-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4105</span>,
+  "owner": <span class="s">"treasury"</span> }</div>
+            <div class="aw-mini-manifest"><strong>fixed-assets-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4106</span>,
+  "owner": <span class="s">"accounting"</span> }</div>
+            <div class="aw-mini-manifest"><strong>tax-calculation-worker</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4107</span>,
+  "owner": <span class="s">"tax"</span> }</div>
+            <div class="aw-mini-manifest"><strong>revenue-recognition-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4108</span>,
+  "owner": <span class="s">"accounting"</span> }</div>
+            <div class="aw-mini-manifest"><strong>budget-planning-app</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4109</span>,
+  "owner": <span class="s">"fpna"</span> }</div>
+            <div class="aw-mini-manifest"><strong>cost-center-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4110</span>,
+  "owner": <span class="s">"fpna"</span> }</div>
+            <div class="aw-mini-manifest"><strong>purchase-requisition-api</strong>{ "domain": <span class="s">"procurement"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4111</span>,
+  "owner": <span class="s">"procurement"</span> }</div>
+            <div class="aw-mini-manifest"><strong>supplier-portal-app</strong>{ "domain": <span class="s">"procurement"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4112</span>,
+  "owner": <span class="s">"procurement"</span> }</div>
+            <div class="aw-mini-manifest"><strong>vendor-master-api</strong>{ "domain": <span class="s">"procurement"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4113</span>,
+  "owner": <span class="s">"procurement"</span> }</div>
+            <div class="aw-mini-manifest"><strong>contract-lifecycle-api</strong>{ "domain": <span class="s">"procurement"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4114</span>,
+  "owner": <span class="s">"legal"</span> }</div>
+            <div class="aw-mini-manifest"><strong>po-approval-worker</strong>{ "domain": <span class="s">"procurement"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4115</span>,
+  "owner": <span class="s">"procurement"</span> }</div>
+            <div class="aw-mini-manifest"><strong>inbound-receiving-api</strong>{ "domain": <span class="s">"warehouse"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4116</span>,
+  "owner": <span class="s">"warehouse"</span> }</div>
+            <div class="aw-mini-manifest"><strong>inventory-valuation-api</strong>{ "domain": <span class="s">"inventory"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4117</span>,
+  "owner": <span class="s">"inventory"</span> }</div>
+            <div class="aw-mini-manifest"><strong>stock-transfer-api</strong>{ "domain": <span class="s">"inventory"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4118</span>,
+  "owner": <span class="s">"inventory"</span> }</div>
+            <div class="aw-mini-manifest"><strong>cycle-count-app</strong>{ "domain": <span class="s">"warehouse"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4119</span>,
+  "owner": <span class="s">"warehouse"</span> }</div>
+            <div class="aw-mini-manifest"><strong>warehouse-slotting-api</strong>{ "domain": <span class="s">"warehouse"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4120</span>,
+  "owner": <span class="s">"warehouse"</span> }</div>
+            <div class="aw-mini-manifest"><strong>order-capture-app</strong>{ "domain": <span class="s">"sales"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4121</span>,
+  "owner": <span class="s">"revenue"</span> }</div>
+            <div class="aw-mini-manifest"><strong>pricing-rules-api</strong>{ "domain": <span class="s">"sales"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4122</span>,
+  "owner": <span class="s">"revenue"</span> }</div>
+            <div class="aw-mini-manifest"><strong>credit-check-worker</strong>{ "domain": <span class="s">"sales"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4123</span>,
+  "owner": <span class="s">"risk"</span> }</div>
+            <div class="aw-mini-manifest"><strong>fulfillment-planner-api</strong>{ "domain": <span class="s">"sales"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4124</span>,
+  "owner": <span class="s">"ops"</span> }</div>
+            <div class="aw-mini-manifest"><strong>shipment-booking-api</strong>{ "domain": <span class="s">"logistics"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4125</span>,
+  "owner": <span class="s">"logistics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>gl-ledger-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4101</span>,
+  "owner": <span class="s">"finance-finops"</span> }</div>
+            <div class="aw-mini-manifest"><strong>ap-invoice-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4102</span>,
+  "owner": <span class="s">"finance-finops"</span> }</div>
+            <div class="aw-mini-manifest"><strong>ar-collections-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4103</span>,
+  "owner": <span class="s">"finance-finops"</span> }</div>
+            <div class="aw-mini-manifest"><strong>cash-position-worker</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4104</span>,
+  "owner": <span class="s">"treasury"</span> }</div>
+            <div class="aw-mini-manifest"><strong>bank-reconciliation-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4105</span>,
+  "owner": <span class="s">"treasury"</span> }</div>
+            <div class="aw-mini-manifest"><strong>fixed-assets-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4106</span>,
+  "owner": <span class="s">"accounting"</span> }</div>
+            <div class="aw-mini-manifest"><strong>tax-calculation-worker</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4107</span>,
+  "owner": <span class="s">"tax"</span> }</div>
+            <div class="aw-mini-manifest"><strong>revenue-recognition-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4108</span>,
+  "owner": <span class="s">"accounting"</span> }</div>
+            <div class="aw-mini-manifest"><strong>budget-planning-app</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4109</span>,
+  "owner": <span class="s">"fpna"</span> }</div>
+            <div class="aw-mini-manifest"><strong>cost-center-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4110</span>,
+  "owner": <span class="s">"fpna"</span> }</div>
+            <div class="aw-mini-manifest"><strong>purchase-requisition-api</strong>{ "domain": <span class="s">"procurement"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4111</span>,
+  "owner": <span class="s">"procurement"</span> }</div>
+            <div class="aw-mini-manifest"><strong>supplier-portal-app</strong>{ "domain": <span class="s">"procurement"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4112</span>,
+  "owner": <span class="s">"procurement"</span> }</div>
+            <div class="aw-mini-manifest"><strong>vendor-master-api</strong>{ "domain": <span class="s">"procurement"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4113</span>,
+  "owner": <span class="s">"procurement"</span> }</div>
+            <div class="aw-mini-manifest"><strong>contract-lifecycle-api</strong>{ "domain": <span class="s">"procurement"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4114</span>,
+  "owner": <span class="s">"legal"</span> }</div>
+            <div class="aw-mini-manifest"><strong>po-approval-worker</strong>{ "domain": <span class="s">"procurement"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4115</span>,
+  "owner": <span class="s">"procurement"</span> }</div>
+            <div class="aw-mini-manifest"><strong>inbound-receiving-api</strong>{ "domain": <span class="s">"warehouse"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4116</span>,
+  "owner": <span class="s">"warehouse"</span> }</div>
+            <div class="aw-mini-manifest"><strong>inventory-valuation-api</strong>{ "domain": <span class="s">"inventory"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4117</span>,
+  "owner": <span class="s">"inventory"</span> }</div>
+            <div class="aw-mini-manifest"><strong>stock-transfer-api</strong>{ "domain": <span class="s">"inventory"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4118</span>,
+  "owner": <span class="s">"inventory"</span> }</div>
+            <div class="aw-mini-manifest"><strong>cycle-count-app</strong>{ "domain": <span class="s">"warehouse"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4119</span>,
+  "owner": <span class="s">"warehouse"</span> }</div>
+            <div class="aw-mini-manifest"><strong>warehouse-slotting-api</strong>{ "domain": <span class="s">"warehouse"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4120</span>,
+  "owner": <span class="s">"warehouse"</span> }</div>
+            <div class="aw-mini-manifest"><strong>order-capture-app</strong>{ "domain": <span class="s">"sales"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4121</span>,
+  "owner": <span class="s">"revenue"</span> }</div>
+            <div class="aw-mini-manifest"><strong>pricing-rules-api</strong>{ "domain": <span class="s">"sales"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4122</span>,
+  "owner": <span class="s">"revenue"</span> }</div>
+            <div class="aw-mini-manifest"><strong>credit-check-worker</strong>{ "domain": <span class="s">"sales"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4123</span>,
+  "owner": <span class="s">"risk"</span> }</div>
+            <div class="aw-mini-manifest"><strong>fulfillment-planner-api</strong>{ "domain": <span class="s">"sales"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4124</span>,
+  "owner": <span class="s">"ops"</span> }</div>
+            <div class="aw-mini-manifest"><strong>shipment-booking-api</strong>{ "domain": <span class="s">"logistics"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4125</span>,
+  "owner": <span class="s">"logistics"</span> }</div>
           </div>
         </div>
-        {% endfor %}
-      </div>
+        <div class="aw-manifest-lane">
+          <div class="aw-manifest-track">
+            <div class="aw-mini-manifest"><strong>returns-authorization-api</strong>{ "domain": <span class="s">"sales"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4126</span>,
+  "owner": <span class="s">"support"</span> }</div>
+            <div class="aw-mini-manifest"><strong>customer-master-api</strong>{ "domain": <span class="s">"crm"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4127</span>,
+  "owner": <span class="s">"crm"</span> }</div>
+            <div class="aw-mini-manifest"><strong>customer-credit-api</strong>{ "domain": <span class="s">"crm"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4128</span>,
+  "owner": <span class="s">"risk"</span> }</div>
+            <div class="aw-mini-manifest"><strong>sales-forecast-worker</strong>{ "domain": <span class="s">"planning"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4129</span>,
+  "owner": <span class="s">"planning"</span> }</div>
+            <div class="aw-mini-manifest"><strong>channel-sync-api</strong>{ "domain": <span class="s">"channels"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4130</span>,
+  "owner": <span class="s">"integrations"</span> }</div>
+            <div class="aw-mini-manifest"><strong>bom-management-api</strong>{ "domain": <span class="s">"manufacturing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4131</span>,
+  "owner": <span class="s">"manufacturing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>production-order-api</strong>{ "domain": <span class="s">"manufacturing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4132</span>,
+  "owner": <span class="s">"manufacturing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>shop-floor-app</strong>{ "domain": <span class="s">"manufacturing"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4133</span>,
+  "owner": <span class="s">"manufacturing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>work-center-api</strong>{ "domain": <span class="s">"manufacturing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4134</span>,
+  "owner": <span class="s">"manufacturing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>capacity-planning-worker</strong>{ "domain": <span class="s">"planning"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4135</span>,
+  "owner": <span class="s">"planning"</span> }</div>
+            <div class="aw-mini-manifest"><strong>quality-inspection-api</strong>{ "domain": <span class="s">"quality"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4136</span>,
+  "owner": <span class="s">"quality"</span> }</div>
+            <div class="aw-mini-manifest"><strong>maintenance-ticket-api</strong>{ "domain": <span class="s">"maintenance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4137</span>,
+  "owner": <span class="s">"maintenance"</span> }</div>
+            <div class="aw-mini-manifest"><strong>asset-telemetry-worker</strong>{ "domain": <span class="s">"iot"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4138</span>,
+  "owner": <span class="s">"platform"</span> }</div>
+            <div class="aw-mini-manifest"><strong>material-requirements-api</strong>{ "domain": <span class="s">"manufacturing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4139</span>,
+  "owner": <span class="s">"manufacturing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>batch-traceability-api</strong>{ "domain": <span class="s">"manufacturing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4140</span>,
+  "owner": <span class="s">"quality"</span> }</div>
+            <div class="aw-mini-manifest"><strong>employee-master-api</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4141</span>,
+  "owner": <span class="s">"people"</span> }</div>
+            <div class="aw-mini-manifest"><strong>payroll-runner-worker</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4142</span>,
+  "owner": <span class="s">"people"</span> }</div>
+            <div class="aw-mini-manifest"><strong>time-attendance-app</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4143</span>,
+  "owner": <span class="s">"people"</span> }</div>
+            <div class="aw-mini-manifest"><strong>benefits-enrollment-api</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4144</span>,
+  "owner": <span class="s">"rewards"</span> }</div>
+            <div class="aw-mini-manifest"><strong>expense-claims-api</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4145</span>,
+  "owner": <span class="s">"people"</span> }</div>
+            <div class="aw-mini-manifest"><strong>travel-approval-worker</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4146</span>,
+  "owner": <span class="s">"people"</span> }</div>
+            <div class="aw-mini-manifest"><strong>recruiting-pipeline-app</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4147</span>,
+  "owner": <span class="s">"talent"</span> }</div>
+            <div class="aw-mini-manifest"><strong>learning-records-api</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4148</span>,
+  "owner": <span class="s">"learning"</span> }</div>
+            <div class="aw-mini-manifest"><strong>org-chart-api</strong>{ "domain": <span class="s">"org"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4149</span>,
+  "owner": <span class="s">"people"</span> }</div>
+            <div class="aw-mini-manifest"><strong>access-review-worker</strong>{ "domain": <span class="s">"security"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4150</span>,
+  "owner": <span class="s">"security"</span> }</div>
+            <div class="aw-mini-manifest"><strong>returns-authorization-api</strong>{ "domain": <span class="s">"sales"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4126</span>,
+  "owner": <span class="s">"support"</span> }</div>
+            <div class="aw-mini-manifest"><strong>customer-master-api</strong>{ "domain": <span class="s">"crm"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4127</span>,
+  "owner": <span class="s">"crm"</span> }</div>
+            <div class="aw-mini-manifest"><strong>customer-credit-api</strong>{ "domain": <span class="s">"crm"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4128</span>,
+  "owner": <span class="s">"risk"</span> }</div>
+            <div class="aw-mini-manifest"><strong>sales-forecast-worker</strong>{ "domain": <span class="s">"planning"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4129</span>,
+  "owner": <span class="s">"planning"</span> }</div>
+            <div class="aw-mini-manifest"><strong>channel-sync-api</strong>{ "domain": <span class="s">"channels"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4130</span>,
+  "owner": <span class="s">"integrations"</span> }</div>
+            <div class="aw-mini-manifest"><strong>bom-management-api</strong>{ "domain": <span class="s">"manufacturing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4131</span>,
+  "owner": <span class="s">"manufacturing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>production-order-api</strong>{ "domain": <span class="s">"manufacturing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4132</span>,
+  "owner": <span class="s">"manufacturing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>shop-floor-app</strong>{ "domain": <span class="s">"manufacturing"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4133</span>,
+  "owner": <span class="s">"manufacturing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>work-center-api</strong>{ "domain": <span class="s">"manufacturing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4134</span>,
+  "owner": <span class="s">"manufacturing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>capacity-planning-worker</strong>{ "domain": <span class="s">"planning"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4135</span>,
+  "owner": <span class="s">"planning"</span> }</div>
+            <div class="aw-mini-manifest"><strong>quality-inspection-api</strong>{ "domain": <span class="s">"quality"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4136</span>,
+  "owner": <span class="s">"quality"</span> }</div>
+            <div class="aw-mini-manifest"><strong>maintenance-ticket-api</strong>{ "domain": <span class="s">"maintenance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4137</span>,
+  "owner": <span class="s">"maintenance"</span> }</div>
+            <div class="aw-mini-manifest"><strong>asset-telemetry-worker</strong>{ "domain": <span class="s">"iot"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4138</span>,
+  "owner": <span class="s">"platform"</span> }</div>
+            <div class="aw-mini-manifest"><strong>material-requirements-api</strong>{ "domain": <span class="s">"manufacturing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4139</span>,
+  "owner": <span class="s">"manufacturing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>batch-traceability-api</strong>{ "domain": <span class="s">"manufacturing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4140</span>,
+  "owner": <span class="s">"quality"</span> }</div>
+            <div class="aw-mini-manifest"><strong>employee-master-api</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4141</span>,
+  "owner": <span class="s">"people"</span> }</div>
+            <div class="aw-mini-manifest"><strong>payroll-runner-worker</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4142</span>,
+  "owner": <span class="s">"people"</span> }</div>
+            <div class="aw-mini-manifest"><strong>time-attendance-app</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4143</span>,
+  "owner": <span class="s">"people"</span> }</div>
+            <div class="aw-mini-manifest"><strong>benefits-enrollment-api</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4144</span>,
+  "owner": <span class="s">"rewards"</span> }</div>
+            <div class="aw-mini-manifest"><strong>expense-claims-api</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4145</span>,
+  "owner": <span class="s">"people"</span> }</div>
+            <div class="aw-mini-manifest"><strong>travel-approval-worker</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4146</span>,
+  "owner": <span class="s">"people"</span> }</div>
+            <div class="aw-mini-manifest"><strong>recruiting-pipeline-app</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4147</span>,
+  "owner": <span class="s">"talent"</span> }</div>
+            <div class="aw-mini-manifest"><strong>learning-records-api</strong>{ "domain": <span class="s">"hr"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4148</span>,
+  "owner": <span class="s">"learning"</span> }</div>
+            <div class="aw-mini-manifest"><strong>org-chart-api</strong>{ "domain": <span class="s">"org"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4149</span>,
+  "owner": <span class="s">"people"</span> }</div>
+            <div class="aw-mini-manifest"><strong>access-review-worker</strong>{ "domain": <span class="s">"security"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4150</span>,
+  "owner": <span class="s">"security"</span> }</div>
+          </div>
+        </div>
+        <div class="aw-manifest-lane">
+          <div class="aw-manifest-track">
+            <div class="aw-mini-manifest"><strong>project-accounting-api</strong>{ "domain": <span class="s">"projects"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4151</span>,
+  "owner": <span class="s">"services"</span> }</div>
+            <div class="aw-mini-manifest"><strong>timesheet-approval-app</strong>{ "domain": <span class="s">"projects"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4152</span>,
+  "owner": <span class="s">"services"</span> }</div>
+            <div class="aw-mini-manifest"><strong>milestone-billing-api</strong>{ "domain": <span class="s">"projects"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4153</span>,
+  "owner": <span class="s">"services"</span> }</div>
+            <div class="aw-mini-manifest"><strong>resource-planning-api</strong>{ "domain": <span class="s">"projects"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4154</span>,
+  "owner": <span class="s">"services"</span> }</div>
+            <div class="aw-mini-manifest"><strong>utilization-report-worker</strong>{ "domain": <span class="s">"projects"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4155</span>,
+  "owner": <span class="s">"services"</span> }</div>
+            <div class="aw-mini-manifest"><strong>subscription-billing-api</strong>{ "domain": <span class="s">"billing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4156</span>,
+  "owner": <span class="s">"billing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>entitlement-service-api</strong>{ "domain": <span class="s">"billing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4157</span>,
+  "owner": <span class="s">"billing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>renewals-workbench-app</strong>{ "domain": <span class="s">"billing"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4158</span>,
+  "owner": <span class="s">"billing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>dunning-notice-worker</strong>{ "domain": <span class="s">"billing"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4159</span>,
+  "owner": <span class="s">"billing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>revenue-schedule-api</strong>{ "domain": <span class="s">"billing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4160</span>,
+  "owner": <span class="s">"billing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>demand-planning-api</strong>{ "domain": <span class="s">"planning"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4161</span>,
+  "owner": <span class="s">"planning"</span> }</div>
+            <div class="aw-mini-manifest"><strong>supply-planning-worker</strong>{ "domain": <span class="s">"planning"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4162</span>,
+  "owner": <span class="s">"planning"</span> }</div>
+            <div class="aw-mini-manifest"><strong>supplier-scorecard-api</strong>{ "domain": <span class="s">"procurement"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4163</span>,
+  "owner": <span class="s">"procurement"</span> }</div>
+            <div class="aw-mini-manifest"><strong>landed-cost-api</strong>{ "domain": <span class="s">"logistics"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4164</span>,
+  "owner": <span class="s">"logistics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>trade-compliance-worker</strong>{ "domain": <span class="s">"compliance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4165</span>,
+  "owner": <span class="s">"trade"</span> }</div>
+            <div class="aw-mini-manifest"><strong>customs-declaration-api</strong>{ "domain": <span class="s">"compliance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4166</span>,
+  "owner": <span class="s">"trade"</span> }</div>
+            <div class="aw-mini-manifest"><strong>freight-audit-api</strong>{ "domain": <span class="s">"logistics"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4167</span>,
+  "owner": <span class="s">"logistics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>route-optimization-worker</strong>{ "domain": <span class="s">"logistics"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4168</span>,
+  "owner": <span class="s">"logistics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>carrier-rate-api</strong>{ "domain": <span class="s">"logistics"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4169</span>,
+  "owner": <span class="s">"logistics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>dock-scheduler-app</strong>{ "domain": <span class="s">"warehouse"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4170</span>,
+  "owner": <span class="s">"warehouse"</span> }</div>
+            <div class="aw-mini-manifest"><strong>data-catalog-api</strong>{ "domain": <span class="s">"data"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4171</span>,
+  "owner": <span class="s">"data"</span> }</div>
+            <div class="aw-mini-manifest"><strong>audit-evidence-api</strong>{ "domain": <span class="s">"governance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4172</span>,
+  "owner": <span class="s">"governance"</span> }</div>
+            <div class="aw-mini-manifest"><strong>gdpr-request-worker</strong>{ "domain": <span class="s">"privacy"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4173</span>,
+  "owner": <span class="s">"privacy"</span> }</div>
+            <div class="aw-mini-manifest"><strong>sox-control-api</strong>{ "domain": <span class="s">"audit"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4174</span>,
+  "owner": <span class="s">"audit"</span> }</div>
+            <div class="aw-mini-manifest"><strong>policy-attestation-app</strong>{ "domain": <span class="s">"governance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4175</span>,
+  "owner": <span class="s">"governance"</span> }</div>
+            <div class="aw-mini-manifest"><strong>project-accounting-api</strong>{ "domain": <span class="s">"projects"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4151</span>,
+  "owner": <span class="s">"services"</span> }</div>
+            <div class="aw-mini-manifest"><strong>timesheet-approval-app</strong>{ "domain": <span class="s">"projects"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4152</span>,
+  "owner": <span class="s">"services"</span> }</div>
+            <div class="aw-mini-manifest"><strong>milestone-billing-api</strong>{ "domain": <span class="s">"projects"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4153</span>,
+  "owner": <span class="s">"services"</span> }</div>
+            <div class="aw-mini-manifest"><strong>resource-planning-api</strong>{ "domain": <span class="s">"projects"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4154</span>,
+  "owner": <span class="s">"services"</span> }</div>
+            <div class="aw-mini-manifest"><strong>utilization-report-worker</strong>{ "domain": <span class="s">"projects"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4155</span>,
+  "owner": <span class="s">"services"</span> }</div>
+            <div class="aw-mini-manifest"><strong>subscription-billing-api</strong>{ "domain": <span class="s">"billing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4156</span>,
+  "owner": <span class="s">"billing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>entitlement-service-api</strong>{ "domain": <span class="s">"billing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4157</span>,
+  "owner": <span class="s">"billing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>renewals-workbench-app</strong>{ "domain": <span class="s">"billing"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4158</span>,
+  "owner": <span class="s">"billing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>dunning-notice-worker</strong>{ "domain": <span class="s">"billing"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4159</span>,
+  "owner": <span class="s">"billing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>revenue-schedule-api</strong>{ "domain": <span class="s">"billing"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4160</span>,
+  "owner": <span class="s">"billing"</span> }</div>
+            <div class="aw-mini-manifest"><strong>demand-planning-api</strong>{ "domain": <span class="s">"planning"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4161</span>,
+  "owner": <span class="s">"planning"</span> }</div>
+            <div class="aw-mini-manifest"><strong>supply-planning-worker</strong>{ "domain": <span class="s">"planning"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4162</span>,
+  "owner": <span class="s">"planning"</span> }</div>
+            <div class="aw-mini-manifest"><strong>supplier-scorecard-api</strong>{ "domain": <span class="s">"procurement"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4163</span>,
+  "owner": <span class="s">"procurement"</span> }</div>
+            <div class="aw-mini-manifest"><strong>landed-cost-api</strong>{ "domain": <span class="s">"logistics"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4164</span>,
+  "owner": <span class="s">"logistics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>trade-compliance-worker</strong>{ "domain": <span class="s">"compliance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4165</span>,
+  "owner": <span class="s">"trade"</span> }</div>
+            <div class="aw-mini-manifest"><strong>customs-declaration-api</strong>{ "domain": <span class="s">"compliance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4166</span>,
+  "owner": <span class="s">"trade"</span> }</div>
+            <div class="aw-mini-manifest"><strong>freight-audit-api</strong>{ "domain": <span class="s">"logistics"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4167</span>,
+  "owner": <span class="s">"logistics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>route-optimization-worker</strong>{ "domain": <span class="s">"logistics"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4168</span>,
+  "owner": <span class="s">"logistics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>carrier-rate-api</strong>{ "domain": <span class="s">"logistics"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4169</span>,
+  "owner": <span class="s">"logistics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>dock-scheduler-app</strong>{ "domain": <span class="s">"warehouse"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4170</span>,
+  "owner": <span class="s">"warehouse"</span> }</div>
+            <div class="aw-mini-manifest"><strong>data-catalog-api</strong>{ "domain": <span class="s">"data"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4171</span>,
+  "owner": <span class="s">"data"</span> }</div>
+            <div class="aw-mini-manifest"><strong>audit-evidence-api</strong>{ "domain": <span class="s">"governance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4172</span>,
+  "owner": <span class="s">"governance"</span> }</div>
+            <div class="aw-mini-manifest"><strong>gdpr-request-worker</strong>{ "domain": <span class="s">"privacy"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4173</span>,
+  "owner": <span class="s">"privacy"</span> }</div>
+            <div class="aw-mini-manifest"><strong>sox-control-api</strong>{ "domain": <span class="s">"audit"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4174</span>,
+  "owner": <span class="s">"audit"</span> }</div>
+            <div class="aw-mini-manifest"><strong>policy-attestation-app</strong>{ "domain": <span class="s">"governance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4175</span>,
+  "owner": <span class="s">"governance"</span> }</div>
+          </div>
+        </div>
+        <div class="aw-manifest-lane">
+          <div class="aw-manifest-track">
+            <div class="aw-mini-manifest"><strong>risk-register-api</strong>{ "domain": <span class="s">"risk"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4176</span>,
+  "owner": <span class="s">"risk"</span> }</div>
+            <div class="aw-mini-manifest"><strong>incident-review-api</strong>{ "domain": <span class="s">"incident"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4177</span>,
+  "owner": <span class="s">"security"</span> }</div>
+            <div class="aw-mini-manifest"><strong>segregation-duties-worker</strong>{ "domain": <span class="s">"security"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4178</span>,
+  "owner": <span class="s">"security"</span> }</div>
+            <div class="aw-mini-manifest"><strong>retention-policy-api</strong>{ "domain": <span class="s">"records"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4179</span>,
+  "owner": <span class="s">"records"</span> }</div>
+            <div class="aw-mini-manifest"><strong>compliance-dashboard-app</strong>{ "domain": <span class="s">"compliance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4180</span>,
+  "owner": <span class="s">"compliance"</span> }</div>
+            <div class="aw-mini-manifest"><strong>bi-metrics-api</strong>{ "domain": <span class="s">"analytics"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4181</span>,
+  "owner": <span class="s">"analytics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>executive-dashboard-app</strong>{ "domain": <span class="s">"analytics"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4182</span>,
+  "owner": <span class="s">"analytics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>margin-analysis-worker</strong>{ "domain": <span class="s">"analytics"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4183</span>,
+  "owner": <span class="s">"analytics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>close-calendar-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4184</span>,
+  "owner": <span class="s">"accounting"</span> }</div>
+            <div class="aw-mini-manifest"><strong>consolidation-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4185</span>,
+  "owner": <span class="s">"accounting"</span> }</div>
+            <div class="aw-mini-manifest"><strong>intercompany-elimination-worker</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4186</span>,
+  "owner": <span class="s">"accounting"</span> }</div>
+            <div class="aw-mini-manifest"><strong>fx-rates-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4187</span>,
+  "owner": <span class="s">"treasury"</span> }</div>
+            <div class="aw-mini-manifest"><strong>journal-approval-app</strong>{ "domain": <span class="s">"treasury"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4188</span>,
+  "owner": <span class="s">"accounting"</span> }</div>
+            <div class="aw-mini-manifest"><strong>anomaly-detection-worker</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4189</span>,
+  "owner": <span class="s">"ml"</span> }</div>
+            <div class="aw-mini-manifest"><strong>data-quality-api</strong>{ "domain": <span class="s">"ml"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4190</span>,
+  "owner": <span class="s">"data"</span> }</div>
+            <div class="aw-mini-manifest"><strong>notification-router-worker</strong>{ "domain": <span class="s">"data"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4191</span>,
+  "owner": <span class="s">"platform"</span> }</div>
+            <div class="aw-mini-manifest"><strong>document-renderer-api</strong>{ "domain": <span class="s">"platform"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4192</span>,
+  "owner": <span class="s">"platform"</span> }</div>
+            <div class="aw-mini-manifest"><strong>workflow-inbox-app</strong>{ "domain": <span class="s">"platform"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4193</span>,
+  "owner": <span class="s">"ops"</span> }</div>
+            <div class="aw-mini-manifest"><strong>identity-provisioning-api</strong>{ "domain": <span class="s">"workflow"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4194</span>,
+  "owner": <span class="s">"identity"</span> }</div>
+            <div class="aw-mini-manifest"><strong>tenant-settings-api</strong>{ "domain": <span class="s">"identity"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4195</span>,
+  "owner": <span class="s">"platform"</span> }</div>
+            <div class="aw-mini-manifest"><strong>feature-flags-api</strong>{ "domain": <span class="s">"platform"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4196</span>,
+  "owner": <span class="s">"platform"</span> }</div>
+            <div class="aw-mini-manifest"><strong>search-indexer-worker</strong>{ "domain": <span class="s">"platform"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4197</span>,
+  "owner": <span class="s">"search"</span> }</div>
+            <div class="aw-mini-manifest"><strong>integration-hub-api</strong>{ "domain": <span class="s">"search"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4198</span>,
+  "owner": <span class="s">"integration"</span> }</div>
+            <div class="aw-mini-manifest"><strong>webhook-delivery-worker</strong>{ "domain": <span class="s">"integration"</span>,
+  "appType": <span class="s">""</span>,
+  "port": <span class="n">4199</span>,
+  "owner": <span class="s">"integration"</span> }</div>
+            <div class="aw-mini-manifest"><strong>erp-admin-console-app</strong>{ "domain": <span class="s">"integration"</span>,
+  "appType": <span class="s">""</span>,
+  "port": <span class="n">4200</span>,
+  "owner": <span class="s">"platform"</span> }</div>
+            <div class="aw-mini-manifest"><strong>risk-register-api</strong>{ "domain": <span class="s">"risk"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4176</span>,
+  "owner": <span class="s">"risk"</span> }</div>
+            <div class="aw-mini-manifest"><strong>incident-review-api</strong>{ "domain": <span class="s">"incident"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4177</span>,
+  "owner": <span class="s">"security"</span> }</div>
+            <div class="aw-mini-manifest"><strong>segregation-duties-worker</strong>{ "domain": <span class="s">"security"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4178</span>,
+  "owner": <span class="s">"security"</span> }</div>
+            <div class="aw-mini-manifest"><strong>retention-policy-api</strong>{ "domain": <span class="s">"records"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4179</span>,
+  "owner": <span class="s">"records"</span> }</div>
+            <div class="aw-mini-manifest"><strong>compliance-dashboard-app</strong>{ "domain": <span class="s">"compliance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4180</span>,
+  "owner": <span class="s">"compliance"</span> }</div>
+            <div class="aw-mini-manifest"><strong>bi-metrics-api</strong>{ "domain": <span class="s">"analytics"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4181</span>,
+  "owner": <span class="s">"analytics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>executive-dashboard-app</strong>{ "domain": <span class="s">"analytics"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4182</span>,
+  "owner": <span class="s">"analytics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>margin-analysis-worker</strong>{ "domain": <span class="s">"analytics"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4183</span>,
+  "owner": <span class="s">"analytics"</span> }</div>
+            <div class="aw-mini-manifest"><strong>close-calendar-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4184</span>,
+  "owner": <span class="s">"accounting"</span> }</div>
+            <div class="aw-mini-manifest"><strong>consolidation-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4185</span>,
+  "owner": <span class="s">"accounting"</span> }</div>
+            <div class="aw-mini-manifest"><strong>intercompany-elimination-worker</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4186</span>,
+  "owner": <span class="s">"accounting"</span> }</div>
+            <div class="aw-mini-manifest"><strong>fx-rates-api</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4187</span>,
+  "owner": <span class="s">"treasury"</span> }</div>
+            <div class="aw-mini-manifest"><strong>journal-approval-app</strong>{ "domain": <span class="s">"treasury"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4188</span>,
+  "owner": <span class="s">"accounting"</span> }</div>
+            <div class="aw-mini-manifest"><strong>anomaly-detection-worker</strong>{ "domain": <span class="s">"finance"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4189</span>,
+  "owner": <span class="s">"ml"</span> }</div>
+            <div class="aw-mini-manifest"><strong>data-quality-api</strong>{ "domain": <span class="s">"ml"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4190</span>,
+  "owner": <span class="s">"data"</span> }</div>
+            <div class="aw-mini-manifest"><strong>notification-router-worker</strong>{ "domain": <span class="s">"data"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4191</span>,
+  "owner": <span class="s">"platform"</span> }</div>
+            <div class="aw-mini-manifest"><strong>document-renderer-api</strong>{ "domain": <span class="s">"platform"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4192</span>,
+  "owner": <span class="s">"platform"</span> }</div>
+            <div class="aw-mini-manifest"><strong>workflow-inbox-app</strong>{ "domain": <span class="s">"platform"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4193</span>,
+  "owner": <span class="s">"ops"</span> }</div>
+            <div class="aw-mini-manifest"><strong>identity-provisioning-api</strong>{ "domain": <span class="s">"workflow"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4194</span>,
+  "owner": <span class="s">"identity"</span> }</div>
+            <div class="aw-mini-manifest"><strong>tenant-settings-api</strong>{ "domain": <span class="s">"identity"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4195</span>,
+  "owner": <span class="s">"platform"</span> }</div>
+            <div class="aw-mini-manifest"><strong>feature-flags-api</strong>{ "domain": <span class="s">"platform"</span>,
+  "appType": <span class="s">"api"</span>,
+  "port": <span class="n">4196</span>,
+  "owner": <span class="s">"platform"</span> }</div>
+            <div class="aw-mini-manifest"><strong>search-indexer-worker</strong>{ "domain": <span class="s">"platform"</span>,
+  "appType": <span class="s">"worker"</span>,
+  "port": <span class="n">4197</span>,
+  "owner": <span class="s">"search"</span> }</div>
+            <div class="aw-mini-manifest"><strong>integration-hub-api</strong>{ "domain": <span class="s">"search"</span>,
+  "appType": <span class="s">"app"</span>,
+  "port": <span class="n">4198</span>,
+  "owner": <span class="s">"integration"</span> }</div>
+            <div class="aw-mini-manifest"><strong>webhook-delivery-worker</strong>{ "domain": <span class="s">"integration"</span>,
+  "appType": <span class="s">""</span>,
+  "port": <span class="n">4199</span>,
+  "owner": <span class="s">"integration"</span> }</div>
+            <div class="aw-mini-manifest"><strong>erp-admin-console-app</strong>{ "domain": <span class="s">"integration"</span>,
+  "appType": <span class="s">""</span>,
+  "port": <span class="n">4200</span>,
+  "owner": <span class="s">"platform"</span> }</div>
+          </div>
+        </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
   <!-- ================= PLAIN-WORDS INTRO ================= -->
