@@ -1987,6 +1987,39 @@ body { background: #0a0a0e; overflow-x: hidden; }
     </div>
   </section>
 
+  <!-- ================= 100 MANIFEST RAIN ================= -->
+  <section class="aw-section aw-manifest-rain" aria-label="One hundred tiny service manifests moving in four columns">
+    <div class="aw-wrap">
+      <div class="aw-manifest-copy">
+        <h2>One hundred services, still readable.</h2>
+        <p>Every tile is the same small contract: name, type, port, owner. TDK keeps the whole landscape legible instead of melting it into one giant generated repo.</p>
+      </div>
+
+      <div class="aw-manifest-wall" aria-hidden="true">
+        {% for lane in (1..4) %}
+        <div class="aw-manifest-lane">
+          <div class="aw-manifest-track">
+            {% assign start = lane | minus: 1 | times: 25 | plus: 1 %}
+            {% assign end = start | plus: 24 %}
+            {% for id in (start..end) %}
+            {% assign port = 3000 | plus: id %}
+            <div class="aw-mini-manifest"><strong>service-{{ id }}</strong>{ "appType": <span class="s">"api"</span>,
+  "port": <span class="n">{{ port }}</span>,
+  "owner": <span class="s">"team-{{ lane }}"</span> }</div>
+            {% endfor %}
+            {% for id in (start..end) %}
+            {% assign port = 3000 | plus: id %}
+            <div class="aw-mini-manifest"><strong>service-{{ id }}</strong>{ "appType": <span class="s">"api"</span>,
+  "port": <span class="n">{{ port }}</span>,
+  "owner": <span class="s">"team-{{ lane }}"</span> }</div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
 
   <!-- ================= PLAIN-WORDS INTRO ================= -->
   <section class="aw-plain" id="plain">
