@@ -132,21 +132,34 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
     padding: 0 0 0.6rem;
   }
   .sb-files-dir {
+    display: flex; align-items: center; gap: 0.45rem;
     font-family: "JetBrains Mono", monospace;
     font-size: 0.76rem;
     color: var(--sb-dim);
-    padding: 0.3rem 0.5rem 0.2rem 0.5rem;
+    padding: 0.3rem 0.5rem;
   }
+  .sb-files-dir--root { color: var(--sb-ink); font-weight: 600; }
+  .sb-files-dir i { font-size: 0.82rem; color: #fbbf24; flex: 0 0 auto; }
+  .sb-files-dir--root i { color: var(--sb-accent); }
   .sb-file-row {
-    display: block; width: 100%; text-align: left;
+    display: flex; align-items: center; gap: 0.45rem;
+    width: 100%; text-align: left;
     font-family: "JetBrains Mono", monospace;
     font-size: 0.78rem; color: var(--sb-ink);
     background: transparent; border: none;
     padding: 0.32rem 0.5rem 0.32rem 1.15rem;
     border-radius: 7px; cursor: pointer;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; overflow: hidden;
   }
+  .sb-file-row i { font-size: 0.85rem; flex: 0 0 auto; transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+  .sb-file-row span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .sb-file-row:hover { background: rgba(124, 77, 255, 0.12); color: #fff; }
+  .sb-file-row:hover i { transform: scale(1.2) rotate(5deg); filter: brightness(1.25); }
+  .sb-file-row .bi-braces-asterisk { color: #a78bfa; }
+  .sb-file-row .bi-braces { color: #c084fc; }
+  .sb-file-row .bi-box-seam { color: #fbbf24; }
+  .sb-file-row .bi-nut { color: #f472b6; }
+  .sb-file-row .bi-filetype-tsx { color: #60a5fa; }
   .sb-file-modal {
     position: absolute; inset: 0; z-index: 5;
     background: rgba(11, 12, 16, 0.965);
@@ -401,19 +414,19 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
             <div class="sb-term-grid">
               <aside class="sb-files" id="sb-files">
                 <div class="sb-files-head">Explorer</div>
-                <div class="sb-files-dir">tdk-sandbox</div>
-                <div class="sb-files-dir" style="margin-left: 0.7rem;">.tdk</div>
-                <button class="sb-file-row" data-file=".tdk/project.json">project.json</button>
-                <div class="sb-files-dir" style="margin-left: 0.7rem;">services</div>
-                <div class="sb-files-dir" style="margin-left: 1.4rem;">pre-alpha</div>
-                <div class="sb-files-dir" style="margin-left: 2.1rem;">api</div>
-                <button class="sb-file-row" data-file="services/pre-alpha/api/service.json">service.json</button>
-                <button class="sb-file-row" data-file="services/pre-alpha/api/Dockerfile">Dockerfile</button>
-                <button class="sb-file-row" data-file="services/pre-alpha/api/package.json">package.json</button>
-                <button class="sb-file-row" data-file="services/pre-alpha/api/src/index.ts">src/index.ts</button>
-                <div class="sb-files-dir" style="margin-left: 2.1rem;">database</div>
-                <button class="sb-file-row" data-file="services/pre-alpha/database/service.json">service.json</button>
-                <button class="sb-file-row" data-file="services/pre-alpha/database/src/index.ts">src/index.ts</button>
+                <div class="sb-files-dir sb-files-dir--root"><i class="bi bi-folder2-open"></i>tdk-sandbox</div>
+                <div class="sb-files-dir" style="margin-left: 0.7rem;"><i class="bi bi-folder-fill"></i>.tdk</div>
+                <button class="sb-file-row" data-file=".tdk/project.json"><i class="bi bi-braces-asterisk"></i><span>project.json</span></button>
+                <div class="sb-files-dir" style="margin-left: 0.7rem;"><i class="bi bi-folder-fill"></i>services</div>
+                <div class="sb-files-dir" style="margin-left: 1.4rem;"><i class="bi bi-folder-fill"></i>pre-alpha</div>
+                <div class="sb-files-dir" style="margin-left: 2.1rem;"><i class="bi bi-folder-fill"></i>api</div>
+                <button class="sb-file-row" data-file="services/pre-alpha/api/service.json"><i class="bi bi-braces"></i><span>service.json</span></button>
+                <button class="sb-file-row" data-file="services/pre-alpha/api/Dockerfile"><i class="bi bi-box-seam"></i><span>Dockerfile</span></button>
+                <button class="sb-file-row" data-file="services/pre-alpha/api/package.json"><i class="bi bi-nut"></i><span>package.json</span></button>
+                <button class="sb-file-row" data-file="services/pre-alpha/api/src/index.ts"><i class="bi bi-filetype-tsx"></i><span>src/index.ts</span></button>
+                <div class="sb-files-dir" style="margin-left: 2.1rem;"><i class="bi bi-folder-fill"></i>database</div>
+                <button class="sb-file-row" data-file="services/pre-alpha/database/service.json"><i class="bi bi-braces"></i><span>service.json</span></button>
+                <button class="sb-file-row" data-file="services/pre-alpha/database/src/index.ts"><i class="bi bi-filetype-tsx"></i><span>src/index.ts</span></button>
               </aside>
               <div class="sb-term-col">
                 <div class="sb-term-bar">
