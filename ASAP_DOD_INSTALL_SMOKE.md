@@ -1,6 +1,7 @@
 # ASAP DoD: TDK CLI install smoke
 
 Date: 2026-09-17
+Last checked: 2026-09-17T11:01:30Z
 
 ## Definition of done
 
@@ -12,6 +13,7 @@ Date: 2026-09-17
 - `tdk resource api --type backend --stack pre-alpha --path services/pre-alpha/api` creates `services/pre-alpha/api/service.json`.
 - `tdk project --check` passes.
 - `tdk up pre-alpha` requires the documented Tilt prerequisite.
+- Docker Compose example can run `tdk --version`, `tdk project --yes`, `tdk resource ...`, and `tdk project --check`.
 
 ## Container proof
 
@@ -35,9 +37,28 @@ docker run --rm ubuntu:24.04 sh -lc '
 
 Result: passed.
 
+## Docker Compose proof
+
+```sh
+git clone --depth 1 https://github.com/tdk-landscape/tdk-docker-compose-example.git
+cd tdk-docker-compose-example
+docker compose run --rm tdk tdk --version
+docker compose run --rm tdk tdk project --yes
+printf "\n" | docker compose run --rm -T tdk tdk resource api --type backend --stack pre-alpha --path services/pre-alpha/api
+docker compose run --rm tdk tdk project --check
+test -f .tdk/project.json
+test -f .tdk/.tdk-out/Tiltfile
+test -f services/pre-alpha/api/service.json
+```
+
+Result: passed when run from a Docker-shared workspace path.
+
+## Current limitation
+
+`tdk up pre-alpha` correctly requires Tilt. In a minimal Ubuntu smoke container without Tilt installed, it fails with `Executable not found in $PATH: "tilt"`. This matches the Quick Start prerequisite.
+
 ## Fixes made during smoke
 
 - Published `tdk-cli-releases` release `v1.1.0`.
 - Embedded CLI templates into the compiled Bun binary so `tdk project --yes` works without source files.
 - Updated Quick Start from stale `tdk init` / `tdk generate` commands to current `tdk project` / `tdk resource` flow.
-
