@@ -39,7 +39,7 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
 
   .sb-beta-banner {
     display: flex; align-items: center; gap: 0.9rem;
-    max-width: 860px; margin: 0 auto 4.2rem;
+    max-width: 860px; margin: 0 auto 2.75rem;
     background: rgba(124, 77, 255, 0.08);
     border: 1px solid rgba(124, 77, 255, 0.35);
     border-radius: 999px;
@@ -116,6 +116,69 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
     border-radius: 18px;
     box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
     overflow: hidden;
+    position: relative;
+  }
+  .sb-term-grid { display: grid; grid-template-columns: 236px 1fr; }
+  .sb-files {
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.025);
+    overflow-y: auto;
+    padding: 0.95rem 0.85rem;
+  }
+  .sb-files-head {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.67rem; letter-spacing: 0.14em;
+    color: var(--sb-faint); text-transform: uppercase;
+    padding: 0 0 0.6rem;
+  }
+  .sb-files-dir {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.76rem;
+    color: var(--sb-dim);
+    padding: 0.3rem 0.5rem 0.2rem 0.5rem;
+  }
+  .sb-file-row {
+    display: block; width: 100%; text-align: left;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem; color: var(--sb-ink);
+    background: transparent; border: none;
+    padding: 0.32rem 0.5rem 0.32rem 1.15rem;
+    border-radius: 7px; cursor: pointer;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .sb-file-row:hover { background: rgba(124, 77, 255, 0.12); color: #fff; }
+  .sb-file-modal {
+    position: absolute; inset: 0; z-index: 5;
+    background: rgba(11, 12, 16, 0.965);
+    border-radius: 16px;
+    display: flex; flex-direction: column;
+  }
+  .sb-file-modal.sb-file-hidden { display: none; }
+  .sb-file-head {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.7rem 1rem;
+    font-family: "JetBrains Mono", monospace; font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid var(--sb-line);
+  }
+  .sb-file-head .sb-prompt { color: var(--sb-accent-2); }
+  #sb-file-name {
+    flex: 1; color: var(--sb-dim);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .sb-file-close {
+    font-family: "JetBrains Mono", monospace; font-size: 0.72rem;
+    color: var(--sb-ink);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px; padding: 0.3rem 0.78rem; cursor: pointer;
+  }
+  .sb-file-content {
+    flex: 1; overflow: auto; margin: 0;
+    padding: 1rem 1.15rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8rem; line-height: 1.62;
+    color: #cdd3de; white-space: pre;
   }
   .sb-term-bar { display: flex; align-items: center; gap: 0.5rem; padding: 0.9rem 1.1rem; background: rgba(255, 255, 255, 0.04); }
   .sb-term-dot { width: 11px; height: 11px; border-radius: 50%; background: rgba(255, 255, 255, 0.14); }
@@ -275,6 +338,8 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
     .sb-bento { grid-template-columns: repeat(2, 1fr); }
     .sb-hacc--closed { width: 100%; }
     .sb-section { padding: 6rem 1.25rem 7rem; }
+    .sb-files { display: none; }
+    .sb-term-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 560px) {
     .sb-bento { grid-template-columns: 1fr; }
@@ -291,7 +356,7 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
     </div>
 
     <!-- ============ ATTENTION ============ -->
-    <section class="sb-section" style="padding-top: 11rem;">
+    <section class="sb-section" style="padding-top: 5.5rem;">
       <div class="sb-container" style="text-align: center;">
         <p class="sb-eyebrow">Interactive playground</p>
         <h1 class="sb-h1" id="sb-h1">Spin up a microservice stack,<br />before you write a line of code.</h1>
@@ -314,17 +379,45 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
           </div>
 
           <div class="sb-term" id="sb-term-card" data-reveal>
-            <div class="sb-term-bar">
-              <span class="sb-term-dot"></span><span class="sb-term-dot"></span><span class="sb-term-dot"></span>
-              <span class="sb-term-title">tdk &middot; sandbox &middot; pre-alpha</span>
-              <span class="sb-term-status" id="sb-term-status">idle</span>
+            <div class="sb-term-grid">
+              <aside class="sb-files" id="sb-files">
+                <div class="sb-files-head">Explorer</div>
+                <div class="sb-files-dir">tdk-sandbox</div>
+                <div class="sb-files-dir" style="margin-left: 0.7rem;">.tdk</div>
+                <button class="sb-file-row" data-file=".tdk/project.json">project.json</button>
+                <div class="sb-files-dir" style="margin-left: 0.7rem;">services</div>
+                <div class="sb-files-dir" style="margin-left: 1.4rem;">pre-alpha</div>
+                <div class="sb-files-dir" style="margin-left: 2.1rem;">api</div>
+                <button class="sb-file-row" data-file="services/pre-alpha/api/service.json">service.json</button>
+                <button class="sb-file-row" data-file="services/pre-alpha/api/Dockerfile">Dockerfile</button>
+                <button class="sb-file-row" data-file="services/pre-alpha/api/package.json">package.json</button>
+                <button class="sb-file-row" data-file="services/pre-alpha/api/src/index.ts">src/index.ts</button>
+                <div class="sb-files-dir" style="margin-left: 2.1rem;">database</div>
+                <button class="sb-file-row" data-file="services/pre-alpha/database/service.json">service.json</button>
+                <button class="sb-file-row" data-file="services/pre-alpha/database/src/index.ts">src/index.ts</button>
+              </aside>
+              <div class="sb-term-col">
+                <div class="sb-term-bar">
+                  <span class="sb-term-dot"></span><span class="sb-term-dot"></span><span class="sb-term-dot"></span>
+                  <span class="sb-term-title">tdk &middot; sandbox &middot; pre-alpha</span>
+                  <span class="sb-term-status" id="sb-term-status">idle</span>
+                </div>
+                <div class="sb-term-body" id="sb-term-body"><span class="sb-prompt">$</span> <span class="sb-caret"></span></div>
+                <div class="sb-term-controls">
+                  <button class="sb-btn sb-btn--small sb-btn--accent" data-js="play-all" id="sb-play-2">Play all</button>
+                  <button class="sb-btn sb-btn--small sb-btn--ghost" data-js="step">Step</button>
+                  <button class="sb-btn sb-btn--small sb-btn--ghost" data-js="reset">Reset</button>
+                  <span class="sb-run-hint" id="sb-hint">step <b id="sb-pos">1</b>/<span id="sb-total">7</span> &middot; press step to advance</span>
+                </div>
+              </div>
             </div>
-            <div class="sb-term-body" id="sb-term-body"><span class="sb-prompt">$</span> <span class="sb-caret"></span></div>
-            <div class="sb-term-controls">
-              <button class="sb-btn sb-btn--small sb-btn--accent" data-js="play-all" id="sb-play-2">Play all</button>
-              <button class="sb-btn sb-btn--small sb-btn--ghost" data-js="step">Step</button>
-              <button class="sb-btn sb-btn--small sb-btn--ghost" data-js="reset">Reset</button>
-              <span class="sb-run-hint" id="sb-hint">step <b id="sb-pos">1</b>/<span id="sb-total">7</span> &middot; press step to advance</span>
+            <div class="sb-file-modal sb-file-hidden" id="sb-file-modal">
+              <div class="sb-file-head">
+                <span class="sb-prompt">open</span>
+                <span id="sb-file-name"></span>
+                <button class="sb-file-close" id="sb-file-close">close</button>
+              </div>
+              <pre class="sb-file-content" id="sb-file-content"></pre>
             </div>
           </div>
         </div>
@@ -534,6 +627,131 @@ Starting 2 services from stack "pre-alpha":
         window.setTimeout(function () { b.textContent = before; }, 1400);
       }).catch(function () {});
     });
+  });
+
+  // file explorer - generated project contents
+  var FILES = {
+    '.tdk/project.json': [
+      '{',
+      '  "version": "1.0",',
+      '  "project": { "name": "workspace", "version": "1.0.0" },',
+      '  "stacks": {',
+      '    "pre_alpha": { "services": ["api", "database"] },',
+      '    "alpha": { "services": [] },',
+      '    "beta": { "services": [] },',
+      '    "out_of_scope": { "services": [] }',
+      '  },',
+      '  "optional_infra": { "verdaccio": true, "database-management": true, "proxy": true, "infisical": false },',
+      '  "discovery": { "paths": ["services"] }',
+      '}'
+    ].join('\n'),
+    'services/pre-alpha/api/service.json': [
+      '{',
+      '  "name": "api",',
+      '  "type": "backend",',
+      '  "stack": "pre-alpha",',
+      '  "port": 4000,',
+      '  "internalDependencies": ["database"],',
+      '  "dependencies": [],',
+      '  "build": { "dockerfile": "Dockerfile", "context": "." },',
+      '  "dev": { "command": "bun run dev", "watch": ["src/**/*"] },',
+      '  "healthCheck": "/health",',
+      '  "appName": "api",',
+      '  "appType": "backend"',
+      '}'
+    ].join('\n'),
+    'services/pre-alpha/api/Dockerfile': [
+      'FROM oven/bun:1.2',
+      '',
+      'WORKDIR /app',
+      '',
+      'COPY package.json bun.lock ./',
+      'RUN bun install --frozen-lockfile',
+      '',
+      'COPY . .',
+      'RUN bun run build',
+      '',
+      'HEALTHCHECK --interval=10s --timeout=5s --retries=3 \\',
+      '  CMD curl -f http://localhost:3000/health || exit 1',
+      '',
+      'EXPOSE 3000',
+      'CMD ["bun", "run", "start"]'
+    ].join('\n'),
+    'services/pre-alpha/api/package.json': [
+      '{',
+      '  "name": "@project/api",',
+      '  "version": "0.0.1",',
+      '  "type": "module",',
+      '  "scripts": {',
+      '    "dev": "bun run --watch src/index.ts",',
+      '    "build": "tsc",',
+      '    "test": "vitest",',
+      '    "lint": "biome check ."',
+      '  },'
+      '  "dependencies": { "hono": "^4.0.0" },',
+      '  "devDependencies": {',
+      '    "@types/bun": "latest",',
+      '    "typescript": "^7.0.2",',
+      '    "vitest": "^5.0.0"',
+      '  }',
+      '}'
+    ].join('\n'),
+    'services/pre-alpha/api/src/index.ts': [
+      "import { Hono } from 'hono';",
+      '',
+      "const app = new Hono();",
+      '',
+      "app.get('/health', (c) => c.json({ status: 'ok', service: 'api' }));",
+      "app.get('/health/live', (c) => c.json({ status: 'alive', timestamp: Date.now() }));",
+      "app.get('/health/ready', async (c) => {",
+      '  const dependencies = {};',
+      '  let allReady = true;',
+      "  const status = allReady ? 'ready' : 'not_ready';",
+      '  return c.json({ status, dependencies }, allReady ? 200 : 503);',
+      '});',
+      "app.get('/', (c) => c.json({ service: 'api', version: '1.0.0' }));",
+      '',
+      'const port = process.env.PORT || 3000;',
+      'console.log(\'\\n🚀 api running on http://localhost:\' + port);',
+      'console.log(\'📊 Health check: http://localhost:\' + port + \'/health\\n\');',
+      '',
+      'export default { port, fetch: app.fetch };'
+    ].join('\n'),
+    'services/pre-alpha/database/service.json': [
+      '{',
+      '  "name": "database",',
+      '  "type": "backend",',
+      '  "stack": "pre-alpha",',
+      '  "port": 4000,',
+      '  "internalDependencies": [],',
+      '  "healthCheck": "/health",',
+      '  "appName": "database",',
+      '  "appType": "backend"',
+      '}'
+    ].join('\n'),
+    'services/pre-alpha/database/src/index.ts': [
+      "import { Hono } from 'hono';",
+      '',
+      "const app = new Hono();",
+      '',
+      "app.get('/health', (c) => c.json({ status: 'ok', service: 'database' }));",
+      '',
+      'const port = process.env.PORT || 4000;',
+      'console.log(\'\\n🚀 database running on http://localhost:\' + port);',
+      '',
+      'export default { port, fetch: app.fetch };'
+    ].join('\n')
+  };
+  document.querySelectorAll('.sb-file-row').forEach(function (r) {
+    r.addEventListener('click', function () {
+      var name = r.getAttribute('data-file');
+      document.getElementById('sb-file-name').textContent = name;
+      document.getElementById('sb-file-content').textContent = FILES[name] || '// no preview available';
+      document.getElementById('sb-file-modal').classList.remove('sb-file-hidden');
+    });
+  });
+  document.getElementById('sb-file-close').addEventListener('click', function () {
+    document.getElementById('sb-file-modal').classList.add('sb-file-hidden');
   });
 
   // horizontal accordions
