@@ -113,14 +113,14 @@
         </div>
       </details>
 
-      <a class="aw-nav-cta aw-nav-cta-mobile" href="/#waitlist">Join waitlist</a>
+      <a class="aw-nav-cta aw-nav-cta-mobile" href="/docs/quickstart/">Install</a>
     </div>
 
     <div class="aw-nav-actions">
       <a href="https://github.com/tdk-landscape" class="aw-nav-icon" target="_blank" rel="noopener" aria-label="TDK Landscape on GitHub">
         <i class="bi bi-github"></i>
       </a>
-      <a href="/#waitlist" class="aw-nav-cta">Join waitlist</a>
+      <a href="/docs/quickstart/" class="aw-nav-cta">Install</a>
       <button class="aw-nav-burger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="aw-nav-links">
         <span></span><span></span>
       </button>
@@ -155,21 +155,25 @@
         </ul>
 
         <h2>Installation</h2>
+        <p>Install the latest public binary directly from the TDK CLI release channel. The installer detects Linux, macOS, Intel, and Arm automatically.</p>
 
-        <h3>npm (recommended)</h3>
+        <h3>One-line install</h3>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
-          <pre>npm install -g tdk-cli</pre>
+          <pre>curl -fsSL https://tdk-landscape.github.io/install.sh | sh</pre>
         </div>
 
-        <h3>Homebrew (macOS / Linux)</h3>
+        <h3>Manual download</h3>
+        <p>Download a binary from the public release repo if you prefer to install it yourself.</p>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
-          <pre>brew install tdk-cli</pre>
+          <pre>curl -fsSL -o tdk https://github.com/tdk-landscape/tdk-cli-releases/releases/latest/download/tdk-linux-amd64
+chmod +x tdk
+sudo mv tdk /usr/local/bin/tdk</pre>
         </div>
 
         <h3>GitHub Releases</h3>
-        <p>Binaries ship with each release from the <a href="https://github.com/tdk-landscape" target="_blank" rel="noopener">TDK Landscape</a> organization. Join the <a href="/#waitlist">waitlist</a> to get the download link on launch day.</p>
+        <p>Binaries ship with each release from <a href="https://github.com/tdk-landscape/tdk-cli-releases/releases/latest" target="_blank" rel="noopener">tdk-landscape/tdk-cli-releases</a>. The CLI source can stay private while these release assets stay public.</p>
 
         <h2>Verify installation</h2>
         <div class="aw-codeblock">
