@@ -175,6 +175,16 @@ sudo mv tdk /usr/local/bin/tdk</pre>
         <h3>GitHub Releases</h3>
         <p>Binaries ship with each release from <a href="https://github.com/tdk-landscape/tdk-cli-releases/releases/latest" target="_blank" rel="noopener">tdk-landscape/tdk-cli-releases</a>. The CLI source can stay private while these release assets stay public.</p>
 
+        <h3>Docker Compose</h3>
+        <p>Use Docker Compose if you want to try TDK without installing the binary on your host.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+          <pre>git clone https://github.com/tdk-landscape/tdk-docker-compose-example.git
+cd tdk-docker-compose-example
+docker compose run --rm tdk tdk --version
+docker compose run --rm tdk tdk project --yes</pre>
+        </div>
+
         <h2>Verify installation</h2>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
@@ -231,6 +241,8 @@ tdk project --yes</pre>
         <ul>
           <li><a href="/docs/configuration/">Learn about all configuration options</a></li>
           <li><a href="/docs/examples/">See more complex examples</a></li>
+          <li><a href="https://github.com/tdk-landscape/tdk-docker-compose-example" target="_blank" rel="noopener">Run the Docker Compose example</a></li>
+          <li><a href="https://github.com/tdk-landscape/tdk-cli-releases/releases/latest" target="_blank" rel="noopener">Download compiled binaries</a></li>
         </ul>
       </div>
     </div>
@@ -295,6 +307,8 @@ if (window.gsap && window.ScrollTrigger) {
         <ul class="list-unstyled footer-links">
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/docs/quickstart/">Quick Start</a></li>
+          <li><a href="https://github.com/tdk-landscape/tdk-cli-releases/releases/latest" target="_blank" rel="noopener">TDK CLI Binaries</a></li>
+          <li><a href="https://github.com/tdk-landscape/tdk-docker-compose-example" target="_blank" rel="noopener">Docker Compose Example</a></li>
           <li><a href="/docs/examples/">All Examples</a></li>
           <li><a href="https://github.com/tdk-landscape/tdk-example" target="_blank" rel="noopener">tdk-example Stack (GitHub)</a></li>
           <li><a href="https://github.com/tdk-landscape/tdk-user-management" target="_blank" rel="noopener">tdk-user-management Stack (GitHub)</a></li>
