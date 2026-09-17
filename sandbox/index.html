@@ -435,7 +435,7 @@ Starting 2 services from stack "pre-alpha":
   TOTAL.textContent = String(STEPS.length);
 
   var pos = 0;
-  var busy = false;
+  var timer = null;
 
   function esc(s) {
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -455,17 +455,32 @@ Starting 2 services from stack "pre-alpha":
     else { STATUS.textContent = 'playing'; STATUS.style.color = '#7c4dff'; }
     TERM.scrollTop = TERM.scrollHeight;
   }
+  function stopTour() {
+    if (timer) { window.clearInterval(timer); timer = null; }
+  }
   function stepOnce() {
-    if (busy) return;
-    busy = true;
+    stopTour();
     if (pos >= STEPS.length) pos = 0;
+    pos++;
     render();
-    window.setTimeout(function () { pos++; render(); busy = false; }, 90);
   }
   function playAll() {
-    while (pos < STEPS.length) { stepOnce(); }
+    stopTour();
+    pos = 0;
+    render();
+    timer = window.setInterval(function () {
+      pos++;
+      render();
+      if (pos >= STEPS.length) { stopTour(); }
+    }, 280);
   }
-  function resetAll() { pos = 0; render(); STATUS.textContent = 'idle'; STATUS.style.color = ''; }
+  function resetAll() {
+    stopTour();
+    pos = 0;
+    render();
+    STATUS.textContent = 'idle';
+    STATUS.style.color = '';
+  }
 
   document.querySelectorAll('[data-js="play-all"]').forEach(function (b) {
     b.addEventListener('click', playAll);
