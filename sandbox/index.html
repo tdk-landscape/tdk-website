@@ -37,6 +37,25 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
   .sb-section { padding: 9rem 2rem 10rem; }
   .sb-container { max-width: 1240px; margin: 0 auto; }
 
+  .sb-beta-banner {
+    display: flex; align-items: center; gap: 0.9rem;
+    max-width: 860px; margin: 0 auto 4.2rem;
+    background: rgba(124, 77, 255, 0.08);
+    border: 1px solid rgba(124, 77, 255, 0.35);
+    border-radius: 999px;
+    padding: 0.6rem 1.3rem;
+    font-size: 0.86rem;
+    color: var(--sb-dim);
+  }
+  .sb-beta-chip {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #0b0c10;
+    background: var(--sb-accent);
+    border-radius: 999px;
+    padding: 0.28rem 0.7rem;
+  }
   .sb-eyebrow {
     font-family: "JetBrains Mono", monospace;
     font-size: 0.78rem;
@@ -266,6 +285,11 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
 <main class="sb-main" id="sb-main">
   <div class="sb-shell">
 
+    <div class="sb-beta-banner" data-reveal>
+      <span class="sb-beta-chip">BETA</span>
+      <span class="sb-beta-text">Sandbox is a public preview. Tour replays real TDK CLI v1.1.0 output captured from an isolated docker container.</span>
+    </div>
+
     <!-- ============ ATTENTION ============ -->
     <section class="sb-section" style="padding-top: 11rem;">
       <div class="sb-container" style="text-align: center;">
@@ -273,7 +297,7 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
         <h1 class="sb-h1" id="sb-h1">Spin up a microservice stack,<br />before you write a line of code.</h1>
         <p class="sb-lede" id="sb-lede">Drive the real TDK CLI below, frame by frame, with output captured from a live docker container. Then launch your own sandbox and repeat it for real &mdash; untouched by Kubernetes, in minutes.</p>
         <div class="sb-hero-ctas">
-          <button class="sb-btn sb-btn--solid" data-js="play-all" id="sb-cta-play">Play the tour</button>
+          <button class="sb-btn sb-btn--solid" data-js="tour" id="sb-cta-play">Play the tour</button>
           <button class="sb-btn sb-btn--ghost" data-js="scroll-real" id="sb-cta-real">Launch your own</button>
         </div>
       </div>
@@ -403,7 +427,7 @@ Starting 2 services from stack "pre-alpha":
             <button class="sb-copy-btn" data-copy="sb-copy-clone">Copy</button>
           </div>
           <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
-            <button class="sb-btn sb-btn--solid" data-js="play-all">Replay the tour</button>
+            <button class="sb-btn sb-btn--solid" data-js="tour">Replay the tour</button>
             <a class="sb-btn sb-btn--ghost" href="{{ '/docs/quickstart/' | relative_url }}">Read the quick start</a>
           </div>
         </div>
@@ -482,6 +506,12 @@ Starting 2 services from stack "pre-alpha":
     STATUS.style.color = '';
   }
 
+  document.querySelectorAll('[data-js="tour"]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.getElementById('sb-term-card').scrollIntoView({ behavior: 'smooth' });
+      playAll();
+    });
+  });
   document.querySelectorAll('[data-js="play-all"]').forEach(function (b) {
     b.addEventListener('click', playAll);
   });
