@@ -125,6 +125,7 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
 
   /* Pinned split chapter */
   .sb-split { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 4.5rem; align-items: start; }
+  .sb-split-title { position: sticky; top: 6.5rem; }
   .sb-split-title h2 {
     font-family: "Cabinet Grotesk", "Satoshi", sans-serif;
     font-weight: 650; font-size: clamp(1.9rem, 2.6vw, 2.7rem);
@@ -288,7 +289,7 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
             <p>No mockups, no screenshots. This transcript was captured live from TDK CLI v1.1.0 running in a fresh docker container &mdash; the exact commands from the quick start.</p>
           </div>
 
-          <div class="sb-term" id="sb-term-card">
+          <div class="sb-term" id="sb-term-card" data-reveal>
             <div class="sb-term-bar">
               <span class="sb-term-dot"></span><span class="sb-term-dot"></span><span class="sb-term-dot"></span>
               <span class="sb-term-title">tdk &middot; sandbox &middot; pre-alpha</span>
@@ -312,30 +313,30 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
         <p class="sb-eyebrow">What you can do in here</p>
         <h2 class="sb-h1" style="text-align:left; font-size: clamp(1.9rem, 3vw, 3rem);">Five moves. One command each.</h2>
 
-        <div class="sb-bento" id="sb-bento" style="margin-top: 3.2rem;">
-          <div class="sb-bento-card" style="grid-column: span 3; grid-row: span 2;" id="bento-a">
+        <div class="sb-bento" id="sb-bento" data-reveal style="margin-top: 3.2rem;">
+          <div class="sb-bento-card" style="grid-column: span 3; grid-row: span 2;" id="bento-a" data-reveal>
             <span class="sb-bento-tag">init</span>
             <h3>Scaffold a project</h3>
             <p><code>tdk project --yes</code> builds the full PSR skeleton &mdash; <code>.tdk/project.json</code>, the Tilt build files, stack manifests, and a vendored copy of the TDK extension so <code>tdk up</code> runs offline without depending on a private repo.</p>
             <div class="sb-bento-img" style="background-image: url('https://picsum.photos/seed/tdk-project/1200/600');"></div>
           </div>
-          <div class="sb-bento-card" style="grid-column: span 2;" id="bento-b">
+          <div class="sb-bento-card" style="grid-column: span 2;" id="bento-b" data-reveal>
             <span class="sb-bento-tag">codegen</span>
             <h3>Generate services</h3>
             <p>One command writes 6 files per service &mdash; Dockerfile, Bun entrypoint, tests, tsconfig, manifest &mdash; already wired to the stack.</p>
           </div>
-          <div class="sb-bento-card" style="grid-column: span 1;" id="bento-c">
+          <div class="sb-bento-card" style="grid-column: span 1;" id="bento-c" data-reveal>
             <span class="sb-bento-tag">boot order</span>
             <h3>Wire dependencies</h3>
             <p><code>internalDependencies</code> drives Tilt boot order. API waits for the database.</p>
           </div>
-          <div class="sb-bento-card" style="grid-column: span 2;" id="bento-d">
+          <div class="sb-bento-card" style="grid-column: span 2;" id="bento-d" data-reveal>
             <span class="sb-bento-tag">gate</span>
             <h3>Validate configs</h3>
             <p><code>tdk project --check</code> lints layouts, ports and dependencies before a single container starts.</p>
             <pre style="font-family:'JetBrains Mono',monospace; font-size:0.76rem; color:var(--sb-dim); padding:0.6rem 0.7rem; border-radius:10px; border:1px solid var(--sb-line); margin-top:0.7rem;">✓ Project configuration is valid</pre>
           </div>
-          <div class="sb-bento-card" style="grid-column: span 4; grid-row: span 1;" id="bento-e">
+          <div class="sb-bento-card" style="grid-column: span 4; grid-row: span 1;" id="bento-e" data-reveal>
             <span class="sb-bento-tag">run</span>
             <h3>Boot without Tilt or boot with it</h3>
             <p>Generated services are plain Bun + Hono &mdash; <code>bun run src/index.ts</code> serves <code>/health</code> immediately. Prefer orchestration? <code>tdk up pre-alpha</code> hands the stack to Tilt with zero config.</p>
@@ -350,7 +351,7 @@ description: Play with TDK CLI in your browser and launch your own isolated sand
         <p class="sb-eyebrow">Read the transcript</p>
         <div class="sb-scrub" data-scrub>One manifest, six generated files, a stack that boots from <b>localhost:3000</b> &mdash; and every teammate who clones the repo gets the identical result in minutes, not weeks.</div>
 
-        <div class="sb-hacc-row" style="margin-top: 4rem;" id="sb-acc-row">
+        <div class="sb-hacc-row" style="margin-top: 4rem;" id="sb-acc-row" data-reveal>
           <div class="sb-hacc sb-hacc--closed" data-open="false" style="flex: 0 0 auto;">
             <h4>Install</h4>
             <p style="display:none;">One-line installer, auto-detects macOS, Linux, Intel and Arm.</p>
@@ -507,28 +508,16 @@ Starting 2 services from stack "pre-alpha":
   if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
     gsap.from('.sb-eyebrow, .sb-h1, .sb-lede', { y: 44, opacity: 0, stagger: 0.12, duration: 1, ease: 'power3.out', delay: 0.15 });
-    gsap.utils.toArray('#sb-pin-title').forEach(function (el) {
-      gsap.to(el, {
-        scrollTrigger: { trigger: el, start: 'top top', end: 'bottom top', pin: true, scrub: 0.5, anticipatePin: 1 }
+    gsap.utils.toArray('[data-reveal]').forEach(function (el) {
+      gsap.from(el, {
+        y: 40, opacity: 0, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
       });
     });
-    gsap.from('#sb-term-card, #sb-bento', {
-      y: 60, opacity: 0, duration: 1.1, ease: 'power3.out',
-      scrollTrigger: { start: 'top 86%' }
-    });
-    gsap.utils.toArray('.sb-bento-card').forEach(function (c) {
-      gsap.from(c, { y: 40, opacity: 0, scale: 0.96, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: c, start: 'top 90%' } });
-    });
     gsap.utils.toArray('[data-scrub]').forEach(function (el) {
-      var target = el;
-      gsap.from(target, {
-        opacity: 0.1,
-        scrollTrigger: {
-          trigger: target, start: 'top 76%', end: 'top 34%', scrub: 0.6,
-          onUpdate: function (self) {
-            target.style.opacity = String(0.1 + 0.9 * self.progress);
-          }
-        }
+      gsap.fromTo(el, { opacity: 0.12 }, {
+        opacity: 1, ease: 'none',
+        scrollTrigger: { trigger: el, start: 'top 78%', end: 'top 36%', scrub: true }
       });
     });
   }
