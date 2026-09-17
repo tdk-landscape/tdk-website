@@ -14,6 +14,7 @@ Last checked: 2026-09-17T11:01:30Z
 - `tdk project --check` passes.
 - `tdk up pre-alpha` requires the documented Tilt prerequisite.
 - Docker Compose example can run `tdk --version`, `tdk project --yes`, `tdk resource ...`, and `tdk project --check`.
+- Docker Compose example can create two services, set `api.internalDependencies = ["database"]`, and `tdk status --verbose` discovers both resources.
 
 ## Container proof
 
@@ -52,6 +53,28 @@ test -f services/pre-alpha/api/service.json
 ```
 
 Result: passed when run from a Docker-shared workspace path.
+
+## Dependency proof
+
+```sh
+git clone --depth 1 https://github.com/tdk-landscape/tdk-docker-compose-example.git
+cd tdk-docker-compose-example
+docker compose build --no-cache
+docker compose run --rm tdk tdk project --yes
+printf "\n" | docker compose run --rm -T tdk tdk resource database --type backend --stack pre-alpha --path services/pre-alpha/database
+printf "\n" | docker compose run --rm -T tdk tdk resource api --type backend --stack pre-alpha --path services/pre-alpha/api
+docker compose run --rm -T tdk sh -lc 'node -e "
+const fs = require(\"fs\");
+const file = \"services/pre-alpha/api/service.json\";
+const service = JSON.parse(fs.readFileSync(file, \"utf8\"));
+service.internalDependencies = [\"database\"];
+fs.writeFileSync(file, JSON.stringify(service, null, 2) + \"\\n\");
+"'
+docker compose run --rm tdk tdk project --check
+docker compose run --rm tdk tdk status --verbose
+```
+
+Result: passed. `tdk status --verbose` discovered `2 resources` in `pre-alpha`, and `services/pre-alpha/api/service.json` contained `internalDependencies: ["database"]`.
 
 ## Current limitation
 

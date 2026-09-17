@@ -208,25 +208,43 @@ tdk project --yes</pre>
           <pre>tdk resource api --type backend --stack pre-alpha --path services/pre-alpha/api</pre>
         </div>
 
-        <h3>3 — Inspect service.json</h3>
+        <h3>3 — Add a dependency</h3>
+        <p>TDK/Tilt reads boot order from <code>internalDependencies</code>. This example makes <code>api</code> depend on <code>database</code>.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+          <pre>tdk resource database --type backend --stack pre-alpha --path services/pre-alpha/database</pre>
+        </div>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/pre-alpha/api/service.json</span></div>
+          <pre>{
+  <span class="k">"name"</span>: <span class="s">"api"</span>,
+  <span class="k">"type"</span>: <span class="s">"backend"</span>,
+  <span class="k">"stack"</span>: <span class="s">"pre-alpha"</span>,
+  <span class="k">"port"</span>: <span class="n">4000</span>,
+  <span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>]
+}</pre>
+        </div>
+
+        <h3>4 — Inspect service.json</h3>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>service.json</span></div>
           <pre>{
   <span class="k">"name"</span>: <span class="s">"api"</span>,
   <span class="k">"type"</span>: <span class="s">"backend"</span>,
   <span class="k">"stack"</span>: <span class="s">"pre-alpha"</span>,
-  <span class="k">"port"</span>: <span class="n">4000</span>
+  <span class="k">"port"</span>: <span class="n">4000</span>,
+  <span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>]
 }</pre>
         </div>
 
-        <h3>4 — Validate configs</h3>
+        <h3>5 — Validate configs</h3>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
           <pre>tdk project --check</pre>
         </div>
         <p>This validates <code>.tdk/project.json</code> and the generated files in <code>.tdk/.tdk-out/</code>.</p>
 
-        <h3>5 — Run the stack</h3>
+        <h3>6 — Run the stack</h3>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
           <pre>tdk up pre-alpha</pre>
