@@ -531,6 +531,8 @@ body:has(.aw) .site-footer {
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 1rem;
   overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
   margin: 0 0 2rem;
 }
 
@@ -717,6 +719,10 @@ body:has(.aw) .site-footer {
   letter-spacing: -0.03em;
   color: #fff;
   margin: 0 0 1.25rem;
+}
+
+.aw-docs-body {
+  min-width: 0;
 }
 
 .aw-docs-body>.aw-lead {
