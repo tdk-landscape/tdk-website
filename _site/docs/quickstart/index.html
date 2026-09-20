@@ -211,7 +211,7 @@ tdk project --yes</pre>
         </div>
 
         <h3>3 — Add a dependency</h3>
-        <p>TDK/Tilt reads boot order from <code>internalDependencies</code>. This example makes <code>api</code> depend on <code>database</code>.</p>
+        <p>TDK/Tilt reads boot order from <code>dependsOn</code>. This example makes <code>api</code> depend on <code>database</code>.</p>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
           <pre>tdk resource database --type backend --stack pre-alpha --path services/pre-alpha/database</pre>
@@ -223,7 +223,7 @@ tdk project --yes</pre>
   <span class="k">"type"</span>: <span class="s">"backend"</span>,
   <span class="k">"stack"</span>: <span class="s">"pre-alpha"</span>,
   <span class="k">"port"</span>: <span class="n">4000</span>,
-  <span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>]
+  <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>]
 }</pre>
         </div>
 
@@ -235,7 +235,7 @@ tdk project --yes</pre>
   <span class="k">"type"</span>: <span class="s">"backend"</span>,
   <span class="k">"stack"</span>: <span class="s">"pre-alpha"</span>,
   <span class="k">"port"</span>: <span class="n">4000</span>,
-  <span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>]
+  <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>]
 }</pre>
         </div>
 

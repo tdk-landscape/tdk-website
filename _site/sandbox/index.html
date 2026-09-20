@@ -653,7 +653,7 @@
           <div class="sb-bento-card" style="grid-column: span 1;" id="bento-c" data-reveal>
             <span class="sb-bento-tag">boot order</span>
             <h3>Wire dependencies</h3>
-            <p><code>internalDependencies</code> drives Tilt boot order. API waits for the database.</p>
+            <p><code>dependsOn</code> drives Tilt boot order. API waits for the database.</p>
           </div>
           <div class="sb-bento-card" style="grid-column: span 2;" id="bento-d" data-reveal>
             <span class="sb-bento-tag">gate</span>
@@ -859,7 +859,7 @@ Starting 2 services from stack "pre-alpha":
       '  "type": "backend",',
       '  "stack": "pre-alpha",',
       '  "port": 4000,',
-      '  "internalDependencies": ["database"],',
+      '  "dependsOn": ["database"],',
       '  "dependencies": [],',
       '  "build": { "dockerfile": "Dockerfile", "context": "." },',
       '  "dev": { "command": "bun run dev", "watch": ["src/**/*"] },',
@@ -930,7 +930,7 @@ Starting 2 services from stack "pre-alpha":
       '  "type": "backend",',
       '  "stack": "pre-alpha",',
       '  "port": 4000,',
-      '  "internalDependencies": [],',
+      '  "dependsOn": [],',
       '  "healthCheck": "/health",',
       '  "appName": "database",',
       '  "appType": "backend"',

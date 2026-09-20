@@ -599,7 +599,7 @@
   <span class="k">"port"</span>: <span class="n">3000</span>,
   <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
   <span class="k">"stack"</span>: <span class="s">"ecommerce"</span>,
-  <span class="k">"internalDependencies"</span>: [
+  <span class="k">"dependsOn"</span>: [
     <span class="s">"order-service"</span>,
     <span class="s">"inventory-service"</span>,
     <span class="s">"user-service"</span>
@@ -616,7 +616,7 @@
   <span class="k">"port"</span>: <span class="n">3001</span>,
   <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>, <span class="s">"prisma"</span>],
   <span class="k">"stack"</span>: <span class="s">"ecommerce"</span>,
-  <span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>]
+  <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>]
 }</pre>
         </div>
 
@@ -721,7 +721,7 @@
   <span class="k">"appName"</span>: <span class="s">"email-worker"</span>,
   <span class="k">"appType"</span>: <span class="s">"worker"</span>,
   <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
-  <span class="k">"internalDependencies"</span>: [<span class="s">"redis"</span>],
+  <span class="k">"dependsOn"</span>: [<span class="s">"redis"</span>],
   <span class="k">"replicas"</span>: <span class="n">3</span>
 }</pre>
         </div>
@@ -736,7 +736,7 @@
   <span class="k">"port"</span>: <span class="n">3101</span>,
   <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>, <span class="s">"prisma"</span>],
   <span class="k">"stack"</span>: <span class="s">"saas"</span>,
-  <span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>, <span class="s">"redis"</span>]
+  <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>, <span class="s">"redis"</span>]
 }</pre>
         </div>
         <div class="aw-codeblock">
@@ -747,7 +747,7 @@
   <span class="k">"port"</span>: <span class="n">3102</span>,
   <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>, <span class="s">"prisma"</span>],
   <span class="k">"stack"</span>: <span class="s">"saas"</span>,
-  <span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>, <span class="s">"auth-service"</span>]
+  <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>, <span class="s">"auth-service"</span>]
 }</pre>
         </div>
 
@@ -761,7 +761,7 @@
   <span class="k">"port"</span>: <span class="n">3201</span>,
   <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
   <span class="k">"stack"</span>: <span class="s">"realtime"</span>,
-  <span class="k">"internalDependencies"</span>: [<span class="s">"nats"</span>, <span class="s">"redis"</span>]
+  <span class="k">"dependsOn"</span>: [<span class="s">"nats"</span>, <span class="s">"redis"</span>]
 }</pre>
         </div>
 
@@ -774,7 +774,7 @@
   <span class="k">"appType"</span>: <span class="s">"worker"</span>,
   <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
   <span class="k">"stack"</span>: <span class="s">"media"</span>,
-  <span class="k">"internalDependencies"</span>: [<span class="s">"redis"</span>, <span class="s">"database"</span>],
+  <span class="k">"dependsOn"</span>: [<span class="s">"redis"</span>, <span class="s">"database"</span>],
   <span class="k">"replicas"</span>: <span class="n">3</span>
 }</pre>
         </div>

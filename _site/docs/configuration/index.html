@@ -165,7 +165,7 @@
   <span class="k">"replicas"</span>: <span class="n">1</span>,                    <span class="c">// Optional: number of replicas</span>
   <span class="k">"backendName"</span>: <span class="s">"api-backend"</span>,     <span class="c">// Optional: backend for frontend</span>
   <span class="k">"basePath"</span>: <span class="s">"/api"</span>,               <span class="c">// Optional: URL base path</span>
-  <span class="k">"internalDependencies"</span>: [         <span class="c">// Optional: other services</span>
+  <span class="k">"dependsOn"</span>: [         <span class="c">// Optional: other services</span>
     <span class="s">"database"</span>,
     <span class="s">"cache"</span>
   ],
@@ -237,11 +237,11 @@
           <pre><span class="k">"stack"</span>: <span class="s">"order-management"</span></pre>
         </div>
 
-        <h3>internalDependencies</h3>
+        <h3>dependsOn</h3>
         <p>Other services this service depends on. TDK resolves boot order automatically.</p>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>service.json</span></div>
-          <pre><span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>, <span class="s">"redis"</span>, <span class="s">"auth-service"</span>]</pre>
+          <pre><span class="k">"dependsOn"</span>: [<span class="s">"database"</span>, <span class="s">"redis"</span>, <span class="s">"auth-service"</span>]</pre>
         </div>
 
         <h2>Examples by type</h2>
@@ -254,7 +254,7 @@
   <span class="k">"appType"</span>: <span class="s">"backend"</span>,
   <span class="k">"port"</span>: <span class="n">3000</span>,
   <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
-  <span class="k">"internalDependencies"</span>: [<span class="s">"database"</span>, <span class="s">"redis"</span>],
+  <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>, <span class="s">"redis"</span>],
   <span class="k">"envVars"</span>: {
     <span class="k">"NODE_ENV"</span>: <span class="s">"development"</span>
   }
