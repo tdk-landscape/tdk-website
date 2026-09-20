@@ -3272,8 +3272,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
       <p class="aw-cta-sub">Free licenses need no key and cost nothing, ever — up to {{ site.data.tdk.free_project_limit }} project IDs per key if you grab one. Premium unlocks the paid extras, up to {{ site.data.tdk.premium_project_limit }} project IDs per key. Need SSO, air-gapped, or an SLA? Pick Enterprise — request any of the three below and your input sets the roadmap.</p>
 
       <form class="aw-form" onsubmit="handleLicenseSubmit(event); return false;">
-        <label for="waitlist-email">Your email <span style="font-weight: 400; color: rgba(236,236,241,0.65);">(optional for Premium/Enterprise, required to get a Free key instantly)</span></label>
-        <input type="email" id="waitlist-email" placeholder="you@company.com" />
+        <label for="waitlist-email">Your email <span style="font-weight: 400; color: rgba(236,236,241,0.65);">(required — it's the only way we can get a key or a reply back to you)</span></label>
+        <input type="email" id="waitlist-email" placeholder="you@company.com" required />
 
         <label>Which license do you want?</label>
         <div class="aw-features">
@@ -3292,7 +3292,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
         </div>
 
         <button type="submit" class="aw-btn aw-btn-solid" id="waitlist-submit-btn">Get my license →</button>
-        <p class="aw-form-note">Free + email = your key appears below instantly. Premium/Enterprise, or Free with no email, submits your request directly — no mail client needed, no spam, unsubscribe anytime.</p>
+        <p class="aw-form-note">Free = your key appears below instantly. Premium/Enterprise gets submitted directly — no mail client needed, no spam, unsubscribe anytime.</p>
         <div class="aw-form-note aw-issued-key" id="waitlist-request-received" style="display:none;">
           Request received — we'll follow up by email if you gave us one. Thanks for your interest in TDK!
         </div>
@@ -3392,7 +3392,19 @@ async function handleLicenseSubmit(event) {
   var planRadio = document.querySelector('.plan-radio:checked');
   var plan = planRadio ? planRadio.value : 'Free — no key required, $0 forever';
 
-  if (isFreePlan(plan) && emailInput) {
+  // Belt-and-braces on top of the input's `required` attribute: without an
+  // email there is no way left to hand back a key or follow up on a
+  // request (mailto no longer runs on the happy path), so a submission
+  // with no email is never useful - refuse it outright instead of filing
+  // a request nobody can act on.
+  if (!emailInput) {
+    showInlineError('Please enter your email - we have no other way to get a key or a reply back to you.');
+    btn.disabled = false;
+    btn.textContent = originalLabel;
+    return;
+  }
+
+  if (isFreePlan(plan)) {
     btn.textContent = 'Issuing your key…';
     try {
       var res = await fetch(ISSUE_FREE_LICENSE_URL, {
