@@ -1441,7 +1441,17 @@ body { background: #0a0a0e; overflow-x: hidden; }
 }
 
 .aw-mailto-fallback {
-  color: rgba(236, 236, 241, 0.75);
+  color: rgba(236, 236, 241, 0.85);
+  background: rgba(167, 139, 250, 0.1);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+  animation: aw-fallback-in 0.35s ease-out;
+}
+
+@keyframes aw-fallback-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .aw-issued-key {
