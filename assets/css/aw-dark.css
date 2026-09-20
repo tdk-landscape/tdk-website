@@ -596,6 +596,12 @@ body:has(.aw) .site-footer {
   color: #6a737d;
 }
 
+.aw-codeblock .ok { color: #6ee7b7; }
+.aw-codeblock .warn { color: #fcd34d; }
+.aw-codeblock .err { color: #fb7185; }
+.aw-codeblock .hot { color: #4dd0ff; }
+.aw-codeblock .dim { color: rgba(236, 236, 241, 0.4); }
+
 /* ---------------- Compare matrix (dark) ---------------- */
 .aw-matrix {
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -711,6 +717,133 @@ body:has(.aw) .site-footer {
   color: #b79aff;
   background: rgba(124, 77, 255, 0.12);
   font-weight: 600;
+}
+
+/* Auto-generated "On this page" sub-nav, injected by aw-docs-toc.js */
+.aw-docs-toc {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  max-height: calc(100vh - 16rem);
+  overflow-y: auto;
+}
+
+.aw-docs-toc-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(236, 236, 241, 0.35);
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.aw-docs-toc a {
+  display: block;
+  padding: 0.375rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: rgba(236, 236, 241, 0.45);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.aw-docs-toc a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.aw-docs-toc a.is-active {
+  color: #b79aff;
+  border-left-color: #7c4dff;
+}
+
+@media (max-width: 1000px) {
+  .aw-docs-toc {
+    display: none;
+  }
+}
+
+/* Animated terminal demo (shared by homepage + docs pages) */
+.aw-terminal {
+  background: #0d0d13;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+}
+
+.aw-terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.aw-terminal-bar i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.aw-terminal-bar i:nth-child(1) {
+  background: linear-gradient(135deg, #ff5f56, #ff3b30);
+  box-shadow: 0 0 8px rgba(255, 95, 86, 0.4);
+}
+.aw-terminal-bar i:nth-child(2) {
+  background: linear-gradient(135deg, #ffbd2e, #ffcc00);
+  box-shadow: 0 0 8px rgba(255, 189, 46, 0.4);
+}
+.aw-terminal-bar i:nth-child(3) {
+  background: linear-gradient(135deg, #27c93f, #34c759);
+  box-shadow: 0 0 8px rgba(39, 201, 63, 0.4);
+}
+
+.aw-terminal-bar span {
+  margin-left: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(236, 236, 241, 0.45);
+}
+
+.aw-terminal-body {
+  padding: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  line-height: 1.9;
+  min-height: 18rem;
+  color: rgba(236, 236, 241, 0.85);
+}
+
+.aw-tline {
+  display: block;
+  white-space: pre-wrap;
+}
+
+.aw-tline .p { color: #b79aff; }
+.aw-tline .ok { color: #6ee7b7; }
+.aw-tline .warn { color: #fcd34d; }
+.aw-tline .err { color: #fb7185; }
+.aw-tline .dim { color: rgba(236, 236, 241, 0.4); }
+.aw-tline .hot { color: #4dd0ff; }
+
+.aw-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  background: #b79aff;
+  vertical-align: text-bottom;
+  animation: aw-blink 0.9s steps(1) infinite;
+}
+
+@keyframes aw-blink {
+  50% { opacity: 0; }
 }
 
 .aw-docs-body h1 {
