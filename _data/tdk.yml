@@ -145,6 +145,9 @@ app_types:                 # service.json "appType" — used in /docs/configurat
   - name: "migrator"
     desc: "Database migration service"
 
+# --- Licensing facts ---
+free_project_limit: 3      # Max project IDs allowed per free Community license key
+
 # --- Money facts ---
 devops_salary: "$150K"     # avoided platform-engineer hire, USD/year
 devops_salary_num: 150000  # same, numeric — used by the ROI calculator JS
