@@ -57,7 +57,26 @@ docker compose run --rm tdk tdk project --yes</pre>
 <span class="c"># tdk-cli v1.0.0</span></pre>
         </div>
 
+        <h2>Start from a working example</h2>
+        <p>Not sure what a TDK project should look like yet? Skip the blank canvas — <code>tdk project &lt;template&gt;</code> clones a complete, working PSR (Project-Stack-Resource) landscape you can run immediately and learn the structure from.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+          <pre><span class="c"># minimal reference stack - start here if you're new to TDK</span>
+tdk project example
+
+<span class="c"># or a fuller domain example</span>
+tdk project restaurant
+tdk project user-management
+tdk project erp
+
+cd &lt;cloned-folder&gt;
+tdk doctor   <span class="c"># check Docker/Tilt are ready</span>
+tdk up       <span class="c"># start the stack</span></pre>
+        </div>
+        <p>Use <code>--path &lt;dir&gt;</code> to control the destination folder name. See <a href="{{ '/docs/examples/' | relative_url }}">Examples</a> for what each template contains.</p>
+
         <h2>Create your first service</h2>
+        <p>Prefer to build from scratch instead? Start with a blank project:</p>
 
         <h3>1 — Create a new project</h3>
         <div class="aw-codeblock">
@@ -122,6 +141,7 @@ tdk project --yes</pre>
 
         <h2>Next steps</h2>
         <ul>
+          <li><a href="{{ '/docs/examples/' | relative_url }}">Browse starter templates you can clone with <code>tdk project &lt;template&gt;</code></a></li>
           <li><a href="{{ '/docs/configuration/' | relative_url }}">Learn about all configuration options</a></li>
           <li><a href="{{ '/docs/examples/' | relative_url }}">See more complex examples</a></li>
           <li><a href="https://github.com/tdk-landscape/tdk-docker-compose-example" target="_blank" rel="noopener">Run the Docker Compose example</a></li>
