@@ -1211,8 +1211,10 @@ body { background: #0a0a0e; overflow-x: hidden; }
 /* ---------------- Pricing ---------------- */
 .aw-pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .aw-price-card {
@@ -1293,6 +1295,13 @@ body { background: #0a0a0e; overflow-x: hidden; }
   border-color: rgba(124, 77, 255, 0.7);
   transform: translateY(-2px);
   color: #fff;
+}
+
+.aw-price-footnote {
+  margin: 1rem 0 0;
+  font-size: 0.8125rem;
+  color: rgba(236, 236, 241, 0.45);
+  line-height: 1.5;
 }
 
 .aw-why {
@@ -1429,6 +1438,17 @@ body { background: #0a0a0e; overflow-x: hidden; }
   font-size: 0.8125rem;
   color: rgba(236, 236, 241, 0.4);
   margin: 1rem 0 0;
+}
+
+.aw-form-note a,
+.aw-btn-link {
+  color: #a78bfa;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /* ---------------- Section headers ---------------- */
@@ -1906,7 +1926,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
         TDK sets up the entire technical workspace in minutes. No waiting, no setup weeks, no extra hires.
       </p>
       <div class="aw-hero-ctas">
-        <a href="#waitlist" class="aw-btn aw-btn-solid">Get free license</a>
+        <a href="#waitlist" class="aw-btn aw-btn-solid">Get a free license</a>
         <a href="#demo" class="aw-btn aw-btn-ghost">Watch it boot</a>
       </div>
     </div>
@@ -3142,51 +3162,37 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-wrap">
       <div class="aw-head aw-head-center">
         <h2>Priced against what it replaces</h2>
-        <p>Free during beta. When we launch — simple pricing anchored to the alternatives, not to our costs. Every plan runs on a license key: Community keys are free, forever, and cover up to {{ site.data.tdk.free_project_limit }} project IDs.</p>
+        <p>Free during beta. When we launch — two licenses, nothing in between. Free needs no key and costs nothing, ever. Premium unlocks the paid extras.</p>
       </div>
 
       <div class="aw-pricing-grid">
         <div class="aw-price-card">
-          <div class="aw-price-name">Community</div>
+          <div class="aw-price-name">Free</div>
           <div class="aw-price-value">{{ site.data.tdk.community_price }} <small>/ forever</small></div>
-          <p class="aw-price-desc">The full CLI, MIT-licensed. Our adoption engine — the same model as Tilt and Skaffold.</p>
+          <p class="aw-price-desc">The full CLI, MIT-licensed, no license key required. Our adoption engine — the same model as Tilt and Skaffold.</p>
           <ul class="aw-price-list">
             <li>Unlimited services per project, {{ site.data.tdk.scale_services }} proven</li>
             <li>All generators — {{ site.data.tdk.files_per_service }} files per service</li>
             <li>L1–L4 golden Docker images</li>
-            <li>Up to {{ site.data.tdk.free_project_limit }} project IDs per license key</li>
+            <li>No license key needed, ever</li>
             <li>Community support</li>
           </ul>
-          <a class="aw-price-cta" href="{{ '/#waitlist' | relative_url }}">Get free license →</a>
+          <a class="aw-price-cta" href="{{ '/#waitlist' | relative_url }}">Get a free license →</a>
         </div>
 
         <div class="aw-price-card aw-price-featured">
-          <div class="aw-price-name">Team</div>
+          <div class="aw-price-name">Premium</div>
           <div class="aw-price-value">${{ site.data.tdk.team_price }} <small>/ dev / month</small></div>
-          <p class="aw-price-desc">For teams that want guardrails and a human on the other end.</p>
+          <p class="aw-price-desc">Unlocks the paid extras and gives your team a human on the other end.</p>
           <ul class="aw-price-list">
-            <li>Everything in Community</li>
-            <li>Unlimited project IDs per license key</li>
-            <li>Team template registry and policies</li>
+            <li>Everything in Free</li>
+            <li>Premium generators — Playwright E2E, C4 diagrams, structured logging</li>
+            <li>Up to {{ site.data.tdk.premium_project_limit }} project IDs per license key</li>
             <li>Priority support, next business day</li>
             <li>Onboarding session for your stack</li>
           </ul>
           <a class="aw-price-cta" href="{{ '/#waitlist' | relative_url }}">Request a license →</a>
-        </div>
-
-        <div class="aw-price-card">
-          <div class="aw-price-name">Enterprise</div>
-          <div class="aw-price-value">Custom</div>
-          <p class="aw-price-desc">For regulated or large-scale environments.</p>
-          <ul class="aw-price-list">
-            <li>Everything in Team</li>
-            <li>Unlimited project IDs, unlimited seats</li>
-            <li>SSO / OIDC, audit logs</li>
-            <li>Air-gapped / on-prem support</li>
-            <li>SLA and dedicated Slack channel</li>
-            <li>Forward-deployed setup of your stack</li>
-          </ul>
-          <a class="aw-price-cta" href="{{ '/#waitlist' | relative_url }}">Request a license →</a>
+          <p class="aw-price-footnote">Need SSO, air-gapped, or an SLA? Mention it in your request — custom Enterprise pricing available.</p>
         </div>
       </div>
 
@@ -3195,7 +3201,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
         <div class="aw-why-grid">
           <div class="aw-why-item">
             <strong>vs cloud dev envs</strong>
-            <p>Gitpod starts at {{ site.data.tdk.gitpod_entry }}/mo plus compute. Codespaces runs {{ site.data.tdk.codespaces_range }} per dev per month at full-time usage. TDK Team is ${{ site.data.tdk.team_price }} flat — compute is your laptop.</p>
+            <p>Gitpod starts at {{ site.data.tdk.gitpod_entry }}/mo plus compute. Codespaces runs {{ site.data.tdk.codespaces_range }} per dev per month at full-time usage. TDK Premium is ${{ site.data.tdk.team_price }} flat — compute is your laptop.</p>
           </div>
           <div class="aw-why-item">
             <strong>vs a DevOps hire</strong>
@@ -3207,7 +3213,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
           </div>
           <div class="aw-why-item">
             <strong>vs enterprise CDEs</strong>
-            <p>Coder and Okteto gate RBAC and SSO behind "contact sales". TDK Team includes team policies at a self-serve price.</p>
+            <p>Coder and Okteto gate RBAC and SSO behind "contact sales". TDK Premium includes team policies at a self-serve price.</p>
           </div>
         </div>
       </div>
@@ -3219,7 +3225,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-cta-glow"></div>
     <div class="aw-wrap">
       <h2>Get your<br />TDK license.</h2>
-      <p class="aw-cta-sub">Community licenses are free and cover up to {{ site.data.tdk.free_project_limit }} project IDs. Team and Enterprise licenses unlock unlimited project IDs — request either below and your input sets the roadmap.</p>
+      <p class="aw-cta-sub">Free licenses need no key and cost nothing, ever. Premium licenses unlock the paid extras, each key good for up to {{ site.data.tdk.premium_project_limit }} project IDs — request either below and your input sets the roadmap.</p>
 
       <form class="aw-form" onsubmit="sendWaitlistEmail(); return false;">
         <label for="waitlist-email">Your email <span style="font-weight: 400; color: rgba(236,236,241,0.4);">(optional)</span></label>
@@ -3227,9 +3233,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
         <label>Which license do you want?</label>
         <div class="aw-features">
-          <label><input type="radio" name="license-plan" class="plan-radio" value="Community — free, up to {{ site.data.tdk.free_project_limit }} project IDs" checked /> Community — free</label>
-          <label><input type="radio" name="license-plan" class="plan-radio" value="Team — ${{ site.data.tdk.team_price }}/dev/month, unlimited project IDs" /> Team — ${{ site.data.tdk.team_price }}/dev/mo</label>
-          <label><input type="radio" name="license-plan" class="plan-radio" value="Enterprise — custom, unlimited project IDs" /> Enterprise — custom</label>
+          <label><input type="radio" name="license-plan" class="plan-radio" value="Free — no key required, $0 forever" checked /> Free — $0</label>
+          <label><input type="radio" name="license-plan" class="plan-radio" value="Premium — ${{ site.data.tdk.team_price }}/dev/month, up to {{ site.data.tdk.premium_project_limit }} project IDs per key" /> Premium — ${{ site.data.tdk.team_price }}/dev/mo</label>
         </div>
 
         <label>Which features interest you?</label>
@@ -3243,6 +3248,10 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
         <button type="submit" class="aw-btn aw-btn-solid">Get my license →</button>
         <p class="aw-form-note">Opens your email app with a pre-filled message — just hit send. No spam, unsubscribe anytime.</p>
+        <p class="aw-form-note aw-mailto-fallback" id="waitlist-mailto-fallback" style="display:none;">
+          Didn't open? <a id="waitlist-mailto-link" href="#">Click here to email us</a>, or
+          <button type="button" id="waitlist-copy-btn" class="aw-btn-link">copy the message</button>.
+        </p>
       </form>
     </div>
   </section>
@@ -3310,7 +3319,7 @@ function sendWaitlistEmail() {
   var emailInput = document.getElementById('waitlist-email').value.trim();
   var email = emailInput || '(see From: in your email app)';
   var planRadio = document.querySelector('.plan-radio:checked');
-  var plan = planRadio ? planRadio.value : 'Community — free';
+  var plan = planRadio ? planRadio.value : 'Free — no key required, $0 forever';
   var checkboxes = document.querySelectorAll('.feature-checkbox:checked');
   var features = [];
   checkboxes.forEach(function (cb) { features.push(cb.value); });
@@ -3324,8 +3333,37 @@ function sendWaitlistEmail() {
     'My email: ' + email + '\n\n' +
     "I'm interested in these features:\n" + featuresList + '\n\n' +
     "What I'm building: (tell us about your project)\n\nThanks!\n---\nSent from https://tdk-landscape.github.io/tdk-website/";
-  window.location.href = 'mailto:vntu0412179+tdk-waitlist@gmail.com?subject=' +
+  var mailtoUrl = 'mailto:vntu0412179+tdk-waitlist@gmail.com?subject=' +
     encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+  // A real anchor click hands off to the OS mail-client protocol handler more
+  // reliably across browsers/macOS versions than a script-set location.href.
+  var link = document.createElement('a');
+  link.href = mailtoUrl;
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  // There is no reliable "mailto succeeded" signal, so if the page is still
+  // in the foreground shortly after, assume no mail client handled it and
+  // reveal a manual fallback instead of leaving the click looking dead.
+  var fallback = document.getElementById('waitlist-mailto-fallback');
+  var fallbackLink = document.getElementById('waitlist-mailto-link');
+  var copyBtn = document.getElementById('waitlist-copy-btn');
+  window.setTimeout(function () {
+    if (document.hidden) return;
+    fallbackLink.href = mailtoUrl;
+    fallback.style.display = 'block';
+  }, 1500);
+
+  copyBtn.onclick = function () {
+    var fullMessage = 'To: vntu0412179+tdk-waitlist@gmail.com\nSubject: ' + subject + '\n\n' + body;
+    navigator.clipboard.writeText(fullMessage).then(function () {
+      copyBtn.textContent = 'Copied!';
+      window.setTimeout(function () { copyBtn.textContent = 'copy the message'; }, 2000);
+    });
+  };
 }
 
 /* Generated filesystem reel */

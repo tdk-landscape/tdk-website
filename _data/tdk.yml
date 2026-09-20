@@ -146,7 +146,10 @@ app_types:                 # service.json "appType" — used in /docs/configurat
     desc: "Database migration service"
 
 # --- Licensing facts ---
-free_project_limit: 3      # Max project IDs allowed per free Community license key
+# The free engine (docker-compose, verdaccio, npm, bun, etc.) needs no key
+# at all - unlimited, no cap. The project-ID limit is an anti-sharing guard
+# on PAID license keys only: PROJECT_LIMIT in tdk-extension-dist/src/project-limit.ts.
+premium_project_limit: 3   # Max distinct project IDs one premium license key covers
 
 # --- Money facts ---
 devops_salary: "$150K"     # avoided platform-engineer hire, USD/year
