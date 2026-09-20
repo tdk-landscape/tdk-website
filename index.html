@@ -1440,6 +1440,30 @@ body { background: #0a0a0e; overflow-x: hidden; }
   margin: 1rem 0 0;
 }
 
+.aw-mailto-fallback {
+  color: rgba(236, 236, 241, 0.75);
+}
+
+.aw-issued-key {
+  color: #6ee7b7;
+  background: rgba(110, 231, 183, 0.1);
+  border: 1px solid rgba(110, 231, 183, 0.3);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+  line-height: 1.6;
+}
+
+.aw-issued-key code {
+  color: #6ee7b7;
+  background: rgba(110, 231, 183, 0.16);
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.375rem;
+}
+
+.aw-issued-key a {
+  color: #6ee7b7;
+}
+
 .aw-form-note a,
 .aw-btn-link {
   color: #a78bfa;
@@ -3192,7 +3216,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
             <li>Onboarding session for your stack</li>
           </ul>
           <a class="aw-price-cta" href="{{ '/#waitlist' | relative_url }}">Request a license →</a>
-          <p class="aw-price-footnote">Need SSO, air-gapped, or an SLA? Mention it in your request — custom Enterprise pricing available.</p>
+          <p class="aw-price-footnote">Need SSO, air-gapped, or an SLA? Pick Enterprise in the license request below — custom pricing.</p>
         </div>
       </div>
 
@@ -3225,16 +3249,17 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-cta-glow"></div>
     <div class="aw-wrap">
       <h2>Get your<br />TDK license.</h2>
-      <p class="aw-cta-sub">Free licenses need no key and cost nothing, ever. Premium licenses unlock the paid extras, each key good for up to {{ site.data.tdk.premium_project_limit }} project IDs — request either below and your input sets the roadmap.</p>
+      <p class="aw-cta-sub">Free licenses need no key and cost nothing, ever. Premium unlocks the paid extras, up to {{ site.data.tdk.premium_project_limit }} project IDs per key. Need SSO, air-gapped, or an SLA? Pick Enterprise — request any of the three below and your input sets the roadmap.</p>
 
-      <form class="aw-form" onsubmit="sendWaitlistEmail(); return false;">
-        <label for="waitlist-email">Your email <span style="font-weight: 400; color: rgba(236,236,241,0.4);">(optional)</span></label>
+      <form class="aw-form" onsubmit="handleLicenseSubmit(event); return false;">
+        <label for="waitlist-email">Your email <span style="font-weight: 400; color: rgba(236,236,241,0.4);">(optional for Premium/Enterprise, required to get a Free key instantly)</span></label>
         <input type="email" id="waitlist-email" placeholder="you@company.com" />
 
         <label>Which license do you want?</label>
         <div class="aw-features">
           <label><input type="radio" name="license-plan" class="plan-radio" value="Free — no key required, $0 forever" checked /> Free — $0</label>
           <label><input type="radio" name="license-plan" class="plan-radio" value="Premium — ${{ site.data.tdk.team_price }}/dev/month, up to {{ site.data.tdk.premium_project_limit }} project IDs per key" /> Premium — ${{ site.data.tdk.team_price }}/dev/mo</label>
+          <label><input type="radio" name="license-plan" class="plan-radio" value="Enterprise — custom pricing, unlimited project IDs, SSO/audit logs/air-gapped/SLA" /> Enterprise — custom</label>
         </div>
 
         <label>Which features interest you?</label>
@@ -3246,12 +3271,17 @@ body { background: #0a0a0e; overflow-x: hidden; }
           {% endfor %}
         </div>
 
-        <button type="submit" class="aw-btn aw-btn-solid">Get my license →</button>
-        <p class="aw-form-note">Opens your email app with a pre-filled message — just hit send. No spam, unsubscribe anytime.</p>
+        <button type="submit" class="aw-btn aw-btn-solid" id="waitlist-submit-btn">Get my license →</button>
+        <p class="aw-form-note">Free + email = your key appears below instantly. Premium/Enterprise, or Free with no email, opens your email app instead — no spam, unsubscribe anytime.</p>
         <p class="aw-form-note aw-mailto-fallback" id="waitlist-mailto-fallback" style="display:none;">
           Didn't open? <a id="waitlist-mailto-link" href="#">Click here to email us</a>, or
           <button type="button" id="waitlist-copy-btn" class="aw-btn-link">copy the message</button>.
         </p>
+        <div class="aw-form-note aw-issued-key" id="waitlist-issued-key" style="display:none;">
+          Your free license key: <code class="aw-mono" id="waitlist-issued-key-value"></code>
+          <button type="button" id="waitlist-issued-copy-btn" class="aw-btn-link">copy</button>
+          <br />Set it with <code class="aw-mono">export TDK_LICENSE_KEY=&lt;key&gt;</code> before running <code class="aw-mono">tdk up</code> — see the <a href="{{ '/docs/quickstart/' | relative_url }}">install guide</a>. Save it now, it's only shown here once.
+        </div>
       </form>
     </div>
   </section>
@@ -3314,6 +3344,63 @@ function calcRoi() {
 }
 calcRoi();
 
+/* Free plan + email = issue instantly via the worker; everything else
+   (Premium, Enterprise, or Free with no email) falls back to mailto. */
+var ISSUE_FREE_LICENSE_URL = 'https://tdk-extension-dist.oranguman.workers.dev/v1/issue-free-license';
+
+function isFreePlan(plan) {
+  return plan.indexOf('Free') === 0;
+}
+
+async function handleLicenseSubmit(event) {
+  event.preventDefault();
+  var emailInput = document.getElementById('waitlist-email').value.trim();
+  var planRadio = document.querySelector('.plan-radio:checked');
+  var plan = planRadio ? planRadio.value : 'Free — no key required, $0 forever';
+
+  if (isFreePlan(plan) && emailInput) {
+    var btn = document.getElementById('waitlist-submit-btn');
+    var originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Issuing your key…';
+    try {
+      var res = await fetch(ISSUE_FREE_LICENSE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailInput, note: 'issued via website form' })
+      });
+      if (!res.ok) throw new Error('issue failed: HTTP ' + res.status);
+      var data = await res.json();
+      showIssuedKey(data.key);
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+      return;
+    } catch (err) {
+      console.warn('Instant free license issue failed, falling back to email:', err);
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+      // fall through to the mailto path below
+    }
+  }
+
+  sendWaitlistEmail();
+}
+
+function showIssuedKey(key) {
+  var box = document.getElementById('waitlist-issued-key');
+  var valueEl = document.getElementById('waitlist-issued-key-value');
+  var copyBtn = document.getElementById('waitlist-issued-copy-btn');
+  if (!box || !valueEl) return;
+  valueEl.textContent = key;
+  box.style.display = 'block';
+  copyBtn.onclick = function () {
+    navigator.clipboard.writeText(key).then(function () {
+      copyBtn.textContent = 'Copied!';
+      window.setTimeout(function () { copyBtn.textContent = 'copy'; }, 2000);
+    });
+  };
+}
+
 /* License request mailto */
 function sendWaitlistEmail() {
   var emailInput = document.getElementById('waitlist-email').value.trim();
@@ -3345,17 +3432,14 @@ function sendWaitlistEmail() {
   link.click();
   document.body.removeChild(link);
 
-  // There is no reliable "mailto succeeded" signal, so if the page is still
-  // in the foreground shortly after, assume no mail client handled it and
-  // reveal a manual fallback instead of leaving the click looking dead.
+  // There is no reliable "mailto succeeded" signal across browsers/OSes, so
+  // rather than guess (and risk the click looking dead when no mail client
+  // is configured), always reveal the manual fallback right away.
   var fallback = document.getElementById('waitlist-mailto-fallback');
   var fallbackLink = document.getElementById('waitlist-mailto-link');
   var copyBtn = document.getElementById('waitlist-copy-btn');
-  window.setTimeout(function () {
-    if (document.hidden) return;
-    fallbackLink.href = mailtoUrl;
-    fallback.style.display = 'block';
-  }, 1500);
+  fallbackLink.href = mailtoUrl;
+  fallback.style.display = 'block';
 
   copyBtn.onclick = function () {
     var fullMessage = 'To: vntu0412179+tdk-waitlist@gmail.com\nSubject: ' + subject + '\n\n' + body;
