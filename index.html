@@ -3199,6 +3199,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
             <li>All generators — {{ site.data.tdk.files_per_service }} files per service</li>
             <li>L1–L4 golden Docker images</li>
             <li>No license key needed, ever</li>
+            <li>Up to {{ site.data.tdk.free_project_limit }} project IDs per license key, if you grab one</li>
             <li>Community support</li>
           </ul>
           <a class="aw-price-cta" href="{{ '/#waitlist' | relative_url }}">Get a free license →</a>
@@ -3245,11 +3246,11 @@ body { background: #0a0a0e; overflow-x: hidden; }
   </section>
 
   <!-- ================= CTA / LICENSE REQUEST (Action) ================= -->
-  <section class="aw-section aw-cta" id="waitlist">
+  <section class="aw-section aw-cta" id="waitlist" style="padding-top: 0;">
     <div class="aw-cta-glow"></div>
     <div class="aw-wrap">
       <h2>Get your<br />TDK license.</h2>
-      <p class="aw-cta-sub">Free licenses need no key and cost nothing, ever. Premium unlocks the paid extras, up to {{ site.data.tdk.premium_project_limit }} project IDs per key. Need SSO, air-gapped, or an SLA? Pick Enterprise — request any of the three below and your input sets the roadmap.</p>
+      <p class="aw-cta-sub">Free licenses need no key and cost nothing, ever — up to {{ site.data.tdk.free_project_limit }} project IDs per key if you grab one. Premium unlocks the paid extras, up to {{ site.data.tdk.premium_project_limit }} project IDs per key. Need SSO, air-gapped, or an SLA? Pick Enterprise — request any of the three below and your input sets the roadmap.</p>
 
       <form class="aw-form" onsubmit="handleLicenseSubmit(event); return false;">
         <label for="waitlist-email">Your email <span style="font-weight: 400; color: rgba(236,236,241,0.4);">(optional for Premium/Enterprise, required to get a Free key instantly)</span></label>
@@ -3257,7 +3258,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
         <label>Which license do you want?</label>
         <div class="aw-features">
-          <label><input type="radio" name="license-plan" class="plan-radio" value="Free — no key required, $0 forever" checked /> Free — $0</label>
+          <label><input type="radio" name="license-plan" class="plan-radio" value="Free — no key required, $0 forever, up to {{ site.data.tdk.free_project_limit }} project IDs per key if issued" checked /> Free — $0</label>
           <label><input type="radio" name="license-plan" class="plan-radio" value="Premium — ${{ site.data.tdk.team_price }}/dev/month, up to {{ site.data.tdk.premium_project_limit }} project IDs per key" /> Premium — ${{ site.data.tdk.team_price }}/dev/mo</label>
           <label><input type="radio" name="license-plan" class="plan-radio" value="Enterprise — custom pricing, unlimited project IDs, SSO/audit logs/air-gapped/SLA" /> Enterprise — custom</label>
         </div>
