@@ -40,8 +40,22 @@ url="https://github.com/${OWNER}/${REPO}/releases/latest/download/${asset}"
 install_dir="${TDK_INSTALL_DIR:-/usr/local/bin}"
 tmp="${TMPDIR:-/tmp}/tdk.$$"
 
+download() {
+  src="$1"
+  dest="$2"
+  n=0
+  while [ "$n" -lt 8 ]; do
+    if curl -fsSL "$src" -o "$dest"; then
+      return 0
+    fi
+    n=$((n + 1))
+    sleep $((n * 2))
+  done
+  return 1
+}
+
 echo "Installing ${asset}..."
-curl -fsSL "$url" -o "$tmp" || fail "download failed: $url"
+download "$url" "$tmp" || fail "download failed: $url"
 chmod +x "$tmp"
 
 if [ -w "$install_dir" ]; then
