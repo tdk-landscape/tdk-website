@@ -1449,6 +1449,15 @@ body { background: #0a0a0e; overflow-x: hidden; }
   animation: aw-fallback-in 0.35s ease-out;
 }
 
+.aw-inline-error {
+  color: rgba(255, 214, 165, 0.9);
+  background: rgba(251, 146, 60, 0.1);
+  border: 1px solid rgba(251, 146, 60, 0.35);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+  animation: aw-fallback-in 0.35s ease-out;
+}
+
 @keyframes aw-fallback-in {
   from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }
@@ -3287,6 +3296,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
         <div class="aw-form-note aw-issued-key" id="waitlist-request-received" style="display:none;">
           Request received — we'll follow up by email if you gave us one. Thanks for your interest in TDK!
         </div>
+        <p class="aw-form-note aw-inline-error" id="waitlist-inline-error" style="display:none;"></p>
         <p class="aw-form-note aw-mailto-fallback" id="waitlist-mailto-fallback" style="display:none;">
           Couldn't reach our server. <a id="waitlist-mailto-link" href="#">Click here to email us</a>, or
           <button type="button" id="waitlist-copy-btn" class="aw-btn-link">copy the message</button>.
@@ -3376,6 +3386,7 @@ async function handleLicenseSubmit(event) {
   var btn = document.getElementById('waitlist-submit-btn');
   var originalLabel = btn.textContent;
   btn.disabled = true;
+  hideInlineError();
 
   var emailInput = document.getElementById('waitlist-email').value.trim();
   var planRadio = document.querySelector('.plan-radio:checked');
@@ -3389,15 +3400,28 @@ async function handleLicenseSubmit(event) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: emailInput, note: 'issued via website form' })
       });
+      // 409 = this email already claimed its one instant free key; 429 =
+      // too many attempts from this IP. Both are real answers, not
+      // failures to route around - show them and stop, don't fall
+      // through to filing a request or opening mailto.
+      if (res.status === 409 || res.status === 429) {
+        var limitBody = await res.json().catch(function () { return {}; });
+        showInlineError(limitBody.error || 'Could not issue a key right now.');
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+        return;
+      }
       if (!res.ok) throw new Error('issue failed: HTTP ' + res.status);
       var data = await res.json();
       showIssuedKey(data.key);
-      btn.disabled = false;
-      btn.textContent = originalLabel;
+      // One key per email - nothing left for this button to do, so remove
+      // it instead of re-enabling it (was previously trivial to spam
+      // repeat clicks into repeat keys).
+      btn.style.display = 'none';
       return;
     } catch (err) {
-      console.warn('Instant free license issue failed, falling back to email:', err);
-      // fall through to the mailto path below
+      console.warn('Instant free license issue failed, falling back to request submission:', err);
+      // fall through to the request-license path below
     }
   }
 
@@ -3412,10 +3436,17 @@ async function handleLicenseSubmit(event) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ plan: plan, email: emailInput, features: features })
     });
+    if (reqRes.status === 429) {
+      var reqLimitBody = await reqRes.json().catch(function () { return {}; });
+      showInlineError(reqLimitBody.error || 'Too many requests - try again shortly.');
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+      return;
+    }
     if (!reqRes.ok) throw new Error('request failed: HTTP ' + reqRes.status);
     showRequestReceived();
-    btn.disabled = false;
-    btn.textContent = originalLabel;
+    // Request is filed - remove the button so it can't be resubmitted.
+    btn.style.display = 'none';
   } catch (err) {
     console.warn('License request submission failed, falling back to email:', err);
     sendWaitlistEmail(btn, originalLabel);
@@ -3427,6 +3458,19 @@ function showRequestReceived() {
   if (!box) return;
   box.style.display = 'block';
   box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function showInlineError(message) {
+  var box = document.getElementById('waitlist-inline-error');
+  if (!box) return;
+  box.textContent = message;
+  box.style.display = 'block';
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function hideInlineError() {
+  var box = document.getElementById('waitlist-inline-error');
+  if (box) box.style.display = 'none';
 }
 
 function showIssuedKey(key) {
