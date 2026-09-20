@@ -3283,9 +3283,12 @@ body { background: #0a0a0e; overflow-x: hidden; }
         </div>
 
         <button type="submit" class="aw-btn aw-btn-solid" id="waitlist-submit-btn">Get my license →</button>
-        <p class="aw-form-note">Free + email = your key appears below instantly. Premium/Enterprise, or Free with no email, opens your email app instead — no spam, unsubscribe anytime.</p>
+        <p class="aw-form-note">Free + email = your key appears below instantly. Premium/Enterprise, or Free with no email, submits your request directly — no mail client needed, no spam, unsubscribe anytime.</p>
+        <div class="aw-form-note aw-issued-key" id="waitlist-request-received" style="display:none;">
+          Request received — we'll follow up by email if you gave us one. Thanks for your interest in TDK!
+        </div>
         <p class="aw-form-note aw-mailto-fallback" id="waitlist-mailto-fallback" style="display:none;">
-          Didn't open? <a id="waitlist-mailto-link" href="#">Click here to email us</a>, or
+          Couldn't reach our server. <a id="waitlist-mailto-link" href="#">Click here to email us</a>, or
           <button type="button" id="waitlist-copy-btn" class="aw-btn-link">copy the message</button>.
         </p>
         <div class="aw-form-note aw-issued-key" id="waitlist-issued-key" style="display:none;">
@@ -3355,9 +3358,12 @@ function calcRoi() {
 }
 calcRoi();
 
-/* Free plan + email = issue instantly via the worker; everything else
-   (Premium, Enterprise, or Free with no email) falls back to mailto. */
+/* Free plan + email = issue instantly via the worker. Everything else
+   (Premium, Enterprise, or Free with no email) is filed via the worker's
+   request-license endpoint for manual follow-up - no mail client required.
+   mailto is only a last-resort fallback if the worker itself is unreachable. */
 var ISSUE_FREE_LICENSE_URL = 'https://tdk-extension-dist.oranguman.workers.dev/v1/issue-free-license';
+var REQUEST_LICENSE_URL = 'https://tdk-extension-dist.oranguman.workers.dev/v1/request-license';
 
 function isFreePlan(plan) {
   return plan.indexOf('Free') === 0;
@@ -3365,9 +3371,8 @@ function isFreePlan(plan) {
 
 async function handleLicenseSubmit(event) {
   event.preventDefault();
-  // Disable immediately, before any awaiting, so a slow network or a
-  // no-op mailto (no default mail client) can't be mistaken for a dead
-  // button and mashed repeatedly.
+  // Disable immediately, before any awaiting, so a slow network request
+  // can't be mistaken for a dead button and mashed repeatedly.
   var btn = document.getElementById('waitlist-submit-btn');
   var originalLabel = btn.textContent;
   btn.disabled = true;
@@ -3396,7 +3401,32 @@ async function handleLicenseSubmit(event) {
     }
   }
 
-  sendWaitlistEmail(btn, originalLabel);
+  btn.textContent = 'Sending your request…';
+  var checkboxes = document.querySelectorAll('.feature-checkbox:checked');
+  var features = [];
+  checkboxes.forEach(function (cb) { features.push(cb.value); });
+
+  try {
+    var reqRes = await fetch(REQUEST_LICENSE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan: plan, email: emailInput, features: features })
+    });
+    if (!reqRes.ok) throw new Error('request failed: HTTP ' + reqRes.status);
+    showRequestReceived();
+    btn.disabled = false;
+    btn.textContent = originalLabel;
+  } catch (err) {
+    console.warn('License request submission failed, falling back to email:', err);
+    sendWaitlistEmail(btn, originalLabel);
+  }
+}
+
+function showRequestReceived() {
+  var box = document.getElementById('waitlist-request-received');
+  if (!box) return;
+  box.style.display = 'block';
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 function showIssuedKey(key) {
