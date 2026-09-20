@@ -1436,7 +1436,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 .aw-form-note {
   text-align: center;
   font-size: 0.8125rem;
-  color: rgba(236, 236, 241, 0.4);
+  color: rgba(236, 236, 241, 0.65);
   margin: 1rem 0 0;
 }
 
@@ -3253,7 +3253,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
       <p class="aw-cta-sub">Free licenses need no key and cost nothing, ever — up to {{ site.data.tdk.free_project_limit }} project IDs per key if you grab one. Premium unlocks the paid extras, up to {{ site.data.tdk.premium_project_limit }} project IDs per key. Need SSO, air-gapped, or an SLA? Pick Enterprise — request any of the three below and your input sets the roadmap.</p>
 
       <form class="aw-form" onsubmit="handleLicenseSubmit(event); return false;">
-        <label for="waitlist-email">Your email <span style="font-weight: 400; color: rgba(236,236,241,0.4);">(optional for Premium/Enterprise, required to get a Free key instantly)</span></label>
+        <label for="waitlist-email">Your email <span style="font-weight: 400; color: rgba(236,236,241,0.65);">(optional for Premium/Enterprise, required to get a Free key instantly)</span></label>
         <input type="email" id="waitlist-email" placeholder="you@company.com" />
 
         <label>Which license do you want?</label>
@@ -3355,14 +3355,18 @@ function isFreePlan(plan) {
 
 async function handleLicenseSubmit(event) {
   event.preventDefault();
+  // Disable immediately, before any awaiting, so a slow network or a
+  // no-op mailto (no default mail client) can't be mistaken for a dead
+  // button and mashed repeatedly.
+  var btn = document.getElementById('waitlist-submit-btn');
+  var originalLabel = btn.textContent;
+  btn.disabled = true;
+
   var emailInput = document.getElementById('waitlist-email').value.trim();
   var planRadio = document.querySelector('.plan-radio:checked');
   var plan = planRadio ? planRadio.value : 'Free — no key required, $0 forever';
 
   if (isFreePlan(plan) && emailInput) {
-    var btn = document.getElementById('waitlist-submit-btn');
-    var originalLabel = btn.textContent;
-    btn.disabled = true;
     btn.textContent = 'Issuing your key…';
     try {
       var res = await fetch(ISSUE_FREE_LICENSE_URL, {
@@ -3378,13 +3382,11 @@ async function handleLicenseSubmit(event) {
       return;
     } catch (err) {
       console.warn('Instant free license issue failed, falling back to email:', err);
-      btn.disabled = false;
-      btn.textContent = originalLabel;
       // fall through to the mailto path below
     }
   }
 
-  sendWaitlistEmail();
+  sendWaitlistEmail(btn, originalLabel);
 }
 
 function showIssuedKey(key) {
@@ -3398,12 +3400,15 @@ function showIssuedKey(key) {
     navigator.clipboard.writeText(key).then(function () {
       copyBtn.textContent = 'Copied!';
       window.setTimeout(function () { copyBtn.textContent = 'copy'; }, 2000);
+    }, function () {
+      copyBtn.textContent = 'Select the key above to copy';
+      window.setTimeout(function () { copyBtn.textContent = 'copy'; }, 2500);
     });
   };
 }
 
 /* License request mailto */
-function sendWaitlistEmail() {
+function sendWaitlistEmail(btn, originalLabel) {
   var emailInput = document.getElementById('waitlist-email').value.trim();
   var email = emailInput || '(see From: in your email app)';
   var planRadio = document.querySelector('.plan-radio:checked');
@@ -3441,12 +3446,27 @@ function sendWaitlistEmail() {
   var copyBtn = document.getElementById('waitlist-copy-btn');
   fallbackLink.href = mailtoUrl;
   fallback.style.display = 'block';
+  fallback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  // Confirm the click registered even when the OS has no default mail
+  // client to actually open — otherwise the button looks unchanged and
+  // invites repeat clicks.
+  if (btn) {
+    btn.textContent = 'Request prepared ↓';
+    window.setTimeout(function () {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+    }, 1800);
+  }
 
   copyBtn.onclick = function () {
     var fullMessage = 'To: vntu0412179+tdk-waitlist@gmail.com\nSubject: ' + subject + '\n\n' + body;
     navigator.clipboard.writeText(fullMessage).then(function () {
       copyBtn.textContent = 'Copied!';
       window.setTimeout(function () { copyBtn.textContent = 'copy the message'; }, 2000);
+    }, function () {
+      copyBtn.textContent = "Couldn't copy - select the message manually";
+      window.setTimeout(function () { copyBtn.textContent = 'copy the message'; }, 2500);
     });
   };
 }
