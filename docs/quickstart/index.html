@@ -9,20 +9,67 @@ title: Quick Start - TDK CLI
       {% include docs-sidebar.html %}
 
       <div class="aw-docs-body">
-        <h1>Quick Start</h1>
-        <p class="aw-lead">From zero to a running local stack in {{ site.data.tdk.quickstart_time }}.</p>
+        <h1>Simple setup</h1>
+        <p class="aw-lead">The shortest path for vibe coders: install TDK, let it check your machine, clone a working stack, and run it.</p>
 
-        <h2>Prerequisites</h2>
-        <ul>
-          <li><a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">Docker</a> installed</li>
+        <div class="aw-quickstart-hero">
+          <div>
+            <span class="aw-quickstart-kicker">Start here</span>
+            <h2>Copy five commands. Get a real local stack.</h2>
+            <p>Do this first. Come back for manual binaries, licenses, and from-scratch service wiring after you have seen TDK boot once.</p>
+          </div>
+          <ol class="aw-quickstart-flow" aria-label="Simple setup steps">
+            <li><span>1</span> Install</li>
+            <li><span>2</span> Check</li>
+            <li><span>3</span> Clone example</li>
+            <li><span>4</span> Run</li>
+          </ol>
+        </div>
+
+        <h2>Simple setup</h2>
+        <p>If you already have Docker running, this is the whole happy path.</p>
+        <div class="aw-codeblock aw-codeblock--primary">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+          <pre>curl -fsSL https://tdk-landscape.github.io/install.sh | sh
+tdk doctor
+tdk project example
+cd tdk-example
+tdk up</pre>
+        </div>
+
+        <div class="aw-setup-grid">
+          <article class="aw-setup-step">
+            <span>01</span>
+            <h3>Install the CLI</h3>
+            <p>The installer picks the right public binary for macOS or Linux, Intel or Arm.</p>
+          </article>
+          <article class="aw-setup-step">
+            <span>02</span>
+            <h3>Run doctor</h3>
+            <p>TDK tells you what is missing before it tries to boot Docker, Tilt, or generated config.</p>
+          </article>
+          <article class="aw-setup-step">
+            <span>03</span>
+            <h3>Use the example</h3>
+            <p>Start from a working PSR landscape instead of inventing the folder structure cold.</p>
+          </article>
+          <article class="aw-setup-step">
+            <span>04</span>
+            <h3>Boot the stack</h3>
+            <p><code>tdk up</code> generates the local files and hands orchestration to Tilt.</p>
+          </article>
+        </div>
+
+        <h2>Before you run it</h2>
+        <p>TDK needs a container runtime and Tilt. Node.js is only needed when your project has frontend tooling.</p>
+        <ul class="aw-check-list">
+          <li><a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">Docker</a> installed and running</li>
           <li><a href="https://docs.tilt.dev/install.html" target="_blank" rel="noopener">Tilt</a> installed</li>
-          <li><a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a> {{ site.data.tdk.prereq_node }} (for frontend tooling)</li>
+          <li><a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a> {{ site.data.tdk.prereq_node }} for frontend stacks</li>
         </ul>
 
-        <h2>Installation</h2>
-        <p>Install the latest public binary directly from the TDK CLI release channel. The installer detects Linux, macOS, Intel, and Arm automatically.</p>
-
-        <h3>One-line install</h3>
+        <h2>Install options</h2>
+        <p>Use curl if you just want the fastest install. Use npm, npx, pnpm, or bun if you prefer package-manager workflows.</p>
         <div class="aw-install-tabs">
           <div class="aw-install-tabs-bar" role="tablist">
             <button class="aw-install-tab aw-install-tab--active" role="tab" aria-selected="true"  data-tab="curl">curl</button>
@@ -55,28 +102,6 @@ title: Quick Start - TDK CLI
           </div>
         </div>
 
-        <h3>Manual download</h3>
-        <p>Download a binary from the public release repo if you prefer to install it yourself.</p>
-        <div class="aw-codeblock">
-          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
-          <pre>curl -fsSL -o tdk https://github.com/tdk-landscape/tdk-cli-releases/releases/latest/download/tdk-linux-amd64
-chmod +x tdk
-sudo mv tdk /usr/local/bin/tdk</pre>
-        </div>
-
-        <h3>GitHub Releases</h3>
-        <p>Binaries ship with each release from <a href="https://github.com/tdk-landscape/tdk-cli-releases/releases/latest" target="_blank" rel="noopener">tdk-landscape/tdk-cli-releases</a>. The CLI source can stay private while these release assets stay public.</p>
-
-        <h3>Docker Compose</h3>
-        <p>Use Docker Compose if you want to try TDK without installing the binary on your host.</p>
-        <div class="aw-codeblock">
-          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
-          <pre>git clone https://github.com/tdk-landscape/tdk-docker-compose-example.git
-cd tdk-docker-compose-example
-docker compose run --rm tdk tdk --version
-docker compose run --rm tdk tdk project --yes</pre>
-        </div>
-
         <h2>Verify installation</h2>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
@@ -85,14 +110,18 @@ docker compose run --rm tdk tdk project --yes</pre>
         </div>
 
         <h2>Add your license (if using premium features)</h2>
-        <p>The free tier of TDK requires no license key. You can use core features like Docker, Compose, npm, Bun, and the basic CLI forever at no cost. However, premium features like Verdaccio private registry require a Premium or Enterprise license.</p>
-        <p>If you have a Premium or Enterprise key and want to enable premium features, set it as an environment variable before running <code>tdk up</code>:</p>
-        <div class="aw-codeblock">
-          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
-          <pre>export TDK_LICENSE_KEY=tdk-xxxxxx</pre>
+        <p>The free tier requires no license key. Premium and Enterprise keys unlock extras such as Verdaccio private registry, Playwright E2E, C4 diagrams, and structured logging.</p>
+        <div class="aw-license-panel">
+          <div>
+            <h3>Have a Premium or Enterprise key?</h3>
+            <p>Export it before running <code>tdk up</code>. TDK checks the key automatically on the next run.</p>
+          </div>
+          <div class="aw-codeblock">
+            <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+            <pre>export TDK_LICENSE_KEY=tdk-xxxxxx</pre>
+          </div>
         </div>
-        <p>Add that line to your shell profile (<code>~/.zshrc</code> or <code>~/.bashrc</code>) so it persists across sessions, or export it per-project instead. TDK checks the key automatically on the next run and unlocks the premium features — Verdaccio private npm registry, Playwright E2E, C4 diagrams, structured logging — no separate install step. Each key covers up to {{ site.data.tdk.premium_project_limit }} distinct projects (unlimited on Enterprise). If the key's missing, expired, or unreachable, TDK just keeps going with the free engine — nothing breaks.</p>
-        <p>Don't have a key yet? <a href="{{ '/#waitlist' | relative_url }}">Get one</a> — Free costs nothing and needs no key at all; Premium and Enterprise unlock the paid extras.</p>
+        <p>Add that line to <code>~/.zshrc</code> or <code>~/.bashrc</code> if you want it to persist. Each key covers up to {{ site.data.tdk.premium_project_limit }} distinct projects, unlimited on Enterprise. If the key is missing, expired, or unreachable, TDK keeps running with the free engine.</p>
 
         <h2>What actually happens when you run it</h2>
         <p>Before Tilt touches Docker, <code>tdk</code> checks your environment and tells you exactly what it's doing — no guessing what's happening behind the spinner.</p>
@@ -129,7 +158,7 @@ Run <span class="hot">`tdk doctor`</span> for a full environment check.</pre>
         <p>Fix what it flags, run <code>tdk doctor</code> to confirm, and you're clear to boot.</p>
 
         <h2>Start from a working example</h2>
-        <p>Not sure what a TDK project should look like yet? Skip the blank canvas — <code>tdk project &lt;template&gt;</code> clones a complete, working PSR (Project-Stack-Resource) landscape you can run immediately and learn the structure from.</p>
+        <p>Not sure what a TDK project should look like yet? Skip the blank canvas. <code>tdk project &lt;template&gt;</code> clones a complete PSR landscape you can run immediately.</p>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
           <pre><span class="c"># minimal reference stack - start here if you're new to TDK</span>
@@ -146,69 +175,47 @@ tdk up       <span class="c"># start the stack</span></pre>
         </div>
         <p>Use <code>--path &lt;dir&gt;</code> to control the destination folder name. See <a href="{{ '/docs/examples/' | relative_url }}">Examples</a> for what each template contains.</p>
 
-        <h2>Create your first service</h2>
-        <p>Prefer to build from scratch instead? Start with a blank project:</p>
+        <div class="aw-callout">
+          <h4>Success</h4>
+          <p>Your stack is now running locally. Every new teammate who clones the repo gets the same result in minutes, not weeks.</p>
+        </div>
 
-        <h3>1 — Create a new project</h3>
+        <h2>Build from scratch</h2>
+        <p>After the example makes sense, create a blank project and add your first backend resource.</p>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
           <pre>mkdir my-service
 cd my-service
-tdk project --yes</pre>
+tdk project --yes
+tdk resource api --type backend --stack pre-alpha --path services/pre-alpha/api
+tdk project --check
+tdk up pre-alpha</pre>
         </div>
+        <p>TDK validates <code>.tdk/project.json</code>, generates files in <code>.tdk/.tdk-out/</code>, and reads boot order from each resource's <code>dependsOn</code> list.</p>
 
-        <h3>2 — Create a backend resource</h3>
-        <div class="aw-codeblock">
-          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
-          <pre>tdk resource api --type backend --stack pre-alpha --path services/pre-alpha/api</pre>
-        </div>
+        <details class="aw-docs-details">
+          <summary>Manual binary download</summary>
+          <p>Download a binary from the public release repo if you prefer to install it yourself.</p>
+          <div class="aw-codeblock">
+            <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+            <pre>curl -fsSL -o tdk https://github.com/tdk-landscape/tdk-cli-releases/releases/latest/download/tdk-linux-amd64
+chmod +x tdk
+sudo mv tdk /usr/local/bin/tdk</pre>
+          </div>
+          <p>Binaries ship from <a href="https://github.com/tdk-landscape/tdk-cli-releases/releases/latest" target="_blank" rel="noopener">tdk-landscape/tdk-cli-releases</a>.</p>
+        </details>
 
-        <h3>3 — Add a dependency</h3>
-        <p>TDK/Tilt reads boot order from <code>dependsOn</code>. This example makes <code>api</code> depend on <code>database</code>.</p>
-        <div class="aw-codeblock">
-          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
-          <pre>tdk resource database --type backend --stack pre-alpha --path services/pre-alpha/database</pre>
-        </div>
-        <div class="aw-codeblock">
-          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/pre-alpha/api/service.json</span></div>
-          <pre>{
-  <span class="k">"name"</span>: <span class="s">"api"</span>,
-  <span class="k">"type"</span>: <span class="s">"backend"</span>,
-  <span class="k">"stack"</span>: <span class="s">"pre-alpha"</span>,
-  <span class="k">"port"</span>: <span class="n">4000</span>,
-  <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>]
-}</pre>
-        </div>
-
-        <h3>4 — Inspect service.json</h3>
-        <div class="aw-codeblock">
-          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>service.json</span></div>
-          <pre>{
-  <span class="k">"name"</span>: <span class="s">"api"</span>,
-  <span class="k">"type"</span>: <span class="s">"backend"</span>,
-  <span class="k">"stack"</span>: <span class="s">"pre-alpha"</span>,
-  <span class="k">"port"</span>: <span class="n">4000</span>,
-  <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>]
-}</pre>
-        </div>
-
-        <h3>5 — Validate configs</h3>
-        <div class="aw-codeblock">
-          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
-          <pre>tdk project --check</pre>
-        </div>
-        <p>This validates <code>.tdk/project.json</code> and the generated files in <code>.tdk/.tdk-out/</code>.</p>
-
-        <h3>6 — Run the stack</h3>
-        <div class="aw-codeblock">
-          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
-          <pre>tdk up pre-alpha</pre>
-        </div>
-
-        <div class="aw-callout">
-          <h4>Success</h4>
-          <p>Your service is now running locally. Visit <code>http://localhost:3000</code> — and every new teammate who clones the repo gets the same result in minutes, not weeks.</p>
-        </div>
+        <details class="aw-docs-details">
+          <summary>Try TDK with Docker Compose</summary>
+          <p>Use Docker Compose if you want to try TDK without installing the binary on your host.</p>
+          <div class="aw-codeblock">
+            <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+            <pre>git clone https://github.com/tdk-landscape/tdk-docker-compose-example.git
+cd tdk-docker-compose-example
+docker compose run --rm tdk tdk --version
+docker compose run --rm tdk tdk project --yes</pre>
+          </div>
+        </details>
 
         <h2>Next steps</h2>
         <ul>

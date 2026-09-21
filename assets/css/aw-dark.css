@@ -645,6 +645,188 @@ body:has(.aw) .site-footer {
   margin: 0;
 }
 
+/* ---------- Quickstart simplification ---------- */
+.aw-quickstart-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.55fr);
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+  align-items: end;
+  margin: 0 0 3rem;
+  border: 1px solid rgba(77, 208, 255, 0.18);
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(ellipse 80% 100% at 100% 0%, rgba(77, 208, 255, 0.14), transparent 58%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+    #101018;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+}
+
+.aw-quickstart-kicker {
+  display: inline-block;
+  margin-bottom: 0.875rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #4dd0ff;
+}
+
+.aw-quickstart-hero h2 {
+  margin: 0 0 0.875rem;
+  max-width: 34rem;
+  font-size: clamp(1.85rem, 4vw, 3.15rem);
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.aw-quickstart-hero p {
+  max-width: 38rem;
+  margin: 0;
+  color: rgba(236, 236, 241, 0.74);
+}
+
+.aw-quickstart-flow {
+  display: grid;
+  gap: 0.625rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aw-quickstart-flow li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.055);
+  padding: 0.75rem 0.875rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.aw-quickstart-flow span {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.5rem;
+  background: rgba(77, 208, 255, 0.13);
+  color: #9eeaff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+}
+
+.aw-codeblock--primary {
+  border-color: rgba(77, 208, 255, 0.26);
+  box-shadow: 0 28px 80px rgba(77, 208, 255, 0.08);
+}
+
+.aw-setup-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.875rem;
+  margin: 0 0 3rem;
+}
+
+.aw-setup-step {
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.875rem;
+  background: rgba(255, 255, 255, 0.035);
+  padding: 1rem;
+}
+
+.aw-setup-step span {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(77, 208, 255, 0.8);
+}
+
+.aw-docs-body .aw-setup-step h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.02rem;
+}
+
+.aw-docs-body .aw-setup-step p {
+  margin: 0;
+  font-size: 0.925rem;
+  line-height: 1.55;
+  color: rgba(236, 236, 241, 0.7);
+}
+
+.aw-check-list {
+  display: grid;
+  gap: 0.625rem;
+  padding-left: 0 !important;
+  list-style: none;
+}
+
+.aw-check-list li {
+  position: relative;
+  margin: 0;
+  border-left: 2px solid rgba(110, 231, 183, 0.65);
+  background: rgba(110, 231, 183, 0.045);
+  border-radius: 0 0.75rem 0.75rem 0;
+  padding: 0.75rem 1rem;
+}
+
+.aw-license-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(18rem, 1fr);
+  gap: 1rem;
+  align-items: center;
+  margin: 1rem 0 1.25rem;
+  border: 1px solid rgba(183, 154, 255, 0.18);
+  border-radius: 1rem;
+  background:
+    radial-gradient(ellipse 70% 120% at 0% 0%, rgba(183, 154, 255, 0.13), transparent 58%),
+    rgba(255, 255, 255, 0.03);
+  padding: 1rem;
+}
+
+.aw-docs-body .aw-license-panel h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.aw-docs-body .aw-license-panel p {
+  margin: 0;
+  color: rgba(236, 236, 241, 0.72);
+}
+
+.aw-license-panel .aw-codeblock {
+  margin: 0;
+}
+
+.aw-docs-details {
+  margin: 1rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.875rem;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+.aw-docs-details summary {
+  cursor: pointer;
+  padding: 1rem 1.125rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.aw-docs-details summary:hover {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.aw-docs-details p {
+  padding: 0 1.125rem;
+}
+
+.aw-docs-details .aw-codeblock {
+  margin: 1rem 1.125rem;
+}
+
 /* ---------- Compare matrix (dark) ---------- */
 .aw-matrix {
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -809,6 +991,43 @@ body:has(.aw) .site-footer {
 @media (max-width: 1000px) {
   .aw-docs-toc {
     display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .aw-quickstart-hero {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .aw-setup-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .aw-license-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .aw-quickstart-hero {
+    margin-bottom: 2rem;
+  }
+
+  .aw-quickstart-flow li {
+    padding: 0.7rem 0.75rem;
+  }
+
+  .aw-setup-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aw-install-tabs-bar {
+    overflow-x: auto;
+  }
+
+  .aw-docs-details .aw-codeblock {
+    margin-inline: 0.75rem;
   }
 }
 
