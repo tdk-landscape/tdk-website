@@ -84,14 +84,14 @@ docker compose run --rm tdk tdk project --yes</pre>
 <span class="c"># tdk-cli v1.0.0</span></pre>
         </div>
 
-        <h2>Add your license (optional)</h2>
-        <p>The free engine — <code>docker-compose</code>, Verdaccio, npm, Bun, and everything else in the CLI — never needs a license key. Skip this section if you're on the Free tier.</p>
-        <p>If you have a Premium or Enterprise key, set it as an environment variable before running <code>tdk up</code>:</p>
+        <h2>Add your license (if using premium features)</h2>
+        <p>The free tier of TDK requires no license key. You can use core features like Docker, Compose, npm, Bun, and the basic CLI forever at no cost. However, premium features like Verdaccio private registry require a Premium or Enterprise license.</p>
+        <p>If you have a Premium or Enterprise key and want to enable premium features, set it as an environment variable before running <code>tdk up</code>:</p>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
           <pre>export TDK_LICENSE_KEY=tdk-xxxxxx</pre>
         </div>
-        <p>Add that line to your shell profile (<code>~/.zshrc</code> or <code>~/.bashrc</code>) so it persists across sessions, or export it per-project instead. TDK checks the key automatically on the next run and unlocks the premium generators — Playwright E2E, C4 diagrams, structured logging — no separate install step. Each key covers up to {{ site.data.tdk.premium_project_limit }} distinct projects (unlimited on Enterprise). If the key's missing, expired, or unreachable, TDK just keeps going with the free engine — nothing breaks.</p>
+        <p>Add that line to your shell profile (<code>~/.zshrc</code> or <code>~/.bashrc</code>) so it persists across sessions, or export it per-project instead. TDK checks the key automatically on the next run and unlocks the premium features — Verdaccio private npm registry, Playwright E2E, C4 diagrams, structured logging — no separate install step. Each key covers up to {{ site.data.tdk.premium_project_limit }} distinct projects (unlimited on Enterprise). If the key's missing, expired, or unreachable, TDK just keeps going with the free engine — nothing breaks.</p>
         <p>Don't have a key yet? <a href="{{ '/#waitlist' | relative_url }}">Get one</a> — Free costs nothing and needs no key at all; Premium and Enterprise unlock the paid extras.</p>
 
         <h2>What actually happens when you run it</h2>

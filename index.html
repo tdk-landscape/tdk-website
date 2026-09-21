@@ -3205,7 +3205,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-wrap">
       <div class="aw-head aw-head-center">
         <h2>Priced against what it replaces</h2>
-        <p>Free during beta. When we launch — two licenses, nothing in between. Free needs no key and costs nothing, ever. Premium unlocks the paid extras.</p>
+        <p>Free during beta. When we launch — two licenses, nothing in between. Free needs no key and costs nothing, ever. Premium unlocks paid extras like Verdaccio private registries. Set your key with <code class="aw-mono" style="background: rgba(255,255,255,0.05); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">export TDK_LICENSE_KEY=&lt;key&gt;</code> before running <code class="aw-mono" style="background: rgba(255,255,255,0.05); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">tdk up</code>.</p>
       </div>
 
       <div class="aw-pricing-grid">
@@ -3216,7 +3216,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
           <ul class="aw-price-list">
             <li>Unlimited services per project, {{ site.data.tdk.scale_services }} proven</li>
             <li>All free generators — {{ site.data.tdk.files_per_service }} files per service</li>
-            <li>L1–L4 golden Docker images</li>
+            <li>L1–L4 golden Docker images without Verdaccio registry</li>
             <li>No license key needed, ever</li>
             <li>Up to {{ site.data.tdk.free_project_limit }} project IDs per license key, if you grab one</li>
             <li>Community support</li>
@@ -3230,6 +3230,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
           <p class="aw-price-desc">Unlocks the paid extras and gives your team a human on the other end.</p>
           <ul class="aw-price-list">
             <li>Everything in Free</li>
+            <li>Verdaccio private npm registry for local package publishing and sharing</li>
             <li>Premium generators — Playwright E2E, C4 diagrams, structured logging, AGENTS.md guard rails</li>
             <li>Up to {{ site.data.tdk.premium_project_limit }} project IDs per license key</li>
             <li>Priority support, next business day</li>
@@ -3269,7 +3270,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-cta-glow"></div>
     <div class="aw-wrap">
       <h2>Get your<br />TDK license.</h2>
-      <p class="aw-cta-sub">Free licenses need no key and cost nothing, ever — up to {{ site.data.tdk.free_project_limit }} project IDs per key if you grab one. Premium unlocks the paid extras, up to {{ site.data.tdk.premium_project_limit }} project IDs per key. Need SSO, air-gapped, or an SLA? Pick Enterprise — request any of the three below and your input sets the roadmap.</p>
+      <p class="aw-cta-sub">Free licenses need no key and cost nothing, ever — up to {{ site.data.tdk.free_project_limit }} project IDs per key if you grab one. Premium unlocks Verdaccio registry and other paid extras, up to {{ site.data.tdk.premium_project_limit }} project IDs per key. Set your key before running <code class="aw-mono">tdk up</code>. Need SSO, air-gapped, or an SLA? Pick Enterprise — request any of the three below and your input sets the roadmap.</p>
 
       <form class="aw-form" onsubmit="handleLicenseSubmit(event); return false;">
         <label for="waitlist-email">Your email <span style="font-weight: 400; color: rgba(236,236,241,0.65);">(required — it's the only way we can get a key or a reply back to you)</span></label>
