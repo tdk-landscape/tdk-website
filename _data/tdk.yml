@@ -186,3 +186,10 @@ brownfield_found: 12       # manifests found there
 brownfield_synth: 19       # manifests synthesized (dirs − found — keep in sync)
 brownfield_artifacts: "372-527" # brownfield_dirs multiplied by the current 12-17 per-service range
 brownfield_healthy: "31/31" # resources healthy in that example
+
+# --- Installation commands ---
+install_npm: "npm install -g @tdk-landscape/tdk-cli-core"
+install_npx_version: "npx @tdk-landscape/tdk-cli-core --version"
+install_npx_project: "npx @tdk-landscape/tdk-cli-core project --yes"
+install_pnpm: "pnpm add -g @tdk-landscape/tdk-cli-core"
+install_bun: "bun add -g @tdk-landscape/tdk-cli-core"
