@@ -693,15 +693,31 @@ body:has(.aw) .site-footer {
 }
 
 .aw-quickstart-flow li {
+  margin: 0;
+}
+
+.aw-quickstart-flow a {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin: 0;
   border-radius: 0.75rem;
   background: rgba(255, 255, 255, 0.055);
   padding: 0.75rem 0.875rem;
   color: #fff;
   font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.aw-quickstart-flow a:hover {
+  background: rgba(77, 208, 255, 0.12);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.aw-quickstart-flow a:focus-visible {
+  outline: 2px solid #4dd0ff;
+  outline-offset: 3px;
 }
 
 .aw-quickstart-flow span {
@@ -1014,7 +1030,7 @@ body:has(.aw) .site-footer {
     margin-bottom: 2rem;
   }
 
-  .aw-quickstart-flow li {
+  .aw-quickstart-flow a {
     padding: 0.7rem 0.75rem;
   }
 
