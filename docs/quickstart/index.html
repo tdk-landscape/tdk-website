@@ -19,14 +19,14 @@ title: Quick Start - TDK CLI
             <p>Do this first. Come back for manual binaries, licenses, and from-scratch service wiring after you have seen TDK boot once.</p>
           </div>
           <ol class="aw-quickstart-flow" aria-label="Simple setup steps">
-            <li><span>1</span> Install</li>
-            <li><span>2</span> Check</li>
-            <li><span>3</span> Clone example</li>
-            <li><span>4</span> Run</li>
+            <li><a href="#simple-setup"><span>1</span> Install</a></li>
+            <li><a href="#before-you-run-it"><span>2</span> Check</a></li>
+            <li><a href="#start-from-a-working-example"><span>3</span> Clone example</a></li>
+            <li><a href="#what-actually-happens-when-you-run-it"><span>4</span> Run</a></li>
           </ol>
         </div>
 
-        <h2>Simple setup</h2>
+        <h2 id="simple-setup">Simple setup</h2>
         <p>If you already have Docker running, this is the whole happy path.</p>
         <div class="aw-codeblock aw-codeblock--primary">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
@@ -60,7 +60,7 @@ tdk up</pre>
           </article>
         </div>
 
-        <h2>Before you run it</h2>
+        <h2 id="before-you-run-it">Before you run it</h2>
         <p>TDK needs a container runtime and Tilt. Node.js is only needed when your project has frontend tooling.</p>
         <ul class="aw-check-list">
           <li><a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">Docker</a> installed and running</li>
@@ -123,7 +123,7 @@ tdk up</pre>
         </div>
         <p>Add that line to <code>~/.zshrc</code> or <code>~/.bashrc</code> if you want it to persist. Each key covers up to {{ site.data.tdk.premium_project_limit }} distinct projects, unlimited on Enterprise. If the key is missing, expired, or unreachable, TDK keeps running with the free engine.</p>
 
-        <h2>What actually happens when you run it</h2>
+        <h2 id="what-actually-happens-when-you-run-it">What actually happens when you run it</h2>
         <p>Before Tilt touches Docker, <code>tdk</code> checks your environment and tells you exactly what it's doing — no guessing what's happening behind the spinner.</p>
         <div class="aw-terminal" style="margin: 0 0 2rem;">
           <div class="aw-terminal-bar"><i></i><i></i><i></i><span>zsh: tdk doctor &amp;&amp; tdk up</span></div>
@@ -157,7 +157,7 @@ Run <span class="hot">`tdk doctor`</span> for a full environment check.</pre>
         </div>
         <p>Fix what it flags, run <code>tdk doctor</code> to confirm, and you're clear to boot.</p>
 
-        <h2>Start from a working example</h2>
+        <h2 id="start-from-a-working-example">Start from a working example</h2>
         <p>Not sure what a TDK project should look like yet? Skip the blank canvas. <code>tdk project &lt;template&gt;</code> clones a complete PSR landscape you can run immediately.</p>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
