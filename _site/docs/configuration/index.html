@@ -157,7 +157,7 @@
   <span class="k">"appType"</span>: <span class="s">"backend"</span>,             <span class="c">// Required: backend | frontend | library | worker</span>
   <span class="k">"port"</span>: <span class="n">3000</span>,                     <span class="c">// Required: service port</span>
   <span class="k">"stack"</span>: <span class="s">"api"</span>,                   <span class="c">// Optional: stack grouping</span>
-  <span class="k">"features"</span>: [                      <span class="c">// Optional: features to enable</span>
+  <span class="k">"featuresEnabled"</span>: [                      <span class="c">// Optional: features to enable</span>
     <span class="s">"typescript"</span>,
     <span class="s">"vite"</span>,
     <span class="s">"bun"</span>
@@ -253,7 +253,7 @@
   <span class="k">"appName"</span>: <span class="s">"api-gateway"</span>,
   <span class="k">"appType"</span>: <span class="s">"backend"</span>,
   <span class="k">"port"</span>: <span class="n">3000</span>,
-  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
+  <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
   <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>, <span class="s">"redis"</span>],
   <span class="k">"envVars"</span>: {
     <span class="k">"NODE_ENV"</span>: <span class="s">"development"</span>
@@ -268,7 +268,7 @@
   <span class="k">"appName"</span>: <span class="s">"web-app"</span>,
   <span class="k">"appType"</span>: <span class="s">"frontend"</span>,
   <span class="k">"port"</span>: <span class="n">5173</span>,
-  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"vite"</span>],
+  <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"vite"</span>],
   <span class="k">"backendName"</span>: <span class="s">"api-gateway"</span>,
   <span class="k">"basePath"</span>: <span class="s">"/app"</span>
 }</pre>

@@ -477,7 +477,7 @@ tdk project saas             <span class="c"># SaaS dashboard + checkout starter
   <span class="k">"appName"</span>: <span class="s">"api-gateway"</span>,
   <span class="k">"appType"</span>: <span class="s">"backend"</span>,
   <span class="k">"port"</span>: <span class="n">3000</span>,
-  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
+  <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
   <span class="k">"stack"</span>: <span class="s">"ecommerce"</span>,
   <span class="k">"dependsOn"</span>: [
     <span class="s">"order-service"</span>,
@@ -494,7 +494,7 @@ tdk project saas             <span class="c"># SaaS dashboard + checkout starter
   <span class="k">"appName"</span>: <span class="s">"order-service"</span>,
   <span class="k">"appType"</span>: <span class="s">"backend"</span>,
   <span class="k">"port"</span>: <span class="n">3001</span>,
-  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>, <span class="s">"prisma"</span>],
+  <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>, <span class="s">"prisma"</span>],
   <span class="k">"stack"</span>: <span class="s">"ecommerce"</span>,
   <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>]
 }</pre>
@@ -507,7 +507,7 @@ tdk project saas             <span class="c"># SaaS dashboard + checkout starter
   <span class="k">"appName"</span>: <span class="s">"frontend-store"</span>,
   <span class="k">"appType"</span>: <span class="s">"frontend"</span>,
   <span class="k">"port"</span>: <span class="n">5173</span>,
-  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"vite"</span>],
+  <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"vite"</span>],
   <span class="k">"backendName"</span>: <span class="s">"api-gateway"</span>,
   <span class="k">"basePath"</span>: <span class="s">"/store"</span>
 }</pre>
@@ -577,7 +577,7 @@ tdk project saas             <span class="c"># SaaS dashboard + checkout starter
   <span class="k">"appName"</span>: <span class="s">"web-app"</span>,
   <span class="k">"appType"</span>: <span class="s">"frontend"</span>,
   <span class="k">"port"</span>: <span class="n">5173</span>,
-  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"vite"</span>],
+  <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"vite"</span>],
   <span class="k">"backendName"</span>: <span class="s">"api-server"</span>,
   <span class="k">"basePath"</span>: <span class="s">"/app"</span>
 }
@@ -587,7 +587,7 @@ tdk project saas             <span class="c"># SaaS dashboard + checkout starter
   <span class="k">"appName"</span>: <span class="s">"api-server"</span>,
   <span class="k">"appType"</span>: <span class="s">"backend"</span>,
   <span class="k">"port"</span>: <span class="n">3000</span>,
-  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
+  <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
   <span class="k">"envVars"</span>: {
     <span class="k">"FRONTEND_URL"</span>: <span class="s">"http://localhost:5173"</span>
   }
@@ -600,7 +600,7 @@ tdk project saas             <span class="c"># SaaS dashboard + checkout starter
           <pre>{
   <span class="k">"appName"</span>: <span class="s">"email-worker"</span>,
   <span class="k">"appType"</span>: <span class="s">"worker"</span>,
-  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
+  <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
   <span class="k">"dependsOn"</span>: [<span class="s">"redis"</span>],
   <span class="k">"replicas"</span>: <span class="n">3</span>
 }</pre>
@@ -614,7 +614,7 @@ tdk project saas             <span class="c"># SaaS dashboard + checkout starter
   <span class="k">"appName"</span>: <span class="s">"auth-service"</span>,
   <span class="k">"appType"</span>: <span class="s">"backend"</span>,
   <span class="k">"port"</span>: <span class="n">3101</span>,
-  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>, <span class="s">"prisma"</span>],
+  <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>, <span class="s">"prisma"</span>],
   <span class="k">"stack"</span>: <span class="s">"saas"</span>,
   <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>, <span class="s">"redis"</span>]
 }</pre>
@@ -625,7 +625,7 @@ tdk project saas             <span class="c"># SaaS dashboard + checkout starter
   <span class="k">"appName"</span>: <span class="s">"billing-service"</span>,
   <span class="k">"appType"</span>: <span class="s">"backend"</span>,
   <span class="k">"port"</span>: <span class="n">3102</span>,
-  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>, <span class="s">"prisma"</span>],
+  <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>, <span class="s">"prisma"</span>],
   <span class="k">"stack"</span>: <span class="s">"saas"</span>,
   <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>, <span class="s">"auth-service"</span>]
 }</pre>
@@ -639,7 +639,7 @@ tdk project saas             <span class="c"># SaaS dashboard + checkout starter
   <span class="k">"appName"</span>: <span class="s">"realtime-gateway"</span>,
   <span class="k">"appType"</span>: <span class="s">"backend"</span>,
   <span class="k">"port"</span>: <span class="n">3201</span>,
-  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
+  <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
   <span class="k">"stack"</span>: <span class="s">"realtime"</span>,
   <span class="k">"dependsOn"</span>: [<span class="s">"nats"</span>, <span class="s">"redis"</span>]
 }</pre>
@@ -652,7 +652,7 @@ tdk project saas             <span class="c"># SaaS dashboard + checkout starter
           <pre>{
   <span class="k">"appName"</span>: <span class="s">"transcode-worker"</span>,
   <span class="k">"appType"</span>: <span class="s">"worker"</span>,
-  <span class="k">"features"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
+  <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
   <span class="k">"stack"</span>: <span class="s">"media"</span>,
   <span class="k">"dependsOn"</span>: [<span class="s">"redis"</span>, <span class="s">"database"</span>],
   <span class="k">"replicas"</span>: <span class="n">3</span>

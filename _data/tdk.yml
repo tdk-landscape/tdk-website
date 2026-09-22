@@ -117,7 +117,7 @@ waitlist_features:         # static checkbox options (2 dynamic ones stay in HTM
   - "Prisma + PostgreSQL"
   - "E2E Playwright tests"
 
-manifest_features:         # service.json "features" — used in /docs/configuration/
+manifest_features:         # service.json "featuresEnabled" — used in /docs/configuration/
   - name: "typescript"
     desc: "TypeScript support"
   - name: "vite"
@@ -140,10 +140,26 @@ app_types:                 # service.json "appType" — used in /docs/configurat
     desc: "Web application"
   - name: "library"
     desc: "Shared code package"
+  - name: "sdk"
+    desc: "Generated client SDK"
   - name: "worker"
     desc: "Background job processor"
   - name: "migrator"
     desc: "Database migration service"
+
+package_scripts:            # package.json "scripts" required per appType, enforced by `tdk doctor` — used in /docs/configuration/
+  - type: "backend"
+    scripts: "dev, build, start"
+  - type: "worker"
+    scripts: "dev, build, start"
+  - type: "migrator"
+    scripts: "dev, build, start"
+  - type: "frontend"
+    scripts: "dev, build"
+  - type: "library"
+    scripts: "dev, build"
+  - type: "sdk"
+    scripts: "dev, build"
 
 # --- Licensing facts ---
 # The free engine (docker-compose, verdaccio, npm, bun, etc.) needs no key
