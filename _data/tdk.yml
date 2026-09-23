@@ -111,6 +111,7 @@ waitlist_features:         # static checkbox options (2 dynamic ones stay in HTM
   - "Golden Docker L1-L4"
   - "Infisical identities"
   - "C4 diagrams + AGENTS.md"
+  - "DDD scaffolding"
   - "Terminal UI + doctor"
   - "Selective startup"
   - "Vite + Hot Reload"
