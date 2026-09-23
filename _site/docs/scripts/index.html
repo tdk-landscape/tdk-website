@@ -3,137 +3,6 @@
 <head>
   
   
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-        
-        
-  
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -163,50 +32,41 @@
     
     
     
-    <title>The Service Registry as Shared Memory | TDK CLI</title>
-    <meta name="description" content="How a service registry helps teams understand what exists, where it runs, and how it connects." />
-    <link rel="canonical" href="https://tdk-landscape.github.io/tdk-website/blog/articles/the-service-registry-as-shared-memory/" />
-    <meta property="og:type" content="article" />
+    
+    <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>package.json Scripts - TDK CLI | TDK CLI</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="package.json Scripts - TDK CLI" />
+<meta name="author" content="TDK Team" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Kubernetes-free microservice development. Run 5-30+ services locally without learning Kubernetes. One service.json generates 12-17 files per service." />
+<meta name="twitter:description" property="og:description" content="Kubernetes-free microservice development. Run 5-30+ services locally without learning Kubernetes. One service.json generates 12-17 files per service." />
+<link rel="canonical" href="https://tdk-landscape.github.io/tdk-website/docs/scripts/" />
+<meta property="og:url" content="https://tdk-landscape.github.io/tdk-website/docs/scripts/" />
+<meta property="og:site_name" content="TDK CLI" />
+<meta property="og:image" content="https://tdk-landscape.github.io/tdk-website/assets/images/tdk-social-card.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://tdk-landscape.github.io/tdk-website/assets/images/tdk-social-card.png" />
+<meta name="twitter:title" content="package.json Scripts - TDK CLI" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"TDK Team"},"description":"Kubernetes-free microservice development. Run 5-30+ services locally without learning Kubernetes. One service.json generates 12-17 files per service.","headline":"package.json Scripts - TDK CLI","image":"https://tdk-landscape.github.io/tdk-website/assets/images/tdk-social-card.png","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://tdk-landscape.github.io/tdk-website/assets/images/tdk-social-card.png"},"name":"TDK Team"},"url":"https://tdk-landscape.github.io/tdk-website/docs/scripts/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta property="og:type" content="website" />
     <meta property="og:site_name" content="TDK CLI" />
-    <meta property="og:title" content="The Service Registry as Shared Memory | TDK CLI" />
-    <meta property="og:description" content="How a service registry helps teams understand what exists, where it runs, and how it connects." />
-    <meta property="og:url" content="https://tdk-landscape.github.io/tdk-website/blog/articles/the-service-registry-as-shared-memory/" />
+    <meta property="og:title" content="package.json Scripts - TDK CLI" />
+    <meta property="og:description" content="Kubernetes-free microservice development. Run 5-30+ services locally without learning Kubernetes. One service.json generates 12-17 files per service." />
+    <meta property="og:url" content="https://tdk-landscape.github.io/tdk-website/docs/scripts/" />
     <meta property="og:image" content="https://tdk-landscape.github.io/tdk-website/assets/images/tdk-social-card.png" />
-    <meta property="og:image:alt" content="The Service Registry as Shared Memory | TDK CLI" />
-    <meta property="article:section" content="Architecture" />
-    <meta property="article:published_time" content="2026-09-11T00:00:00+00:00" />
-    <meta property="article:modified_time" content="2026-09-11T00:00:00+00:00" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="package.json Scripts - TDK CLI" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@tdkcli" />
-    <meta name="twitter:creator" content="@tdkcli" />
-    <meta name="twitter:title" content="The Service Registry as Shared Memory | TDK CLI" />
-    <meta name="twitter:description" content="How a service registry helps teams understand what exists, where it runs, and how it connects." />
+    <meta name="twitter:title" content="package.json Scripts - TDK CLI" />
+    <meta name="twitter:description" content="Kubernetes-free microservice development. Run 5-30+ services locally without learning Kubernetes. One service.json generates 12-17 files per service." />
     <meta name="twitter:image" content="https://tdk-landscape.github.io/tdk-website/assets/images/tdk-social-card.png" />
-    <meta name="twitter:image:alt" content="The Service Registry as Shared Memory | TDK CLI" />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "The Service Registry as Shared Memory",
-        "description": "How a service registry helps teams understand what exists, where it runs, and how it connects.",
-        "datePublished": "2026-09-11T00:00:00+00:00",
-        "dateModified": "2026-09-11T00:00:00+00:00",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://tdk-landscape.github.io/tdk-website/blog/articles/the-service-registry-as-shared-memory/"
-        },
-        "author": {
-          "@type": "Organization",
-          "name": "TDK Team"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "TDK CLI",
-          "url": "https://tdk-landscape.github.io/tdk-website"
-        },
-        "articleSection": "Architecture"
-      }
-    </script>
   
   
   <meta name="theme-color" content="#7c4dff" />
@@ -226,9 +86,9 @@
       <a class="aw-nav-link" href="/tdk-website/#demo">Demo</a>
       <a class="aw-nav-link" href="/tdk-website/compare/">Compare</a>
       <a class="aw-nav-link" href="/tdk-website/why/">Why TDK</a>
-      <a class="aw-nav-link is-active" href="/tdk-website/blog/">Field notes</a>
+      <a class="aw-nav-link" href="/tdk-website/blog/">Field notes</a>
 
-      <details class="aw-nav-more">
+      <details class="aw-nav-more is-active">
         <summary>Explore <i class="bi bi-chevron-down" aria-hidden="true"></i></summary>
         <div class="aw-nav-menu">
           <a href="/tdk-website/docs/">
@@ -299,72 +159,130 @@
 
 
   <main id="main-content" class="page-content" aria-label="Main content">
-    <div class="aw aw-blog">
-  <section class="aw-subhero">
-    <div class="aw-subhero-grid">
-      <div>
-        <h1>The Service Registry as Shared Memory</h1>
-      </div>
-      <div class="aw-blog-kicker">
-        <strong>Article 032 / Architecture</strong>
-        <p>How a service registry helps teams understand what exists, where it runs, and how it connects.</p>
-      </div>
-    </div>
-  </section>
+    <div class="aw">
+  <section class="aw-section" style="padding-top: 10rem;">
+    <div class="aw-wrap aw-docs">
+      <aside class="aw-docs-side">
+  <nav aria-label="Documentation navigation">
+    <a href="/tdk-website/docs/" class="">Overview</a>
+    <a href="/tdk-website/docs/quickstart/" class="">Quick Start</a>
+    <a href="/tdk-website/docs/configuration/" class="">Configuration</a>
+    <a href="/tdk-website/docs/scripts/" class="is-active">package.json Scripts</a>
+    <a href="/tdk-website/docs/examples/" class="">Examples</a>
+  </nav>
+</aside>
 
-  <section class="aw-section" style="padding-top: 0;">
-    <div class="aw-wrap">
-      <div class="aw-article-shell">
-        <article class="aw-article-card">
-          <header>
-            <div class="aw-article-meta" aria-label="Article details">
-              <span>September 11, 2026</span>
-              <span>4 min read</span>
-              <span>Article 032</span>
-            </div>
-            <h2>How a service registry helps teams understand what exists, where it runs, and how it connects.</h2>
-            <p class="aw-article-intro">A practical note from the TDK field guide for teams building service-heavy products without turning local development into infrastructure work.</p>
-          </header>
 
-          <div class="aw-article-body">
-            <section>
-              <h3>Make service relationships visible</h3>
-              <p>How a service registry helps teams understand what exists, where it runs, and how it connects. This article is part of the TDK field guide: practical notes for teams that want clearer specs, faster local feedback, and fewer development rituals.</p>
-              <p>The useful question is not whether architecture is fashionable. The useful question is whether it helps a developer make the next correct change with less waiting and less hidden context.</p>
-            </section>
+      <div class="aw-docs-body">
+        <h1>package.json Scripts</h1>
+        <p class="aw-lead">Every service needs a <code>package.json</code> next to its <code>service.json</code>, with a fixed set of npm scripts. TDK's Docker build (L3/L4 layers) and the Tilt dev loop invoke these scripts directly by name, so a missing one fails silently until <code>tdk up</code> or a production build.</p>
 
-            <section>
-              <h3>Integration is the daily reality</h3>
-              <p>Specs, templates, and conventions are useful only when they stay attached to a working system. A clean document cannot prove that ports are assigned, credentials resolve, generated clients match services, or the local stack still boots.</p>
-              <p>That is why TDK keeps the practical layer close to the source of truth. The same service definition can inform local orchestration, generated files, generated diagrams, and assistant briefings.</p>
-            </section>
+        <h2>Required scripts by appType</h2>
+        <ul>
+          
+          <li><code>backend</code> — dev, build, start</li>
+          
+          <li><code>worker</code> — dev, build, start</li>
+          
+          <li><code>migrator</code> — dev, build, start</li>
+          
+          <li><code>frontend</code> — dev, build</li>
+          
+          <li><code>library</code> — dev, build</li>
+          
+          <li><code>sdk</code> — dev, build</li>
+          
+        </ul>
+        <p>Frontend, library, and SDK services skip <code>start</code> — they're served statically or consumed as packages, never run as a standalone process in production. Backend, worker, and migrator services are long-running processes, so all three scripts are required.</p>
 
-            <div class="aw-article-note">
-              TDK is not trying to replace engineering judgment. It removes repeatable setup work so that judgment has a reliable place to land.
-            </div>
+        <h2>What each script is for</h2>
 
-            <section>
-              <h3>Where TDK turns topology into a working surface</h3>
-              <p>TDK matters here because it turns service definitions into a runnable local surface. Docker, TypeScript, Tilt, Starlark, generated docs, credentials, and assistant context all become part of the same workbench instead of separate chores.</p>
-              <p>For the service registry as shared memory, the point is simple: keep the system inspectable. A team should be able to understand what exists, run what matters, and carry the generated output forward without depending on opaque platform behavior.</p>
-            </section>
-          </div>
-        </article>
+        <h3>dev</h3>
+        <p>Runs the service directly from source with hot reload. This is what <code>tdk up</code> uses in local development, via Tilt.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>package.json</span></div>
+          <pre><span class="k">"dev"</span>: <span class="s">"bun run src/index.ts"</span></pre>
+        </div>
 
-        <aside class="aw-blog-side" aria-label="Article context">
-          <div class="aw-blog-side-card">
-            <h4>Filed under</h4>
-            <p><code>Architecture</code></p>
-          </div>
-          <div class="aw-blog-side-card">
-            <h4>Keep reading</h4>
-            <p><a href="/tdk-website/blog/#library">Back to article library</a></p>
-          </div>
-        </aside>
+        <h3>build</h3>
+        <p>Compiles the service for production. TDK's L3 Docker layer runs this script to produce the artifact that ships in the image.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>package.json</span></div>
+          <pre><span class="k">"build"</span>: <span class="s">"tsc"</span></pre>
+        </div>
+
+        <h3>start</h3>
+        <p>Runs the compiled production output. TDK's L4 Docker runtime layer sets this as the container's entrypoint command for backend, worker, and migrator services.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>package.json</span></div>
+          <pre><span class="k">"start"</span>: <span class="s">"bun run dist/index.js"</span></pre>
+        </div>
+
+        <h2>Examples</h2>
+
+        <h3>Backend / worker / migrator</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>reservation-api / package.json</span></div>
+          <pre>{
+  <span class="k">"name"</span>: <span class="s">"reservation-api"</span>,
+  <span class="k">"scripts"</span>: {
+    <span class="k">"dev"</span>: <span class="s">"bun run src/index.ts"</span>,
+    <span class="k">"build"</span>: <span class="s">"tsc"</span>,
+    <span class="k">"start"</span>: <span class="s">"bun run dist/index.js"</span>,
+    <span class="k">"test"</span>: <span class="s">"bun test"</span>,
+    <span class="k">"typecheck"</span>: <span class="s">"tsc --noEmit"</span>
+  }
+}</pre>
+        </div>
+
+        <h3>Frontend / library / SDK</h3>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>checkout-app / package.json</span></div>
+          <pre>{
+  <span class="k">"name"</span>: <span class="s">"checkout-app"</span>,
+  <span class="k">"scripts"</span>: {
+    <span class="k">"dev"</span>: <span class="s">"vite --host 0.0.0.0 --port 3210"</span>,
+    <span class="k">"build"</span>: <span class="s">"tsc --noEmit && vite build"</span>,
+    <span class="k">"test"</span>: <span class="s">"vitest run"</span>,
+    <span class="k">"typecheck"</span>: <span class="s">"tsc --noEmit"</span>
+  }
+}</pre>
+        </div>
+
+        <h2>Catching gaps early</h2>
+        <p><code>tdk doctor</code> discovers every <code>service.json</code> in the project, reads the matching <code>package.json</code>, and reports exactly which required scripts are missing per service — before Tilt tries and fails to run one.</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+          <pre>tdk doctor
+
+<span class="c">✗ Services missing required package.json scripts:</span>
+<span class="c">    user-portal-api: missing "build", "start"</span>
+<span class="c">ℹ Fix: Add the missing scripts to each service's package.json</span></pre>
+        </div>
+
+        <div class="aw-callout">
+          <h4>tdk doctor</h4>
+          <p>Run <code>tdk doctor</code> before <code>tdk up</code> to catch a missing <code>build</code> or <code>start</code> script before it turns into a failed container. See <a href="/tdk-website/docs/configuration/">Configuration</a> for the full <code>service.json</code> schema.</p>
+        </div>
       </div>
     </div>
   </section>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.aw-docs-body h1, .aw-docs-body .aw-lead', { y: 40, opacity: 0, stagger: 0.12, duration: 1, ease: 'power3.out', delay: 0.1 });
+  gsap.utils.toArray('.aw-codeblock').forEach(function (block) {
+    gsap.from(block, {
+      y: 30, opacity: 0, duration: 0.7, ease: 'power3.out',
+      scrollTrigger: { trigger: block, start: 'top 88%' }
+    });
+  });
+}
+</script>
 
   </main>
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://0.0.0.0:4000/sitemap.xml
+Sitemap: https://tdk-landscape.github.io/tdk-website/sitemap.xml

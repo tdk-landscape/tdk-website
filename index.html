@@ -1969,7 +1969,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
         TDK sets up the entire technical workspace in minutes. No waiting, no setup weeks, no extra hires.
       </p>
       <div class="aw-hero-ctas">
-        <a href="#waitlist" class="aw-btn aw-btn-solid">Get a free license</a>
+        <a href="{{ '/docs/quickstart/' | relative_url }}" class="aw-btn aw-btn-solid">Start free</a>
         <a href="#demo" class="aw-btn aw-btn-ghost">Watch it boot</a>
       </div>
     </div>
@@ -3205,7 +3205,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-wrap">
       <div class="aw-head aw-head-center">
         <h2>Priced against what it replaces</h2>
-        <p>Free during beta. When we launch — two licenses, nothing in between. Free needs no key and costs nothing, ever — <span class="aw-mono">tdk up</span> just runs. Premium unlocks paid extras like the Verdaccio private registry: set <code class="aw-mono" style="background: rgba(255,255,255,0.05); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">export TDK_LICENSE_KEY=&lt;key&gt;</code> to turn those on.</p>
+        <p>Free during beta. When we launch — two tracks, nothing in between. Free needs no license key and costs nothing, ever — <span class="aw-mono">tdk up</span> just runs. Premium unlocks paid extras like the Verdaccio private registry: set <code class="aw-mono" style="background: rgba(255,255,255,0.05); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">export TDK_LICENSE_KEY=&lt;key&gt;</code> to turn those on.</p>
       </div>
 
       <div class="aw-pricing-grid">
@@ -3218,10 +3218,9 @@ body { background: #0a0a0e; overflow-x: hidden; }
             <li>All free generators — {{ site.data.tdk.files_per_service }} files per service</li>
             <li>L1–L4 golden Docker images without Verdaccio registry</li>
             <li>No license key needed, ever</li>
-            <li>Up to {{ site.data.tdk.free_project_limit }} project IDs per license key, if you grab one</li>
             <li>Community support</li>
           </ul>
-          <a class="aw-price-cta" href="{{ '/#waitlist' | relative_url }}">Get a free license →</a>
+          <a class="aw-price-cta" href="{{ '/docs/quickstart/' | relative_url }}">Start free →</a>
         </div>
 
         <div class="aw-price-card aw-price-featured">
@@ -3269,17 +3268,16 @@ body { background: #0a0a0e; overflow-x: hidden; }
   <section class="aw-section aw-cta" id="waitlist" style="padding-top: 0;">
     <div class="aw-cta-glow"></div>
     <div class="aw-wrap">
-      <h2>Get your<br />TDK license.</h2>
-      <p class="aw-cta-sub">Free licenses need no key and cost nothing, ever — <span class="aw-mono">tdk up</span> runs with zero setup, up to {{ site.data.tdk.free_project_limit }} project IDs per key if you grab one. Premium unlocks the Verdaccio registry and other paid extras, up to {{ site.data.tdk.premium_project_limit }} project IDs per key. Need SSO, air-gapped, or an SLA? Pick Enterprise — request any of the three below and your input sets the roadmap.</p>
+      <h2>Get your<br />Premium license.</h2>
+      <p class="aw-cta-sub">Free needs no license key and costs nothing, ever — <span class="aw-mono">tdk up</span> runs with zero setup. Premium unlocks the Verdaccio registry and other paid extras, up to {{ site.data.tdk.premium_project_limit }} project IDs per key. Need SSO, air-gapped, or an SLA? Pick Enterprise.</p>
 
       <form class="aw-form" onsubmit="handleLicenseSubmit(event); return false;">
-        <label for="waitlist-email">Your email <span style="font-weight: 400; color: rgba(236,236,241,0.65);">(required — it's the only way we can get a key or a reply back to you)</span></label>
+        <label for="waitlist-email">Your email <span style="font-weight: 400; color: rgba(236,236,241,0.65);">(required — it's the only way we can send your key or reply)</span></label>
         <input type="email" id="waitlist-email" placeholder="you@company.com" required />
 
         <label>Which license do you want?</label>
         <div class="aw-features">
-          <label><input type="radio" name="license-plan" class="plan-radio" value="Free — no key required, $0 forever, up to {{ site.data.tdk.free_project_limit }} project IDs per key if issued" checked /> Free — $0</label>
-          <label><input type="radio" name="license-plan" class="plan-radio" value="Premium — ${{ site.data.tdk.team_price }}/dev/month, up to {{ site.data.tdk.premium_project_limit }} project IDs per key" /> Premium — ${{ site.data.tdk.team_price }}/dev/mo</label>
+          <label><input type="radio" name="license-plan" class="plan-radio" value="Premium — ${{ site.data.tdk.team_price }}/dev/month, up to {{ site.data.tdk.premium_project_limit }} project IDs per key" checked /> Premium — ${{ site.data.tdk.team_price }}/dev/mo</label>
           <label><input type="radio" name="license-plan" class="plan-radio" value="Enterprise — custom pricing, unlimited project IDs, SSO/audit logs/air-gapped/SLA" /> Enterprise — custom</label>
         </div>
 
@@ -3292,8 +3290,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
           {% endfor %}
         </div>
 
-        <button type="submit" class="aw-btn aw-btn-solid" id="waitlist-submit-btn">Get my license →</button>
-        <p class="aw-form-note">Free = your key appears below instantly. Premium/Enterprise gets submitted directly — no mail client needed, no spam, unsubscribe anytime.</p>
+        <button type="submit" class="aw-btn aw-btn-solid" id="waitlist-submit-btn">Request my license →</button>
+        <p class="aw-form-note">Free needs no license key — install and run <span class="aw-mono">tdk up</span>. Premium/Enterprise requests are submitted directly — no mail client needed, no spam, unsubscribe anytime.</p>
         <div class="aw-form-note aw-issued-key" id="waitlist-request-received" style="display:none;">
           Request received — we'll follow up by email if you gave us one. Thanks for your interest in TDK!
         </div>
@@ -3302,11 +3300,6 @@ body { background: #0a0a0e; overflow-x: hidden; }
           Couldn't reach our server. <a id="waitlist-mailto-link" href="#">Click here to email us</a>, or
           <button type="button" id="waitlist-copy-btn" class="aw-btn-link">copy the message</button>.
         </p>
-        <div class="aw-form-note aw-issued-key" id="waitlist-issued-key" style="display:none;">
-          Your free license key: <code class="aw-mono" id="waitlist-issued-key-value"></code>
-          <button type="button" id="waitlist-issued-copy-btn" class="aw-btn-link">copy</button>
-          <br />Set it with <code class="aw-mono">export TDK_LICENSE_KEY=&lt;key&gt;</code> before running <code class="aw-mono">tdk up</code> — see the <a href="{{ '/docs/quickstart/' | relative_url }}">install guide</a>. Save it now, it's only shown here once.
-        </div>
       </form>
     </div>
   </section>
@@ -3369,16 +3362,10 @@ function calcRoi() {
 }
 calcRoi();
 
-/* Free plan + email = issue instantly via the worker. Everything else
-   (Premium, Enterprise, or Free with no email) is filed via the worker's
-   request-license endpoint for manual follow-up - no mail client required.
+/* Premium and Enterprise requests are filed via the worker for manual follow-up.
+   Free needs no license key; the quickstart is the path for free users.
    mailto is only a last-resort fallback if the worker itself is unreachable. */
-var ISSUE_FREE_LICENSE_URL = 'https://tdk-extension-dist.oranguman.workers.dev/v1/issue-free-license';
 var REQUEST_LICENSE_URL = 'https://tdk-extension-dist.oranguman.workers.dev/v1/request-license';
-
-function isFreePlan(plan) {
-  return plan.indexOf('Free') === 0;
-}
 
 async function handleLicenseSubmit(event) {
   event.preventDefault();
@@ -3391,51 +3378,18 @@ async function handleLicenseSubmit(event) {
 
   var emailInput = document.getElementById('waitlist-email').value.trim();
   var planRadio = document.querySelector('.plan-radio:checked');
-  var plan = planRadio ? planRadio.value : 'Free — no key required, $0 forever';
+  var plan = planRadio ? planRadio.value : 'Premium — ${{ site.data.tdk.team_price }}/dev/month';
 
   // Belt-and-braces on top of the input's `required` attribute: without an
-  // email there is no way left to hand back a key or follow up on a
+  // email there is no way left to send a key or follow up on a
   // request (mailto no longer runs on the happy path), so a submission
   // with no email is never useful - refuse it outright instead of filing
   // a request nobody can act on.
   if (!emailInput) {
-    showInlineError('Please enter your email - we have no other way to get a key or a reply back to you.');
+    showInlineError('Please enter your email - we have no other way to send a key or a reply back to you.');
     btn.disabled = false;
     btn.textContent = originalLabel;
     return;
-  }
-
-  if (isFreePlan(plan)) {
-    btn.textContent = 'Issuing your key…';
-    try {
-      var res = await fetch(ISSUE_FREE_LICENSE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: emailInput, note: 'issued via website form' })
-      });
-      // 409 = this email already claimed its one instant free key; 429 =
-      // too many attempts from this IP. Both are real answers, not
-      // failures to route around - show them and stop, don't fall
-      // through to filing a request or opening mailto.
-      if (res.status === 409 || res.status === 429) {
-        var limitBody = await res.json().catch(function () { return {}; });
-        showInlineError(limitBody.error || 'Could not issue a key right now.');
-        btn.disabled = false;
-        btn.textContent = originalLabel;
-        return;
-      }
-      if (!res.ok) throw new Error('issue failed: HTTP ' + res.status);
-      var data = await res.json();
-      showIssuedKey(data.key);
-      // One key per email - nothing left for this button to do, so remove
-      // it instead of re-enabling it (was previously trivial to spam
-      // repeat clicks into repeat keys).
-      btn.style.display = 'none';
-      return;
-    } catch (err) {
-      console.warn('Instant free license issue failed, falling back to request submission:', err);
-      // fall through to the request-license path below
-    }
   }
 
   btn.textContent = 'Sending your request…';
@@ -3486,30 +3440,12 @@ function hideInlineError() {
   if (box) box.style.display = 'none';
 }
 
-function showIssuedKey(key) {
-  var box = document.getElementById('waitlist-issued-key');
-  var valueEl = document.getElementById('waitlist-issued-key-value');
-  var copyBtn = document.getElementById('waitlist-issued-copy-btn');
-  if (!box || !valueEl) return;
-  valueEl.textContent = key;
-  box.style.display = 'block';
-  copyBtn.onclick = function () {
-    navigator.clipboard.writeText(key).then(function () {
-      copyBtn.textContent = 'Copied!';
-      window.setTimeout(function () { copyBtn.textContent = 'copy'; }, 2000);
-    }, function () {
-      copyBtn.textContent = 'Select the key above to copy';
-      window.setTimeout(function () { copyBtn.textContent = 'copy'; }, 2500);
-    });
-  };
-}
-
 /* License request mailto */
 function sendWaitlistEmail(btn, originalLabel) {
   var emailInput = document.getElementById('waitlist-email').value.trim();
   var email = emailInput || '(see From: in your email app)';
   var planRadio = document.querySelector('.plan-radio:checked');
-  var plan = planRadio ? planRadio.value : 'Free — no key required, $0 forever';
+  var plan = planRadio ? planRadio.value : 'Premium — ${{ site.data.tdk.team_price }}/dev/month';
   var checkboxes = document.querySelectorAll('.feature-checkbox:checked');
   var features = [];
   checkboxes.forEach(function (cb) { features.push(cb.value); });
