@@ -3394,14 +3394,14 @@ async function handleLicenseSubmit(event) {
 
   btn.textContent = 'Sending your request…';
   var checkboxes = document.querySelectorAll('.feature-checkbox:checked');
-  var features = [];
-  checkboxes.forEach(function (cb) { features.push(cb.value); });
+  var requestedFeatures = [];
+  checkboxes.forEach(function (cb) { requestedFeatures.push(cb.value); });
 
   try {
     var reqRes = await fetch(REQUEST_LICENSE_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ plan: plan, email: emailInput, features: features })
+      body: JSON.stringify({ plan: plan, email: emailInput, requestedFeatures: requestedFeatures })
     });
     if (reqRes.status === 429) {
       var reqLimitBody = await reqRes.json().catch(function () { return {}; });
