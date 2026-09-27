@@ -169,10 +169,6 @@ package_scripts:            # package.json "scripts" required per appType, enfor
 premium_project_limit: 100   # Max distinct project IDs one premium license key covers
 
 # --- Money facts ---
-devops_salary: "$150K"     # avoided platform-engineer hire, USD/year
-devops_salary_num: 150000  # same, numeric — used by the ROI calculator JS
-devops_monthly: "$12.5K"   # devops_salary ÷ 12 — orbit chip on /compare/
-devops_multiple: "65×"     # devops_salary ÷ (10 devs × team_price × 12)
 hours_per_week: 5          # recovered engineering hours per dev per week
 hours_per_week_num: 5      # same, numeric — used by the ROI calculator JS
 weeks_per_year_num: 48     # working weeks in the ROI formula (numeric, JS)
@@ -183,11 +179,7 @@ cloud_sandbox: "$500"      # hosted-sandbox alternative, per dev/month
 team_price: 19             # TDK Team, USD per dev per month
 team_annual_10: "$2,280"   # 10 devs × team_price × 12 — keep in sync
 community_price: "$0"      # Community tier / "TDK itself costs…" claims
-minutes_equiv: "15 minutes" # "$19 is roughly…" — illustrative equivalence
-hours_returned: "20 hours"  # "TDK returns about…" — illustrative equivalence
-price_multiple_range: "5–500×" # "alternatives cost … more" headline range
-roi_example_total: "$300,000" # calculator default (10 devs × $130K): productivity + hire
-roi_example_short: "$300K"    # same, short form for headlines
+roi_net_default: "$147,720"  # calculator default: 10 devs × 5 h × 48 wk × $62.50/h − 10 × $19 × 12
 roi_hours_default: "2,400"    # static placeholder before JS runs (10×5×48)
 roi_prod_default: "$150,000"  # static placeholder before JS runs
 
