@@ -163,17 +163,6 @@ if (window.gsap && window.ScrollTrigger) {
   gsap.from('.aw-subhero h1', { y: 50, opacity: 0, duration: 1.1, ease: 'power3.out', delay: 0.1 });
   gsap.from('.aw-subhero-sub', { y: 30, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.35 });
 
-  /* Pinned split: story title stays while the timeline scrolls */
-  if (window.matchMedia('(min-width: 1000px)').matches) {
-    ScrollTrigger.create({
-      trigger: '#story',
-      start: 'top 15%',
-      end: 'bottom 90%',
-      pin: '#aw-story-pin',
-      pinSpacing: false
-    });
-  }
-
   /* Story steps fade in one by one */
   gsap.utils.toArray('.aw-story-step').forEach(function (step) {
     gsap.from(step, {
