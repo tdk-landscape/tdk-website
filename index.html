@@ -1187,10 +1187,11 @@ body { background: #0a0a0e; overflow-x: hidden; }
 .aw-acc-head {
   position: absolute;
   inset: 0;
-  padding: 2rem;
+  padding: 4.5rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  justify-content: safe flex-end;
 }
 
 .aw-acc-title {
@@ -1207,12 +1208,19 @@ body { background: #0a0a0e; overflow-x: hidden; }
   line-height: 1.65;
   color: rgba(236, 236, 241, 0.6);
   max-width: 30rem;
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 0.5s ease 0.25s, transform 0.5s ease 0.25s;
+  transition: opacity 0.5s ease 0.25s, transform 0.5s ease 0.25s, max-height 0s linear 0.25s, margin-top 0s linear 0.25s;
 }
 
+/* Collapsed answers take no space; otherwise their hidden text pushes the
+   question out of the top of narrow items, where it is clipped. */
 .aw-acc-item:hover .aw-acc-body, .aw-acc-item.is-open .aw-acc-body {
+  max-height: 24rem;
+  margin-top: 1rem;
   opacity: 1;
   transform: translateY(0);
 }
@@ -1938,9 +1946,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
   .aw-stack-card { grid-template-columns: 1fr; }
   .aw-stack-meta { text-align: left; }
   .aw-accordion { flex-direction: column; height: auto; }
-  .aw-acc-item { min-height: 8rem; }
-  .aw-acc-item:hover, .aw-acc-item.is-open { flex: 1; }
-  .aw-acc-item:hover .aw-acc-head, .aw-acc-item.is-open .aw-acc-head { position: relative; }
+  .aw-acc-item, .aw-acc-item:hover, .aw-acc-item.is-open { flex: none; }
+  .aw-acc-head { position: relative; padding: 3.75rem 1.5rem 1.5rem; }
 }
 
 @media (max-width: 600px) {

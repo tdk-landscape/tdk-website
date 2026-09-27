@@ -221,6 +221,9 @@ body:has(.aw) .site-footer {
   background: #0a0a0e;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  /* clip, unlike hidden, doesn't make .aw a scroll container, which would
+     stop position: sticky children from sticking to the viewport */
+  overflow-x: clip;
 }
 
 .aw * {
@@ -430,6 +433,10 @@ body:has(.aw) .site-footer {
   gap: 1rem;
 }
 
+.aw-feature-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 /* Varied spans: asymmetric rhythm, mathematically gapless with dense flow.
    7 items: rows [2+1] [1+2] [1+1+1]. 9 items: dense backfill closes every row. */
 .aw-grid-varied {
@@ -452,6 +459,11 @@ body:has(.aw) .site-footer {
   align-items: start;
   padding-bottom: clamp(3rem, 6vw, 6rem);
   /* breathing room so the pinned title never collides with the next heading */
+}
+
+.aw-story-left {
+  position: sticky;
+  top: 7.5rem;
 }
 
 .aw-story-left h2 {
@@ -545,6 +557,7 @@ body:has(.aw) .site-footer {
 }
 
 .aw-codeblock-head i {
+  flex-shrink: 0;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -563,10 +576,14 @@ body:has(.aw) .site-footer {
 }
 
 .aw-codeblock-head span {
+  min-width: 0;
   margin-left: 0.625rem;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   color: rgba(236, 236, 241, 0.6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .aw-codeblock pre {
@@ -1898,6 +1915,8 @@ body:has(.aw) .site-footer {
 .aw-library-intro {
   align-self: start;
   padding-right: 1rem;
+  position: sticky;
+  top: 7rem;
 }
 
 .aw-library-intro h2 {
@@ -2134,7 +2153,7 @@ body:has(.aw) .site-footer {
   .aw-blog-section-head,
   .aw-library-layout,
   .aw-quote-stage {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .aw-library-intro {
@@ -2430,6 +2449,10 @@ body:has(.aw) .site-footer {
     grid-template-columns: 1fr;
   }
 
+  .aw-story-left {
+    position: static;
+  }
+
   .aw-docs {
     grid-template-columns: 1fr;
   }
@@ -2485,6 +2508,12 @@ body:has(.aw) .site-footer {
 
   .aw-feature-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Must outrank the desktop span-2 rules, or a span-2 card in a 1fr grid
+     creates an implicit narrow column and squeezes its neighbours. */
+  .aw-feature-grid.aw-grid-varied > :nth-child(n) {
+    grid-column: auto;
   }
 
   .aw-doc-cards {
