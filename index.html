@@ -618,17 +618,9 @@ body { background: #0a0a0e; overflow-x: hidden; }
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8125rem;
   line-height: 1.9;
-  height: 24rem;
-  overflow-y: auto;
-  scrollbar-width: none;
+  min-height: 24rem;
   color: rgba(236, 236, 241, 0.85);
 }
-
-/* Fixed height so the boot log scrolls internally instead of growing the
-   section — a growing section shifts content below it while the scroll-pin
-   trigger above is sized for the log's starting height, which briefly
-   overlaps the next section's heading until the log catches up. */
-.aw-terminal-body::-webkit-scrollbar { display: none; }
 
 .aw-tline { display: block; white-space: pre-wrap; }
 
@@ -1612,6 +1604,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
 }
 
 .aw-term-left {
+  position: sticky;
+  top: 7.5rem;
   padding: clamp(1.5rem, 3vw, 2.5rem);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 1.5rem;
@@ -1934,6 +1928,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   .aw-card-b { grid-column: span 2; }
   .aw-card-e { grid-column: span 2; }
   .aw-term-split { grid-template-columns: 1fr; }
+  .aw-term-left { position: static; }
   .aw-reel-thesis { grid-template-columns: 1fr; }
   .aw-reel-workspace { grid-template-columns: 1fr; }
   .aw-reel-input { border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
@@ -3738,7 +3733,6 @@ function prepareScrubWords() {
     var timer = setInterval(function () {
       line.innerHTML = '<span class="p">$ </span>' + text.slice(0, ++i);
       body.appendChild(cursor);
-      body.scrollTop = body.scrollHeight;
       if (i >= text.length) {
         clearInterval(timer);
         cursor.remove();
@@ -3757,7 +3751,6 @@ function prepareScrubWords() {
       blank.className = 'aw-tline';
       blank.innerHTML = '&nbsp;';
       body.appendChild(blank);
-      body.scrollTop = body.scrollHeight;
       setTimeout(function () { play(i + 1); }, 500);
     } else {
       var line = document.createElement('span');
@@ -3765,7 +3758,6 @@ function prepareScrubWords() {
       line.style.opacity = '0';
       line.innerHTML = step.html;
       body.appendChild(line);
-      body.scrollTop = body.scrollHeight;
       requestAnimationFrame(function () {
         line.style.transition = 'opacity 0.35s ease';
         line.style.opacity = '1';
@@ -3817,22 +3809,6 @@ if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
   gsap.from('.aw-plain-small', {
     y: 30, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.15,
     scrollTrigger: { trigger: '.aw-plain', start: 'top 85%' }
-  });
-
-  /* Paradigm 1: Scroll Pinning Split — terminal title pinned while the boot log plays.
-     matchMedia (not a one-time width check) so the pin is torn down if the viewport
-     crosses 1000px after load — otherwise the fixed-position title keeps overlapping
-     the terminal once CSS switches to the single-column mobile layout. */
-  ScrollTrigger.matchMedia({
-    '(min-width: 1000px)': function () {
-      ScrollTrigger.create({
-        trigger: '#demo',
-        start: 'top top',
-        end: 'bottom 85%',
-        pin: '#aw-term-pin',
-        pinSpacing: false
-      });
-    }
   });
 
   /* Paradigm 2: Scrubbing Text Reveal — words 0.1 → 1 sequentially */
