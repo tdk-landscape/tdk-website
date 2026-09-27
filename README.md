@@ -23,7 +23,7 @@ This is a Jekyll-based static site for TDK CLI. The site features:
 
 ```bash
 # Clone the repository
-git clone https://github.com/tdk-cli/website.git
+git clone https://github.com/tdk-landscape/tdk-website.git
 cd website
 
 # Install Ruby dependencies
