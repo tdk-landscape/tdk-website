@@ -45,7 +45,9 @@ body { background: #0a0a0e; overflow-x: hidden; }
 .aw-hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://picsum.photos/seed/terminalgrid/1920/1080');
+  background-image:
+    radial-gradient(ellipse 70% 55% at 50% 30%, rgba(124, 77, 255, 0.35) 0%, transparent 65%),
+    linear-gradient(160deg, #1a1a24 0%, #0a0a0e 70%);
   background-size: cover;
   background-position: center;
   filter: grayscale(0.85) contrast(1.25) brightness(0.38);
@@ -3028,7 +3030,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
         <!-- D: scale image (1x1) -->
         <div class="aw-card aw-card-d">
-          <img class="aw-scroll-img" src="https://picsum.photos/seed/containerfield/600/600" alt="Shipping containers representing {{ site.data.tdk.scale_services }} microservices" loading="lazy" />
+          <img class="aw-scroll-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgNjAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFhMWEyNCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMGEwZSIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJib3giIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjN2M0ZGZmIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNGRkMGZmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InVybCgjYmcpIi8+PGc+PHJlY3QgeD0iNjAiIHk9IjgwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjkwIiByeD0iNiIgZmlsbD0idXJsKCNib3gpIiBvcGFjaXR5PSIwLjkiLz48cmVjdCB4PSIyMzAiIHk9IjgwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjkwIiByeD0iNiIgZmlsbD0idXJsKCNib3gpIiBvcGFjaXR5PSIwLjUiLz48cmVjdCB4PSI0MDAiIHk9IjgwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjkwIiByeD0iNiIgZmlsbD0idXJsKCNib3gpIiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSI2MCIgeT0iMTkwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjkwIiByeD0iNiIgZmlsbD0idXJsKCNib3gpIiBvcGFjaXR5PSIwLjUiLz48cmVjdCB4PSIyMzAiIHk9IjE5MCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSI5MCIgcng9IjYiIGZpbGw9InVybCgjYm94KSIgb3BhY2l0eT0iMC45Ii8+PHJlY3QgeD0iNDAwIiB5PSIxOTAiIHdpZHRoPSIxNDAiIGhlaWdodD0iOTAiIHJ4PSI2IiBmaWxsPSJ1cmwoI2JveCkiIG9wYWNpdHk9IjAuNSIvPjxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxNTAiIGhlaWdodD0iOTAiIHJ4PSI2IiBmaWxsPSJ1cmwoI2JveCkiIG9wYWNpdHk9IjAuMyIvPjxyZWN0IHg9IjIzMCIgeT0iMzAwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjkwIiByeD0iNiIgZmlsbD0idXJsKCNib3gpIiBvcGFjaXR5PSIwLjUiLz48cmVjdCB4PSI0MDAiIHk9IjMwMCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI5MCIgcng9IjYiIGZpbGw9InVybCgjYm94KSIgb3BhY2l0eT0iMC45Ii8+PHJlY3QgeD0iNjAiIHk9IjQxMCIgd2lkdGg9IjQ4MCIgaGVpZ2h0PSI5MCIgcng9IjYiIGZpbGw9InVybCgjYm94KSIgb3BhY2l0eT0iMC4yNSIvPjwvZz48L3N2Zz4K" alt="Grid of containers representing {{ site.data.tdk.scale_services }} microservices" loading="lazy" />
           <div class="aw-card-d-caption">
             <strong>{{ site.data.tdk.scale_services }}</strong>
             <span>services proven running locally</span>
@@ -3053,7 +3055,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   <!-- ================= SCRUB STATEMENT ================= -->
   <section class="aw-section aw-statement" id="statement" style="padding-top: 0;">
     <div class="aw-wrap">
-      <h2 id="aw-scrub-text">One manifest replaces <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/cloudbill/400/200')"></span> cloud sandboxes at {{ site.data.tdk.cloud_cde_max }} per developer, <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/yamlfile/400/200')"></span> weeks of YAML plumbing, and a <span class="aw-inline-img" style="background-image:url('https://picsum.photos/seed/devopsdesk/400/200')"></span> {{ site.data.tdk.devops_salary }} platform hire.</h2>
+      <h2 id="aw-scrub-text">One manifest replaces <span class="aw-inline-img" style="background-image:linear-gradient(135deg, #7c4dff, #4dd0ff)"></span> cloud sandboxes at {{ site.data.tdk.cloud_cde_max }} per developer, <span class="aw-inline-img" style="background-image:linear-gradient(135deg, #f472b6, #7c4dff)"></span> weeks of YAML plumbing, and a <span class="aw-inline-img" style="background-image:linear-gradient(135deg, #4dd0ff, #7ee787)"></span> {{ site.data.tdk.devops_salary }} platform hire.</h2>
     </div>
   </section>
 

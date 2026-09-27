@@ -69,18 +69,23 @@ tdk up</pre>
         </ul>
 
         <h2>Install options</h2>
-        <p>Use curl if you just want the fastest install. Use npm, npx, pnpm, or bun if you prefer package-manager workflows.</p>
+        <p>Running an AI agent? Point it at <span class="aw-mono">llms.txt</span> for the full machine-readable context. Use curl if you just want the fastest install. Use npm, npx, pnpm, or bun if you prefer package-manager workflows.</p>
         <div class="aw-install-tabs">
           <div class="aw-install-tabs-bar" role="tablist">
-            <button class="aw-install-tab aw-install-tab--active" role="tab" aria-selected="true"  data-tab="curl">curl</button>
+            <button class="aw-install-tab aw-install-tab--active" role="tab" aria-selected="true"  data-tab="llms">llms.txt</button>
+            <button class="aw-install-tab" role="tab" aria-selected="false" data-tab="curl">curl</button>
             <button class="aw-install-tab" role="tab" aria-selected="false" data-tab="npm">npm</button>
             <button class="aw-install-tab" role="tab" aria-selected="false" data-tab="npx">npx</button>
             <button class="aw-install-tab" role="tab" aria-selected="false" data-tab="pnpm">pnpm</button>
             <button class="aw-install-tab" role="tab" aria-selected="false" data-tab="bun">bun</button>
           </div>
           <div class="aw-codeblock" style="border-top-left-radius:0;border-top-right-radius:0;margin-top:0;">
-            <div class="aw-codeblock-head"><i></i><i></i><i></i><span class="aw-install-tab-label">terminal</span></div>
-            <div class="aw-install-panel" data-panel="curl">
+            <div class="aw-codeblock-head"><i></i><i></i><i></i><span class="aw-install-tab-label">llms.txt</span></div>
+            <div class="aw-install-panel" data-panel="llms">
+              <pre><span class="c"># give your AI agent the full install + docs context in one file</span>
+curl -fsSL {{ '/llms.txt' | absolute_url }}</pre>
+            </div>
+            <div class="aw-install-panel" data-panel="curl" style="display:none;">
               <pre>curl -fsSL https://tdk-landscape.github.io/install.sh | sh</pre>
             </div>
             <div class="aw-install-panel" data-panel="npm" style="display:none;">
@@ -235,7 +240,7 @@ docker compose run --rm tdk tdk project --yes</pre>
 (function () {
   var bar = document.querySelector('.aw-install-tabs-bar');
   if (!bar) return;
-  var labels = { curl: 'terminal', npm: 'npm', npx: 'npx', pnpm: 'pnpm', bun: 'bun' };
+  var labels = { llms: 'llms.txt', curl: 'terminal', npm: 'npm', npx: 'npx', pnpm: 'pnpm', bun: 'bun' };
   bar.addEventListener('click', function (e) {
     var btn = e.target.closest('.aw-install-tab');
     if (!btn) return;

@@ -1,0 +1,65 @@
+---
+layout: null
+permalink: /llms.txt
+sitemap: false
+---
+# TDK CLI
+
+> Kubernetes-free microservice development. Run {{ site.data.tdk.scale_services }} services locally without learning Kubernetes — one service.json generates {{ site.data.tdk.files_per_service }} files per service.
+
+TDK is a manifest-driven CLI built on Tilt and Starlark. Write one `service.json` per service and TDK generates Dockerfiles, Docker Compose, Vite/TypeScript config, Traefik, Postgres, NATS JetStream, Prisma, and other stack-wide artifacts from it — running on plain Docker, no Kubernetes cluster required. The free tier needs no license key and costs nothing, ever.
+
+## Getting Started
+
+Fastest install (macOS/Linux, picks the right binary for your arch):
+
+```
+curl -fsSL https://tdk-landscape.github.io/install.sh | sh
+tdk doctor
+tdk project example
+cd tdk-example
+tdk up
+```
+
+Also installable via npm, npx, pnpm, or bun — see [Quick Start]({{ '/docs/quickstart/' | absolute_url }}) for every option.
+
+GitHub releases: https://github.com/tdk-landscape/tdk-cli-releases/releases/latest
+
+## Docs
+
+- [Quick Start]({{ '/docs/quickstart/' | absolute_url }}): install, verify, and boot a working stack in minutes
+- [Configuration]({{ '/docs/configuration/' | absolute_url }}): service.json reference — appType, featuresEnabled, required package.json scripts
+- [Examples]({{ '/docs/examples/' | absolute_url }}): reference landscapes — minimal PSR starter, SaaS starter, restaurant ops, enterprise ERP with {{ site.data.tdk.erp_services }} services across {{ site.data.tdk.erp_domains }} business domains
+- [Scripts]({{ '/docs/scripts/' | absolute_url }}): package.json scripts required per appType, enforced by `tdk doctor`
+
+## Product
+
+- [Features]({{ '/features/' | absolute_url }}): {{ site.data.tdk.product_features }} product capabilities, all driven by one service.json
+- [Compare]({{ '/compare/' | absolute_url }}): head-to-head vs Devbox, Devenv, Garden, Skaffold, DevSpace, Gitpod, Codespaces, Coder, Daytona, Okteto
+- [Why TDK]({{ '/why/' | absolute_url }}): the problem TDK solves and why it exists
+- [No Vendor Lock-in]({{ '/no-lock-in/' | absolute_url }}): every generated file is open-standard Docker/TypeScript/Starlark, MIT-licensed
+- [Does TDK fit?]({{ '/fit/' | absolute_url }}): check your stack in 30 seconds
+- [Sandbox]({{ '/sandbox/' | absolute_url }}): try TDK without installing anything
+
+## Reference Landscapes (GitHub)
+
+- [tdk-example](https://github.com/tdk-landscape/tdk-example): minimal PSR stack (Hono, Vite, Bun)
+- [tdk-user-management](https://github.com/tdk-landscape/tdk-user-management): enterprise SCIM 2.0 & OAuth2 PKCE demo
+- [tdk-restaurant-example](https://github.com/tdk-landscape/tdk-restaurant-example): restaurant operations demo — reservations, kitchen, menu, floor ops
+- [tdk-erp-system](https://github.com/tdk-landscape/tdk-erp-system): enterprise ERP, {{ site.data.tdk.erp_services }} services across {{ site.data.tdk.erp_domains }} business domains
+- [tdk-saas-starter](https://github.com/tdk-landscape/tdk-saas-starter): SaaS dashboard + checkout starter
+
+## Field Notes
+
+- [Blog]({{ '/blog/' | absolute_url }}): long-form field notes on local-first development, generated infrastructure, and Kubernetes-free workflows
+
+## Licensing
+
+Free needs no license key and costs nothing, ever — `tdk up` runs with zero setup. Premium unlocks the Verdaccio private registry, DDD scaffolding, and other paid extras, up to {{ site.data.tdk.premium_project_limit }} project IDs per key. Enterprise adds SSO, air-gapped, and SLA options.
+
+- [Request a license]({{ '/#waitlist' | absolute_url }})
+
+## Optional
+
+- [Sitemap]({{ '/sitemap.xml' | absolute_url }})
+- [Install script](https://tdk-landscape.github.io/install.sh)
