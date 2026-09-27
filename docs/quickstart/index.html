@@ -190,20 +190,24 @@ tdk up       <span class="c"># start the stack</span></pre>
           <pre>mkdir my-service
 cd my-service
 tdk project --yes
-tdk resource api --type backend --stack pre-alpha --path services/pre-alpha/api
+tdk resource api --type backend --stack shop   <span class="c"># asks you to confirm</span>
 tdk project --check
-tdk up pre-alpha</pre>
+tdk up shop</pre>
         </div>
         <p>TDK validates <code>.tdk/project.json</code>, generates files in <code>.tdk/.tdk-out/</code>, and reads boot order from each resource's <code>dependsOn</code> list.</p>
 
         <details class="aw-docs-details">
           <summary>Manual binary download</summary>
-          <p>Download a binary from the public release repo if you prefer to install it yourself.</p>
+          <p>Download the binary, its engine files and the checksums yourself. The binary looks for the <code>tdk-cli/</code> folder next to it.</p>
           <div class="aw-codeblock">
             <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
-            <pre>curl -fsSL -o tdk https://github.com/tdk-landscape/tdk-cli-releases/releases/latest/download/tdk-linux-amd64
-chmod +x tdk
-sudo mv tdk /usr/local/bin/tdk</pre>
+            <pre>os=$(uname -s | tr A-Z a-z); arch=$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")
+base=https://github.com/tdk-landscape/tdk-cli-releases/releases/latest/download
+curl -fsSL -O "$base/tdk-$os-$arch" -O "$base/tdk-cli-engine.tar.gz" -O "$base/checksums.txt"
+shasum -a 256 -c --ignore-missing checksums.txt
+mkdir -p ~/.local/bin/tdk-cli
+install -m 755 "tdk-$os-$arch" ~/.local/bin/tdk
+tar -xzf tdk-cli-engine.tar.gz -C ~/.local/bin/tdk-cli --strip-components=1</pre>
           </div>
           <p>Binaries ship from <a href="https://github.com/tdk-landscape/tdk-cli-releases/releases/latest" target="_blank" rel="noopener">tdk-landscape/tdk-cli-releases</a>.</p>
         </details>

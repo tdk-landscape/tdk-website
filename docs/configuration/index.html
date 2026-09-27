@@ -32,7 +32,7 @@ title: Configuration - TDK CLI
     <span class="s">"database"</span>,
     <span class="s">"cache"</span>
   ],
-  <span class="k">"envVars"</span>: {                      <span class="c">// Optional: environment variables</span>
+  <span class="k">"params"</span>: {                       <span class="c">// Optional: non-secret env vars</span>
     <span class="k">"NODE_ENV"</span>: <span class="s">"development"</span>,
     <span class="k">"API_URL"</span>: <span class="s">"http://localhost:3001"</span>
   }
@@ -101,7 +101,7 @@ title: Configuration - TDK CLI
   <span class="k">"port"</span>: <span class="n">3000</span>,
   <span class="k">"featuresEnabled"</span>: [<span class="s">"typescript"</span>, <span class="s">"bun"</span>],
   <span class="k">"dependsOn"</span>: [<span class="s">"database"</span>, <span class="s">"redis"</span>],
-  <span class="k">"envVars"</span>: {
+  <span class="k">"params"</span>: {
     <span class="k">"NODE_ENV"</span>: <span class="s">"development"</span>
   }
 }</pre>
