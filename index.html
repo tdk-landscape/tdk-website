@@ -113,6 +113,13 @@ body { background: #0a0a0e; overflow-x: hidden; }
   flex-wrap: wrap;
 }
 
+.aw-hero-star-count {
+  margin-left: 0.6rem;
+  padding-left: 0.6rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  font-variant-numeric: tabular-nums;
+}
+
 .aw-btn {
   display: inline-flex;
   align-items: center;
@@ -1973,6 +1980,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
       <div class="aw-hero-ctas">
         <a href="{{ '/docs/quickstart/' | relative_url }}" class="aw-btn aw-btn-solid">Start free</a>
         <a href="#demo" class="aw-btn aw-btn-ghost">Watch it boot</a>
+        <a href="https://github.com/tdk-landscape/tdk-cli-core" class="aw-btn aw-btn-ghost" target="_blank" rel="noopener"><i class="bi bi-star-fill" aria-hidden="true"></i>&nbsp;Star on GitHub<span class="aw-hero-star-count" data-gh-stars hidden></span></a>
       </div>
     </div>
   </section>
