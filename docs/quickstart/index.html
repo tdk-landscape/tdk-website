@@ -19,45 +19,11 @@ title: Quick Start - TDK CLI
             <p>Do this first. Come back for manual binaries, licenses, and from-scratch service wiring after you have seen TDK boot once.</p>
           </div>
           <ol class="aw-quickstart-flow" aria-label="Simple setup steps">
-            <li><a href="#simple-setup"><span>1</span> Install</a></li>
+            <li><a href="#install-options"><span>1</span> Install</a></li>
             <li><a href="#before-you-run-it"><span>2</span> Check</a></li>
             <li><a href="#start-from-a-working-example"><span>3</span> Clone example</a></li>
             <li><a href="#what-actually-happens-when-you-run-it"><span>4</span> Run</a></li>
           </ol>
-        </div>
-
-        <h2 id="simple-setup">Simple setup</h2>
-        <p>If you already have Docker running, this is the whole happy path.</p>
-        <div class="aw-codeblock aw-codeblock--primary">
-          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
-          <pre>curl -fsSL https://tdk-landscape.github.io/install.sh | sh
-tdk doctor
-tdk project example
-cd tdk-example
-tdk up</pre>
-        </div>
-
-        <div class="aw-setup-grid">
-          <article class="aw-setup-step">
-            <span>01</span>
-            <h3>Install the CLI</h3>
-            <p>The installer picks the right public binary for macOS or Linux, Intel or Arm.</p>
-          </article>
-          <article class="aw-setup-step">
-            <span>02</span>
-            <h3>Run doctor</h3>
-            <p>TDK tells you what is missing before it tries to boot Docker, Tilt, or generated config.</p>
-          </article>
-          <article class="aw-setup-step">
-            <span>03</span>
-            <h3>Use the example</h3>
-            <p>Start from a working PSR landscape instead of inventing the folder structure cold.</p>
-          </article>
-          <article class="aw-setup-step">
-            <span>04</span>
-            <h3>Boot the stack</h3>
-            <p><code>tdk up</code> generates the local files and hands orchestration to Tilt.</p>
-          </article>
         </div>
 
         <h2 id="before-you-run-it">Before you run it</h2>
@@ -68,7 +34,7 @@ tdk up</pre>
           <li><a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a> {{ site.data.tdk.prereq_node }} for frontend stacks</li>
         </ul>
 
-        <h2>Install options</h2>
+        <h2 id="install-options">Install options</h2>
         <p>Using an AI coding agent? Paste the line below into its chat — it'll fetch <span class="aw-mono">llms.txt</span> and install TDK for you. Use curl if you just want the fastest install yourself. Use npm, npx, pnpm, or bun if you prefer package-manager workflows.</p>
         <div class="aw-install-tabs">
           <div class="aw-install-tabs-bar" role="tablist">
@@ -104,6 +70,39 @@ tdk up</pre>
               <pre>{{ site.data.tdk.install_bun }}</pre>
             </div>
           </div>
+        </div>
+
+        <h2 id="simple-setup">Simple setup</h2>
+        <p>Once TDK is installed — pick a method above — this is the whole happy path if you already have Docker running.</p>
+        <div class="aw-codeblock aw-codeblock--primary">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+          <pre>tdk doctor
+tdk project example
+cd tdk-example
+tdk up</pre>
+        </div>
+
+        <div class="aw-setup-grid">
+          <article class="aw-setup-step">
+            <span>01</span>
+            <h3>Install the CLI</h3>
+            <p>The installer picks the right public binary for macOS or Linux, Intel or Arm.</p>
+          </article>
+          <article class="aw-setup-step">
+            <span>02</span>
+            <h3>Run doctor</h3>
+            <p>TDK tells you what is missing before it tries to boot Docker, Tilt, or generated config.</p>
+          </article>
+          <article class="aw-setup-step">
+            <span>03</span>
+            <h3>Use the example</h3>
+            <p>Start from a working PSR landscape instead of inventing the folder structure cold.</p>
+          </article>
+          <article class="aw-setup-step">
+            <span>04</span>
+            <h3>Boot the stack</h3>
+            <p><code>tdk up</code> generates the local files and hands orchestration to Tilt.</p>
+          </article>
         </div>
 
         <h2>Verify installation</h2>
