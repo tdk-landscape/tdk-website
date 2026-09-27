@@ -1340,7 +1340,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
 .aw-why-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
@@ -1985,12 +1985,12 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-hero-inner">
       <h1>New developers ship code <span class="aw-accent">on day one.</span></h1>
       <p class="aw-hero-sub">
-        TDK sets up the entire technical workspace in minutes. No waiting, no setup weeks, no extra hires.
+        TDK sets up the entire technical workspace in minutes. No waiting and no setup weeks.
       </p>
       <div class="aw-hero-ctas">
         <a href="{{ '/docs/quickstart/' | relative_url }}" class="aw-btn aw-btn-solid">Start free</a>
         <a href="#demo" class="aw-btn aw-btn-ghost">Watch it boot</a>
-        <a href="https://github.com/tdk-landscape/tdk-cli-core" class="aw-btn aw-btn-ghost" target="_blank" rel="noopener"><i class="bi bi-star-fill" aria-hidden="true"></i>&nbsp;Star on GitHub<span class="aw-hero-star-count" data-gh-stars hidden></span></a>
+        <a href="https://github.com/tdk-landscape/tdk-cli-core" class="aw-btn aw-btn-ghost" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i>&nbsp;Source on GitHub</a>
       </div>
     </div>
   </section>
@@ -2972,15 +2972,15 @@ body { background: #0a0a0e; overflow-x: hidden; }
   <section class="aw-section" id="roi" style="padding-top: 0;">
     <div class="aw-wrap">
       <div class="aw-head">
-        <h2>The unit economics, stated plainly</h2>
-        <p>Conservative model: five engineering hours recovered per developer per week, plus one avoided platform hire.</p>
+        <h2>Your team, your assumptions</h2>
+        <p>The model counts developer time spent on local setup and upkeep. Set the hours to what you expect for your team.</p>
       </div>
 
       <div class="aw-bento">
         <!-- A: ROI calculator (2x2) -->
         <div class="aw-card aw-card-a">
-          <h3>How much will your company save?</h3>
-          <p>Drag the sliders. The formula is printed below — no magic numbers.</p>
+          <h3>What is the time worth?</h3>
+          <p>Drag the sliders. The formula is printed below.</p>
 
           <div class="aw-roi-slider-row">
             <div class="aw-roi-slider-head">
@@ -2998,6 +2998,14 @@ body { background: #0a0a0e; overflow-x: hidden; }
             <input type="range" class="aw-roi-slider" id="roi-salary" min="{{ site.data.tdk.calc_salary_min }}" max="{{ site.data.tdk.calc_salary_max }}" value="{{ site.data.tdk.calc_salary_default }}" step="{{ site.data.tdk.calc_salary_step }}" oninput="calcRoi()" />
           </div>
 
+          <div class="aw-roi-slider-row">
+            <div class="aw-roi-slider-head">
+              <span>Hours saved per developer per week</span>
+              <output id="roi-hours-week-value">{{ site.data.tdk.hours_per_week }}</output>
+            </div>
+            <input type="range" class="aw-roi-slider" id="roi-hours-week" min="1" max="10" value="{{ site.data.tdk.hours_per_week_num }}" step="1" oninput="calcRoi()" />
+          </div>
+
           <div class="aw-roi-results">
             <div class="aw-roi-cell">
               <strong id="roi-hours">{{ site.data.tdk.roi_hours_default }}</strong>
@@ -3005,16 +3013,16 @@ body { background: #0a0a0e; overflow-x: hidden; }
             </div>
             <div class="aw-roi-cell">
               <strong id="roi-productivity">{{ site.data.tdk.roi_prod_default }}</strong>
-              <span>productivity recovered / year</span>
+              <span>value of that time / year</span>
             </div>
             <div class="aw-roi-cell aw-roi-hero">
-              <strong id="roi-total">{{ site.data.tdk.roi_example_total }}</strong>
-              <span>total yearly savings incl. avoided DevOps hire</span>
+              <strong id="roi-total">{{ site.data.tdk.roi_net_default }}</strong>
+              <span>after paying for Premium (${{ site.data.tdk.team_price }}/dev/month)</span>
             </div>
           </div>
 
           <p style="margin-top: 1.75rem; font-size: 0.8125rem;">
-            Math: devs × {{ site.data.tdk.hours_per_week }} hrs × {{ site.data.tdk.weeks_per_year_num }} weeks × hourly rate (salary ÷ {{ site.data.tdk.work_hours }}) + one avoided platform-engineer hire ({{ site.data.tdk.devops_salary }}). TDK itself costs {{ site.data.tdk.community_price }} — open source, MIT.
+            Math: devs × {{ site.data.tdk.hours_per_week }} hrs × {{ site.data.tdk.weeks_per_year_num }} weeks × hourly rate (salary ÷ {{ site.data.tdk.work_hours }}) − devs × ${{ site.data.tdk.team_price }} × 12 for Premium. The free CLI costs {{ site.data.tdk.community_price }}.
           </p>
         </div>
 
@@ -3073,7 +3081,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   <!-- ================= SCRUB STATEMENT ================= -->
   <section class="aw-section aw-statement" id="statement" style="padding-top: 0;">
     <div class="aw-wrap">
-      <h2 id="aw-scrub-text">One manifest replaces <span class="aw-inline-img" style="background-image:linear-gradient(135deg, #7c4dff, #4dd0ff)"></span> cloud sandboxes at {{ site.data.tdk.cloud_cde_max }} per developer, <span class="aw-inline-img" style="background-image:linear-gradient(135deg, #f472b6, #7c4dff)"></span> weeks of YAML plumbing, and a <span class="aw-inline-img" style="background-image:linear-gradient(135deg, #4dd0ff, #7ee787)"></span> {{ site.data.tdk.devops_salary }} platform hire.</h2>
+      <h2 id="aw-scrub-text">One manifest replaces <span class="aw-inline-img" style="background-image:linear-gradient(135deg, #7c4dff, #4dd0ff)"></span> cloud sandboxes at {{ site.data.tdk.cloud_cde_max }} per developer, <span class="aw-inline-img" style="background-image:linear-gradient(135deg, #f472b6, #7c4dff)"></span> weeks of YAML plumbing, and a <span class="aw-inline-img" style="background-image:linear-gradient(135deg, #4dd0ff, #7ee787)"></span> wiki of setup steps nobody updates.</h2>
     </div>
   </section>
 
@@ -3200,12 +3208,6 @@ body { background: #0a0a0e; overflow-x: hidden; }
         </div>
         <div class="aw-acc-item">
           <div class="aw-acc-head">
-            <div class="aw-acc-title">Should we fire our DevOps team?</div>
-            <div class="aw-acc-body">No. TDK removes the local-environment babysitting — setup scripts, port conflicts, rotting onboarding docs. Your infrastructure people keep production and CI/CD; product engineers stop waiting on them. Teams without a DevOps hire can simply skip making one.</div>
-          </div>
-        </div>
-        <div class="aw-acc-item">
-          <div class="aw-acc-head">
             <div class="aw-acc-title">Is {{ site.data.tdk.scale_services }} services locally realistic?</div>
             <div class="aw-acc-body">Yes — selective startup runs only what you're working on, and golden L1–L4 layers keep rebuilds near-instant. The discovery daemon regenerates only what changed. Our daily driver is a {{ site.data.tdk.demo_services }}-service stack on a {{ site.data.tdk.machine }}, and it performs superbly; the same engine runs a {{ site.data.tdk.monorepo_services }}-service monorepo every day.</div>
           </div>
@@ -3213,7 +3215,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
         <div class="aw-acc-item">
           <div class="aw-acc-head">
             <div class="aw-acc-title">Where do the savings numbers come from?</div>
-            <div class="aw-acc-body">Transparent math: {{ site.data.tdk.hours_per_week }} hours per dev per week recovered, salary ÷ 2,080 working hours, plus one avoided platform-engineer role ({{ site.data.tdk.devops_salary }}/yr) or {{ site.data.tdk.cloud_sandbox }}/dev/month in cloud sandboxes. Try the calculator above with your own numbers.</div>
+            <div class="aw-acc-body">From the hours you set in the calculator: hours per developer per week × {{ site.data.tdk.weeks_per_year_num }} weeks × salary ÷ 2,080 working hours, minus Premium at ${{ site.data.tdk.team_price }}/dev/month. We don't claim a number for you; the free CLI costs nothing, so you can measure it on your own team first.</div>
           </div>
         </div>
       </div>
@@ -3261,19 +3263,11 @@ body { background: #0a0a0e; overflow-x: hidden; }
       </div>
 
       <div class="aw-why">
-        <h3>Why ${{ site.data.tdk.team_price }}? Because the alternatives cost {{ site.data.tdk.price_multiple_range }} more.</h3>
+        <h3>How ${{ site.data.tdk.team_price }} compares</h3>
         <div class="aw-why-grid">
           <div class="aw-why-item">
             <strong>vs cloud dev envs</strong>
             <p>Gitpod starts at {{ site.data.tdk.gitpod_entry }}/mo plus compute. Codespaces runs {{ site.data.tdk.codespaces_range }} per dev per month at full-time usage. TDK Premium is ${{ site.data.tdk.team_price }} flat — compute is your laptop.</p>
-          </div>
-          <div class="aw-why-item">
-            <strong>vs a DevOps hire</strong>
-            <p>{{ site.data.tdk.example_devs }} devs × ${{ site.data.tdk.team_price }} = {{ site.data.tdk.team_annual_10 }}/yr. One platform engineer costs {{ site.data.tdk.devops_salary }}/yr. A {{ site.data.tdk.devops_multiple }} difference for the local-environment portion of the job.</p>
-          </div>
-          <div class="aw-why-item">
-            <strong>vs lost hours</strong>
-            <p>${{ site.data.tdk.team_price }} is roughly {{ site.data.tdk.minutes_equiv }} of a fully-loaded developer's month. TDK returns about {{ site.data.tdk.hours_returned }}. It typically pays for itself in the first week.</p>
           </div>
           <div class="aw-why-item">
             <strong>vs enterprise CDEs</strong>
@@ -3371,10 +3365,12 @@ function startWhenNearViewport(target, start, options) {
 function calcRoi() {
   var devs = parseInt(document.getElementById('roi-devs').value, 10);
   var salary = parseInt(document.getElementById('roi-salary').value, 10);
-  var hours = devs * {{ site.data.tdk.hours_per_week_num }} * {{ site.data.tdk.weeks_per_year_num }};
+  var perWeek = parseInt(document.getElementById('roi-hours-week').value, 10);
+  var hours = devs * perWeek * {{ site.data.tdk.weeks_per_year_num }};
   var productivity = Math.round(hours * (salary / {{ site.data.tdk.work_hours_num }}));
-  var total = productivity + {{ site.data.tdk.devops_salary_num }};
+  var total = productivity - devs * {{ site.data.tdk.team_price }} * 12;
   document.getElementById('roi-devs-value').textContent = devs;
+  document.getElementById('roi-hours-week-value').textContent = perWeek;
   document.getElementById('roi-salary-value').textContent = '$' + salary.toLocaleString('en-US');
   document.getElementById('roi-hours').textContent = hours.toLocaleString('en-US');
   document.getElementById('roi-productivity').textContent = '$' + productivity.toLocaleString('en-US');
