@@ -3808,16 +3808,21 @@ if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
     scrollTrigger: { trigger: '.aw-plain', start: 'top 85%' }
   });
 
-  /* Paradigm 1: Scroll Pinning Split — terminal title pinned while the boot log plays */
-  if (window.matchMedia('(min-width: 1000px)').matches) {
-    ScrollTrigger.create({
-      trigger: '#demo',
-      start: 'top top',
-      end: 'bottom 85%',
-      pin: '#aw-term-pin',
-      pinSpacing: false
-    });
-  }
+  /* Paradigm 1: Scroll Pinning Split — terminal title pinned while the boot log plays.
+     matchMedia (not a one-time width check) so the pin is torn down if the viewport
+     crosses 1000px after load — otherwise the fixed-position title keeps overlapping
+     the terminal once CSS switches to the single-column mobile layout. */
+  ScrollTrigger.matchMedia({
+    '(min-width: 1000px)': function () {
+      ScrollTrigger.create({
+        trigger: '#demo',
+        start: 'top top',
+        end: 'bottom 85%',
+        pin: '#aw-term-pin',
+        pinSpacing: false
+      });
+    }
+  });
 
   /* Paradigm 2: Scrubbing Text Reveal — words 0.1 → 1 sequentially */
   (function () {
