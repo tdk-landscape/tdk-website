@@ -195,6 +195,12 @@ tdk resource api --type backend --stack shop   <span class="c"># asks you to con
 tdk project --check
 tdk up shop</pre>
         </div>
+        <p>Add a frontend the same way. It is React by default; pass <code>--framework vue</code> for Vue 3 (TDK CLI 1.3.75 or newer):</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
+          <pre>tdk resource web --type frontend --stack shop                   <span class="c"># React + Vite (default)</span>
+tdk resource web --type frontend --framework vue --stack shop   <span class="c"># Vue 3 + Vite</span></pre>
+        </div>
         <p>TDK validates <code>.tdk/project.json</code>, generates files in <code>.tdk/.tdk-out/</code>, and reads boot order from each resource's <code>dependsOn</code> list.</p>
 
         <details class="aw-docs-details">
