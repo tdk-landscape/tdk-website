@@ -7,7 +7,7 @@ sitemap: false
 
 > Kubernetes-free microservice development. Run your whole service landscape locally without learning Kubernetes (a {{ site.data.tdk.scale_plain }}-service fixture boots on a clean CI runner in about {{ site.data.tdk.erp_boot_minutes }} minutes) — one service.json generates {{ site.data.tdk.files_per_service }} files per service.
 
-TDK is a manifest-driven CLI built on Tilt and Starlark. Write one `service.json` per service and TDK generates Dockerfiles, Docker Compose, Vite/TypeScript config, Traefik, Postgres, NATS JetStream, Prisma, and other stack-wide artifacts from it — running on plain Docker, no Kubernetes cluster required. The free tier needs no license key and costs nothing, ever.
+TDK is a manifest-driven CLI built on Tilt and Starlark. Write one `service.json` per service and TDK generates Dockerfiles, Docker Compose, Vite/TypeScript config (React or Vue 3 frontends), Traefik, Postgres, NATS JetStream wiring, Prisma, and other stack-wide artifacts from it — running on plain Docker, no Kubernetes cluster required. The free tier needs no license key and costs nothing, ever.
 
 ## Getting Started
 
@@ -47,6 +47,8 @@ GitHub releases: https://github.com/tdk-landscape/tdk-cli-releases/releases/late
 - [tdk-user-management](https://github.com/tdk-landscape/tdk-user-management): enterprise SCIM 2.0 & OAuth2 PKCE demo
 - [tdk-restaurant-example](https://github.com/tdk-landscape/tdk-restaurant-example): restaurant operations demo — reservations, kitchen, menu, floor ops
 - [tdk-erp-system](https://github.com/tdk-landscape/tdk-erp-system): {{ site.data.tdk.erp_services }}-service scale fixture across {{ site.data.tdk.erp_domains }} ERP-style domains; all healthy on a clean CI runner in {{ site.data.tdk.erp_boot_seconds }} s, images built ({{ site.data.tdk.erp_ci_run }})
+- [tdk-ecommerce-example](https://github.com/tdk-landscape/tdk-ecommerce-example): Vue 3 storefront + Hono catalog API; smallest example of `--framework vue`
+- [tdk-auth-queue-email-example](https://github.com/tdk-landscape/tdk-auth-queue-email-example): run an OIDC identity provider, a NATS queue and email (Mailpit) locally behind small interfaces
 - [tdk-saas-starter](https://github.com/tdk-landscape/tdk-saas-starter): SaaS dashboard + checkout starter
 
 ## Field Notes
