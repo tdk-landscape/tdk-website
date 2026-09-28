@@ -2551,68 +2551,146 @@ body:has(.aw) .site-footer {
   }
 }
 
-/* ---------------- Restaurant example showcase ---------------- */
+/* ---------------- Examples page ----------------
+   One accent (brand violet / signal lavender) across every example.
+   Grids are sized to their content: 5 repos = 1 tall + 4, 7 domains =
+   1 wide + 6, so no row ever ends in an empty cell. */
+
+/* Repo cards: tall restaurant card on the right, 2x2 on the left */
 .aw-doc-cards-featured {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-flow: row dense;
+  margin-bottom: 4.5rem;
+}
+
+.aw-doc-cards-featured .aw-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+}
+
+.aw-doc-cards-featured .aw-card:hover {
+  border-color: rgba(183, 154, 255, 0.42);
+}
+
+.aw-doc-cards-featured .aw-card:active {
+  transform: translateY(-2px) scale(0.99);
+}
+
+.aw-doc-cards-featured .aw-card:focus-visible {
+  outline: 2px solid #b79aff;
+  outline-offset: 3px;
+}
+
+.aw-doc-cards .aw-card .aw-repo-kicker {
+  display: block;
+  margin: 0 0 0.6rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(236, 236, 241, 0.55);
+}
+
+.aw-docs-body .aw-doc-cards-featured h3 {
+  margin: 0 0 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+}
+
+.aw-doc-cards-featured p {
+  text-wrap: pretty;
+}
+
+.aw-doc-cards .aw-card .aw-repo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  color: #b79aff;
+}
+
+.aw-doc-cards .aw-card .aw-repo-link i {
+  font-size: 0.85em;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.aw-doc-cards .aw-card:hover .aw-repo-link i {
+  transform: translate(2px, -2px);
 }
 
 .aw-card-restaurant {
+  grid-column: 3;
+  grid-row: 1 / span 2;
   background:
-    radial-gradient(ellipse 80% 70% at 20% 0%, rgba(238, 146, 78, 0.18), transparent 62%),
+    radial-gradient(ellipse 90% 60% at 30% 0%, rgba(124, 77, 255, 0.16), transparent 65%),
     #121218;
-  border-color: rgba(238, 146, 78, 0.34);
-}
-
-.aw-card-restaurant:hover {
-  border-color: rgba(238, 146, 78, 0.72);
 }
 
 .aw-restaurant-photo {
-  height: 9rem;
-  margin: -0.75rem -0.75rem 1.35rem;
+  flex: 1 1 auto;
+  min-height: 11rem;
+  margin: -0.5rem -0.5rem 1.35rem;
   border-radius: 1rem;
   background-image:
-    linear-gradient(180deg, rgba(10, 10, 14, 0.12), rgba(10, 10, 14, 0.72)),
-    url('https://picsum.photos/seed/tdk-restaurant-service-pass/900/520');
+    linear-gradient(180deg, rgba(10, 10, 14, 0.05), rgba(10, 10, 14, 0.55)),
+    url('https://picsum.photos/seed/tdk-restaurant-service-pass/900/1100');
   background-position: center;
   background-size: cover;
-  filter: grayscale(0.25) contrast(1.16) saturate(0.88);
+  filter: grayscale(0.35) contrast(1.1) saturate(0.85);
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s ease;
 }
 
 .aw-card-restaurant:hover .aw-restaurant-photo {
-  transform: scale(1.04);
-  filter: grayscale(0.08) contrast(1.2) saturate(0.98);
+  transform: scale(1.03);
+  filter: grayscale(0.15) contrast(1.14) saturate(0.95);
 }
 
-.aw-repo-kicker {
-  margin-top: 0 !important;
-  color: #ee924e !important;
-  letter-spacing: 0.01em;
+.aw-card-erp .aw-repo-kicker {
+  padding-right: 4rem;
 }
 
-.aw-repo-link {
-  margin-top: 1.25rem !important;
-  display: inline-flex !important;
+.aw-erp-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.35rem;
-  color: #ee924e !important;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgba(124, 77, 255, 0.14);
+  border: 1px solid rgba(183, 154, 255, 0.35);
+  color: #b79aff;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1;
 }
 
-.aw-restaurant-showcase {
+.aw-erp-badge small {
+  margin-top: 0.15rem;
+  font-size: 0.55rem;
+  font-weight: 500;
+  color: rgba(236, 236, 241, 0.55);
+}
+
+/* Showcases (restaurant + scale fixture) */
+.aw-example-showcase {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(22rem, 1.08fr);
-  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
-  margin: 4.5rem 0 5.5rem;
-  padding: clamp(2rem, 5vw, 4.5rem);
-  border: 1px solid rgba(238, 146, 78, 0.22);
-  border-radius: 1.25rem;
+  margin: 1.75rem 0 2rem;
+  padding: clamp(2rem, 4.5vw, 3.5rem);
+  border: 1px solid rgba(183, 154, 255, 0.16);
+  border-radius: 1.5rem;
   overflow: hidden;
   background:
-    linear-gradient(110deg, rgba(238, 146, 78, 0.16), transparent 42%),
-    radial-gradient(ellipse 70% 90% at 90% 10%, rgba(238, 146, 78, 0.28), transparent 60%),
+    radial-gradient(ellipse 70% 90% at 95% 0%, rgba(124, 77, 255, 0.2), transparent 60%),
     #101015;
 }
 
@@ -2624,183 +2702,276 @@ body:has(.aw) .site-footer {
   background-image: url('https://picsum.photos/seed/tdk-evening-restaurant-floor/1600/1000');
   background-position: center;
   background-size: cover;
-  filter: grayscale(0.72) contrast(1.24);
-  opacity: 0.16;
+  filter: grayscale(1) contrast(1.2);
+  opacity: 0.12;
 }
 
-.aw-restaurant-copy,
-.aw-restaurant-stage {
+.aw-example-copy,
+.aw-example-stage {
   position: relative;
   z-index: 1;
 }
 
-.aw-restaurant-kicker {
-  margin: 0 0 1rem !important;
-  color: #ee924e !important;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.82rem !important;
+.aw-docs-body .aw-example-copy h3 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 2.6vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-wrap: balance;
 }
 
-.aw-restaurant-copy h2 {
-  margin-top: 0;
-  max-width: 38rem;
-  font-size: clamp(2.25rem, 4vw, 4.2rem);
-  line-height: 1;
-}
-
-.aw-restaurant-copy p:not(.aw-restaurant-kicker) {
+.aw-example-copy p {
   max-width: 34rem;
+  margin: 0;
+  color: rgba(236, 236, 241, 0.68);
+  text-wrap: pretty;
 }
 
-.aw-restaurant-actions {
+.aw-example-copy p a {
+  color: #b79aff;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.aw-example-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.875rem;
+  gap: 0.75rem;
   margin-top: 1.75rem;
 }
 
+.aw-example-actions .aw-btn {
+  padding: 0.8rem 1.6rem;
+  font-size: 0.9375rem;
+}
+
+.aw-docs-body .aw-example-actions .aw-btn-solid,
+.aw-docs-body .aw-example-actions .aw-btn-solid:hover {
+  color: #0a0a0e;
+  text-decoration: none;
+}
+
+.aw-docs-body .aw-example-actions .aw-btn-ghost,
+.aw-docs-body .aw-example-actions .aw-btn-ghost:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.aw-example-actions .aw-btn:focus-visible {
+  outline: 2px solid #b79aff;
+  outline-offset: 3px;
+}
+
+.aw-example-actions .aw-btn:active {
+  transform: scale(0.98);
+}
+
+/* Restaurant stage: three stacks, offset like a service pass */
 .aw-restaurant-stage {
-  min-height: 31rem;
+  display: grid;
+  gap: 0.85rem;
 }
 
 .aw-restaurant-panel {
-  position: absolute;
   display: grid;
-  gap: 0.65rem;
-  width: min(22rem, 86%);
-  padding: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1.25rem;
-  background: rgba(12, 12, 17, 0.72);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
-  backdrop-filter: blur(18px);
-}
-
-.aw-restaurant-panel strong {
-  color: #fff;
-  font-size: 1.25rem;
-  letter-spacing: -0.02em;
-}
-
-.aw-restaurant-panel span {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.82rem;
-  color: rgba(236, 236, 241, 0.83);
-}
-
-.aw-restaurant-panel-main {
-  top: 1rem;
-  left: 1rem;
+  gap: 0.45rem;
+  width: 86%;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  background: rgba(12, 12, 17, 0.78);
+  box-shadow: 0 20px 50px rgba(6, 4, 16, 0.45);
+  backdrop-filter: blur(16px);
 }
 
 .aw-restaurant-panel-kitchen {
-  top: 11rem;
-  right: 0;
-  border-color: rgba(238, 146, 78, 0.36);
+  margin-left: auto;
+  border-color: rgba(183, 154, 255, 0.34);
 }
 
 .aw-restaurant-panel-floor {
-  bottom: 1rem;
-  left: 5rem;
+  margin-left: 7%;
 }
 
-.aw-restaurant-resource-grid {
+.aw-restaurant-panel strong,
+.aw-erp-panel strong {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.aw-restaurant-panel span,
+.aw-erp-panel span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: rgba(236, 236, 241, 0.7);
+}
+
+/* ERP stage: 7 domains = 6 halves + 1 full-width row */
+.aw-erp-stage {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.aw-erp-panel {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.95rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.875rem;
+  background: rgba(18, 18, 24, 0.85);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.5s ease;
+}
+
+.aw-erp-panel:hover {
+  transform: translateY(-3px);
+  border-color: rgba(183, 154, 255, 0.4);
+}
+
+.aw-erp-panel-analytics {
+  grid-column: 1 / -1;
+}
+
+/* Resource / domain link grids */
+.aw-restaurant-resource-grid,
+.aw-erp-domain-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-flow: dense;
+  grid-auto-flow: row dense;
   gap: 1rem;
-  margin: 1.5rem 0 2.5rem;
+  margin: 0 0 2.5rem;
 }
 
-.aw-restaurant-resource-grid a {
-  display: grid;
-  gap: 0.75rem;
-  min-height: 13rem;
+.aw-restaurant-resource-grid a,
+.aw-erp-domain-grid a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   padding: 1.35rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 1.25rem;
   background: #121218;
   text-decoration: none;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.45s ease;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.45s ease, background 0.45s ease;
+}
+
+.aw-restaurant-resource-grid a:hover,
+.aw-erp-domain-grid a:hover {
+  transform: translateY(-4px);
+  border-color: rgba(183, 154, 255, 0.4);
+}
+
+.aw-restaurant-resource-grid a:focus-visible,
+.aw-erp-domain-grid a:focus-visible {
+  outline: 2px solid #b79aff;
+  outline-offset: 3px;
 }
 
 .aw-restaurant-resource-grid a:nth-child(1),
-.aw-restaurant-resource-grid a:nth-child(4) {
+.aw-erp-domain-grid a.is-wide {
   background:
-    radial-gradient(ellipse 90% 90% at 15% 0%, rgba(238, 146, 78, 0.22), transparent 62%),
+    radial-gradient(ellipse 90% 90% at 10% 0%, rgba(124, 77, 255, 0.18), transparent 62%),
     #121218;
 }
 
-.aw-restaurant-resource-grid a:hover {
-  transform: translateY(-4px);
-  border-color: rgba(238, 146, 78, 0.5);
+.aw-erp-domain-grid a.is-wide {
+  grid-column: span 2;
 }
 
-.aw-restaurant-resource-grid i {
-  color: #ee924e;
-  font-size: 1.65rem;
+.aw-restaurant-resource-grid i,
+.aw-erp-domain-grid i {
+  margin-bottom: 0.35rem;
+  color: #b79aff;
+  font-size: 1.4rem;
 }
 
-.aw-restaurant-resource-grid strong {
+.aw-restaurant-resource-grid strong,
+.aw-erp-domain-grid strong {
   color: #fff;
-  font-size: 1.12rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
 }
 
-.aw-restaurant-resource-grid span {
-  color: rgba(236, 236, 241, 0.75);
-  font-size: 0.95rem;
-  line-height: 1.55;
+.aw-restaurant-resource-grid span,
+.aw-erp-domain-grid span {
+  color: rgba(236, 236, 241, 0.62);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
-.aw-restaurant-code {
-  border-color: rgba(238, 146, 78, 0.26);
+.aw-erp-domain-grid .aw-domain-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #b79aff;
 }
 
-@media (max-width: 980px) {
+.aw-docs-body .aw-example-manifest {
+  margin-top: 0;
+}
 
-  .aw-doc-cards-featured,
-  .aw-restaurant-resource-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .aw-restaurant-showcase {
+@media (max-width: 1100px) {
+  .aw-example-showcase {
     grid-template-columns: 1fr;
   }
 
-  .aw-restaurant-stage {
-    min-height: 26rem;
+  .aw-restaurant-panel {
+    width: 100%;
+  }
+
+  .aw-restaurant-panel-kitchen,
+  .aw-restaurant-panel-floor {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 980px) {
+  .aw-doc-cards-featured,
+  .aw-restaurant-resource-grid,
+  .aw-erp-domain-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .aw-card-restaurant {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .aw-restaurant-photo {
+    flex: none;
+    height: 12rem;
+  }
+
+  .aw-erp-domain-grid a.is-wide {
+    grid-column: 1 / -1;
   }
 }
 
 @media (max-width: 640px) {
-
   .aw-doc-cards-featured,
-  .aw-restaurant-resource-grid {
+  .aw-restaurant-resource-grid,
+  .aw-erp-domain-grid {
     grid-template-columns: 1fr;
   }
 
-  .aw-restaurant-showcase {
-    margin-block: 3rem;
-    padding: 1.25rem;
+  .aw-erp-stage {
+    gap: 0.6rem;
   }
 
-  .aw-restaurant-stage {
-    min-height: 0;
-    display: grid;
-    gap: 0.85rem;
-  }
-
-  .aw-restaurant-panel {
-    position: relative;
-    inset: auto;
-    width: 100%;
+  .aw-example-showcase {
+    padding: 1.35rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .aw-restaurant-photo,
   .aw-restaurant-resource-grid a,
+  .aw-erp-domain-grid a,
+  .aw-erp-panel,
+  .aw-repo-link i,
   .aw-card {
     transition: none;
   }
