@@ -5,7 +5,7 @@ sitemap: false
 ---
 # TDK CLI
 
-> Kubernetes-free microservice development. Run {{ site.data.tdk.scale_services }} services locally without learning Kubernetes — one service.json generates {{ site.data.tdk.files_per_service }} files per service.
+> Kubernetes-free microservice development. Run your whole service landscape locally without learning Kubernetes (a {{ site.data.tdk.scale_plain }}-service fixture boots on a clean CI runner in about {{ site.data.tdk.erp_boot_minutes }} minutes) — one service.json generates {{ site.data.tdk.files_per_service }} files per service.
 
 TDK is a manifest-driven CLI built on Tilt and Starlark. Write one `service.json` per service and TDK generates Dockerfiles, Docker Compose, Vite/TypeScript config, Traefik, Postgres, NATS JetStream, Prisma, and other stack-wide artifacts from it — running on plain Docker, no Kubernetes cluster required. The free tier needs no license key and costs nothing, ever.
 

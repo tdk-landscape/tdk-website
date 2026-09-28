@@ -3058,8 +3058,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
         <div class="aw-card aw-card-d">
           <img class="aw-scroll-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgNjAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFhMWEyNCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhMGEwZSIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJib3giIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjN2M0ZGZmIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNGRkMGZmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InVybCgjYmcpIi8+PGc+PHJlY3QgeD0iNjAiIHk9IjgwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjkwIiByeD0iNiIgZmlsbD0idXJsKCNib3gpIiBvcGFjaXR5PSIwLjkiLz48cmVjdCB4PSIyMzAiIHk9IjgwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjkwIiByeD0iNiIgZmlsbD0idXJsKCNib3gpIiBvcGFjaXR5PSIwLjUiLz48cmVjdCB4PSI0MDAiIHk9IjgwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjkwIiByeD0iNiIgZmlsbD0idXJsKCNib3gpIiBvcGFjaXR5PSIwLjMiLz48cmVjdCB4PSI2MCIgeT0iMTkwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjkwIiByeD0iNiIgZmlsbD0idXJsKCNib3gpIiBvcGFjaXR5PSIwLjUiLz48cmVjdCB4PSIyMzAiIHk9IjE5MCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSI5MCIgcng9IjYiIGZpbGw9InVybCgjYm94KSIgb3BhY2l0eT0iMC45Ii8+PHJlY3QgeD0iNDAwIiB5PSIxOTAiIHdpZHRoPSIxNDAiIGhlaWdodD0iOTAiIHJ4PSI2IiBmaWxsPSJ1cmwoI2JveCkiIG9wYWNpdHk9IjAuNSIvPjxyZWN0IHg9IjYwIiB5PSIzMDAiIHdpZHRoPSIxNTAiIGhlaWdodD0iOTAiIHJ4PSI2IiBmaWxsPSJ1cmwoI2JveCkiIG9wYWNpdHk9IjAuMyIvPjxyZWN0IHg9IjIzMCIgeT0iMzAwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjkwIiByeD0iNiIgZmlsbD0idXJsKCNib3gpIiBvcGFjaXR5PSIwLjUiLz48cmVjdCB4PSI0MDAiIHk9IjMwMCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI5MCIgcng9IjYiIGZpbGw9InVybCgjYm94KSIgb3BhY2l0eT0iMC45Ii8+PHJlY3QgeD0iNjAiIHk9IjQxMCIgd2lkdGg9IjQ4MCIgaGVpZ2h0PSI5MCIgcng9IjYiIGZpbGw9InVybCgjYm94KSIgb3BhY2l0eT0iMC4yNSIvPjwvZz48L3N2Zz4K" alt="Grid of containers representing {{ site.data.tdk.scale_services }} microservices" loading="lazy" />
           <div class="aw-card-d-caption">
-            <strong>{{ site.data.tdk.scale_services }}</strong>
-            <span>services proven running locally</span>
+            <strong>{{ site.data.tdk.scale_plain }}</strong>
+            <span>small generated services boot from scratch on a clean CI runner in about {{ site.data.tdk.erp_boot_minutes }} minutes (<a href="{{ site.data.tdk.erp_ci_run }}" target="_blank" rel="noopener">the run</a>)</span>
           </div>
         </div>
 
@@ -3208,8 +3208,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
         </div>
         <div class="aw-acc-item">
           <div class="aw-acc-head">
-            <div class="aw-acc-title">Is {{ site.data.tdk.scale_services }} services locally realistic?</div>
-            <div class="aw-acc-body">Yes — selective startup runs only what you're working on, and golden L1–L4 layers keep rebuilds near-instant. The discovery daemon regenerates only what changed. Our daily driver is a {{ site.data.tdk.demo_services }}-service stack on a {{ site.data.tdk.machine }}, and it performs superbly; the same engine runs a {{ site.data.tdk.monorepo_services }}-service monorepo every day.</div>
+            <div class="aw-acc-title">Is {{ site.data.tdk.scale_plain }} services locally realistic?</div>
+            <div class="aw-acc-body">As a boot test, yes: {{ site.data.tdk.scale_plain }} small generated services (about 20 lines each, answering <code>/health</code>) all became healthy through Traefik in {{ site.data.tdk.erp_boot_seconds }} s on a clean CI runner, images built from scratch (<a href="{{ site.data.tdk.erp_ci_run }}" target="_blank" rel="noopener">the run</a>). That is a scale fixture, not a real ERP. Real services with real dependencies use more memory. Selective startup runs only what you're working on, and golden L1–L4 layers keep rebuilds near-instant. The discovery daemon regenerates only what changed. Our daily driver is a {{ site.data.tdk.demo_services }}-service stack on a {{ site.data.tdk.machine }}, and it performs superbly; the same engine runs a {{ site.data.tdk.monorepo_services }}-service monorepo every day.</div>
           </div>
         </div>
         <div class="aw-acc-item">
@@ -3236,7 +3236,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
           <div class="aw-price-value">{{ site.data.tdk.community_price }} <small>/ forever</small></div>
           <p class="aw-price-desc">The full CLI, MIT-licensed, no license key required. Our adoption engine — the same model as Tilt and Skaffold.</p>
           <ul class="aw-price-list">
-            <li>Unlimited services per project, {{ site.data.tdk.scale_services }} proven</li>
+            <li>Unlimited services per project, {{ site.data.tdk.scale_plain }} tested (small fixture)</li>
             <li>All free generators — {{ site.data.tdk.files_per_service }} files per service</li>
             <li>L1–L4 golden Docker images without Verdaccio registry</li>
             <li>No license key needed, ever</li>
