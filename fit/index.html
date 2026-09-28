@@ -445,9 +445,9 @@ function calcFit() {
   if (services <= 1) {
     reasons.push(['✗', 'One service doesn\'t need a multi-service orchestrator — TDK shines at 5+.']);
   } else if (services < 5) {
-    reasons.push(['~', 'A few services already benefit, but TDK\'s proven sweet spot is 5–{{ site.data.tdk.scale_services }} services.']);
+    reasons.push(['~', 'A few services already benefit, but TDK\'s sweet spot is 5+ services (tested up to {{ site.data.tdk.scale_plain }} small ones).']);
   } else {
-    reasons.push(['✓', services + ' services is squarely in TDK\'s proven range (5–{{ site.data.tdk.scale_services }} services in daily use).']);
+    reasons.push(['✓', services + ' services is squarely in TDK\'s range (a {{ site.data.tdk.monorepo_services }}-service monorepo runs on it daily; {{ site.data.tdk.scale_plain }} small services are tested in CI).']);
   }
 
   if (devs < 5) {
