@@ -11,7 +11,7 @@ TDK is a manifest-driven CLI built on Tilt and Starlark. Write one `service.json
 
 ## Getting Started
 
-Fastest install (macOS/Linux, picks the right binary for your arch):
+Fastest binary install (macOS/Linux, picks the right binary for your arch):
 
 ```
 curl -fsSL https://tdk-landscape.github.io/install.sh | sh
@@ -22,6 +22,16 @@ tdk up
 ```
 
 Also installable via npm, npx, pnpm, or bun — see [Quick Start]({{ '/docs/quickstart/' | absolute_url }}) for every option.
+
+### Native Windows 10/11 (AMD64)
+
+Use Docker Desktop in Linux container mode and install [Tilt for Windows](https://docs.tilt.dev/install.html). The native Windows CLI and Windows smoke CI are merged, but the public Windows executable and real Windows 11 acceptance run are still pending. Once the latest release includes `tdk-windows-amd64.exe`, install it from PowerShell with:
+
+```
+irm https://tdk-landscape.github.io/install.ps1 | iex
+```
+
+Then open a new PowerShell window and run `tdk --version`, `tdk doctor`, `tdk project example`, and `tdk up`. WSL2 Ubuntu works as Linux. See [Windows Quick Start]({{ '/docs/quickstart/' | absolute_url }}#windows-setup) for port, DNS, and Docker file-sharing guidance.
 
 GitHub releases: https://github.com/tdk-landscape/tdk-cli-releases/releases/latest
 
@@ -64,4 +74,5 @@ Free needs no license key and costs nothing, ever — `tdk up` runs with zero se
 ## Optional
 
 - [Sitemap]({{ '/sitemap.xml' | absolute_url }})
-- [Install script](https://tdk-landscape.github.io/install.sh)
+- [macOS/Linux install script](https://tdk-landscape.github.io/install.sh)
+- [Windows PowerShell installer](https://tdk-landscape.github.io/install.ps1) (requires a release containing the Windows AMD64 executable)
