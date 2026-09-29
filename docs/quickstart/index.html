@@ -33,7 +33,53 @@ title: Quick Start - TDK CLI
           <li><a href="https://docs.tilt.dev/install.html" target="_blank" rel="noopener">Tilt</a> installed</li>
           <li><a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a> {{ site.data.tdk.prereq_node }} for frontend stacks</li>
         </ul>
-        <p><strong>Platforms:</strong> macOS and Linux are tested (CI boots a project on Ubuntu). Windows is untested; WSL2 may work, but nothing here has been verified on it.</p>
+        <p><strong>Current release platforms:</strong> macOS and Linux. Native Windows AMD64 CLI support has merged and its Windows smoke checks pass, but the public release asset and real Windows 11 acceptance run are still pending. Windows instructions below apply once the latest release includes <code>tdk-windows-amd64.exe</code>. WSL2 Ubuntu works as Linux.</p>
+
+        <h2 id="windows-setup">Windows 10/11 setup (AMD64)</h2>
+        <p>Use PowerShell on a 64-bit Intel or AMD PC. TDK runs Linux containers through Docker Desktop; Windows containers are not supported. You do not need Administrator access for normal TDK commands.</p>
+        <p>The installer downloads the latest Windows AMD64 executable. If the latest release does not include <code>tdk-windows-amd64.exe</code> yet, wait for the Windows-enabled CLI release before running the install command.</p>
+        <ol>
+          <li><a href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener">Install Docker Desktop</a>, switch it to Linux containers, and wait until Docker Desktop says it is running.</li>
+          <li><a href="https://docs.tilt.dev/install.html" target="_blank" rel="noopener">Install Tilt for Windows</a>.</li>
+          <li>Install TDK from PowerShell:
+            <div class="aw-codeblock">
+              <div class="aw-codeblock-head"><i></i><i></i><i></i><span>PowerShell</span></div>
+              <pre>irm https://tdk-landscape.github.io/install.ps1 | iex</pre>
+            </div>
+            <p>Or download and inspect the script before running it:</p>
+            <div class="aw-codeblock">
+              <div class="aw-codeblock-head"><i></i><i></i><i></i><span>PowerShell</span></div>
+              <pre>Invoke-WebRequest https://tdk-landscape.github.io/install.ps1 -OutFile install-tdk.ps1
+powershell -ExecutionPolicy Bypass -File .\install-tdk.ps1</pre>
+            </div>
+          </li>
+          <li>Close PowerShell and open a new window so the updated PATH is loaded.</li>
+          <li>Verify TDK and the machine setup:
+            <div class="aw-codeblock">
+              <div class="aw-codeblock-head"><i></i><i></i><i></i><span>PowerShell</span></div>
+              <pre>tdk --version
+tdk doctor</pre>
+            </div>
+          </li>
+          <li>Scaffold and start the example:
+            <div class="aw-codeblock">
+              <div class="aw-codeblock-head"><i></i><i></i><i></i><span>PowerShell</span></div>
+              <pre>tdk project example
+cd tdk-example
+tdk up
+tdk networks</pre>
+            </div>
+          </li>
+        </ol>
+        <p>TDK networks prints hostname URLs and numeric <code>127.0.0.1</code> URLs. If <code>*.tdk.localhost</code> does not resolve on your Windows setup, use the numeric URL while you fix the hosts-file entries reported by <code>tdk doctor</code>.</p>
+
+        <h3>Windows problems</h3>
+        <ul>
+          <li><strong>Docker Desktop is stopped or using Windows containers:</strong> start Docker Desktop and wait for “Running”; switch to Linux containers.</li>
+          <li><strong>Ports 80, 443, or 5432 are unavailable:</strong> close the process listening on the port. If <code>tdk doctor</code> says Hyper-V/WSL reserved it, follow the suggested Windows networking fix or configure an existing TDK project port override.</li>
+          <li><strong><code>*.localhost</code> does not resolve:</strong> add the two loopback host entries that <code>tdk doctor</code> prints, using an elevated Notepad for the hosts file, or use the numeric URLs from <code>tdk networks</code>.</li>
+          <li><strong>Docker cannot mount the project:</strong> in Docker Desktop, open Settings → Resources → File sharing and include the drive containing the project.</li>
+        </ul>
 
         <h2 id="install-options">Install options</h2>
         <p>Using an AI coding agent? Paste the line below into its chat — it'll fetch <span class="aw-mono">llms.txt</span> and install TDK for you. Use curl if you just want the fastest install yourself. Use npm, npx, pnpm, or bun if you prefer package-manager workflows.</p>
@@ -206,6 +252,20 @@ tdk resource web --type frontend --framework vue --stack shop   <span class="c">
         <details class="aw-docs-details">
           <summary>Manual binary download</summary>
           <p>Download the binary, its engine files and the checksums yourself. The binary looks for the <code>tdk-cli/</code> folder next to it.</p>
+          <h3>Windows AMD64 (PowerShell)</h3>
+          <p>Run this after a Windows-enabled CLI release appears in the latest releases:</p>
+          <div class="aw-codeblock">
+            <div class="aw-codeblock-head"><i></i><i></i><i></i><span>PowerShell</span></div>
+            <pre>$dir = "$env:LOCALAPPDATA\tdk\bin"
+New-Item -ItemType Directory -Force $dir | Out-Null
+$base = "https://github.com/tdk-landscape/tdk-cli-releases/releases/latest/download"
+Invoke-WebRequest "$base/tdk-windows-amd64.exe" -OutFile "$dir\tdk.exe"
+Invoke-WebRequest "$base/tdk-cli-engine.tar.gz" -OutFile "$dir\tdk-cli-engine.tar.gz"
+Invoke-WebRequest "$base/checksums.txt" -OutFile "$dir\checksums.txt"
+New-Item -ItemType Directory -Force "$dir\tdk-cli" | Out-Null
+tar -xzf "$dir\tdk-cli-engine.tar.gz" -C "$dir\tdk-cli" --strip-components=1</pre>
+          </div>
+          <p>Use <code>install.ps1</code> instead when possible; it verifies the executable checksum and adds the install folder to your user PATH. Older Windows <code>tar.exe</code> versions may not support <code>--strip-components</code>; the installer handles that fallback.</p>
           <div class="aw-codeblock">
             <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
             <pre>os=$(uname -s | tr A-Z a-z); arch=$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")
