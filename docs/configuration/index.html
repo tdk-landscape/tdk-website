@@ -10,28 +10,43 @@ title: Configuration - TDK CLI
 
       <div class="aw-docs-body">
         <h1>Configuration</h1>
-        <p class="aw-lead">The <code>service.json</code> file is the single source of truth for each service. Here is the complete schema.</p>
+        <p class="aw-lead">TDK has two JSON configuration files: a <code>service.json</code> per service and a project-level <code>.tdk/project.json</code>. These schemas help your editor; the CLI remains the runtime source of truth.</p>
 
-        <h2>service.json schema</h2>
+        <h2>service.json</h2>
+        <p>This backend manifest is valid JSON. Field notes follow the file instead of appearing as invalid JSON comments.</p>
         <div class="aw-codeblock">
-          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>service.json — annotated</span></div>
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>services/shop/api-backend/service.json</span></div>
           <pre>{
-  <span class="k">"appName"</span>: <span class="s">"reports-api"</span>,           <span class="c">// Required: unique name, lowercase with hyphens</span>
-  <span class="k">"appType"</span>: <span class="s">"backend"</span>,             <span class="c">// Required: backend | frontend | library | sdk | worker | migrator</span>
-  <span class="k">"stack"</span>: <span class="s">"reports"</span>,               <span class="c">// Required: stack grouping</span>
-  <span class="k">"port"</span>: <span class="n">4410</span>,                     <span class="c">// Backends: required, 4000-5999. Frontends: 3000-3999</span>
-  <span class="k">"framework"</span>: <span class="s">"vue"</span>,               <span class="c">// Frontends only: react (default) | vue</span>
-  <span class="k">"featuresEnabled"</span>: [<span class="s">"nats"</span>],      <span class="c">// Optional: see the list below</span>
-  <span class="k">"dependsOn"</span>: [<span class="s">"auth-emulator"</span>],   <span class="c">// Optional: start these first</span>
-  <span class="k">"healthCheckPath"</span>: <span class="s">"/health"</span>,     <span class="c">// Optional: defaults to /health</span>
-  <span class="k">"replicas"</span>: <span class="n">1</span>,                    <span class="c">// Optional: 1-10 containers</span>
-  <span class="k">"basePath"</span>: <span class="s">"/reports"</span>,           <span class="c">// Frontends: URL base path</span>
-  <span class="k">"params"</span>: {                       <span class="c">// Optional: non-secret environment variables</span>
-    <span class="k">"OIDC_JWKS_URL"</span>: <span class="s">"http://auth-emulator:4400/.well-known/jwks.json"</span>
-  }
+  <span class="k">"$schema"</span>: <span class="s">"https://tdk-landscape.github.io/schema.service.json"</span>,
+  <span class="k">"schemaVersion"</span>: <span class="n">1</span>,
+  <span class="k">"appName"</span>: <span class="s">"api-backend"</span>,
+  <span class="k">"appType"</span>: <span class="s">"backend"</span>,
+  <span class="k">"stack"</span>: <span class="s">"shop"</span>,
+  <span class="k">"port"</span>: <span class="n">4000</span>,
+  <span class="k">"healthCheckPath"</span>: <span class="s">"/health"</span>,
+  <span class="k">"dependsOn"</span>: []
 }</pre>
         </div>
-        <p>The full JSON Schema is <a href="https://github.com/tdk-landscape/tdk-cli-core/blob/main/engine/schemas/service-schema.json" target="_blank" rel="noopener"><code>engine/schemas/service-schema.json</code></a>. Run <code>tdk doctor</code> to catch common mistakes before <code>tdk up</code>.</p>
+        <p><code>appName</code>, <code>appType</code>, <code>stack</code>, and <code>schemaVersion</code> are required; a backend also needs a port. Optional fields include <code>dependsOn</code> and <code>healthCheckPath</code>. See the <a href="https://github.com/tdk-landscape/tdk-cli-core/blob/main/engine/schemas/service-schema.json" target="_blank" rel="noopener">service schema source</a>. VS Code and other JSON editors can read the <code>$schema</code> hint.</p>
+
+        <h2>.tdk/project.json</h2>
+        <p>Use the <a href="https://github.com/tdk-landscape/tdk-cli-core/blob/main/engine/schemas/project-schema.json" target="_blank" rel="noopener">project configuration schema</a> through an editor association. In VS Code, add this to workspace <code>.vscode/settings.json</code>:</p>
+        <div class="aw-codeblock">
+          <div class="aw-codeblock-head"><i></i><i></i><i></i><span>.vscode/settings.json</span></div>
+          <pre>{
+  <span class="k">"json.schemas"</span>: [
+    {
+      <span class="k">"fileMatch"</span>: [<span class="s">"/services/**/service.json"</span>],
+      <span class="k">"url"</span>: <span class="s">"https://tdk-landscape.github.io/schema.service.json"</span>
+    },
+    {
+      <span class="k">"fileMatch"</span>: [<span class="s">"/.tdk/project.json"</span>],
+      <span class="k">"url"</span>: <span class="s">"https://raw.githubusercontent.com/tdk-landscape/tdk-cli-core/main/engine/schemas/project-schema.json"</span>
+    }
+  ]
+}</pre>
+        </div>
+        <p><code>tdk doctor</code> checks local environment readiness and discovered service issues. <code>tdk config verify</code> checks whether generated project files match <code>.tdk/project.json</code>; it does not lint <code>service.json</code> or Helm values. TDK does not validate your production chart.</p>
 
         <h2>Required fields</h2>
 

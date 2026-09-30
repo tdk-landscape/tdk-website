@@ -1983,9 +1983,9 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-hero-grain"></div>
 
     <div class="aw-hero-inner">
-      <h1>New developers ship code <span class="aw-accent">on day one.</span></h1>
+      <h1>TDK runs many services on your laptop with <span class="aw-accent">Docker + Tilt.</span></h1>
       <p class="aw-hero-sub">
-        TDK sets up the entire technical workspace in minutes. No waiting and no setup weeks.
+        Helm still deploys the cluster. No cluster on the laptop. Helm stays for prod.
       </p>
       <div class="aw-hero-ctas">
         <a href="{{ '/docs/quickstart/' | relative_url }}" class="aw-btn aw-btn-solid">Start free</a>
@@ -3028,19 +3028,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
         <!-- B: scale numbers (2x1) -->
         <div class="aw-card aw-card-b">
-          <h3>One manifest in. {{ site.data.tdk.files_per_service }} files out.</h3>
-          <p>Service output and stack contracts, both derived from the same service.json.</p>
-          <div class="aw-bignums">
-            <div class="aw-bignum">
-              <strong>{{ site.data.tdk.files_per_service }}</strong>
-              <span>files generated per service, every time</span>
-            </div>
-            <div class="aw-bignum-sep"></div>
-            <div class="aw-bignum aw-bignum-accent">
-              <strong>{{ site.data.tdk.stack_artifacts }}</strong>
-              <span>stack-wide artifacts: diagrams, identities, registries</span>
-            </div>
-          </div>
+          <h3>One manifest in. A running local service out.</h3>
+          <p>Describe a service once, then run it on Docker + Tilt with hot reload and local health checks.</p>
         </div>
 
         <!-- C: manifest (1x1) -->
@@ -3134,7 +3123,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
           </div>
           <div class="aw-stack-meta">
             <span class="aw-stack-cost">repeated per service</span>
-            <span class="aw-stack-instead">{{ site.data.tdk.files_per_service }} files auto-generated</span>
+            <span class="aw-stack-instead">Local Docker + Tilt configuration</span>
           </div>
         </div>
 
@@ -3237,7 +3226,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
           <p class="aw-price-desc">The full CLI, MIT-licensed, no license key required. Our adoption engine — the same model as Tilt and Skaffold.</p>
           <ul class="aw-price-list">
             <li>Unlimited services per project, {{ site.data.tdk.scale_plain }} tested (small fixture)</li>
-            <li>All free generators — {{ site.data.tdk.files_per_service }} files per service</li>
+            <li>Local development with Docker + Tilt</li>
             <li>L1–L4 golden Docker images without Verdaccio registry</li>
             <li>No license key needed, ever</li>
             <li>Community support</li>
@@ -3297,7 +3286,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
         <label>Which features interest you?</label>
         <div class="aw-features">
-          <label><input type="checkbox" class="feature-checkbox" value="{{ site.data.tdk.files_per_service }} files per service" /> {{ site.data.tdk.files_per_service }} files / service</label>
+          <label><input type="checkbox" class="feature-checkbox" value="Local Docker + Tilt development" /> Local Docker + Tilt development</label>
           <label><input type="checkbox" class="feature-checkbox" value="{{ site.data.tdk.scale_services }} services scale" /> {{ site.data.tdk.scale_services }} services</label>
           {% for feature in site.data.tdk.waitlist_features %}
           <label><input type="checkbox" class="feature-checkbox" value="{{ feature }}" /> {{ feature }}</label>
@@ -3688,7 +3677,7 @@ function prepareScrubWords() {
   var script = [
     { t: 'cmd', text: 'tdk up' },
     { t: 'out', html: '<span class="dim">[discovery]</span> scanned {{ site.data.tdk.demo_services }} repos · {{ site.data.tdk.demo_services }} manifests · <span class="hot">{{ site.data.tdk.demo_discovery }}</span>' },
-    { t: 'out', html: '<span class="dim">[generate]</span> {{ site.data.tdk.files_per_service }} files × {{ site.data.tdk.demo_services }} services → <span class="hot">{{ site.data.tdk.demo_artifacts }} artifacts written</span>' },
+    { t: 'out', html: '<span class="dim">[local]</span> Docker + Tilt services ready → <span class="hot">hot reload and local routes</span>' },
     { t: 'out', html: '<span class="dim">[generate]</span> C4 diagram · AGENTS.md · dependency-manifest.json' },
     { t: 'out', html: '<span class="dim">[secrets]</span> Infisical machine identities verified · {{ site.data.tdk.demo_services }}/{{ site.data.tdk.demo_services }}' },
     { t: 'out', html: '<span class="dim">[docker]</span> golden L1 <span class="ok">cached</span> · L2 <span class="ok">cached</span> · L3 <span class="ok">cached</span> · building L4… <span class="hot">{{ site.data.tdk.demo_build }}</span>' },

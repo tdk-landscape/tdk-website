@@ -41,8 +41,8 @@ title: Documentation - TDK CLI
         </div>
 
         <h2>What is TDK CLI?</h2>
-        <p>TDK CLI is a <strong>Kubernetes-free</strong> microservice development tool. It runs 5-{{ site.data.tdk.scale_services }} services locally using only Docker and Tilt with zero cluster tax and no K8s knowledge required. Our <a href="{{ '/docs/examples/' | relative_url }}" style="color: #b79aff;">ERP example</a> is a {{ site.data.tdk.erp_services }}-service scale fixture across {{ site.data.tdk.erp_domains }} ERP-style domains, proving TDK holds up at that size. Onboarding a new developer becomes: clone, <code>tdk up</code>, code.</p>
-        <p>Write one <code>service.json</code> file per service, and TDK automatically generates {{ site.data.tdk.files_per_service }} files per service and {{ site.data.tdk.stack_artifacts }} stack-wide artifacts:</p>
+        <p>TDK runs many services on your laptop with Docker + Tilt. Helm still deploys the cluster. The local stack needs no Kubernetes cluster. Start with the <a href="{{ '/docs/quickstart/' | relative_url }}">quickstart</a>, then see how <a href="{{ '/docs/with-helm/' | relative_url }}">TDK works alongside Helm</a> for production deployments.</p>
+        <p>Describe each service in <code>service.json</code>, then use TDK to generate the local Docker and Tilt setup. See the <a href="{{ '/docs/with-helm/' | relative_url }}">Helm handoff</a> for cluster deployment.</p>
         <ul>
           <li>Dockerfile with optimized L1-L4 golden layering</li>
           <li>Vite and TypeScript configuration per app type, for React (default) or Vue 3 frontends</li>
@@ -59,7 +59,7 @@ title: Documentation - TDK CLI
         <div class="aw-feature-grid">
           <div class="aw-card"><h4>Manifest-driven</h4><p>Single source of truth with simple JSON configuration.</p></div>
           <div class="aw-card"><h4>Docker only</h4><p>No Kubernetes required for local development.</p></div>
-          <div class="aw-card"><h4>Auto-generation</h4><p>{{ site.data.tdk.files_per_service }} files per service generated from one manifest.</p></div>
+          <div class="aw-card"><h4>Auto-generation</h4><p>Docker + Tilt files for the local development loop.</p></div>
           <div class="aw-card"><h4>Golden images</h4><p>Production-ready Docker layering, L1 through L4.</p></div>
           <div class="aw-card"><h4>Auto-discovery</h4><p>Finds services in your directory structure automatically.</p></div>
           <div class="aw-card"><h4>Built on Tilt</h4><p>{{ site.data.tdk.tilt_stars }} GitHub stars. Battle-tested stability.</p></div>
