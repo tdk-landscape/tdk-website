@@ -76,7 +76,7 @@ tdk networks</pre>
         <h3>Windows problems</h3>
         <ul>
           <li><strong>Docker Desktop is stopped or using Windows containers:</strong> start Docker Desktop and wait for “Running”; switch to Linux containers.</li>
-          <li><strong>Ports 80, 443, or 5432 are unavailable:</strong> close the process listening on the port. If <code>tdk doctor</code> says Hyper-V/WSL reserved it, follow the suggested Windows networking fix or configure an existing TDK project port override.</li>
+          <li><strong>A planned port is unavailable:</strong> TDK plans HTTP ports in <code>8080–8180</code>, HTTPS ports in <code>8443–8543</code>, and Postgres ports in <code>15432–15532</code>. Set <code>TDK_HTTP_PORT</code>, <code>TDK_HTTPS_PORT</code>, or <code>TDK_POSTGRES_PORT</code> to request a specific port; an explicit port fails if it is busy.</li>
           <li><strong><code>*.localhost</code> does not resolve:</strong> add the two loopback host entries that <code>tdk doctor</code> prints, using an elevated Notepad for the hosts file, or use the numeric URLs from <code>tdk networks</code>.</li>
           <li><strong>Docker cannot mount the project:</strong> in Docker Desktop, open Settings → Resources → File sharing and include the drive containing the project.</li>
         </ul>
