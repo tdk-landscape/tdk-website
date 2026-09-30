@@ -2,8 +2,7 @@ title: TDK CLI
 email: vntu0412179+tdk-waitlist@gmail.com
 lang: en_US
 description: >-
-  Kubernetes-free microservice development. Run 5-30+ services locally
-  without learning Kubernetes. One service.json generates 12-17 files per service.
+  TDK runs many services on your laptop with Docker + Tilt. Helm still deploys the cluster.
 author:
   name: TDK Team
 

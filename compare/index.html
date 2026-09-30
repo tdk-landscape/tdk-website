@@ -165,6 +165,32 @@ title: Compare - TDK CLI
     </div>
   </section>
 
+  <!-- TDK and Helm have different control planes -->
+  <section class="aw-section" style="padding-top: 0;">
+    <div class="aw-wrap">
+      <div class="aw-head">
+        <h2>TDK and Helm work at different stages</h2>
+      </div>
+      <div class="aw-matrix">
+        <table>
+          <thead>
+            <tr>
+              <th>Helm / app-template</th>
+              <th class="aw-tdk-col">TDK</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Render Kubernetes for the cluster.</td>
+              <td class="aw-tdk-col">Generate and run the laptop stack.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Same image optional; different control plane.</p>
+    </div>
+  </section>
+
   <!-- One seat replaces a circle of vendors -->
   <section class="aw-section" style="padding-top: 0;">
     <div class="aw-wrap">
