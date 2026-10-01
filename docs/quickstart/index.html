@@ -27,21 +27,18 @@ title: Quick Start - TDK CLI
         </div>
 
         <h2 id="before-you-run-it">Before you run it</h2>
-        <p>TDK needs a container runtime and Tilt. Node.js is only needed when your project has frontend tooling.</p>
+        <p>Starting a local stack needs Docker and Tilt. The standalone CLI binary needs no host Node.js or Bun; installing the CLI from npm requires Node.js {{ site.data.tdk.prereq_node }}.</p>
         <ul class="aw-check-list">
           <li><a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">Docker</a> installed and running</li>
           <li><a href="https://docs.tilt.dev/install.html" target="_blank" rel="noopener">Tilt</a> installed</li>
-          <li><a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a> {{ site.data.tdk.prereq_node }} for frontend stacks</li>
+          <li><a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a> {{ site.data.tdk.prereq_node }} only when installing the CLI from npm</li>
         </ul>
-        <p><strong>Current release platforms:</strong> macOS and Linux. Native Windows AMD64 CLI support has merged and its Windows smoke checks pass, but the public release asset and real Windows 11 acceptance run are still pending. Windows instructions below apply once the latest release includes <code>tdk-windows-amd64.exe</code>. WSL2 Ubuntu works as Linux.</p>
+        <p><strong>Full local runtime:</strong> macOS, Linux, and Ubuntu in WSL2. The latest release also includes a Windows AMD64 CLI for inspection; native Windows does not support running a landscape.</p>
 
-        <h2 id="windows-setup">Windows 10/11 setup (AMD64)</h2>
-        <p>Use PowerShell on a 64-bit Intel or AMD PC. TDK runs Linux containers through Docker Desktop; Windows containers are not supported. You do not need Administrator access for normal TDK commands.</p>
-        <p>The installer downloads the latest Windows AMD64 executable. If the latest release does not include <code>tdk-windows-amd64.exe</code> yet, wait for the Windows-enabled CLI release before running the install command.</p>
+        <h2 id="windows-setup">Windows AMD64: inspect the CLI</h2>
+        <p>The latest release includes <code>tdk-windows-amd64.exe</code>. Install it from PowerShell, then check the binary and its bundled files:</p>
         <ol>
-          <li><a href="https://www.docker.com/products/docker-desktop/" target="_blank" rel="noopener">Install Docker Desktop</a>, switch it to Linux containers, and wait until Docker Desktop says it is running.</li>
-          <li><a href="https://docs.tilt.dev/install.html" target="_blank" rel="noopener">Install Tilt for Windows</a>.</li>
-          <li>Install TDK from PowerShell:
+          <li>Install TDK:
             <div class="aw-codeblock">
               <div class="aw-codeblock-head"><i></i><i></i><i></i><span>PowerShell</span></div>
               <pre>irm https://tdk-landscape.github.io/install.ps1 | iex</pre>
@@ -54,32 +51,17 @@ powershell -ExecutionPolicy Bypass -File .\install-tdk.ps1</pre>
             </div>
           </li>
           <li>Close PowerShell and open a new window so the updated PATH is loaded.</li>
-          <li>Verify TDK and the machine setup:
+          <li>Verify the CLI and packaged assets:
             <div class="aw-codeblock">
               <div class="aw-codeblock-head"><i></i><i></i><i></i><span>PowerShell</span></div>
               <pre>tdk --version
+tdk runtime --check-assets
 tdk doctor</pre>
             </div>
-          </li>
-          <li>Scaffold and start the example:
-            <div class="aw-codeblock">
-              <div class="aw-codeblock-head"><i></i><i></i><i></i><span>PowerShell</span></div>
-              <pre>tdk project example
-cd tdk-example
-tdk up
-tdk networks</pre>
-            </div>
+            <p>On native Windows, <code>tdk doctor</code> reports that landscape startup requires WSL2 Ubuntu. This is the expected support boundary.</p>
           </li>
         </ol>
-        <p>TDK networks prints hostname URLs and numeric <code>127.0.0.1</code> URLs. If <code>*.tdk.localhost</code> does not resolve on your Windows setup, use the numeric URL while you fix the hosts-file entries reported by <code>tdk doctor</code>.</p>
-
-        <h3>Windows problems</h3>
-        <ul>
-          <li><strong>Docker Desktop is stopped or using Windows containers:</strong> start Docker Desktop and wait for “Running”; switch to Linux containers.</li>
-          <li><strong>A planned port is unavailable:</strong> TDK plans HTTP ports in <code>8080–8180</code>, HTTPS ports in <code>8443–8543</code>, and Postgres ports in <code>15432–15532</code>. Set <code>TDK_HTTP_PORT</code>, <code>TDK_HTTPS_PORT</code>, or <code>TDK_POSTGRES_PORT</code> to request a specific port; an explicit port fails if it is busy.</li>
-          <li><strong><code>*.localhost</code> does not resolve:</strong> add the two loopback host entries that <code>tdk doctor</code> prints, using an elevated Notepad for the hosts file, or use the numeric URLs from <code>tdk networks</code>.</li>
-          <li><strong>Docker cannot mount the project:</strong> in Docker Desktop, open Settings → Resources → File sharing and include the drive containing the project.</li>
-        </ul>
+        <p>For the full inner loop, follow the <a href="https://github.com/tdk-landscape/tdk-cli-core/blob/main/docs/wsl2.md">WSL2 Ubuntu setup</a>. Windows ARM64 binaries are not published.</p>
 
         <h2 id="install-options">Install options</h2>
         <p>Using an AI coding agent? Paste the line below into its chat — it'll fetch <span class="aw-mono">llms.txt</span> and install TDK for you. Use curl if you just want the fastest install yourself. Use npm, npx, pnpm, or bun if you prefer package-manager workflows.</p>
@@ -208,22 +190,16 @@ Run <span class="hot">`tdk doctor`</span> for a full environment check.</pre>
         <p>Fix what it flags, run <code>tdk doctor</code> to confirm, and you're clear to boot.</p>
 
         <h2 id="start-from-a-working-example">Start from a working example</h2>
-        <p>Not sure what a TDK project should look like yet? Skip the blank canvas. <code>tdk project &lt;template&gt;</code> clones a complete PSR landscape you can run immediately.</p>
+        <p>Use one known-good example first. Check the machine, clone the example, generate its local configuration, and start its shop stack.</p>
         <div class="aw-codeblock">
           <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
-          <pre><span class="c"># minimal reference stack - start here if you're new to TDK</span>
+          <pre>tdk doctor
 tdk project example
-
-<span class="c"># or a fuller domain example</span>
-tdk project restaurant
-tdk project user-management
-tdk project erp
-
-cd &lt;cloned-folder&gt;
-tdk doctor   <span class="c"># check Docker/Tilt are ready</span>
-tdk up       <span class="c"># start the stack</span></pre>
+cd tdk-example
+tdk project --yes
+tdk up shop</pre>
         </div>
-        <p>Use <code>--path &lt;dir&gt;</code> to control the destination folder name. See <a href="{{ '/docs/examples/' | relative_url }}">Examples</a> for what each template contains.</p>
+        <p>Keep <code>tdk up shop</code> running. Use <code>tdk networks</code> for the example's URLs. See <a href="{{ '/docs/examples/' | relative_url }}">Examples</a> for other templates after the first run.</p>
 
         <div class="aw-callout">
           <h4>Success</h4>
@@ -252,20 +228,12 @@ tdk resource web --type frontend --framework vue --stack shop   <span class="c">
         <details class="aw-docs-details">
           <summary>Manual binary download</summary>
           <p>Download the binary, its engine files and the checksums yourself. The binary looks for the <code>tdk-cli/</code> folder next to it.</p>
-          <h3>Windows AMD64 (PowerShell)</h3>
-          <p>Run this after a Windows-enabled CLI release appears in the latest releases:</p>
+          <h3>Windows AMD64</h3>
+          <p>The latest release includes the Windows CLI and the PowerShell installer verifies its checksum. Native Windows supports CLI inspection only: use <code>tdk --version</code>, <code>tdk runtime --check-assets</code>, and <code>tdk doctor</code>. For <code>tdk project</code> and <code>tdk up</code>, follow the <a href="https://github.com/tdk-landscape/tdk-cli-core/blob/main/docs/wsl2.md">WSL2 Ubuntu setup</a>.</p>
           <div class="aw-codeblock">
             <div class="aw-codeblock-head"><i></i><i></i><i></i><span>PowerShell</span></div>
-            <pre>$dir = "$env:LOCALAPPDATA\tdk\bin"
-New-Item -ItemType Directory -Force $dir | Out-Null
-$base = "https://github.com/tdk-landscape/tdk-cli-releases/releases/latest/download"
-Invoke-WebRequest "$base/tdk-windows-amd64.exe" -OutFile "$dir\tdk.exe"
-Invoke-WebRequest "$base/tdk-cli-engine.tar.gz" -OutFile "$dir\tdk-cli-engine.tar.gz"
-Invoke-WebRequest "$base/checksums.txt" -OutFile "$dir\checksums.txt"
-New-Item -ItemType Directory -Force "$dir\tdk-cli" | Out-Null
-tar -xzf "$dir\tdk-cli-engine.tar.gz" -C "$dir\tdk-cli" --strip-components=1</pre>
+            <pre>irm https://tdk-landscape.github.io/install.ps1 | iex</pre>
           </div>
-          <p>Use <code>install.ps1</code> instead when possible; it verifies the executable checksum and adds the install folder to your user PATH. Older Windows <code>tar.exe</code> versions may not support <code>--strip-components</code>; the installer handles that fallback.</p>
           <div class="aw-codeblock">
             <div class="aw-codeblock-head"><i></i><i></i><i></i><span>terminal</span></div>
             <pre>os=$(uname -s | tr A-Z a-z); arch=$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64/")
