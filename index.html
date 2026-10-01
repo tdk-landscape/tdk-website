@@ -3316,7 +3316,8 @@ function calcRoi() {
   document.getElementById('roi-productivity').textContent = '$' + productivity.toLocaleString('en-US');
   document.getElementById('roi-total').textContent = '$' + total.toLocaleString('en-US');
 }
-calcRoi();
+// Homepage no longer renders the ROI widget; initialize only when its controls exist.
+if (document.getElementById('roi-devs')) calcRoi();
 
 /* Premium and Enterprise requests are filed via the worker for manual follow-up.
    Free needs no license key; the quickstart is the path for free users.
