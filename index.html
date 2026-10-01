@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Kubernetes-Free Microservice Development
-description: TDK sets up the entire technical workspace in minutes.
+title: TDK CLI — start services on your laptop
+description: Start your services on your laptop. Not a deploy. Not a Compose file. One service.json, then tdk up. No Kubernetes on the machine.
 image: /assets/images/tdk-social-card.png
 ---
 
@@ -106,6 +106,13 @@ body { background: #0a0a0e; overflow-x: hidden; }
 }
 
 .aw-hero-sub strong { color: #fff; font-weight: 600; }
+
+.aw-hero-proof {
+  margin: -1.75rem 0 2.75rem;
+  color: rgba(236, 236, 241, 0.8);
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
 
 .aw-hero-ctas {
   display: flex;
@@ -1987,6 +1994,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
       <p class="aw-hero-sub">
         Not a deploy. Not a Compose file. One <code>service.json</code>, then <code>tdk up</code>. No Kubernetes on the machine.
       </p>
+      <p class="aw-hero-proof">14 services healthy in 4.6s on a 16 GB M1 once images exist.</p>
       <div class="aw-hero-ctas">
         <a href="{{ '/docs/quickstart/' | relative_url }}" class="aw-btn aw-btn-solid">Start free</a>
         <a href="#demo" class="aw-btn aw-btn-ghost">Watch it boot</a>
@@ -2062,7 +2070,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
               <div class="aw-reel-stack">
                 <strong><i class="bi bi-layers" aria-hidden="true"></i> Stack contracts</strong>
-                <span class="aw-reel-stack-files"><i class="bi bi-kanban" aria-hidden="true"></i> Tiltfile / <i class="bi bi-braces" aria-hidden="true"></i> TILT_TECH_STACK.star / <i class="bi bi-diagram-3" aria-hidden="true"></i> dependency-manifest.json / <i class="bi bi-bounding-box" aria-hidden="true"></i> docs/architecture.c4 / <i class="bi bi-robot" aria-hidden="true"></i> AGENTS.md</span>
+                <span class="aw-reel-stack-files"><i class="bi bi-kanban" aria-hidden="true"></i> generated runtime config / <i class="bi bi-braces" aria-hidden="true"></i> service topology / <i class="bi bi-diagram-3" aria-hidden="true"></i> dependency-manifest.json / <i class="bi bi-bounding-box" aria-hidden="true"></i> docs/architecture.c4 / <i class="bi bi-robot" aria-hidden="true"></i> AGENTS.md</span>
               </div>
             </div>
           </div>
@@ -2071,11 +2079,11 @@ body { background: #0a0a0e; overflow-x: hidden; }
             <div class="aw-route-head">
               <div>
                 <h3>Every service is on the network in seconds.</h3>
-                <p>It looks like weeks of integration. TDK launches the topology at once while Traefik handles discovery, health checks, retries, and paths.</p>
+                <p>It looks like weeks of integration. TDK CLI starts the services together and makes their local health URLs available.</p>
               </div>
               <div class="aw-route-proof">
-                <strong><i class="bi bi-stopwatch" aria-hidden="true"></i> Generated /health fixture: {{ site.data.tdk.demo_services }} services healthy in {{ site.data.tdk.demo_boot }}</strong>
-                <span>Measured on a {{ site.data.tdk.machine }}. Every route goes live as soon as its service passes health checks.</span>
+                <strong><i class="bi bi-stopwatch" aria-hidden="true"></i> {{ site.data.tdk.demo_services }} services healthy in {{ site.data.tdk.demo_boot }}</strong>
+                <span>On a 16 GB M1 once images exist. Every route goes live as soon as its service passes health checks.</span>
                 <span class="aw-route-domain">*.commerce.localhost</span>
               </div>
             </div>
@@ -2929,7 +2937,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-wrap">
       <p class="aw-plain-kicker">In plain words</p>
       <p class="aw-plain-big">Software companies lose weeks of salary every time they hire developers. The newcomers wait: computers are not set up, passwords are missing, instructions are outdated.</p>
-      <p class="aw-plain-small">TDK sets up the entire technical workspace automatically, in minutes. New hires write code on day one. The CLI is free and MIT-licensed; Premium, with paid extras and support, is ${{ site.data.tdk.team_price }} per developer per month. <a class="aw-plain-link" href="{{ '/waiting/' | relative_url }}">See what waiting costs</a>.</p>
+      <p class="aw-plain-small">TDK CLI is a free, MIT-licensed CLI for starting your services locally. Most teams should stay on free. Premium is ${{ site.data.tdk.team_price }} per developer per month for extras only. <a class="aw-plain-link" href="{{ '/waiting/' | relative_url }}">See what waiting costs</a>.</p>
     </div>
   </section>
 
@@ -2973,14 +2981,14 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-wrap">
       <div class="aw-head">
         <h2>How it works</h2>
-        <p>Docker runs the containers. Tilt runs the dev loop. TDK CLI writes that config. Production stays with Helm, Argo CD, or Kustomize.</p>
+        <p>Docker runs the containers. Tilt runs the dev loop. TDK CLI writes that config.</p>
       </div>
 
       <div class="aw-bento">
         <!-- B: scale numbers (2x1) -->
         <div class="aw-card aw-card-b">
           <h3>One manifest in. A running local service out.</h3>
-          <p>Describe a service once, then run it on Docker + Tilt with hot reload and local health checks.</p>
+          <p>Describe a service once, then run it locally with hot reload and health checks.</p>
         </div>
 
         <!-- C: manifest (1x1) -->
@@ -3074,7 +3082,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
           </div>
           <div class="aw-stack-meta">
             <span class="aw-stack-cost">repeated per service</span>
-            <span class="aw-stack-instead">Local Docker + Tilt configuration</span>
+            <span class="aw-stack-instead">Local runtime configuration</span>
           </div>
         </div>
 
@@ -3174,10 +3182,10 @@ body { background: #0a0a0e; overflow-x: hidden; }
         <div class="aw-price-card">
           <div class="aw-price-name">Free</div>
           <div class="aw-price-value">{{ site.data.tdk.community_price }} <small>/ forever</small></div>
-          <p class="aw-price-desc">The full CLI, MIT-licensed, no license key required. Our adoption engine — the same model as Tilt and Skaffold.</p>
+          <p class="aw-price-desc">The full CLI, MIT-licensed, with no license key required.</p>
           <ul class="aw-price-list">
             <li>Unlimited services per project, {{ site.data.tdk.scale_plain }} tested (small fixture)</li>
-            <li>Local development with Docker + Tilt</li>
+            <li>Local service startup and development loop</li>
             <li>L1–L4 golden Docker images without Verdaccio registry</li>
             <li>No license key needed, ever</li>
             <li>Community support</li>
@@ -3237,7 +3245,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
         <label>Which features interest you?</label>
         <div class="aw-features">
-          <label><input type="checkbox" class="feature-checkbox" value="Local Docker + Tilt development" /> Local Docker + Tilt development</label>
+          <label><input type="checkbox" class="feature-checkbox" value="Local service development" /> Local service development</label>
           <label><input type="checkbox" class="feature-checkbox" value="{{ site.data.tdk.scale_services }} services scale" /> {{ site.data.tdk.scale_services }} services</label>
           {% for feature in site.data.tdk.waitlist_features %}
           <label><input type="checkbox" class="feature-checkbox" value="{{ feature }}" /> {{ feature }}</label>
@@ -3495,7 +3503,7 @@ function sendWaitlistEmail(btn, originalLabel) {
   }
 
   function completeReel() {
-    status.textContent = files.length + ' files generated. ' + routes.length + ' routes healthy behind Traefik.';
+    status.textContent = files.length + ' files generated. ' + routes.length + ' local health routes ready.';
     playing = false;
     complete = true;
     toggle.setAttribute('aria-pressed', 'false');
@@ -3533,7 +3541,7 @@ function sendWaitlistEmail(btn, originalLabel) {
       var route = routes[currentRoute];
       route.classList.add('is-visible');
       currentRoute += 1;
-      status.textContent = 'Traefik routing ' + route.querySelector('strong').textContent;
+      status.textContent = 'Opening local route for ' + route.querySelector('strong').textContent;
       timer = window.setTimeout(advance, 340);
       return;
     }
@@ -3629,11 +3637,11 @@ function prepareScrubWords() {
   var script = [
     { t: 'cmd', text: 'tdk up' },
     { t: 'out', html: '<span class="dim">[discovery]</span> scanned {{ site.data.tdk.demo_services }} repos · {{ site.data.tdk.demo_services }} manifests · <span class="hot">{{ site.data.tdk.demo_discovery }}</span>' },
-    { t: 'out', html: '<span class="dim">[local]</span> Docker + Tilt services ready → <span class="hot">hot reload and local routes</span>' },
+    { t: 'out', html: '<span class="dim">[local]</span> services ready → <span class="hot">hot reload and local routes</span>' },
     { t: 'out', html: '<span class="dim">[generate]</span> C4 diagram · AGENTS.md · dependency-manifest.json' },
     { t: 'out', html: '<span class="dim">[secrets]</span> Infisical machine identities verified · {{ site.data.tdk.demo_services }}/{{ site.data.tdk.demo_services }}' },
     { t: 'out', html: '<span class="dim">[docker]</span> golden L1 <span class="ok">cached</span> · L2 <span class="ok">cached</span> · L3 <span class="ok">cached</span> · building L4… <span class="hot">{{ site.data.tdk.demo_build }}</span>' },
-    { t: 'out', html: '<span class="dim">[tilt]</span> orchestrating · selective startup · hot reload armed' },
+    { t: 'out', html: '<span class="dim">[dev loop]</span> selective startup · selective startup · hot reload armed' },
     { t: 'out', html: '<span class="dim">[health]</span> {{ site.data.tdk.demo_services }}/{{ site.data.tdk.demo_services }} resources <span class="ok">healthy</span>' },
     { t: 'out', html: '<span class="ok">ready</span> — stack booted in <span class="ok">{{ site.data.tdk.demo_boot }}</span> <span class="dim">on a {{ site.data.tdk.machine }}</span>' },
     { t: 'gap' },
