@@ -46,7 +46,7 @@ title: Documentation - TDK CLI
         </div>
 
         <h2>What is TDK CLI?</h2>
-        <p>TDK runs many services on your laptop with Docker + Tilt. Helm still deploys the cluster. The local stack needs no Kubernetes cluster. Start with the <a href="{{ '/docs/quickstart/' | relative_url }}">quickstart</a>, then see how <a href="{{ '/docs/with-helm/' | relative_url }}">TDK works alongside Helm</a> for production deployments.</p>
+        <p>TDK CLI starts services on your laptop. It is not a deploy and not a Compose file: describe each service in <code>service.json</code>, then run <code>tdk up</code>. Production deployment stays with Helm, Argo CD, or Kustomize. Start with the <a href="{{ '/docs/quickstart/' | relative_url }}">quickstart</a>, then see how <a href="{{ '/docs/with-helm/' | relative_url }}">TDK works alongside Helm</a>.</p>
         <p>Describe each service in <code>service.json</code>, then use TDK to generate the local Docker and Tilt setup. See the <a href="{{ '/docs/with-helm/' | relative_url }}">Helm handoff</a> for cluster deployment.</p>
         <ul>
           <li>Dockerfile with optimized L1-L4 golden layering</li>
