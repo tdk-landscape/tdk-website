@@ -1,8 +1,8 @@
-title: TDK CLI
+title: TDK CLI — start services on your laptop
 email: vntu0412179+tdk-waitlist@gmail.com
 lang: en_US
 description: >-
-  TDK runs many services on your laptop with Docker + Tilt. Helm still deploys the cluster.
+  Start your services on your laptop. Not a deploy. Not a Compose file. One service.json, then tdk up. No Kubernetes on the machine.
 author:
   name: TDK Team
 

@@ -1,6 +1,6 @@
 # TDK CLI Website
 
-The official website for TDK CLI — Kubernetes-free microservice development.
+The official website for TDK CLI. Start your services on your laptop; no deploy or Compose file required.
 
 ## About
 
