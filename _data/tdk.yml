@@ -25,10 +25,10 @@ erp_ci_run: "https://github.com/tdk-landscape/tdk-cli-core/actions/runs/36395860
 # --- Demo facts (the boot-demo stack) ---
 demo_services: 14          # services in the demo stack shown in the terminal
 demo_artifacts: "168-238"  # demo_services multiplied by the current 12-17 per-service range
-demo_boot: "4.6s"          # measured cold boot on `machine` below
+demo_boot: "4.6s"          # warm start, images already existed; see docs/claims.md
 demo_discovery: "212ms"    # discovery scan time shown in the terminal
 demo_build: "1.8s"         # L4 build time shown in the terminal
-boot_claim: "under 5 seconds" # marketing rounding of demo_boot — use this in prose
+boot_claim: "4.6s warm start" # permitted wording includes existing-image caveat
 machine: "16 GB M1 MacBook"   # daily driver the demo was captured on
 
 # --- Calculator parameters (UI bounds + defaults) ---
@@ -41,12 +41,12 @@ calc_salary_min: 60000
 calc_salary_max: 250000
 calc_salary_step: 5000
 
-# --- Onboarding story facts (/features/ "two weeks" narrative) ---
-story_devs: 5              # developers hired at once on day one
-story_weeks: "two weeks"   # payroll burned on waiting, before TDK
+# --- Onboarding scenario assumptions (illustrative, not cohort measurements) ---
+story_devs: 5              # example calculator scenario; user-adjustable
+story_weeks: "two weeks"   # illustrative scenario; not a measured hiring cohort
 wait_weeks_default: 2      # default "weeks blocked" in the Waiting-for-MVP calculator
-setup_weeks: "2–6 weeks"   # K8s-tooling setup cost (stacking card)
-onboard_days: "1–3 days"   # per-hire onboarding cost without TDK
+setup_weeks: "2–6 weeks"   # example scenario assumption (stacking card)
+onboard_days: "1–3 days"   # illustrative scenario; not a measured hiring cohort
 
 # --- Third-party facts (researched, Sept 2026 — re-verify before campaigns) ---
 tilt_stars: "9.4k"         # Tilt GitHub stars, "built on" claim
@@ -111,7 +111,7 @@ toolchain_chips:           # real generator outputs, bento strip on homepage
 
 waitlist_features:         # static checkbox options (2 dynamic ones stay in HTML)
   - "No Kubernetes"
-  - "Under-5s startup"
+  - "14-service warm start (images already built)"
   - "Golden Docker L1-L4"
   - "Infisical identities"
   - "C4 diagrams + AGENTS.md"
@@ -184,7 +184,7 @@ premium_project_limit: 100   # Max distinct project IDs one premium license key 
 
 # --- Money facts ---
 hours_per_week: 5          # recovered engineering hours per dev per week
-hours_per_week_num: 5      # same, numeric — used by the ROI calculator JS
+hours_per_week_num: 5      # editable calculator starting value; not a typical measurement
 weeks_per_year_num: 48     # working weeks in the ROI formula (numeric, JS)
 work_hours_num: 2080       # working hours/year in the ROI formula (numeric, JS)
 work_hours: "2,080"        # same, display form

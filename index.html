@@ -1990,11 +1990,12 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-hero-grain"></div>
 
     <div class="aw-hero-inner">
-      <h1>Start your services on your laptop.</h1>
+      <h1>TDK CLI turns <code>service.json</code> into a local Docker stack that updates as you code.</h1>
       <p class="aw-hero-sub">
-        Not a deploy. Not a Compose file. One <code>service.json</code>, then <code>tdk up</code>. No Kubernetes on the machine.
+        Tilt is the local development tool that watches services and live-updates containers as you code. TDK writes its configuration. Not a deploy tool and not a Compose replacement. Production stays on Helm.
       </p>
-      <p class="aw-hero-proof">14 services healthy in 4.6s on a 16 GB M1 once images exist.</p>
+      <p class="aw-hero-status">Stability: 1.x local dev. Generated files are a contract; verify with tdk config verify. Core CLI is MIT and needs no key. Premium is optional.</p>
+      <p class="aw-hero-proof">14 tiny services healthy in 4.6s on a 16 GB M1 after images existed. Not a cold boot. <a href="{{ '/docs/claims/' | relative_url }}">Claim details</a>.</p>
       <div class="aw-hero-ctas">
         <a href="{{ '/docs/quickstart/' | relative_url }}" class="aw-btn aw-btn-solid">Start free</a>
         <a href="#demo" class="aw-btn aw-btn-ghost">Watch it boot</a>
@@ -2936,7 +2937,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   <section class="aw-plain" id="plain">
     <div class="aw-wrap">
       <p class="aw-plain-kicker">In plain words</p>
-      <p class="aw-plain-big">Software companies lose weeks of salary every time they hire developers. The newcomers wait: computers are not set up, passwords are missing, instructions are outdated.</p>
+      <p class="aw-plain-big">Setup delays can hold up new developers: computers need configuration, access needs granting, and instructions can go stale. TDK is designed so <code>tdk doctor</code> and <code>tdk up</code> replace a setup wiki; this has not been measured on a hiring cohort.</p>
       <p class="aw-plain-small">TDK CLI is a free, MIT-licensed CLI for starting your services locally. Most teams should stay on free. Premium is ${{ site.data.tdk.team_price }} per developer per month for extras only. <a class="aw-plain-link" href="{{ '/waiting/' | relative_url }}">See what waiting costs</a>.</p>
     </div>
   </section>
@@ -2961,11 +2962,11 @@ body { background: #0a0a0e; overflow-x: hidden; }
   <section class="aw-section" id="demo">
     <div class="aw-wrap aw-term-split">
       <div class="aw-term-left" id="aw-term-pin">
-        <h2>Watch a cold boot</h2>
-        <p>This is the real boot sequence, captured on a {{ site.data.tdk.machine }}. Discovery, generation, golden-layer caching, health checks — then you just write code.</p>
+        <h2>Warm start, images already built</h2>
+        <p>Captured on a {{ site.data.tdk.machine }} after images existed. This is not a cold boot. See the <a href="{{ '/docs/claims/' | relative_url }}">claim details</a>.</p>
         <div class="aw-term-badge">
           <strong>{{ site.data.tdk.demo_boot }}</strong>
-          <span>from zero to a healthy {{ site.data.tdk.demo_services }}-service demo stack — selective startup means new services add features, not boot time</span>
+          <span>14 tiny services healthy in 4.6s on a 16 GB M1 after images existed. Not a cold boot.</span>
         </div>
       </div>
 
@@ -2981,7 +2982,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-wrap">
       <div class="aw-head">
         <h2>How it works</h2>
-        <p>Docker runs the containers. Tilt runs the dev loop. TDK CLI writes that config.</p>
+        <p>Docker runs the containers. Tilt watches services and live-updates containers as you code. TDK CLI writes the configuration Tilt uses.</p>
       </div>
 
       <div class="aw-bento">
@@ -3029,7 +3030,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   <!-- ================= SCRUB STATEMENT ================= -->
   <section class="aw-section aw-statement" id="statement" style="padding-top: 0;">
     <div class="aw-wrap">
-      <h2 id="aw-scrub-text">One manifest replaces <span class="aw-inline-img" style="background-image:linear-gradient(135deg, #7c4dff, #4dd0ff)"></span> cloud sandboxes at {{ site.data.tdk.cloud_cde_max }} per developer, <span class="aw-inline-img" style="background-image:linear-gradient(135deg, #f472b6, #7c4dff)"></span> weeks of YAML plumbing, and a <span class="aw-inline-img" style="background-image:linear-gradient(135deg, #4dd0ff, #7ee787)"></span> wiki of setup steps nobody updates.</h2>
+      <h2 id="aw-scrub-text">One manifest, local containers, selective startup, and a setup wiki replaced by <code>tdk doctor</code> and <code>tdk up</code>. TDK is designed for this flow; onboarding time has not been measured on a hiring cohort.</h2>
     </div>
   </section>
 
@@ -3145,7 +3146,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
         <div class="aw-acc-item">
           <div class="aw-acc-head">
             <div class="aw-acc-title">We need Kubernetes for production</div>
-            <div class="aw-acc-body">Local dev doesn't need to match production. Use TDK for fast local iteration — our 14-service stack is healthy in under 5 seconds once images are built — and K8s for prod when you're ready. Everything TDK generates is standard Docker and TypeScript tooling, so there is zero lock-in.</div>
+            <div class="aw-acc-body">Local dev doesn't need to match production. The 14 tiny services were healthy in 4.6s on a 16 GB M1 after images existed. Not a cold boot. Production stays on Helm. <a href="{{ '/docs/claims/' | relative_url }}">Claim details</a>.</div>
           </div>
         </div>
         <div class="aw-acc-item">
@@ -3163,7 +3164,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
         <div class="aw-acc-item">
           <div class="aw-acc-head">
             <div class="aw-acc-title">Where do the savings numbers come from?</div>
-            <div class="aw-acc-body">From the hours you set in the calculator: hours per developer per week × {{ site.data.tdk.weeks_per_year_num }} weeks × salary ÷ 2,080 working hours, minus Premium at ${{ site.data.tdk.team_price }}/dev/month. We don't claim a number for you; the free CLI costs nothing, so you can measure it on your own team first.</div>
+            <div class="aw-acc-body">The calculator uses inputs you set. Its output is arithmetic, not savings. The starting value of five hours per week is only an editable input, not a typical measurement. We make no savings claim for your team.</div>
           </div>
         </div>
       </div>
@@ -3175,19 +3176,18 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-wrap">
       <div class="aw-head aw-head-center">
         <h2>Priced against what it replaces</h2>
-        <p>Free during beta. When we launch — two tracks, nothing in between. Free needs no license key and costs nothing, ever — <span class="aw-mono">tdk up</span> just runs. Premium unlocks paid extras like the Verdaccio private registry and DDD scaffolding: set <code class="aw-mono" style="background: rgba(255,255,255,0.05); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">export TDK_LICENSE_KEY=&lt;key&gt;</code> to turn those on.</p>
+        <p>Core stays free. Premium is a separate key for the extras above; no key required to run <span class="aw-mono">tdk up</span>.</p>
       </div>
 
       <div class="aw-pricing-grid">
         <div class="aw-price-card">
           <div class="aw-price-name">Free</div>
-          <div class="aw-price-value">{{ site.data.tdk.community_price }} <small>/ forever</small></div>
+          <div class="aw-price-value">{{ site.data.tdk.community_price }} <small>/ MIT core</small></div>
           <p class="aw-price-desc">The full CLI, MIT-licensed, with no license key required.</p>
           <ul class="aw-price-list">
-            <li>Unlimited services per project, {{ site.data.tdk.scale_plain }} tested (small fixture)</li>
-            <li>Local service startup and development loop</li>
-            <li>L1–L4 golden Docker images without Verdaccio registry</li>
-            <li>No license key needed, ever</li>
+            <li><code>tdk up</code>, scaffold, Traefik, Postgres, Tilt live update, golden layers</li>
+            <li>Playwright, C4, and AGENTS.md when generated in-repo</li>
+            <li>No key required to run the core CLI</li>
             <li>Community support</li>
           </ul>
           <a class="aw-price-cta" href="{{ '/docs/quickstart/' | relative_url }}">Start free →</a>
@@ -3200,7 +3200,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
           <ul class="aw-price-list">
             <li>Everything in Free</li>
             <li>Verdaccio private npm registry for local package publishing and sharing</li>
-            <li>Premium generators — DDD scaffolding, Playwright E2E, C4 diagrams, structured logging, AGENTS.md guard rails</li>
+            <li>Verdaccio, DDD scaffold, and Sablier idle stop</li>
+            <li>Playwright, C4, and AGENTS.md implementations downloaded with a key</li>
             <li>Up to {{ site.data.tdk.premium_project_limit }} project IDs per license key</li>
             <li>Priority support, next business day</li>
             <li>Onboarding session for your stack</li>
@@ -3231,7 +3232,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-cta-glow"></div>
     <div class="aw-wrap">
       <h2>Get your<br />Premium license.</h2>
-      <p class="aw-cta-sub">Free needs no license key and costs nothing, ever — <span class="aw-mono">tdk up</span> runs with zero setup. Premium unlocks the Verdaccio registry, DDD scaffolding, and other paid extras, up to {{ site.data.tdk.premium_project_limit }} project IDs per key. Need SSO, air-gapped, or an SLA? Pick Enterprise.</p>
+      <p class="aw-cta-sub">Core stays free. Premium is a separate key for the extras above; no key required to run <span class="aw-mono">tdk up</span>. Need SSO, air-gapped, or an SLA? Pick Enterprise.</p>
 
       <form class="aw-form" onsubmit="handleLicenseSubmit(event); return false;">
         <label for="waitlist-email">Your email <span style="font-weight: 400; color: rgba(236,236,241,0.65);">(required — it's the only way we can send your key or reply)</span></label>

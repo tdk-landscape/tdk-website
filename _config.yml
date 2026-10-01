@@ -1,8 +1,8 @@
-title: TDK CLI — start services on your laptop
+title: TDK CLI turns service.json into a local Docker + Tilt stack
 email: vntu0412179+tdk-waitlist@gmail.com
 lang: en_US
 description: >-
-  Start your services on your laptop. Not a deploy. Not a Compose file. One service.json, then tdk up. No Kubernetes on the machine.
+  TDK CLI turns a service.json per service into a local Docker stack, with Tilt (the local development tool) watching services and live-updating containers as you code. It is not a deploy tool and not a Compose replacement. Production stays on Helm.
 author:
   name: TDK Team
 

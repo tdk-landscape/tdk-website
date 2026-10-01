@@ -243,7 +243,7 @@ title: Does TDK Fit Your Stack? - TDK CLI
           <div class="aw-fit-field">
             <label>What's slowing your team down? <span>(pick any that apply)</span></label>
             <div class="aw-fit-pills" data-group="pain" data-multi="true">
-              <button type="button" data-value="6" class="is-active" data-reason="TDK's manifest gets new hires running on day one instead of week two.">Onboarding takes days</button>
+              <button type="button" data-value="6" class="is-active" data-reason="TDK is designed so tdk doctor and tdk up replace a setup wiki; onboarding time has not been measured on a hiring cohort.">Onboarding takes days</button>
               <button type="button" data-value="6" class="is-active" data-reason="Golden Docker L1–L4 layers make every developer's machine identical.">Environment drift between machines</button>
               <button type="button" data-value="6" data-reason="Infisical machine identities are generated per service automatically.">Secrets / credentials setup</button>
               <button type="button" data-value="6" data-reason="Selective startup + auto-discovery boots the whole stack on one laptop.">Nobody can run the whole system locally</button>
@@ -453,7 +453,7 @@ function calcFit() {
   if (devs < 5) {
     reasons.push(['~', 'Small teams still benefit — the ROI compounds as you hire.']);
   } else {
-    reasons.push(['✓', devs + ' developers lose real time to setup, so the saved hours add up quickly.']);
+    reasons.push(['✓', 'Your user-set assumptions model ' + devs + ' developers. The output is arithmetic, not measured savings.']);
   }
 
   var list = document.getElementById('fit-reasons');
