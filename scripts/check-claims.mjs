@@ -9,7 +9,10 @@ const claims = readFileSync(new URL('docs/claims/index.md', root), 'utf8');
 const failures = [];
 const required = [
   '14 tiny services healthy in 4.6s on a 16 GB M1 after images existed. Not a cold boot.',
-  '100 generated `/health` stubs',
+  '100 generated',
+  '/health',
+  'healthy through Traefik in 472s on a clean Ubuntu runner',
+  'Not an ERP.',
 ];
 
 for (const line of required) {
