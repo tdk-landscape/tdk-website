@@ -17,7 +17,7 @@ This is a Jekyll-based static site for TDK CLI. The site features:
 ### Prerequisites
 
 - Ruby 2.6+ with Bundler
-- Node.js 18+ (optional, for asset building)
+- Node.js 18+ (optional, for this website's asset build; the TDK CLI npm package requires 22.12+)
 
 ### Installation
 
