@@ -4,7 +4,7 @@ const root = new URL('../', import.meta.url);
 const index = readFileSync(new URL('index.html', root), 'utf8');
 const compare = readFileSync(new URL('compare/index.html', root), 'utf8');
 const quickstart = readFileSync(new URL('docs/quickstart/index.html', root), 'utf8');
-const claims = readFileSync(new URL('../../ollamar1/tdk-cli-core/docs/claims.md', root), 'utf8');
+const claims = readFileSync(new URL('docs/claims/index.md', root), 'utf8');
 
 const failures = [];
 const required = [
