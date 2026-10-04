@@ -42,6 +42,13 @@ GitHub releases: https://github.com/tdk-landscape/tdk-cli-releases/releases/late
 - [Examples]({{ '/docs/examples/' | absolute_url }}): reference landscapes — minimal PSR starter, SaaS starter, restaurant ops, a {{ site.data.tdk.erp_services }}-service scale fixture across {{ site.data.tdk.erp_domains }} ERP-style domains (generated services answering /health, not a business app)
 - [Scripts]({{ '/docs/scripts/' | absolute_url }}): package.json scripts required per appType, enforced by `tdk doctor`
 
+- [AI Agents & Skills]({{ '/docs/agents/' | absolute_url }}): install the portable TDK agent skills (Agent Skills `SKILL.md` format) for Claude Code, Codex, OpenCode and Cursor, and the `AGENTS.md` rules template for other tools
+
+## Agent Skills
+
+- [tdk-skills](https://github.com/tdk-landscape/tdk-skills): portable `SKILL.md` skills (`tdk-doctor`, `tdk-troubleshoot`, `layer-autoresearch`) plus `AGENTS.md` rule templates. Install with `npx skills add tdk-landscape/tdk-skills`
+- [tdk-skills llms.txt](https://raw.githubusercontent.com/tdk-landscape/tdk-skills/main/llms.txt): machine-readable index of those skills
+
 ## Product
 
 - [Features]({{ '/features/' | absolute_url }}): {{ site.data.tdk.product_features }} product capabilities, all driven by one service.json
