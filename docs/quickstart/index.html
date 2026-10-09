@@ -64,7 +64,7 @@ tdk doctor</pre>
         <p>For the full inner loop, follow the <a href="https://github.com/tdk-landscape/tdk-cli-core/blob/main/docs/wsl2.md">WSL2 Ubuntu setup</a>. Windows ARM64 binaries are not published.</p>
 
         <h2 id="install-options">Install options</h2>
-        <p>Using an AI coding agent? Paste the line below into its chat — it'll fetch <span class="aw-mono">llms.txt</span> and install TDK for you. Use curl if you just want the fastest install yourself. Use npm, npx, pnpm, or bun if you prefer package-manager workflows.</p>
+        <p>Using an AI coding agent? Paste the line below into its chat — it'll fetch <span class="aw-mono">llms.txt</span>, install TDK, and configure the local MCP server for your agent. Use curl if you just want the fastest CLI install yourself. Use npm, npx, pnpm, or bun if you prefer package-manager workflows.</p>
         <div class="aw-install-tabs">
           <div class="aw-install-tabs-bar" role="tablist">
             <button class="aw-install-tab aw-install-tab--active" role="tab" aria-selected="true"  data-tab="llms">AI agent</button>
@@ -77,7 +77,7 @@ tdk doctor</pre>
           <div class="aw-codeblock" style="border-top-left-radius:0;border-top-right-radius:0;margin-top:0;">
             <div class="aw-codeblock-head"><i></i><i></i><i></i><span class="aw-install-tab-label">chat</span></div>
             <div class="aw-install-panel" data-panel="llms">
-              <pre>Please install TDK {{ '/llms.txt' | absolute_url }}</pre>
+              <pre>Please install TDK and configure its local MCP server for this agent: {{ '/llms.txt' | absolute_url }}</pre>
             </div>
             <div class="aw-install-panel" data-panel="curl" style="display:none;">
               <pre>curl -fsSL https://tdk-landscape.github.io/install.sh | sh</pre>
