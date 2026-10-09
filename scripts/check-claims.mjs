@@ -29,6 +29,19 @@ for (const [label, source] of [['homepage hero', index.match(/<p class="aw-hero-
   }
 }
 
+const benchPanel = index.match(/<aside class="aw-bench"[\s\S]*?<\/aside>/)?.[0] ?? '';
+if (benchPanel) {
+  if (!benchPanel.includes("'/docs/claims/' | relative_url")) {
+    failures.push('homepage benchmark panel has numbers without a link to the claims registry');
+  }
+  if (!claims.includes('id="benchmark-panel"') || !claims.includes('site.data.benchmarks')) {
+    failures.push('claims registry is missing the homepage benchmark panel section');
+  }
+  if (/\bERP\b/.test(readFileSync(new URL('_data/benchmarks.yml', root), 'utf8').replace(/^#.*$/gm, ''))) {
+    failures.push('benchmark panel uses ERP wording');
+  }
+}
+
 const forbidden = [
   [/Free during beta\. When we launch/i, 'obsolete beta pricing copy'],
   [/Windows supported(?!\s+through WSL2)/i, 'unqualified Windows support claim'],
