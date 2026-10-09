@@ -1,12 +1,22 @@
 # Homepage benchmark panel. Every number is copied from a committed result file in
-# tdk-landscape/tdk-cli-core/benchmarks/results — update both together, never round up.
-# `scale` is the value that fills a full bar; `key` marks the highlighted row.
+# tdk-landscape/tdk-cli-core/benchmarks/results; update both together, never round up.
+#
+# scale  value that fills a full bar        key    highlighted row
+# speed  (optional) the Replay button re-runs the bars in real time at this speed-up;
+#        row values must then be seconds
+# name   (optional) long label used on the claims page instead of "<label> <row_suffix>"
+# sub    (optional) small caption under a row label, overrides row_suffix
 
 - id: boot
   tab: Boot
   title: Booting 5 to 100 example services
   subtitle: seconds until every service is healthy · lower is better
   scale: 82.6
+  speed: 10
+  stats:
+    - { value: "100 / 100", label: "healthy at the top tier" }
+    - { value: "0", label: "crashes, every tier" }
+    - { value: "0", label: "OOM kills, every tier" }
   rows:
     - { label: "5", value: 5.0, display: "5.0s" }
     - { label: "10", value: 8.2, display: "8.2s" }
@@ -15,14 +25,19 @@
     - { label: "80", value: 82.6, display: "82.6s" }
     - { label: "100", value: 73.9, display: "73.9s", key: true }
   row_suffix: services
-  note: Docker Compose mode · 16 GB host, Docker capped at 7.7 GiB · 0 crashes at every tier · one run, so tiers can be noisy
+  note: Docker Compose mode · 16 GB host, Docker VM 7.75 GiB · one run, so tiers can be noisy
   source: benchmarks/results/container-scale-2026-09-25T22-18-28-371Z.json
+  repro: scripts/benchmark/README.md
 
 - id: memory
   tab: Memory
   title: Memory for the whole stack
   subtitle: total container memory once settled · lower is better
   scale: 1668
+  stats:
+    - { value: "1.63 GiB", label: "total at 100 services" }
+    - { value: "16.7 MiB", label: "average per service" }
+    - { value: "107", label: "images, 6.56 GB on disk" }
   rows:
     - { label: "5", value: 74, display: "74 MiB" }
     - { label: "10", value: 157, display: "157 MiB" }
@@ -31,18 +46,67 @@
     - { label: "80", value: 1353, display: "1.32 GiB" }
     - { label: "100", value: 1668, display: "1.63 GiB", key: true }
   row_suffix: services
-  note: Same run as Boot · about 17 MiB per tiny service · 107 images on disk (6.56 GB)
+  note: Same run as Boot · service containers only, no Postgres or Traefik · tiny health-check services use far less than real apps
   source: benchmarks/results/container-scale-2026-09-25T22-18-28-371Z.json
+  repro: scripts/benchmark/README.md
+
+- id: cpu
+  tab: CPU
+  title: CPU while the stack settles
+  subtitle: total container CPU % from docker stats · lower is better
+  scale: 73.1
+  stats:
+    - { value: "48%", label: "total at 100 services" }
+    - { value: "73.1%", label: "peak, at 50 services" }
+    - { value: "1.7%", label: "total at 5 services" }
+  rows:
+    - { label: "5", value: 1.7, display: "1.7%" }
+    - { label: "10", value: 3.7, display: "3.7%" }
+    - { label: "20", value: 6.2, display: "6.2%" }
+    - { label: "50", value: 73.1, display: "73.1%" }
+    - { label: "80", value: 56.2, display: "56.2%" }
+    - { label: "100", value: 48.0, display: "48.0%", key: true }
+  row_suffix: services
+  note: Same run as Boot · one sample per tier right after services report healthy, so it is not monotonic
+  source: benchmarks/results/container-scale-2026-09-25T22-18-28-371Z.json
+  repro: scripts/benchmark/README.md
+
+- id: latency
+  tab: Latency
+  title: Routed /health latency
+  subtitle: p50 milliseconds per request · lower is better
+  scale: 7.5
+  stats:
+    - { value: "5.6 ms", label: "p50 at 100 services" }
+    - { value: "100 / 100", label: "answered 200" }
+    - { value: "0", label: "restarts, every tier" }
+  rows:
+    - { label: "5", value: 2.8, display: "2.8 ms" }
+    - { label: "10", value: 4.5, display: "4.5 ms" }
+    - { label: "20", value: 3.1, display: "3.1 ms" }
+    - { label: "50", value: 6.5, display: "6.5 ms" }
+    - { label: "80", value: 7.5, display: "7.5 ms" }
+    - { label: "100", value: 5.6, display: "5.6 ms", key: true }
+  row_suffix: services
+  note: Same run as Boot · one request routed to each service, median of the 200 responses · single run
+  source: benchmarks/results/container-scale-2026-09-25T22-18-28-371Z.json
+  repro: scripts/benchmark/README.md
 
 - id: cli
-  tab: CLI discovery
-  title: tdk resources on a big repo
-  subtitle: milliseconds to discover and list services · lower is better
+  tab: CLI
+  title: CLI commands on a big repo
+  subtitle: median milliseconds at 500 services · lower is better
   scale: 1000
+  stats:
+    - { value: "942 ms", label: "tdk resources, 500 services" }
+    - { value: "494 ms", label: "tdk resources, 10 services" }
+    - { value: "10", label: "fresh Node processes each" }
   rows:
-    - { label: "10", value: 494, display: "494 ms" }
-    - { label: "100", value: 504, display: "504 ms" }
-    - { label: "500", value: 942, display: "942 ms", key: true }
-  row_suffix: services
-  note: Median of 10 fresh Node processes · Windows x64, i5-12600KF, Node 24 · no containers started
+    - { label: "version", name: "tdk version", sub: "tdk cmd", value: 499, display: "499 ms" }
+    - { label: "--help", name: "tdk --help", sub: "tdk cmd", value: 546, display: "546 ms" }
+    - { label: "resources", name: "tdk resources", sub: "tdk cmd", value: 942, display: "942 ms", key: true }
+    - { label: "stacks", name: "tdk stacks", sub: "tdk cmd", value: 524, display: "524 ms" }
+  row_suffix: tdk cmd
+  note: Windows x64, i5-12600KF, Node 24 · no containers started · tdk status is left out because it waits on a Tilt probe
   source: benchmarks/results/cli-startup-2026-10-06T21-18-27.093Z.json
+  repro: scripts/benchmark/README.md
