@@ -38,7 +38,7 @@ body { background: #0a0a0e; overflow-x: hidden; }
   min-height: 100dvh;
   display: flex;
   align-items: center;
-  padding: 11rem 1.5rem 9rem;
+  padding: 7.5rem 1.5rem 4rem;
   overflow: hidden;
 }
 
@@ -252,12 +252,36 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
 .aw-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   gap: clamp(2rem, 4vw, 4.5rem);
   align-items: center;
 }
 
-.aw-hero-grid h1 { font-size: clamp(2.6rem, 4.4vw, 4.6rem); }
+/* Keep the whole hero (pill to proof line) inside one laptop screen, like bun.sh */
+.aw-hero-grid h1 { margin-bottom: 1.25rem; font-size: clamp(2.5rem, 3.7vw, 3.9rem); }
+.aw-hero-grid .aw-hero-pill { margin-bottom: 1.25rem; }
+.aw-hero-grid .aw-hero-sub { margin-bottom: 1.5rem; font-size: clamp(1rem, 1.15vw, 1.1rem); }
+.aw-hero-grid .aw-install { margin-bottom: 1.5rem; }
+.aw-hero-grid .aw-hero-ctas { gap: 0.75rem; margin-bottom: 1.25rem; }
+.aw-hero-grid .aw-hero-ctas .aw-btn { padding: 0.7rem 1.5rem; font-size: 0.95rem; }
+.aw-hero-grid .aw-hero-proof { font-size: 0.875rem; }
+
+@media (min-width: 1081px) and (max-height: 820px) {
+  .aw-hero { padding-top: 6.5rem; padding-bottom: 2.5rem; }
+  .aw-hero-grid h1 { font-size: clamp(2.3rem, 3.3vw, 3.3rem); }
+  .aw-hero-grid .aw-hero-sub { margin-bottom: 1.25rem; line-height: 1.55; }
+  .aw-hero-grid .aw-install { margin-bottom: 1.25rem; }
+}
+
+@media (min-width: 1081px) and (max-height: 720px) {
+  .aw-hero { padding-top: 5.5rem; padding-bottom: 1.5rem; }
+  .aw-hero-grid .aw-hero-pill { margin-bottom: 0.9rem; }
+  .aw-hero-grid h1 { margin-bottom: 0.9rem; font-size: clamp(2.1rem, 3vw, 3rem); }
+  .aw-hero-grid .aw-hero-sub { margin-bottom: 1rem; }
+  .aw-hero-grid .aw-install { margin-bottom: 1rem; }
+  .aw-hero-grid .aw-hero-ctas { margin-bottom: 0.9rem; }
+  .aw-hero-grid .aw-hero-ctas .aw-btn { padding: 0.55rem 1.25rem; }
+}
 
 @media (max-width: 1080px) {
   .aw-hero-grid { grid-template-columns: minmax(0, 1fr); }
