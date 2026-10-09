@@ -180,32 +180,31 @@ function initBenchTabs() {
   const stopRealtime = () => {
     cancelAnimationFrame(frame);
     root.querySelectorAll('.aw-bench-bar').forEach((bar) => { bar.style.cssText = ''; });
-    root.querySelectorAll('.aw-bench-val').forEach((val) => {
-      if (val.dataset.final) val.textContent = val.dataset.final;
-    });
+    root.querySelectorAll('[data-bench-clock]').forEach((clock) => { clock.hidden = true; });
     root.classList.remove('is-resetting');
   };
 
   // Time-based panels replay in real time at data-speed x: each bar fills as the clock reaches its seconds.
+  // The value labels always show the measured result; only the clock in the panel header counts up.
   const playRealtime = (panel) => {
     const speed = Number(panel.dataset.speed);
-    const rows = Array.from(panel.querySelectorAll('.aw-bench-row')).map((row) => {
-      const val = row.querySelector('.aw-bench-val');
-      val.dataset.final = val.dataset.final || val.textContent;
-      return { bar: row.querySelector('.aw-bench-bar'), val, secs: Number(row.dataset.value), full: Number(row.dataset.v) };
-    });
+    const clock = panel.querySelector('[data-bench-clock]');
+    const rows = Array.from(panel.querySelectorAll('.aw-bench-row')).map((row) => ({
+      bar: row.querySelector('.aw-bench-bar'),
+      secs: Number(row.dataset.value),
+      full: Number(row.dataset.v),
+    }));
+    const longest = Math.max(...rows.map((r) => r.secs));
     const start = performance.now();
+    if (clock) clock.hidden = false;
     const tick = (now) => {
-      const t = ((now - start) / 1000) * speed;
-      let running = false;
+      const t = Math.min(((now - start) / 1000) * speed, longest);
       rows.forEach((r) => {
-        const done = Math.min(t / r.secs, 1);
         r.bar.style.transition = 'none';
-        r.bar.style.transform = `scaleX(${done * r.full})`;
-        r.val.textContent = done >= 1 ? r.val.dataset.final : `${Math.min(t, r.secs).toFixed(1)}s`;
-        if (done < 1) running = true;
+        r.bar.style.transform = `scaleX(${Math.min(t / r.secs, 1) * r.full})`;
       });
-      if (running) frame = requestAnimationFrame(tick);
+      if (clock) clock.textContent = `clock ${t.toFixed(1)}s · ${speed}×`;
+      if (t < longest) frame = requestAnimationFrame(tick);
       else stopRealtime();
     };
     frame = requestAnimationFrame(tick);
