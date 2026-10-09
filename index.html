@@ -102,13 +102,13 @@ body { background: #0a0a0e; overflow-x: hidden; }
   color: rgba(236, 236, 241, 0.7);
   font-weight: 300;
   max-width: 42rem;
-  margin: 0 0 2.75rem;
+  margin: 0 0 2rem;
 }
 
 .aw-hero-sub strong { color: #fff; font-weight: 600; }
 
 .aw-hero-proof {
-  margin: 1.25rem 0 2.75rem;
+  margin: 0.75rem 0 0;
   color: rgba(236, 236, 241, 0.8);
   font-size: 0.95rem;
   font-variant-numeric: tabular-nums;
@@ -126,11 +126,12 @@ body { background: #0a0a0e; overflow-x: hidden; }
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-bottom: 1.75rem;
 }
 
 .aw-install {
   width: min(46rem, 100%);
-  margin-top: 2.25rem;
+  margin: 0 0 2rem;
 }
 
 .aw-install-label {
@@ -209,6 +210,45 @@ body { background: #0a0a0e; overflow-x: hidden; }
   .aw-install-bar code { font-size: 0.78rem; }
   .aw-install-foot { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
 }
+
+.aw-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.75rem;
+  padding: 0.3rem 0.85rem 0.3rem 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(236, 236, 241, 0.75);
+  font: 600 0.75rem 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.aw-hero-pill:hover { color: #fff; border-color: rgba(255, 255, 255, 0.28); }
+.aw-hero-pill:focus-visible { outline: 2px solid #4dd0ff; outline-offset: 3px; }
+
+.aw-hero-pill-tag {
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: #7c4dff;
+  color: #fff;
+}
+
+.aw-hero h1 code {
+  padding: 0;
+  border-radius: 0;
+  background: linear-gradient(100deg, #b79aff 0%, #7c4dff 60%, #4dd0ff 130%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 0.92em;
+}
+
+.aw-bench-links { display: flex; gap: 0.9rem; }
 
 .aw-hero-grid {
   display: grid;
@@ -2255,17 +2295,13 @@ body { background: #0a0a0e; overflow-x: hidden; }
 
     <div class="aw-hero-inner aw-hero-grid">
       <div class="aw-hero-main">
+      <a class="aw-hero-pill" href="https://github.com/tdk-landscape/tdk-cli-core/releases/latest" target="_blank" rel="noopener">
+        <span class="aw-hero-pill-tag">New</span><span data-latest-release>Latest release</span><span aria-hidden="true">→</span>
+      </a>
       <h1>TDK CLI turns <code>service.json</code> into a local Docker stack that updates as you code.</h1>
       <p class="aw-hero-sub">
         Tilt is the local development tool that watches services and live-updates containers as you code. TDK writes its configuration. Not a deploy tool and not a Compose replacement. Production stays on Helm.
       </p>
-      <p class="aw-hero-status">Stability: 1.x local dev. Generated files are a contract; verify with tdk config verify. Core CLI is MIT and needs no key. Premium is optional.</p>
-      <p class="aw-hero-proof">14 tiny services healthy in 4.6s on a 16 GB M1 after images existed. Not a cold boot. <a href="{{ '/docs/claims/' | relative_url }}">Claim details</a>.</p>
-      <div class="aw-hero-ctas">
-        <a href="{{ '/docs/quickstart/' | relative_url }}" class="aw-btn aw-btn-solid">Start free</a>
-        <a href="#demo" class="aw-btn aw-btn-ghost">Watch it boot</a>
-        <a href="https://github.com/tdk-landscape/tdk-cli-core" class="aw-btn aw-btn-ghost" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i>&nbsp;Source on GitHub</a>
-      </div>
       <div class="aw-install" aria-label="Install the TDK CLI">
         <p class="aw-install-label">Install the CLI</p>
         <div class="aw-install-bar">
@@ -2280,6 +2316,13 @@ body { background: #0a0a0e; overflow-x: hidden; }
         </div>
         <span class="visually-hidden" data-copy-status aria-live="polite"></span>
       </div>
+      <div class="aw-hero-ctas">
+        <a href="{{ '/docs/quickstart/' | relative_url }}" class="aw-btn aw-btn-solid">Start free</a>
+        <a href="#demo" class="aw-btn aw-btn-ghost">Watch it boot</a>
+        <a href="https://github.com/tdk-landscape/tdk-cli-core" class="aw-btn aw-btn-ghost" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i>&nbsp;Source on GitHub</a>
+      </div>
+      <p class="aw-hero-status">Stability: 1.x local dev. Generated files are a contract; verify with tdk config verify. Core CLI is MIT and needs no key. Premium is optional.</p>
+      <p class="aw-hero-proof">14 tiny services healthy in 4.6s on a 16 GB M1 after images existed. Not a cold boot. <a href="{{ '/docs/claims/' | relative_url }}">Claim details</a>.</p>
       </div>
 
       <aside class="aw-bench" aria-label="TDK benchmark results" data-bench>
@@ -2308,7 +2351,10 @@ body { background: #0a0a0e; overflow-x: hidden; }
           </ol>
           <div class="aw-bench-foot">
             <p>{{ b.note }}</p>
-            <a href="https://github.com/tdk-landscape/tdk-cli-core/blob/main/{{ b.source }}" target="_blank" rel="noopener">Raw data ↗</a>
+            <span class="aw-bench-links">
+              <a href="{{ '/docs/claims/' | relative_url }}#benchmark-panel">Claim details</a>
+              <a href="https://github.com/tdk-landscape/tdk-cli-core/blob/main/{{ b.source }}" target="_blank" rel="noopener">Raw data ↗</a>
+            </span>
           </div>
         </div>
         {%- endfor %}
@@ -4059,9 +4105,12 @@ if (!REDUCED_MOTION && window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
 
   /* Hero entrance */
+  gsap.from('.aw-hero-pill', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' });
   gsap.from('.aw-hero h1', { y: 60, opacity: 0, duration: 1.2, ease: 'power3.out', delay: 0.1 });
   gsap.from('.aw-hero-sub', { y: 40, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.35 });
+  gsap.from('.aw-hero .aw-install', { y: 30, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.45 });
   gsap.from('.aw-hero-ctas', { y: 30, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.55 });
+  gsap.from('.aw-bench', { x: 40, opacity: 0, duration: 1.1, ease: 'power3.out', delay: 0.4 });
   gsap.to('.aw-hero-bg', {
     scale: 1, ease: 'none',
     scrollTrigger: { trigger: '.aw-hero', start: 'top top', end: 'bottom top', scrub: true }

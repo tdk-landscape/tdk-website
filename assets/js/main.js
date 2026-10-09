@@ -230,3 +230,36 @@ if (document.readyState === 'loading') {
     })
     .catch(() => {});
 })();
+
+// Latest tdk-cli-core release tag on every [data-latest-release] pill.
+(function showLatestRelease() {
+  const labels = document.querySelectorAll('[data-latest-release]');
+  if (!labels.length) return;
+
+  const cacheKey = 'tdk-latest-release';
+  const render = (tag) => {
+    if (typeof tag !== 'string' || !tag) return;
+    labels.forEach((el) => {
+      el.textContent = `TDK CLI ${tag} released`;
+    });
+  };
+
+  try {
+    const cached = JSON.parse(sessionStorage.getItem(cacheKey) || 'null');
+    if (cached && Date.now() - cached.at < 3600000) {
+      render(cached.tag);
+      return;
+    }
+  } catch (e) { /* storage unavailable */ }
+
+  fetch('https://api.github.com/repos/tdk-landscape/tdk-cli-core/releases/latest')
+    .then((res) => (res.ok ? res.json() : null))
+    .then((release) => {
+      if (!release) return;
+      render(release.tag_name);
+      try {
+        sessionStorage.setItem(cacheKey, JSON.stringify({ tag: release.tag_name, at: Date.now() }));
+      } catch (e) { /* storage unavailable */ }
+    })
+    .catch(() => {});
+})();
