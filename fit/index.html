@@ -246,7 +246,7 @@ title: Does TDK Fit Your Stack? - TDK CLI
               <button type="button" data-value="6" class="is-active" data-reason="TDK is designed so tdk doctor and tdk up replace a setup wiki; onboarding time has not been measured on a hiring cohort.">Onboarding takes days</button>
               <button type="button" data-value="6" class="is-active" data-reason="Golden Docker L1–L4 layers make every developer's machine identical.">Environment drift between machines</button>
               <button type="button" data-value="6" data-reason="Infisical machine identities are generated per service automatically.">Secrets / credentials setup</button>
-              <button type="button" data-value="6" data-reason="Selective startup + auto-discovery boots the whole stack on one laptop.">Nobody can run the whole system locally</button>
+              <button type="button" data-value="6" data-reason="Selective startup + auto-discovery boots the whole stack on one machine.">Nobody can run the whole system locally</button>
               <button type="button" data-value="0" data-exclusive="true">None — we're happy</button>
             </div>
           </div>
@@ -425,7 +425,7 @@ function calcFit() {
   } else if (todayProfile === 'dev-container') {
     reasons.push(['~', 'Dev Containers solve per-service isolation — TDK adds multi-service orchestration on top.']);
   } else if (todayProfile === 'cloud-ide') {
-    reasons.push(['~', 'Cloud IDEs solve a different problem — TDK runs the same stack on your laptop, no per-seat bill.']);
+    reasons.push(['~', 'Cloud IDEs solve a different problem — TDK runs the same stack on your machine, no per-seat bill.']);
   } else if (todayProfile === 'native') {
     reasons.push(['~', 'You\'ll containerize as part of adopting TDK — worth it once you pass ~5 services.']);
   } else {
