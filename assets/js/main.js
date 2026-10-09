@@ -113,9 +113,31 @@ function addCopyButtons() {
   });
 }
 
+function initInstallCopy() {
+  const button = document.querySelector('[data-copy-install]');
+  const command = document.getElementById('aw-install-command');
+  const status = document.querySelector('[data-copy-status]');
+  if (!button || !command) return;
+
+  button.addEventListener('click', async () => {
+    const label = button.querySelector('span');
+    try {
+      await navigator.clipboard.writeText(command.textContent.trim());
+      if (label) label.textContent = 'Copied';
+      if (status) status.textContent = 'Install command copied to clipboard.';
+    } catch (error) {
+      if (status) status.textContent = 'Could not copy automatically. Select and copy the command above.';
+    }
+    window.setTimeout(() => {
+      if (label) label.textContent = 'Copy';
+    }, 1800);
+  });
+}
+
 function initializeSite() {
   initNavigation();
   addCopyButtons();
+  initInstallCopy();
 }
 
 if (document.readyState === 'loading') {
