@@ -134,10 +134,60 @@ function initInstallCopy() {
   });
 }
 
+function initBenchTabs() {
+  const root = document.querySelector('[data-bench]');
+  if (!root) return;
+  const tabs = Array.from(root.querySelectorAll('[role="tab"]'));
+
+  // Grow the bars from zero, like a fresh run.
+  const replay = () => {
+    root.classList.add('is-resetting');
+    void root.offsetWidth;
+    root.classList.remove('is-resetting');
+  };
+
+  const select = (tab) => {
+    tabs.forEach((t) => {
+      const active = t === tab;
+      t.classList.toggle('is-active', active);
+      t.setAttribute('aria-selected', String(active));
+      t.tabIndex = active ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !active;
+    });
+    replay();
+  };
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => select(tab));
+    tab.addEventListener('keydown', (event) => {
+      const step = { ArrowRight: 1, ArrowLeft: -1 }[event.key];
+      if (!step) return;
+      event.preventDefault();
+      const next = tabs[(i + step + tabs.length) % tabs.length];
+      next.focus();
+      select(next);
+    });
+  });
+
+  root.querySelectorAll('[data-bench-replay]').forEach((btn) => btn.addEventListener('click', replay));
+
+  // First run plays when the panel scrolls into view.
+  if ('IntersectionObserver' in window) {
+    root.classList.add('is-resetting');
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      observer.disconnect();
+      replay();
+    }, { threshold: 0.3 });
+    observer.observe(root);
+  }
+}
+
 function initializeSite() {
   initNavigation();
   addCopyButtons();
   initInstallCopy();
+  initBenchTabs();
 }
 
 if (document.readyState === 'loading') {

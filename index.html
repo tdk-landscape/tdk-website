@@ -210,6 +210,180 @@ body { background: #0a0a0e; overflow-x: hidden; }
   .aw-install-foot { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
 }
 
+.aw-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: center;
+}
+
+.aw-hero-grid h1 { font-size: clamp(2.6rem, 4.4vw, 4.6rem); }
+
+@media (max-width: 1080px) {
+  .aw-hero-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+.aw-bench {
+  min-width: 0;
+  background: rgba(13, 13, 19, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.aw-bench-tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.aw-bench-tabs::-webkit-scrollbar { display: none; }
+
+.aw-bench-tab {
+  flex: 1 0 auto;
+  padding: 0.8rem 1rem;
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: none;
+  color: rgba(236, 236, 241, 0.55);
+  font: 600 0.82rem 'Satoshi', 'Outfit', 'Geist', sans-serif;
+  cursor: pointer;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.aw-bench-tab:last-child { border-right: 0; }
+.aw-bench-tab:hover { color: #ececf1; }
+.aw-bench-tab.is-active { color: #fff; background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 -2px #b79aff; }
+.aw-bench-tab:focus-visible,
+.aw-bench-replay:focus-visible,
+.aw-bench-foot a:focus-visible { outline: 2px solid #4dd0ff; outline-offset: -2px; }
+
+.aw-bench-panel { padding: 1.25rem 1.25rem 1rem; }
+.aw-bench-panel[hidden] { display: none; }
+
+.aw-bench-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.aw-bench-head h2 {
+  margin: 0;
+  color: #fff;
+  font: 700 1rem/1.3 'Satoshi', 'Outfit', 'Geist', sans-serif;
+  letter-spacing: 0;
+}
+
+.aw-bench-head p {
+  margin: 0.25rem 0 0;
+  color: rgba(236, 236, 241, 0.5);
+  font-size: 0.78rem;
+}
+
+.aw-bench-replay {
+  flex: 0 0 auto;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: none;
+  color: rgba(236, 236, 241, 0.6);
+  font: 500 0.72rem 'JetBrains Mono', monospace;
+  cursor: pointer;
+}
+
+.aw-bench-replay:hover { color: #ececf1; border-color: rgba(255, 255, 255, 0.24); }
+
+.aw-bench-rows {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aw-bench-row {
+  display: grid;
+  grid-template-columns: 4.75rem minmax(0, 1fr) 4.75rem;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.aw-bench-name {
+  color: #ececf1;
+  font: 600 0.85rem/1.1 'JetBrains Mono', monospace;
+}
+
+.aw-bench-name small {
+  display: block;
+  margin-top: 0.15rem;
+  color: rgba(236, 236, 241, 0.45);
+  font-size: 0.66rem;
+  font-weight: 400;
+}
+
+.aw-bench-track {
+  height: 1.35rem;
+  border-radius: 0.3rem;
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.aw-bench-bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.3rem;
+  background: rgba(236, 236, 241, 0.28);
+  transform: scaleX(var(--v));
+  transform-origin: left center;
+  transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: calc(var(--i) * 70ms);
+}
+
+.aw-bench-row.is-key .aw-bench-name { color: #c8b5ff; }
+.aw-bench-row.is-key .aw-bench-bar { background: linear-gradient(90deg, #7c4dff, #b79aff); }
+
+.aw-bench-val {
+  color: #ececf1;
+  font: 500 0.82rem 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.aw-bench.is-resetting .aw-bench-bar { transform: scaleX(0); transition: none; }
+
+.aw-bench-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(236, 236, 241, 0.45);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.aw-bench-foot p { margin: 0; }
+.aw-bench-foot a { color: #4dd0ff; text-decoration: none; white-space: nowrap; }
+.aw-bench-foot a:hover { text-decoration: underline; }
+
+@media (max-width: 520px) {
+  .aw-bench-panel { padding: 1rem 0.9rem 0.9rem; }
+  .aw-bench-row { grid-template-columns: 3.5rem minmax(0, 1fr) 4.25rem; gap: 0.5rem; }
+  .aw-bench-foot { flex-direction: column; gap: 0.4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aw-bench-bar { transition: none; }
+}
+
 .aw-hero-star-count {
   margin-left: 0.6rem;
   padding-left: 0.6rem;
@@ -2079,7 +2253,8 @@ body { background: #0a0a0e; overflow-x: hidden; }
     <div class="aw-hero-wash"></div>
     <div class="aw-hero-grain"></div>
 
-    <div class="aw-hero-inner">
+    <div class="aw-hero-inner aw-hero-grid">
+      <div class="aw-hero-main">
       <h1>TDK CLI turns <code>service.json</code> into a local Docker stack that updates as you code.</h1>
       <p class="aw-hero-sub">
         Tilt is the local development tool that watches services and live-updates containers as you code. TDK writes its configuration. Not a deploy tool and not a Compose replacement. Production stays on Helm.
@@ -2105,6 +2280,39 @@ body { background: #0a0a0e; overflow-x: hidden; }
         </div>
         <span class="visually-hidden" data-copy-status aria-live="polite"></span>
       </div>
+      </div>
+
+      <aside class="aw-bench" aria-label="TDK benchmark results" data-bench>
+        <div class="aw-bench-tabs" role="tablist" aria-label="Benchmark">
+          {%- for b in site.data.benchmarks %}
+          <button type="button" role="tab" class="aw-bench-tab{% if forloop.first %} is-active{% endif %}" id="aw-bench-tab-{{ b.id }}" aria-controls="aw-bench-{{ b.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"{% unless forloop.first %} tabindex="-1"{% endunless %}>{{ b.tab }}</button>
+          {%- endfor %}
+        </div>
+        {%- for b in site.data.benchmarks %}
+        <div class="aw-bench-panel" role="tabpanel" id="aw-bench-{{ b.id }}" aria-labelledby="aw-bench-tab-{{ b.id }}"{% unless forloop.first %} hidden{% endunless %}>
+          <div class="aw-bench-head">
+            <div>
+              <h2>{{ b.title }}</h2>
+              <p>{{ b.subtitle }}</p>
+            </div>
+            <button type="button" class="aw-bench-replay" data-bench-replay>Replay</button>
+          </div>
+          <ol class="aw-bench-rows">
+            {%- for r in b.rows %}
+            <li class="aw-bench-row{% if r.key %} is-key{% endif %}" style="--v: {{ r.value | times: 1.0 | divided_by: b.scale | round: 3 }}; --i: {{ forloop.index0 }}">
+              <span class="aw-bench-name">{{ r.label }}<small>{{ b.row_suffix }}</small></span>
+              <span class="aw-bench-track" aria-hidden="true"><span class="aw-bench-bar"></span></span>
+              <span class="aw-bench-val">{{ r.display }}</span>
+            </li>
+            {%- endfor %}
+          </ol>
+          <div class="aw-bench-foot">
+            <p>{{ b.note }}</p>
+            <a href="https://github.com/tdk-landscape/tdk-cli-core/blob/main/{{ b.source }}" target="_blank" rel="noopener">Raw data ↗</a>
+          </div>
+        </div>
+        {%- endfor %}
+      </aside>
     </div>
   </section>
 

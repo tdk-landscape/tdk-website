@@ -1,0 +1,48 @@
+# Homepage benchmark panel. Every number is copied from a committed result file in
+# tdk-landscape/tdk-cli-core/benchmarks/results — update both together, never round up.
+# `scale` is the value that fills a full bar; `key` marks the highlighted row.
+
+- id: boot
+  tab: Boot
+  title: Booting the ERP example
+  subtitle: seconds until every service is healthy · lower is better
+  scale: 82.6
+  rows:
+    - { label: "5", value: 5.0, display: "5.0s" }
+    - { label: "10", value: 8.2, display: "8.2s" }
+    - { label: "20", value: 13.6, display: "13.6s" }
+    - { label: "50", value: 61.0, display: "61.0s" }
+    - { label: "80", value: 82.6, display: "82.6s" }
+    - { label: "100", value: 73.9, display: "73.9s", key: true }
+  row_suffix: services
+  note: Docker Compose mode · 16 GB host, Docker capped at 7.7 GiB · 0 crashes at every tier · one run, so tiers can be noisy
+  source: benchmarks/results/container-scale-2026-09-25T22-18-28-371Z.json
+
+- id: memory
+  tab: Memory
+  title: Memory for the whole stack
+  subtitle: total container memory once settled · lower is better
+  scale: 1668
+  rows:
+    - { label: "5", value: 74, display: "74 MiB" }
+    - { label: "10", value: 157, display: "157 MiB" }
+    - { label: "20", value: 309, display: "309 MiB" }
+    - { label: "50", value: 834, display: "834 MiB" }
+    - { label: "80", value: 1353, display: "1.32 GiB" }
+    - { label: "100", value: 1668, display: "1.63 GiB", key: true }
+  row_suffix: services
+  note: Same run as Boot · about 17 MiB per tiny service · 107 images on disk (6.56 GB)
+  source: benchmarks/results/container-scale-2026-09-25T22-18-28-371Z.json
+
+- id: cli
+  tab: CLI discovery
+  title: tdk resources on a big repo
+  subtitle: milliseconds to discover and list services · lower is better
+  scale: 1000
+  rows:
+    - { label: "10", value: 494, display: "494 ms" }
+    - { label: "100", value: 504, display: "504 ms" }
+    - { label: "500", value: 942, display: "942 ms", key: true }
+  row_suffix: services
+  note: Median of 10 fresh Node processes · Windows x64, i5-12600KF, Node 24 · no containers started
+  source: benchmarks/results/cli-startup-2026-10-06T21-18-27.093Z.json
