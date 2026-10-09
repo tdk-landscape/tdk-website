@@ -121,16 +121,51 @@ function initInstallCopy() {
 
   button.addEventListener('click', async () => {
     const label = button.querySelector('span');
+    const text = command.textContent.trim();
+    let copied = false;
     try {
-      await navigator.clipboard.writeText(command.textContent.trim());
+      await navigator.clipboard.writeText(text);
+      copied = true;
+    } catch (error) {
+      const field = document.createElement('textarea');
+      field.value = text;
+      field.setAttribute('readonly', '');
+      field.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(field);
+      field.select();
+      try { copied = document.execCommand('copy'); } catch (e) { copied = false; }
+      document.body.removeChild(field);
+    }
+    if (copied) {
       if (label) label.textContent = 'Copied';
       if (status) status.textContent = 'Install command copied to clipboard.';
-    } catch (error) {
-      if (status) status.textContent = 'Could not copy automatically. Select and copy the command above.';
+    } else if (status) {
+      status.textContent = 'Could not copy automatically. Select and copy the command above.';
     }
     window.setTimeout(() => {
       if (label) label.textContent = 'Copy';
     }, 1800);
+  });
+}
+
+function initInstallMethods() {
+  const methods = document.querySelectorAll('.aw-install-method');
+  const command = document.getElementById('aw-install-command');
+  const note = document.querySelector('[data-install-note]');
+  const label = document.querySelector('[data-copy-install] span');
+  if (!methods.length || !command) return;
+
+  methods.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      methods.forEach((m) => {
+        const on = m === btn;
+        m.classList.toggle('is-active', on);
+        m.setAttribute('aria-pressed', String(on));
+      });
+      command.textContent = btn.dataset.cmd;
+      if (note) note.textContent = btn.dataset.note;
+      if (label) label.textContent = 'Copy';
+    });
   });
 }
 
@@ -139,9 +174,52 @@ function initBenchTabs() {
   if (!root) return;
   const tabs = Array.from(root.querySelectorAll('[role="tab"]'));
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let frame = 0;
+
+  const stopRealtime = () => {
+    cancelAnimationFrame(frame);
+    root.querySelectorAll('.aw-bench-bar').forEach((bar) => { bar.style.cssText = ''; });
+    root.querySelectorAll('.aw-bench-val').forEach((val) => {
+      if (val.dataset.final) val.textContent = val.dataset.final;
+    });
+    root.classList.remove('is-resetting');
+  };
+
+  // Time-based panels replay in real time at data-speed x: each bar fills as the clock reaches its seconds.
+  const playRealtime = (panel) => {
+    const speed = Number(panel.dataset.speed);
+    const rows = Array.from(panel.querySelectorAll('.aw-bench-row')).map((row) => {
+      const val = row.querySelector('.aw-bench-val');
+      val.dataset.final = val.dataset.final || val.textContent;
+      return { bar: row.querySelector('.aw-bench-bar'), val, secs: Number(row.dataset.value), full: Number(row.dataset.v) };
+    });
+    const start = performance.now();
+    const tick = (now) => {
+      const t = ((now - start) / 1000) * speed;
+      let running = false;
+      rows.forEach((r) => {
+        const done = Math.min(t / r.secs, 1);
+        r.bar.style.transition = 'none';
+        r.bar.style.transform = `scaleX(${done * r.full})`;
+        r.val.textContent = done >= 1 ? r.val.dataset.final : `${Math.min(t, r.secs).toFixed(1)}s`;
+        if (done < 1) running = true;
+      });
+      if (running) frame = requestAnimationFrame(tick);
+      else stopRealtime();
+    };
+    frame = requestAnimationFrame(tick);
+  };
+
   // Grow the bars from zero, like a fresh run.
   const replay = () => {
+    stopRealtime();
+    const panel = root.querySelector('.aw-bench-panel:not([hidden])');
     root.classList.add('is-resetting');
+    if (panel && panel.dataset.speed && !reduceMotion) {
+      playRealtime(panel);
+      return;
+    }
     void root.offsetWidth;
     root.classList.remove('is-resetting');
   };
@@ -187,6 +265,7 @@ function initializeSite() {
   initNavigation();
   addCopyButtons();
   initInstallCopy();
+  initInstallMethods();
   initBenchTabs();
 }
 

@@ -29,7 +29,8 @@ layout: default
         {% for b in site.data.benchmarks %}
         <h3>{{ b.tab }}: {{ b.title }}</h3>
         <p>{{ b.subtitle }}.
-          {% for r in b.rows %}{{ r.label }} {{ b.row_suffix }}: {{ r.display }}{% unless forloop.last %} · {% endunless %}{% endfor %}.</p>
+          {% for r in b.rows %}{% if r.name %}{{ r.name }}{% else %}{{ r.label }} {{ b.row_suffix }}{% endif %}: {{ r.display }}{% unless forloop.last %} · {% endunless %}{% endfor %}.</p>
+        <p>Headline stats: {% for st in b.stats %}{{ st.value }} {{ st.label }}{% unless forloop.last %} · {% endunless %}{% endfor %}.</p>
         <p>Conditions: {{ b.note }}. Source: <a href="https://github.com/tdk-landscape/tdk-cli-core/blob/main/{{ b.source }}"><code>{{ b.source }}</code></a>.</p>
         {% endfor %}
 
