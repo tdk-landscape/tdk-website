@@ -128,6 +128,82 @@ body { background: #0a0a0e; overflow-x: hidden; }
   flex-wrap: wrap;
 }
 
+.aw-install {
+  width: min(46rem, 100%);
+  margin-top: 2.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.9rem;
+  background: rgba(18, 18, 24, 0.78);
+  box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.22), inset 0 1px rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+}
+
+.aw-install-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(236, 236, 241, 0.6);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+.aw-install-dots { display: flex; gap: 0.35rem; }
+.aw-install-dots i { width: 0.48rem; height: 0.48rem; border-radius: 50%; background: rgba(255, 255, 255, 0.22); }
+
+.aw-install-command {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.aw-install-command code {
+  min-width: 0;
+  color: #f4f2ff;
+  font: 500 clamp(0.72rem, 1.2vw, 0.9rem)/1.6 'JetBrains Mono', monospace;
+  overflow-wrap: anywhere;
+}
+
+.aw-copy-install {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.55rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font: 600 0.78rem 'Satoshi', 'Outfit', 'Geist', sans-serif;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.aw-copy-install:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.32); }
+.aw-copy-install:active { transform: scale(0.97); }
+.aw-copy-install:focus-visible { outline: 2px solid #b79aff; outline-offset: 3px; }
+
+.aw-install-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 1rem 0.9rem;
+  color: rgba(236, 236, 241, 0.55);
+  font-size: 0.78rem;
+}
+
+.aw-install-foot a { color: #c8b5ff; text-decoration: none; }
+.aw-install-foot a:hover { color: #fff; }
+
+@media (max-width: 520px) {
+  .aw-install-command { align-items: flex-start; }
+  .aw-install-foot { flex-direction: column; gap: 0.35rem; }
+}
+
 .aw-hero-star-count {
   margin-left: 0.6rem;
   padding-left: 0.6rem;
@@ -2008,6 +2084,23 @@ body { background: #0a0a0e; overflow-x: hidden; }
         <a href="{{ '/docs/quickstart/' | relative_url }}" class="aw-btn aw-btn-solid">Start free</a>
         <a href="#demo" class="aw-btn aw-btn-ghost">Watch it boot</a>
         <a href="https://github.com/tdk-landscape/tdk-cli-core" class="aw-btn aw-btn-ghost" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i>&nbsp;Source on GitHub</a>
+      </div>
+      <div class="aw-install" aria-label="Install the TDK CLI">
+        <div class="aw-install-head">
+          <span>Install the CLI</span>
+          <span class="aw-install-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+        <div class="aw-install-command">
+          <code id="aw-install-command">{{ site.data.tdk.install_npm | escape }}</code>
+          <button class="aw-copy-install" type="button" data-copy-install aria-label="Copy TDK install command">
+            <i class="bi bi-copy" aria-hidden="true"></i><span>Copy</span>
+          </button>
+        </div>
+        <div class="aw-install-foot">
+          <span>Requires Node.js {{ site.data.tdk.prereq_node }}+</span>
+          <a href="{{ '/docs/quickstart/' | relative_url }}">Read the quickstart <span aria-hidden="true">→</span></a>
+          <span class="visually-hidden" data-copy-status aria-live="polite"></span>
+        </div>
       </div>
     </div>
   </section>
