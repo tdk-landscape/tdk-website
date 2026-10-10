@@ -7,6 +7,41 @@
 # name   (optional) long label used on the claims page instead of "<label> <row_suffix>"
 # sub    (optional) small caption under a row label, overrides row_suffix
 
+- id: warm
+  tab: Warm start
+  title: tdk up on a warm machine
+  subtitle: seconds until all 8 containers are healthy · lower is better
+  scale: 50
+  stats:
+    - { value: "38 to 50 s", label: "to 8 / 8 healthy, three warm runs" }
+    - { value: "1.6 to 2.0 s", label: "golden base build, skipped" }
+    - { value: "0", label: "failed resources" }
+  rows:
+    - { label: "warm 1", value: 50, display: "50 s" }
+    - { label: "warm 2", value: 38, display: "38 s", key: true }
+    - { label: "warm 3", value: 40, display: "40 s" }
+  row_suffix: run
+  note: tdk-restaurant-example (6 services, Traefik, Postgres) · macOS 26.5.2, arm64, 8 CPUs, 16 GB, Docker 29.8.2 · run after a cold start, images and build cache kept
+  source: benchmarks/results/tdk-up-warm-start-2026-10-11/summary.json
+  repro: scripts/benchmark/README.md
+
+- id: cold
+  tab: Cold start
+  title: tdk up from nothing built
+  subtitle: seconds until all 8 containers are healthy · lower is better
+  scale: 281
+  stats:
+    - { value: "281 s", label: "to 8 / 8 healthy, full rebuild" }
+    - { value: "119.8 s", label: "golden base layers rebuilt" }
+    - { value: "0", label: "failed resources" }
+  rows:
+    - { label: "golden base", value: 119.8, display: "119.8 s" }
+    - { label: "to healthy", value: 281, display: "281 s", key: true }
+  row_suffix: step
+  note: Same machine as Warm start · golden layers, service images and build cache removed first · one run, so it can vary
+  source: benchmarks/results/tdk-up-warm-start-2026-10-11/summary.json
+  repro: scripts/benchmark/README.md
+
 - id: boot
   tab: Boot
   title: Booting 5 to 100 example services
